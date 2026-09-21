@@ -454,9 +454,12 @@
           align-items: stretch;
           text-align: left;
         }
-        .catalog-table td.col-vswr::before,
-        .catalog-table td.col-notes::before {
+        .catalog-table td.col-vswr::before {
           margin-bottom: 0.3rem;
+        }
+        .catalog-table td.col-notes::before,
+        .catalog-table td.col-buy::before {
+          display: none;
         }
         .catalog-table .num {
           white-space: normal;
@@ -477,11 +480,6 @@
           border-bottom: none;
           padding-top: 0.65rem;
           margin-top: 0;
-          text-align: center;
-        }
-        .catalog-table td.col-buy::before {
-          display: block;
-          margin-bottom: 0.35rem;
           text-align: center;
         }
         .catalog-table td.col-buy .buy-btn {
@@ -1271,7 +1269,7 @@
         <p class="site-footer__contrib">
           <a
             class="site-footer__github"
-            href="https://github.com/MeshEnvy/janknode"
+            href="https://github.com/MeshEnvy/janknode.fyi"
             rel="noopener noreferrer"
             ><i class="fa-brands fa-github" aria-hidden="true"></i> Contribute on
             GitHub</a

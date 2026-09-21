@@ -2,6 +2,8 @@
 
 Single-page guide at [janknode.fyi](https://janknode.fyi): solar light **shells** and **build gear** (consumables + bench tools).
 
+Repo: [github.com/MeshEnvy/janknode.fyi](https://github.com/MeshEnvy/janknode.fyi)
+
 ```bash
 npm install
 npm run dev     # watch yaml/template/scripts; live reload at http://localhost:5173
