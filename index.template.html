@@ -783,7 +783,13 @@
       }
       .vna-shot {
         display: block;
-        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
       }
       .vna-shot img {
         width: 148px;
@@ -792,6 +798,11 @@
         background: #1a1a1a;
         border: 1px solid var(--line);
         display: block;
+        transition: border-color 0.15s ease;
+      }
+      .vna-shot:hover img,
+      .vna-shot:focus-visible img {
+        border-color: var(--pop);
       }
       .vna-shot span {
         display: block;
@@ -802,8 +813,74 @@
         letter-spacing: 0.03em;
         text-transform: uppercase;
       }
-      .vna-shot:hover span {
+      .vna-shot:hover span,
+      .vna-shot:focus-visible span {
         color: var(--link);
+      }
+      .vna-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+      }
+      .vna-modal[hidden] {
+        display: none;
+      }
+      .vna-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgb(28 27 23 / 72%);
+        backdrop-filter: blur(4px);
+      }
+      .vna-modal__dialog {
+        position: relative;
+        z-index: 1;
+        width: min(960px, 100%);
+        max-height: min(92vh, 900px);
+        padding: 1rem 1rem 1.15rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        box-shadow: 0 18px 48px rgb(28 27 23 / 28%);
+        overflow: auto;
+      }
+      .vna-modal__close {
+        position: absolute;
+        top: 0.55rem;
+        right: 0.55rem;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--bg);
+        color: var(--ink);
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .vna-modal__close:hover {
+        border-color: var(--muted);
+      }
+      .vna-modal__title {
+        margin: 0 2.25rem 0.75rem 0;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .vna-modal__img {
+        display: block;
+        width: 100%;
+        max-height: calc(92vh - 5rem);
+        object-fit: contain;
+        background: #1a1a1a;
+        border: 1px solid var(--line);
+        border-radius: 6px;
       }
       a {
         color: var(--link);
@@ -1280,8 +1357,84 @@
         <p class="site-footer__copy">© {{copyright_year}} MeshEnvy NCC</p>
       </div>
     </footer>
+
+    <div id="vna-modal" class="vna-modal" hidden aria-hidden="true">
+      <div class="vna-modal__backdrop" data-vna-close tabindex="-1"></div>
+      <div
+        class="vna-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="vna-modal-title"
+      >
+        <button
+          type="button"
+          class="vna-modal__close"
+          data-vna-close
+          aria-label="Close sweep"
+        >
+          ×
+        </button>
+        <p id="vna-modal-title" class="vna-modal__title"></p>
+        <img class="vna-modal__img" src="" alt="" />
+      </div>
+    </div>
+
     <script>
       (() => {
+        const modal = document.getElementById("vna-modal");
+        const modalImg = modal?.querySelector(".vna-modal__img");
+        const modalTitle = document.getElementById("vna-modal-title");
+        let lastTrigger = null;
+
+        const closeVnaModal = () => {
+          if (!modal || modal.hidden) return;
+          modal.hidden = true;
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          if (modalImg) {
+            modalImg.removeAttribute("src");
+            modalImg.alt = "";
+          }
+          if (modalTitle) modalTitle.textContent = "";
+          lastTrigger?.focus();
+          lastTrigger = null;
+        };
+
+        const openVnaModal = (btn) => {
+          if (!modal || !modalImg) return;
+          const src = btn.dataset.vnaSrc;
+          if (!src) return;
+          const thumb = btn.querySelector("img");
+          lastTrigger = btn;
+          modalImg.src = src;
+          modalImg.alt = thumb?.alt || btn.dataset.vnaLabel || "VNA sweep";
+          if (modalTitle) {
+            modalTitle.textContent = btn.dataset.vnaLabel
+              ? `${btn.dataset.vnaLabel} sweep`
+              : "VNA sweep";
+          }
+          modal.hidden = false;
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          modal.querySelector(".vna-modal__close")?.focus();
+        };
+
+        document.addEventListener("click", (event) => {
+          const btn = event.target.closest(".vna-shot");
+          if (btn) {
+            event.preventDefault();
+            openVnaModal(btn);
+            return;
+          }
+          if (event.target.closest("[data-vna-close]")) {
+            closeVnaModal();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeVnaModal();
+        });
+
         const nav = document.getElementById("site-nav");
         if (!nav) return;
         const links = [...nav.querySelectorAll("[data-nav]")];

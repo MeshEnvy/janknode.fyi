@@ -108,10 +108,10 @@ const formatVswrShots = (shots) => {
   return `<div class="vna-shots">${shots
     .map(
       (s) =>
-        `<a class="vna-shot" href="${attr(s.src)}" target="_blank" rel="noopener" title="Open full sweep">
+        `<button type="button" class="vna-shot" data-vna-src="${attr(s.src)}" data-vna-label="${attr(s.label)}" aria-label="View ${attr(s.label)} sweep">
                 <img src="${attr(s.src)}" alt="${attr(s.alt || s.label)}" loading="lazy" />
                 <span>${escapeHtml(s.label)}</span>
-              </a>`,
+              </button>`,
     )
     .join("")}</div>`;
 };
