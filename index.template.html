@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    {{json_ld}}
+    <link rel="canonical" href="https://janknode.fyi/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f5ef;
+        --panel: #fff;
+        --line: #ddd8cb;
+        --ink: #1c1b17;
+        --muted: #6b6558;
+        --amber: #9a6b00;
+        --good: #2d6a2e;
+        --bad: #b33a28;
+        --link: #5c4a1a;
+        --head: #f0ece2;
+        --hover: #f5f2ea;
+        --thumb-bg: #ebe6da;
+        --gold: #c9a227;
+        --gold-light: #f5ecd0;
+        --gold-line: #e8d49a;
+        --win: #2d6a2e;
+        --win-light: #e8f3e8;
+        --win-mid: #c5dfc5;
+        --win-line: #9ec49e;
+        --pop: #16a34a;
+        --pop-dark: #14532d;
+        --pop-glow: rgb(22 163 74 / 45%);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+      .banner {
+        margin: 0 0 1rem;
+        padding: 1.25rem 0 1rem;
+        border-bottom: 1px solid var(--line);
+        text-align: center;
+      }
+      .banner h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.85rem, 5vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        line-height: 1.15;
+        margin: 0;
+      }
+      .title-icon {
+        font-family:
+          "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        font-size: clamp(1.6rem, 4vw, 2.1rem);
+        line-height: 1;
+        letter-spacing: 0;
+        filter: drop-shadow(0 1px 2px rgb(154 107 0 / 25%));
+      }
+      .lede {
+        color: var(--muted);
+        font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+        line-height: 1.55;
+        max-width: 40rem;
+        margin: 0 auto 1.75rem;
+        text-align: center;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem 2rem;
+        align-items: stretch;
+        max-width: 920px;
+        margin: 0 auto 2.5rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--win-line);
+        border-radius: 16px;
+        background: linear-gradient(
+          145deg,
+          #f8fcf8 0%,
+          var(--win-light) 55%,
+          #eef6ee 100%
+        );
+        box-shadow: 0 4px 28px rgb(22 163 74 / 16%);
+      }
+      .hero-stack {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        align-items: stretch;
+      }
+      .hero-stack-item {
+        margin: 0;
+        border: 1px solid var(--win-line);
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .hero-card-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 152px;
+        padding: 0.65rem;
+        background: #fff;
+        border-bottom: 1px solid var(--win-line);
+        overflow: hidden;
+      }
+      .hero-card-media img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+      .hero-card-media--cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .hero-card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0.65rem 0.7rem 0.75rem;
+        text-align: center;
+        border-top: 1px solid var(--win-line);
+        background: rgb(255 255 255 / 85%);
+        flex: 1;
+        min-height: 7.25rem;
+      }
+      .hero-card-label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hero-card-name {
+        flex: 1;
+        font-size: 0.82rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink);
+        min-height: 2.6em;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .hero-card-cost {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--pop-dark);
+        margin-top: 0.15rem;
+      }
+      .hero-card-foot {
+        margin-top: auto;
+        padding-top: 0.35rem;
+      }
+      .hero-card-foot .row-buy {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-bom-heading {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0.35rem 0 0.5rem;
+        text-align: center;
+      }
+      .hero-bom {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .hero-bom-row {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr) auto auto;
+        gap: 0.55rem 0.65rem;
+        align-items: center;
+        padding: 0.55rem 0.65rem;
+        border: 1px solid var(--win-line);
+        border-radius: 10px;
+        background: #fff;
+      }
+      .hero-bom-thumb {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        object-position: center;
+        background: #fff;
+        border: 1px solid var(--win-line);
+        border-radius: 6px;
+        display: block;
+      }
+      .hero-bom-label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        line-height: 1.2;
+      }
+      .hero-bom-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink);
+        margin-top: 0.1rem;
+      }
+      .hero-bom-cost {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--pop-dark);
+        white-space: nowrap;
+        text-align: right;
+      }
+      .hero-bom-note {
+        margin: 0.65rem 0 0;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        color: var(--muted);
+        text-align: center;
+      }
+      .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--win);
+        margin: 0;
+        padding: 0.25rem 0.55rem;
+        border: 1px solid var(--win-line);
+        border-radius: 999px;
+        background: rgb(255 255 255 / 65%);
+      }
+      .hero-kicker-crown {
+        font-size: 0.95rem;
+        line-height: 1;
+      }
+      .hero-headline {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+        font-weight: 600;
+        line-height: 1.35;
+        margin: 0 auto;
+        color: var(--ink);
+        max-width: 36rem;
+        text-align: center;
+      }
+      .hero-headline-price {
+        display: inline-block;
+        margin-top: 0.2em;
+        padding: 0.08em 0.28em 0.12em;
+        font-size: clamp(1.85rem, 5.5vw, 2.75rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        white-space: nowrap;
+        color: var(--pop-dark);
+        background: linear-gradient(
+          160deg,
+          #4ade80 0%,
+          var(--pop) 42%,
+          var(--pop-dark) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 3px 10px var(--pop-glow));
+      }
+      .hero-brand {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 0.2rem;
+      }
+      .hero-title {
+        font-size: clamp(1.35rem, 3vw, 1.65rem);
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0;
+      }
+      .hero-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem 1.5rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(158 196 158 / 45%);
+      }
+      .hero-price {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.3rem 0.55rem;
+      }
+      .hero-price-main {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.85rem, 4vw, 2.35rem);
+        font-weight: 600;
+        line-height: 1;
+        color: var(--win);
+        letter-spacing: -0.02em;
+      }
+      .hero-price-label,
+      .hero-pack {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
+      .hero-price-sep {
+        color: var(--win-line);
+        font-size: 0.82rem;
+      }
+      .hero-cta {
+        display: inline-block;
+        padding: 0.65rem 1.15rem;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 500;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      .hero-cta:hover {
+        background: #3d3a32;
+      }
+      .king-mark {
+        margin-left: 0.35rem;
+        font-size: 0.85rem;
+      }
+      tr.king-row td {
+        background: var(--win-light);
+      }
+      tr.king-row:hover td {
+        background: #dcebd8;
+      }
+      @media (max-width: 640px) {
+        .hero {
+          padding: 1rem;
+        }
+        .hero-stack {
+          grid-template-columns: 1fr;
+        }
+        .hero-card-media {
+          height: 200px;
+        }
+        .hero-bom-row {
+          grid-template-columns: 44px minmax(0, 1fr);
+          grid-template-areas:
+            "thumb name"
+            "thumb cost"
+            "thumb buy";
+        }
+        .hero-bom-thumb {
+          grid-area: thumb;
+        }
+        .hero-bom-row > div {
+          grid-area: name;
+        }
+        .hero-bom-cost {
+          grid-area: cost;
+          text-align: left;
+        }
+        .hero-bom-row .row-buy {
+          grid-area: buy;
+          justify-self: start;
+        }
+        .hero-foot {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-cta {
+          text-align: center;
+        }
+        .catalog-scroll {
+          overflow-x: visible;
+          border: none;
+          background: transparent;
+        }
+        .catalog-table {
+          min-width: 0;
+          font-size: 0.88rem;
+        }
+        .catalog-table thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        .catalog-table tbody {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .catalog-table tr {
+          display: block;
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          background: var(--panel);
+          padding: 0.75rem;
+        }
+        .catalog-table tr:hover td {
+          background: transparent;
+        }
+        .catalog-table tr.king-row {
+          border-color: var(--win-line);
+          background: var(--win-light);
+        }
+        .catalog-table tr.pair-row {
+          background: #fff8e6;
+        }
+        .catalog-table td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.45rem 0;
+          border-bottom: 1px solid var(--line);
+          text-align: right;
+        }
+        .catalog-table tr td:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .catalog-table td[data-label]:not([data-label=""])::before {
+          content: attr(data-label);
+          font-family: "IBM Plex Mono", ui-monospace, monospace;
+          font-size: 0.62rem;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--muted);
+          text-align: left;
+          flex: 0 0 auto;
+          max-width: 46%;
+        }
+        .catalog-table td.col-thumb,
+        .catalog-table td.col-item {
+          display: block;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 0.65rem;
+          margin-bottom: 0.2rem;
+          text-align: left;
+        }
+        .catalog-table td.col-thumb {
+          padding-bottom: 0.55rem;
+        }
+        .catalog-table .thumb {
+          width: 100%;
+          max-width: 220px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          margin: 0 auto;
+        }
+        .catalog-table td.col-vswr,
+        .catalog-table td.col-notes {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: left;
+        }
+        .catalog-table td.col-vswr::before,
+        .catalog-table td.col-notes::before {
+          margin-bottom: 0.3rem;
+        }
+        .catalog-table .num {
+          white-space: normal;
+        }
+        .catalog-table .review-cell {
+          width: auto;
+        }
+        .catalog-table .vna-shot img {
+          width: 100%;
+          max-width: 220px;
+        }
+      }
+      .stamp {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+      }
+      .scroll {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 480px;
+        font-size: 0.92rem;
+      }
+      th,
+      td {
+        padding: 0.7rem 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+        vertical-align: middle;
+      }
+      th {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: var(--head);
+        position: sticky;
+        top: 0;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      tr:hover td {
+        background: var(--hover);
+      }
+      .thumb {
+        width: 88px;
+        height: 64px;
+        object-fit: cover;
+        background: var(--thumb-bg);
+        display: block;
+      }
+      .review-play {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.65rem;
+        height: 1.65rem;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.62rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .review-play:hover {
+        background: #3d3a32;
+      }
+      .review-cell {
+        text-align: center;
+        width: 3rem;
+      }
+      .review-play-pending {
+        background: var(--line);
+        color: var(--muted);
+        cursor: default;
+      }
+      .item-title {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .item-sub {
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-top: 0.1rem;
+      }
+      .row-buy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.45rem 0.7rem;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      .row-buy:hover {
+        background: #3d3a32;
+      }
+      .row-buy--unavailable {
+        background: #fff;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        font-weight: 500;
+      }
+      .row-buy--unavailable:hover {
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .buy-store-icon {
+        width: 1.05rem;
+        height: 1.05rem;
+        flex-shrink: 0;
+        opacity: 0.92;
+      }
+      td.col-buy {
+        text-align: right;
+      }
+      th.col-buy {
+        text-align: right;
+      }
+      .badge {
+        display: inline-block;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+        border: 1px solid var(--line);
+      }
+      .badge.unknown {
+        color: var(--amber);
+        background: #fff8e6;
+        border-color: #e0c878;
+      }
+      .badge.pass {
+        color: var(--good);
+        background: #eef6ee;
+        border-color: #9ec49e;
+      }
+      .badge.fail {
+        color: var(--bad);
+        background: #fdf0ed;
+        border-color: #e0a89a;
+      }
+      .badge.likely {
+        color: var(--win);
+        background: #eef6ee;
+        border-color: var(--win-line);
+      }
+      .num {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+        white-space: nowrap;
+      }
+      th.num {
+        text-align: right;
+      }
+      .vswr-measured {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--good);
+        font-weight: 600;
+      }
+      .vswr-cell {
+        text-align: left;
+        min-width: 11rem;
+      }
+      .vswr-cell .vswr-measured {
+        display: block;
+      }
+      .vna-shots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+      }
+      .vna-shot {
+        display: block;
+        text-decoration: none;
+      }
+      .vna-shot img {
+        width: 148px;
+        max-height: 96px;
+        object-fit: contain;
+        background: #1a1a1a;
+        border: 1px solid var(--line);
+        display: block;
+      }
+      .vna-shot span {
+        display: block;
+        margin-top: 0.2rem;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.62rem;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      .vna-shot:hover span {
+        color: var(--link);
+      }
+      a {
+        color: var(--link);
+      }
+      .empty {
+        color: var(--muted);
+      }
+      .section-divider {
+        margin: 3.5rem 0 0;
+        padding-top: 2.5rem;
+        border-top: 2px solid var(--line);
+      }
+      .gear-title {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.55rem, 4vw, 2rem);
+        font-weight: 600;
+        margin: 0 0 0.65rem;
+        text-align: center;
+      }
+      .gear-lede {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.55;
+        max-width: 44rem;
+        margin: 0 auto 2rem;
+        text-align: center;
+      }
+      .gear-sub {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin: 0 0 0.35rem;
+      }
+      .gear-hint {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin: 0 0 0.85rem;
+      }
+      .gear-block {
+        margin-bottom: 2.25rem;
+      }
+      .pair-callout {
+        margin: 0 0 2.25rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--gold-line);
+        border-radius: 12px;
+        background: var(--gold-light);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 44rem;
+      }
+      .pair-callout strong {
+        font-weight: 600;
+      }
+      .gear-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.45;
+        max-width: 44rem;
+      }
+      tr.pair-row td {
+        background: #fff8e6;
+      }
+      tr.pair-row:hover td {
+        background: #ffefc8;
+      }
+      tr.optional-row td {
+        opacity: 0.92;
+      }
+      .thumb-empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.65rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .badge.optional {
+        color: var(--amber);
+        background: #fff8e6;
+        border-color: #e0c878;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="banner">
+        <h1>
+          <span class="title-icon" aria-hidden="true">☀️</span> Janknode Review
+          Guide
+        </h1>
+      </header>
+      <p class="lede">
+        Looking for an inexpensive solar repeater? China to the rescue! Solar
+        lawn and fence lights are the least expensive way to get a solar panel,
+        a battery, and an enclosure for your repeater.
+      </p>
+      <section class="hero" id="hero" aria-label="Starter repeater cost">
+        {{hero}}
+      </section>
+      <p class="stamp" id="stamp">{{stamp}}</p>
+
+      <section id="shells" aria-labelledby="shells-heading">
+        <h2 class="gear-title" id="shells-heading">Shells</h2>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Review</th>
+                <th>Shell</th>
+                <th>Works?</th>
+                <th class="col-buy">Buy</th>
+                <th class="num">mAh</th>
+              </tr>
+            </thead>
+            <tbody id="rows">{{shell_rows}}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider"
+        id="boards"
+        aria-labelledby="boards-heading"
+      >
+        <h2 class="gear-title" id="boards-heading">Boards</h2>
+        <p class="gear-hint gear-block">
+          RAK4631 + base from Rokland. Mini for tight shells; full WisBlock base
+          when you want IO slots.
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Board</th>
+                <th class="col-buy">Buy</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="gear-boards">{{board_rows}}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider"
+        id="antennas"
+        aria-labelledby="antennas-heading"
+      >
+        <h2 class="gear-title" id="antennas-heading">Antennas</h2>
+        <p class="gear-hint gear-block">
+          915 MHz options with bench VSWR when we have a sweep. One per node.
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Antenna</th>
+                <th class="col-buy">Buy</th>
+                <th class="num">915 MHz VSWR</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="gear-antennas">{{antenna_rows}}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider"
+        id="consumables"
+        aria-labelledby="consumables-heading"
+      >
+        <h2 class="gear-title" id="consumables-heading">Consumables</h2>
+        <p class="gear-hint gear-block">
+          Glue, connectors, flux. Budget these per node.
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item</th>
+                <th class="col-buy">Buy</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="gear-consumables">{{consumable_rows}}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider"
+        id="tools"
+        aria-labelledby="tools-heading"
+      >
+        <h2 class="gear-title" id="tools-heading">Tools</h2>
+        <p class="gear-hint gear-block">
+          Buy once. Soldering, measure, fabrication, hand tools.
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Tool</th>
+                <th class="col-buy">Buy</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="gear-tools">{{tool_rows}}</tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -6,7 +6,7 @@ Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/list
 
 ## What this is
 
-Static review guide for janknode builds: **shells**, **boards**, **antennas**, **consumables**, and **tools**. Five table sections; king row per category where we have a field pick. `index.html` is the site. Screenshots and agent notes live in this repo so others can PR. Optional per shell: `youtube_review` + `youtube_assembly` URLs (table **Review** column; king hero buttons when set).
+Static review guide for janknode builds: **shells**, **boards**, **antennas**, **consumables**, and **tools**. Five table sections; king row per category where we have a field pick. **Build:** `data/data.yaml` + `index.template.html` → `scripts/render.mjs` → `npm run build` → `index.html` (committed, full SEO HTML, no client JS). Screenshots and agent notes live in this repo so others can PR.
 
 ## King
 
@@ -37,7 +37,7 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 ## Boards (2 listings)
 
-`index.html` § Boards. YAML: `data/gear.yaml` `boards`. Detail: `kits/<SKU>/listing.md`.
+`index.html` § Boards. YAML: `data/data.yaml` `boards`. Detail: `kits/<SKU>/listing.md`.
 
 **King board:** Mini RAK19003 + RAK4631 (115093, $31.97). Alt: WisBlock RAK19007 + RAK4631 (116016, $34.97).
 
@@ -45,21 +45,18 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 **King antenna:** Tenmory bendable duck + pigtail (B0CTXL61LY, VSWR 1.10 @ 916 MHz, $5.99). Alt: muzi 17 cm whip (B0FSTD4BYM).
 
-**Hero:** king shell + king board + king antenna ≈ $41/node (2026-09-21 prices).
+**Hero BOM:** king shell + board + antenna + required consumables ≈ $42/node estimated material (2026-09-21). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Buy buttons show pack price; `/node` is estimated usage.
 
 ## Consumables + tools (15 listings)
 
-YAML: `data/gear.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`.
+YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`.
 
 **Consumables (6):** HiLetgo IPEX→SMA pigtails (B01HXU1PKS), E6000+, JST 1.25, JST PH 2.0, flux pens, MAIYUM solder (B075WB98FJ).
 
 **Tools (9):** ANBES 90W solder kit (B0CGHD7GW5), Kaisi mat, AstroAI DMM, NanoVNA-H (optional), AVID 20V drill, COMOWARE step bits, SEESII spot welder (optional), KAIWEETS stripper, WORKPRO pliers.
 
-Keep `LIGHTS`, `BOARDS`, and `GEAR_*` arrays in `index.html` in sync with `data/lights.yaml` and `data/gear.yaml`.
-
 ## Active threads
 
 - Listing-only until bay photos. Chemistry gate still open on all non-king rows.
 - SOLPEX cheapest $/shell on paper; king stays field-proven HMCITY.
-- `index.html` embeds `LIGHTS` by hand. Keep in sync with `data/lights.yaml`.
 - Gear gaps: heat-shrink, bench supply PDPs.

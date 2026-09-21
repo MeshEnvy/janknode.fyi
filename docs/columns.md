@@ -27,7 +27,7 @@ Do not score keep-up, cavity, or mount on a fail. Fail rows stay on the page so 
 | Ease of mounting | T-post + hose clamp. Thin plastic crushes. Keyholes or a flat back that takes a mending plate win. |
 | Ease of antenna | Whip vs panel. Panel on the top face means elbow or rotate a side face up. |
 | Amazon | ASIN link. In-stock + last checked. Dead SKUs stay; strike the buy link. |
-| Video | Optional **Review** + **Build** YouTube links per shell (`youtube_review`, `youtube_assembly` in `listing.md` / `data/lights.yaml` / `LIGHTS`). Empty until we publish. No fleet IDs or site names in titles. |
+| Video | Optional **Review** + **Build** YouTube links per shell (`youtube_review`, `youtube_assembly` in `listing.md` / `data/data.yaml`). Empty until we publish. No fleet IDs or site names in titles. |
 
 ## Field extras (only when we have data)
 

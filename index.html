@@ -3,11 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Janknode Review Guide</title>
-    <meta
-      name="description"
-      content="Janknode review guide: solar light shells and bench gear for field repeater builds. Shell rankings plus consumables and tools to assemble them."
-    />
+    <title>Janknode Review Guide — solar repeater from $42.01</title>
+    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $42.01. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $42.01 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
     <link rel="canonical" href="https://janknode.fyi/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -112,6 +110,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.75rem;
+        align-items: stretch;
       }
       .hero-stack-item {
         margin: 0;
@@ -156,6 +155,7 @@
         border-top: 1px solid var(--win-line);
         background: rgb(255 255 255 / 85%);
         flex: 1;
+        min-height: 7.25rem;
       }
       .hero-card-label {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -166,37 +166,99 @@
         color: var(--muted);
       }
       .hero-card-name {
+        flex: 1;
         font-size: 0.82rem;
         font-weight: 600;
         line-height: 1.3;
         color: var(--ink);
+        min-height: 2.6em;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
       }
-      .hero-card-foot {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-        margin-top: 0.25rem;
-      }
-      .hero-card-price {
+      .hero-card-cost {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.88rem;
+        font-size: 0.75rem;
         font-weight: 600;
         color: var(--pop-dark);
+        margin-top: 0.15rem;
       }
-      .hero-card-buy {
-        display: block;
-        padding: 0.5rem 0.75rem;
-        background: var(--ink);
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.82rem;
-        font-weight: 600;
+      .hero-card-foot {
+        margin-top: auto;
+        padding-top: 0.35rem;
+      }
+      .hero-card-foot .row-buy {
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-bom-heading {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0.35rem 0 0.5rem;
         text-align: center;
-        border-radius: 8px;
       }
-      .hero-card-buy:hover {
-        background: #3d3a32;
+      .hero-bom {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .hero-bom-row {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr) auto auto;
+        gap: 0.55rem 0.65rem;
+        align-items: center;
+        padding: 0.55rem 0.65rem;
+        border: 1px solid var(--win-line);
+        border-radius: 10px;
+        background: #fff;
+      }
+      .hero-bom-thumb {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        object-position: center;
+        background: #fff;
+        border: 1px solid var(--win-line);
+        border-radius: 6px;
+        display: block;
+      }
+      .hero-bom-label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        line-height: 1.2;
+      }
+      .hero-bom-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink);
+        margin-top: 0.1rem;
+      }
+      .hero-bom-cost {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--pop-dark);
+        white-space: nowrap;
+        text-align: right;
+      }
+      .hero-bom-note {
+        margin: 0.65rem 0 0;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        color: var(--muted);
+        text-align: center;
       }
       .hero-kicker {
         display: inline-flex;
@@ -332,12 +394,138 @@
         .hero-card-media {
           height: 200px;
         }
+        .hero-bom-row {
+          grid-template-columns: 44px minmax(0, 1fr);
+          grid-template-areas:
+            "thumb name"
+            "thumb cost"
+            "thumb buy";
+        }
+        .hero-bom-thumb {
+          grid-area: thumb;
+        }
+        .hero-bom-row > div {
+          grid-area: name;
+        }
+        .hero-bom-cost {
+          grid-area: cost;
+          text-align: left;
+        }
+        .hero-bom-row .row-buy {
+          grid-area: buy;
+          justify-self: start;
+        }
         .hero-foot {
           flex-direction: column;
           align-items: stretch;
         }
         .hero-cta {
           text-align: center;
+        }
+        .catalog-scroll {
+          overflow-x: visible;
+          border: none;
+          background: transparent;
+        }
+        .catalog-table {
+          min-width: 0;
+          font-size: 0.88rem;
+        }
+        .catalog-table thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        .catalog-table tbody {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .catalog-table tr {
+          display: block;
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          background: var(--panel);
+          padding: 0.75rem;
+        }
+        .catalog-table tr:hover td {
+          background: transparent;
+        }
+        .catalog-table tr.king-row {
+          border-color: var(--win-line);
+          background: var(--win-light);
+        }
+        .catalog-table tr.pair-row {
+          background: #fff8e6;
+        }
+        .catalog-table td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.45rem 0;
+          border-bottom: 1px solid var(--line);
+          text-align: right;
+        }
+        .catalog-table tr td:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .catalog-table td[data-label]:not([data-label=""])::before {
+          content: attr(data-label);
+          font-family: "IBM Plex Mono", ui-monospace, monospace;
+          font-size: 0.62rem;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--muted);
+          text-align: left;
+          flex: 0 0 auto;
+          max-width: 46%;
+        }
+        .catalog-table td.col-thumb,
+        .catalog-table td.col-item {
+          display: block;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 0.65rem;
+          margin-bottom: 0.2rem;
+          text-align: left;
+        }
+        .catalog-table td.col-thumb {
+          padding-bottom: 0.55rem;
+        }
+        .catalog-table .thumb {
+          width: 100%;
+          max-width: 220px;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          margin: 0 auto;
+        }
+        .catalog-table td.col-vswr,
+        .catalog-table td.col-notes {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: left;
+        }
+        .catalog-table td.col-vswr::before,
+        .catalog-table td.col-notes::before {
+          margin-bottom: 0.3rem;
+        }
+        .catalog-table .num {
+          white-space: normal;
+        }
+        .catalog-table .review-cell {
+          width: auto;
+        }
+        .catalog-table .vna-shot img {
+          width: 100%;
+          max-width: 220px;
         }
       }
       .stamp {
@@ -354,7 +542,7 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 520px;
+        min-width: 480px;
         font-size: 0.92rem;
       }
       th,
@@ -423,15 +611,45 @@
         font-size: 0.88rem;
         margin-top: 0.1rem;
       }
-      .asin a {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.72rem;
-        color: var(--muted);
+      .row-buy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.45rem 0.7rem;
+        background: var(--ink);
+        color: #fff;
         text-decoration: none;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        border-radius: 8px;
+        white-space: nowrap;
       }
-      .asin a:hover {
-        color: var(--link);
-        text-decoration: underline;
+      .row-buy:hover {
+        background: #3d3a32;
+      }
+      .row-buy--unavailable {
+        background: #fff;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        font-weight: 500;
+      }
+      .row-buy--unavailable:hover {
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .buy-store-icon {
+        width: 1.05rem;
+        height: 1.05rem;
+        flex-shrink: 0;
+        opacity: 0.92;
+      }
+      td.col-buy {
+        text-align: right;
+      }
+      th.col-buy {
+        text-align: right;
       }
       .badge {
         display: inline-block;
@@ -468,26 +686,6 @@
       }
       th.num {
         text-align: right;
-      }
-      .price-main {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.95rem;
-        font-weight: 600;
-        font-variant-numeric: tabular-nums;
-        color: var(--win);
-      }
-      .price-unit-label {
-        display: block;
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.68rem;
-        font-weight: 500;
-        color: var(--muted);
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        margin-top: 0.15rem;
-      }
-      .pack-line {
-        font-variant-numeric: tabular-nums;
       }
       .vswr-measured {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -630,29 +828,248 @@
         lawn and fence lights are the least expensive way to get a solar panel,
         a battery, and an enclosure for your repeater.
       </p>
-      <section
-        class="hero"
-        id="hero"
-        aria-label="Starter repeater cost"
-      ></section>
-      <p class="stamp" id="stamp"></p>
+      <section class="hero" id="hero" aria-label="Starter repeater cost">
+        
+        <h2 class="hero-headline">Build a Meshtastic or MeshCore solar repeater for<br /><span class="hero-headline-price">$42.01</span></h2>
+        <div class="hero-stack">
+          <figure class="hero-stack-item">
+          <div class="hero-card-media hero-card-media--cover">
+            <img src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY 120 LED solar wall light" />
+          </div>
+          <figcaption class="hero-card-info">
+            <span class="hero-card-label">Shell</span>
+            <span class="hero-card-name">HMCITY · 120 LED solar wall light</span>
+            <div class="hero-card-cost">$3.33/node</div>
+            <div class="hero-card-foot"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 6-pack $19.98</a></div>
+          </figcaption>
+        </figure><figure class="hero-stack-item">
+          <div class="hero-card-media">
+            <img src="kits/115093/profile.jpg" alt="RAKwireless Mini starter kit (RAK19003 + RAK4631)" />
+          </div>
+          <figcaption class="hero-card-info">
+            <span class="hero-card-label">Board</span>
+            <span class="hero-card-name">Mini starter kit (RAK19003 + RAK4631)</span>
+            <div class="hero-card-cost">$31.97/node</div>
+            <div class="hero-card-foot"><a class="row-buy" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland">Buy $31.97</a></div>
+          </figcaption>
+        </figure><figure class="hero-stack-item">
+          <div class="hero-card-media">
+            <img src="gear/B0CTXL61LY/profile.jpg" alt="Tenmory 915 MHz 3 dBi omni + U.FL pigtail (2×)" />
+          </div>
+          <figcaption class="hero-card-info">
+            <span class="hero-card-label">Antenna</span>
+            <span class="hero-card-name">Tenmory · 915 MHz bendable duck</span>
+            <div class="hero-card-cost">$5.99/node</div>
+            <div class="hero-card-foot"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0CTXL61LY" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 2-pack $11.99</a></div>
+          </figcaption>
+        </figure>
+        </div>
+        <p class="hero-bom-heading">Consumables per node</p>
+        <div class="hero-bom">
+          <div class="hero-bom-row">
+          <img class="hero-bom-thumb" src="gear/B07QJDJYC6/profile.jpg" alt="" />
+          <div>
+            <div class="hero-bom-label">Glue</div>
+            <div class="hero-bom-name">E6000+ adhesive</div>
+          </div>
+          <span class="hero-bom-cost">$0.40/node</span>
+          <a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $8.29</a>
+        </div><div class="hero-bom-row">
+          <img class="hero-bom-thumb" src="gear/B09JZC28DP/profile.jpg" alt="" />
+          <div>
+            <div class="hero-bom-label">JST PH</div>
+            <div class="hero-bom-name">2-pin pigtails</div>
+          </div>
+          <span class="hero-bom-cost">$0.17/node</span>
+          <a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 100-pack $16.99</a>
+        </div><div class="hero-bom-row">
+          <img class="hero-bom-thumb" src="gear/B075WB98FJ/profile.jpg" alt="" />
+          <div>
+            <div class="hero-bom-label">Solder</div>
+            <div class="hero-bom-name">Sn63/Pb37 rosin core</div>
+          </div>
+          <span class="hero-bom-cost">$0.15/node</span>
+          <a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $8.99</a>
+        </div>
+        </div>
+      </section>
+      <p class="stamp" id="stamp">Last verified 2026-09-21 · 16 shells</p>
 
       <section id="shells" aria-labelledby="shells-heading">
         <h2 class="gear-title" id="shells-heading">Shells</h2>
-        <div class="scroll">
-          <table>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
             <thead>
               <tr>
                 <th></th>
                 <th>Review</th>
                 <th>Shell</th>
                 <th>Works?</th>
-                <th class="num">$ / shell</th>
-                <th class="num">Pack</th>
+                <th class="col-buy">Buy</th>
                 <th class="num">mAh</th>
               </tr>
             </thead>
-            <tbody id="rows"></tbody>
+            <tbody id="rows"><tr class="king-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="HMCITY review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">HMCITY<span class="king-mark" title="King shell">👑</span></div>
+            <div class="item-sub">wall wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge likely">likely</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 6-pack $19.98</a></td>
+          <td class="col-mah num" data-label="mAh">1,200</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B08H81Z1RW/profile.jpg" alt="SOLPEX" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="SOLPEX review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">SOLPEX</div>
+            <div class="item-sub">fence wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B08H81Z1RW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $29.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0GH63TL8H/profile.jpg" alt="AUDERWIN" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="AUDERWIN review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">AUDERWIN</div>
+            <div class="item-sub">fence step</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0GH63TL8H" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $32.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D0RNV327/profile.jpg" alt="TECKNET" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="TECKNET review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">TECKNET</div>
+            <div class="item-sub">fence cap</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0D0RNV327" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $32.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0G2BKN15W/profile.jpg" alt="NIORSUN" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NIORSUN review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">NIORSUN</div>
+            <div class="item-sub">fence wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0G2BKN15W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $45.99</a></td>
+          <td class="col-mah num" data-label="mAh">500</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C7B2Z39G/profile.jpg" alt="CLAONER" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="CLAONER review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">CLAONER</div>
+            <div class="item-sub">PIR wall</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0C7B2Z39G" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 6-pack $24.99</a></td>
+          <td class="col-mah num" data-label="mAh">1,200</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B07WPHTWBP/profile.jpg" alt="ROSHWEY" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="ROSHWEY review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">ROSHWEY</div>
+            <div class="item-sub">fence wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07WPHTWBP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 6-pack $27.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0H3LWZHHW/profile.jpg" alt="Toeuitie" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="Toeuitie review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">Toeuitie</div>
+            <div class="item-sub">fence wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0H3LWZHHW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $59.96</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C813SJXP/profile.jpg" alt="FLITI" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="FLITI review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">FLITI</div>
+            <div class="item-sub">fence wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0C813SJXP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $59.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FGCM9TBN/profile.jpg" alt="JOFIOS" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="JOFIOS review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">JOFIOS</div>
+            <div class="item-sub">fence step</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0FGCM9TBN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $59.99</a></td>
+          <td class="col-mah num" data-label="mAh">1,200</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DMNH8QDN/profile.jpg" alt="WENATY" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="WENATY review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">WENATY</div>
+            <div class="item-sub">spotlight</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0DMNH8QDN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 12-pack $64.99</a></td>
+          <td class="col-mah num" data-label="mAh">1,500</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FHQH9LPQ/profile.jpg" alt="NACINIC" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NACINIC review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">NACINIC</div>
+            <div class="item-sub">spotlight</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0FHQH9LPQ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 8-pack $49.99</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B085242PLC/profile.jpg" alt="LECLESTAR" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="LECLESTAR review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">LECLESTAR</div>
+            <div class="item-sub">flood</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B085242PLC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 2-pack $31.98</a></td>
+          <td class="col-mah num" data-label="mAh">4,000</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78HJYJ1/profile.jpg" alt="VOLISUN" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="VOLISUN review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">VOLISUN</div>
+            <div class="item-sub">spotlight</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon row-buy--unavailable" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Not available</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78KYJDC/profile.jpg" alt="VOLISUN" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="VOLISUN review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">VOLISUN</div>
+            <div class="item-sub">spotlight</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon row-buy--unavailable" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Not available</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D99X4M48/profile.jpg" alt="NACINIC" /></td>
+          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NACINIC review not published yet">▶</span></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">NACINIC</div>
+            <div class="item-sub">spotlight</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon row-buy--unavailable" href="https://www.amazon.com/dp/B0D99X4M48" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Not available</a></td>
+          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+        </tr></tbody>
           </table>
         </div>
       </section>
@@ -667,18 +1084,35 @@
           RAK4631 + base from Rokland. Mini for tight shells; full WisBlock base
           when you want IO slots.
         </p>
-        <div class="scroll">
-          <table>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
             <thead>
               <tr>
                 <th></th>
                 <th>Board</th>
-                <th class="num">$ / unit</th>
-                <th class="num">Pack</th>
+                <th class="col-buy">Buy</th>
                 <th>Notes</th>
               </tr>
             </thead>
-            <tbody id="gear-boards"></tbody>
+            <tbody id="gear-boards"><tr class="king-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">Mini starter kit (RAK19003 + RAK4631)<span class="king-mark" title="King board">👑</span></div>
+            <div class="item-sub">RAKwireless</div>
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland">Buy $31.97</a></td>
+          
+          <td class="col-notes" data-label="Notes">30×35 mm mini base. Best fit for tight shells. Kit antenna is bench-only; deploy with a field whip below.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="kits/116016/profile.jpg" alt="RAKwireless" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">WisBlock starter kit (RAK19007 + RAK4631)</div>
+            <div class="item-sub">RAKwireless</div>
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy" href="https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit" target="_blank" rel="noopener noreferrer" title="Buy on Rokland">Buy $34.97</a></td>
+          
+          <td class="col-notes" data-label="Notes">30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.</td>
+        </tr></tbody>
           </table>
         </div>
       </section>
@@ -692,19 +1126,45 @@
         <p class="gear-hint gear-block">
           915 MHz options with bench VSWR when we have a sweep. One per node.
         </p>
-        <div class="scroll">
-          <table>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
             <thead>
               <tr>
                 <th></th>
                 <th>Antenna</th>
-                <th class="num">$ / unit</th>
-                <th class="num">Pack</th>
+                <th class="col-buy">Buy</th>
                 <th class="num">915 MHz VSWR</th>
                 <th>Notes</th>
               </tr>
             </thead>
-            <tbody id="gear-antennas"></tbody>
+            <tbody id="gear-antennas"><tr class="king-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CTXL61LY/profile.jpg" alt="Tenmory" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">915 MHz 3 dBi omni + U.FL pigtail (2×)<span class="king-mark" title="King antenna">👑</span></div>
+            <div class="item-sub">Tenmory</div>
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0CTXL61LY" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 2-pack $11.99</a></td>
+          <td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.10 @ 916</span><div class="vna-shots"><a class="vna-shot" href="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" target="_blank" rel="noopener" title="Open full sweep">
+                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" alt="Tenmory VSWR sweep, NanoVNA" loading="lazy" />
+                <span>NanoVNA</span>
+              </a><a class="vna-shot" href="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" target="_blank" rel="noopener" title="Open full sweep">
+                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" alt="Tenmory VSWR sweep, N1201SA" loading="lazy" />
+                <span>N1201SA</span>
+              </a></div></td>
+          <td class="col-notes" data-label="Notes">Bendable rubber duck ~7.6 cm, SMA male. Pigtail in box. Current deploy pick.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">915 MHz whip antenna, 17 cm</div>
+            <div class="item-sub">muzi WORKS</div>
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 4-pack $39.90</a></td>
+          <td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.45 @ 915</span><div class="vna-shots"><a class="vna-shot" href="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" target="_blank" rel="noopener" title="Open full sweep">
+                <img src="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" alt="muzi WORKS VSWR sweep, NanoVNA" loading="lazy" />
+                <span>NanoVNA</span>
+              </a></div></td>
+          <td class="col-notes" data-label="Notes">Field deploy pick. E6000 on nut only; keep silicone off SMA mating surface.</td>
+        </tr></tbody>
           </table>
         </div>
       </section>
@@ -718,18 +1178,71 @@
         <p class="gear-hint gear-block">
           Glue, connectors, flux. Budget these per node.
         </p>
-        <div class="scroll">
-          <table>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
             <thead>
               <tr>
                 <th></th>
                 <th>Item</th>
-                <th class="num">$ / unit</th>
-                <th class="num">Pack</th>
+                <th class="col-buy">Buy</th>
                 <th>Notes</th>
               </tr>
             </thead>
-            <tbody id="gear-consumables"></tbody>
+            <tbody id="gear-consumables"><tr class="optional-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B01HXU1PKS/profile.jpg" alt="HiLetgo" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">U.FL to SMA female pigtails, 15 cm <span class="badge optional">optional</span></div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B01HXU1PKS" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 5-pack $7.79</a></td>
+          
+          <td class="col-notes" data-label="Notes">Optional spare. RAK4631 kit ships with a U.FL pigtail; Tenmory antenna box includes one too.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">E6000+ adhesive 0.9 oz</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $8.29</a></td>
+          
+          <td class="col-notes" data-label="Notes">IPEX dab + SMA nut seal. Not a structural glue for the whole enclosure.</td>
+        </tr><tr class="optional-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B013JRWCBU/profile.jpg" alt="Letool" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">JST 1.25 mm 2-pin pigtails <span class="badge optional">optional</span></div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B013JRWCBU" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 30-pack $6.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Optional. JST 1.25 mm pigtails for solar or small-board jumpers (~80 mm leads).</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">JST PH 2.0 mm 2-pin pigtails</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 100-pack $16.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">RAK19003 battery JST-PH and similar (~120 mm leads).</td>
+        </tr><tr class="optional-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0953NGKXR/profile.jpg" alt="Outus" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">No-clean rosin flux pens (3×) <span class="badge optional">optional</span></div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0953NGKXR" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy 3-pack $9.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Optional. Rosin flux pen for stubborn joints. Pairs with solder wire below.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">Sn63/Pb37 rosin-core solder 0.8 mm</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $8.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">50 g spool. Leaded 63/37. Wash hands after use.</td>
+        </tr></tbody>
           </table>
         </div>
       </section>
@@ -743,733 +1256,101 @@
         <p class="gear-hint gear-block">
           Buy once. Soldering, measure, fabrication, hand tools.
         </p>
-        <div class="scroll">
-          <table>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
             <thead>
               <tr>
                 <th></th>
                 <th>Tool</th>
-                <th class="num">$ / unit</th>
-                <th class="num">Pack</th>
+                <th class="col-buy">Buy</th>
                 <th>Notes</th>
               </tr>
             </thead>
-            <tbody id="gear-tools"></tbody>
+            <tbody id="gear-tools"><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CGHD7GW5/profile.jpg" alt="ANBES" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">90W digital soldering iron kit (10-in-1)</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0CGHD7GW5" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $14.95</a></td>
+          
+          <td class="col-notes" data-label="Notes">Corded 90W, ceramic heater, LCD temp, auto sleep. Tips, stand, starter solder tube included.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B073RFKHD6/profile.jpg" alt="Kaisi" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">S-160 silicone soldering mat</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B073RFKHD6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $12.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Heat-safe bench surface; magnetic trays for screws.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CLV8R7QF/profile.jpg" alt="AstroAI" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">AM33B digital multimeter</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0CLV8R7QF" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $14.59</a></td>
+          
+          <td class="col-notes" data-label="Notes">Solar keep-up DMM checks (I_load, I_net). No AC current mode.</td>
+        </tr><tr class="optional-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07Z5VY7B6/profile.jpg" alt="AURSINC" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">NanoVNA-H antenna analyzer <span class="badge optional">optional</span></div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07Z5VY7B6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $52.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Optional. Tune 915 MHz whips; overkill for a first node.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09KGQ91BM/profile.jpg" alt="AVID POWER" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">20V cordless drill kit, 3/8 in.</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B09KGQ91BM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $39.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">SMA bulkhead holes and shell mods. 10 drill + 10 driver bits.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07PGRKM8C/profile.jpg" alt="COMOWARE" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">Ti-coated step drill set (5 pc)</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07PGRKM8C" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $24.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Step bits + center punch for sized enclosure holes.</td>
+        </tr><tr class="optional-row">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FGXL88XP/profile.jpg" alt="SEESII" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">Handheld battery spot welder <span class="badge optional">optional</span></div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B0FGXL88XP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $34.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Optional. Custom 18650 packs only; janknodes use single cells + BMS.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B097SZ1F7W/profile.jpg" alt="KAIWEETS" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">KWS-103 wire stripper</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B097SZ1F7W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $13.99</a></td>
+          
+          <td class="col-notes" data-label="Notes">Self-adjusting 10–24 AWG strip/cut/crimp.</td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07G9LKCML/profile.jpg" alt="WORKPRO" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">6-piece pliers and wrench set</div>
+            
+          </td>
+          <td class="col-buy" data-label="Buy"><a class="row-buy row-buy--amazon" href="https://www.amazon.com/dp/B07G9LKCML" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><svg class="buy-store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39-.046.525.13.12.174.09.336-.12.48-.256.19-.6.41-1.006.654-1.244.743-2.64 1.316-4.185 1.726a17.617 17.617 0 01-10.951-.577 17.88 17.88 0 01-5.43-3.35c-.1-.074-.151-.15-.151-.22 0-.047.021-.09.051-.13zm6.565-6.218c0-1.005.247-1.863.743-2.577.495-.71 1.17-1.25 2.04-1.615.796-.335 1.756-.575 2.912-.72.39-.046 1.033-.103 1.92-.174v-.37c0-.93-.105-1.558-.3-1.875-.302-.43-.78-.65-1.44-.65h-.182c-.48.046-.896.196-1.246.46-.35.27-.575.63-.675 1.096-.06.3-.206.465-.435.51l-2.52-.315c-.248-.06-.372-.18-.372-.39 0-.046.007-.09.022-.15.247-1.29.855-2.25 1.82-2.88.976-.616 2.1-.975 3.39-1.05h.54c1.65 0 2.957.434 3.888 1.29.135.15.27.3.405.48.12.165.224.314.283.45.075.134.15.33.195.57.06.254.105.42.135.51.03.104.062.3.076.615.01.313.02.493.02.553v5.28c0 .376.06.72.165 1.036.105.313.21.54.315.674l.51.674c.09.136.136.256.136.36 0 .12-.06.226-.18.314-1.2 1.05-1.86 1.62-1.963 1.71-.165.135-.375.15-.63.045a6.062 6.062 0 01-.526-.496l-.31-.347a9.391 9.391 0 01-.317-.42l-.3-.435c-.81.886-1.603 1.44-2.4 1.665-.494.15-1.093.227-1.83.227-1.11 0-2.04-.343-2.76-1.034-.72-.69-1.08-1.665-1.08-2.94l-.05-.076zm3.753-.438c0 .566.14 1.02.425 1.364.285.34.675.512 1.155.512.045 0 .106-.007.195-.02.09-.016.134-.023.166-.023.614-.16 1.08-.553 1.424-1.178.165-.28.285-.58.36-.91.09-.32.12-.59.135-.8.015-.195.015-.54.015-1.005v-.54c-.84 0-1.484.06-1.92.18-1.275.36-1.92 1.17-1.92 2.43l-.035-.02zm9.162 7.027c.03-.06.075-.11.132-.17.362-.243.714-.41 1.05-.5a8.094 8.094 0 011.612-.24c.14-.012.28 0 .41.03.65.06 1.05.168 1.172.33.063.09.099.228.099.39v.15c0 .51-.149 1.11-.424 1.8-.278.69-.664 1.248-1.156 1.68-.073.06-.14.09-.197.09-.03 0-.06 0-.09-.012-.09-.044-.107-.12-.064-.24.54-1.26.806-2.143.806-2.64 0-.15-.03-.27-.087-.344-.145-.166-.55-.257-1.224-.257-.243 0-.533.016-.87.046-.363.045-.7.09-1 .135-.09 0-.148-.014-.18-.044-.03-.03-.036-.047-.02-.077 0-.017.006-.03.02-.063v-.06z"/></svg>Buy $22.79</a></td>
+          
+          <td class="col-notes" data-label="Notes">Long-nose + diagonal cutters cover most bench work.</td>
+        </tr></tbody>
           </table>
         </div>
       </section>
     </main>
-    <script>
-      const LIGHTS = [
-        {
-          asin: "B08H81Z1RW",
-          brand: "SOLPEX",
-          form: "fence wedge",
-          pack_qty: 12,
-          pack_price_usd: 29.99,
-          unit_price_usd: 2.5,
-          ip: null,
-          size_in: "3.9 × 1.1 × 3.1",
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B08H81Z1RW/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B08H81Z1RW",
-        },
-        {
-          asin: "B0GH63TL8H",
-          brand: "AUDERWIN",
-          form: "fence step",
-          pack_qty: 12,
-          pack_price_usd: 32.99,
-          unit_price_usd: 2.75,
-          ip: "IP65",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0GH63TL8H/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0GH63TL8H",
-        },
-        {
-          asin: "B0D0RNV327",
-          brand: "TECKNET",
-          form: "fence cap",
-          pack_qty: 12,
-          pack_price_usd: 32.99,
-          unit_price_usd: 2.75,
-          ip: "IP66",
-          size_in: "3.58 × 2.36 × 0.98",
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0D0RNV327/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0D0RNV327",
-        },
-        {
-          asin: "B0DT95J4QC",
-          brand: "HMCITY",
-          title: "120 LED solar wall light",
-          form: "wall wedge",
-          pack_qty: 6,
-          pack_price_usd: 19.98,
-          unit_price_usd: 3.33,
-          ip: "IP65",
-          size_in: "4.12 × 3.65 × 2.08",
-          mah_label: 1200,
-          works: "likely",
-          profile: "lights/B0DT95J4QC/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0DT95J4QC",
-          king: true,
-        },
-        {
-          asin: "B0G2BKN15W",
-          brand: "NIORSUN",
-          form: "fence wedge",
-          pack_qty: 12,
-          pack_price_usd: 45.99,
-          unit_price_usd: 3.83,
-          ip: "IP65",
-          size_in: null,
-          mah_label: 500,
-          works: "unknown",
-          profile: "lights/B0G2BKN15W/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0G2BKN15W",
-        },
-        {
-          asin: "B0C7B2Z39G",
-          brand: "CLAONER",
-          form: "PIR wall",
-          pack_qty: 6,
-          pack_price_usd: 24.99,
-          unit_price_usd: 4.17,
-          ip: "IP65",
-          size_in: null,
-          mah_label: 1200,
-          works: "unknown",
-          profile: "lights/B0C7B2Z39G/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0C7B2Z39G",
-        },
-        {
-          asin: "B07WPHTWBP",
-          brand: "ROSHWEY",
-          form: "fence wedge",
-          pack_qty: 6,
-          pack_price_usd: 27.99,
-          unit_price_usd: 4.67,
-          ip: "IP55",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B07WPHTWBP/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B07WPHTWBP",
-        },
-        {
-          asin: "B0H3LWZHHW",
-          brand: "Toeuitie",
-          form: "fence wedge",
-          pack_qty: 12,
-          pack_price_usd: 59.96,
-          unit_price_usd: 5.0,
-          ip: "IP65",
-          size_in: "3.86 × 2.28 × 1.79",
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0H3LWZHHW/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0H3LWZHHW",
-        },
-        {
-          asin: "B0C813SJXP",
-          brand: "FLITI",
-          form: "fence wedge",
-          pack_qty: 12,
-          pack_price_usd: 59.99,
-          unit_price_usd: 5.0,
-          ip: null,
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0C813SJXP/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0C813SJXP",
-        },
-        {
-          asin: "B0FGCM9TBN",
-          brand: "JOFIOS",
-          form: "fence step",
-          pack_qty: 12,
-          pack_price_usd: 59.99,
-          unit_price_usd: 5.0,
-          ip: "IP65",
-          size_in: "5.16 × 1.54 × 1.77",
-          mah_label: 1200,
-          works: "unknown",
-          profile: "lights/B0FGCM9TBN/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0FGCM9TBN",
-        },
-        {
-          asin: "B0DMNH8QDN",
-          brand: "WENATY",
-          form: "spotlight",
-          pack_qty: 12,
-          pack_price_usd: 64.99,
-          unit_price_usd: 5.42,
-          ip: "IP65",
-          size_in: null,
-          mah_label: 1500,
-          works: "unknown",
-          profile: "lights/B0DMNH8QDN/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0DMNH8QDN",
-        },
-        {
-          asin: "B0FHQH9LPQ",
-          brand: "NACINIC",
-          form: "spotlight",
-          pack_qty: 8,
-          pack_price_usd: 49.99,
-          unit_price_usd: 6.25,
-          ip: "IP65",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0FHQH9LPQ/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0FHQH9LPQ",
-        },
-        {
-          asin: "B085242PLC",
-          brand: "LECLESTAR",
-          form: "flood",
-          pack_qty: 2,
-          pack_price_usd: 31.98,
-          unit_price_usd: 15.99,
-          ip: "IP65",
-          size_in: null,
-          mah_label: 4000,
-          works: "unknown",
-          profile: "lights/B085242PLC/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B085242PLC",
-        },
-        {
-          asin: "B0D78HJYJ1",
-          brand: "VOLISUN",
-          form: "spotlight",
-          pack_qty: 12,
-          pack_price_usd: null,
-          unit_price_usd: null,
-          ip: "IP67",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0D78HJYJ1/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0D78HJYJ1",
-        },
-        {
-          asin: "B0D78KYJDC",
-          brand: "VOLISUN",
-          form: "spotlight",
-          pack_qty: 8,
-          pack_price_usd: null,
-          unit_price_usd: null,
-          ip: "IP67",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0D78KYJDC/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0D78KYJDC",
-        },
-        {
-          asin: "B0D99X4M48",
-          brand: "NACINIC",
-          form: "spotlight",
-          pack_qty: 10,
-          pack_price_usd: null,
-          unit_price_usd: null,
-          ip: "IP65",
-          size_in: null,
-          mah_label: null,
-          works: "unknown",
-          profile: "lights/B0D99X4M48/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0D99X4M48",
-        },
-      ];
-
-      const money = (n) =>
-        n.toLocaleString("en-US", { style: "currency", currency: "USD" });
-      const dash = '<span class="empty">—</span>';
-
-      const formatPack = (qty, priceUsd) => {
-        if (qty == null) return dash;
-        const price = priceUsd != null ? money(priceUsd) : "—";
-        return `<span class="pack-line">${qty} · ${price}</span>`;
-      };
-
-      const formatUnitPrice = (priceUsd, unitLabel) => {
-        if (priceUsd == null) return dash;
-        const label = unitLabel
-          ? `<span class="price-unit-label">per ${unitLabel}</span>`
-          : "";
-        return `<span class="price-main">${money(priceUsd)}</span>${label}`;
-      };
-
-      const itemCell = ({
-        primary,
-        secondary,
-        asin,
-        amazon,
-        sku,
-        buy_url,
-        vendor,
-        badgeHtml = "",
-      }) => {
-        const link = buy_url || amazon;
-        const id = sku || asin;
-        const label = vendor ? `${vendor} ${id}` : id;
-        return `<td>
-            <div class="item-title">${primary}${badgeHtml}</div>
-            ${secondary ? `<div class="item-sub">${secondary}</div>` : ""}
-            <div class="asin"><a href="${link}" target="_blank" rel="noopener noreferrer">${label}</a></div>
-          </td>`;
-      };
-
-      const gearThumb = (g) =>
-        g.profile
-          ? `<img class="thumb" src="${g.profile}" alt="${g.brand}" />`
-          : `<div class="thumb thumb-empty" aria-hidden="true">no shot</div>`;
-
-      const shellThumbCell = (l) =>
-        `<td><img class="thumb" src="${l.profile}" alt="${l.brand}" /></td>`;
-
-      const shellReviewCell = (l) => {
-        const play = l.youtube_review
-          ? `<a class="review-play" href="${l.youtube_review}" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch ${l.brand} review">▶</a>`
-          : `<span class="review-play review-play-pending" title="Review coming soon" aria-label="${l.brand} review not published yet">▶</span>`;
-        return `<td class="review-cell">${play}</td>`;
-      };
-
-      const KING = LIGHTS.find((l) => l.king);
-
-      document.getElementById("stamp").textContent =
-        "Last verified 2026-09-21 · " + LIGHTS.length + " shells";
-
-      document.getElementById("rows").innerHTML = [...LIGHTS]
-        .sort((a, b) => Number(!!b.king) - Number(!!a.king))
-        .map((l) => {
-          const works = l.works || "unknown";
-          const crown = l.king
-            ? '<span class="king-mark" title="King shell">👑</span>'
-            : "";
-          return `<tr class="${l.king ? "king-row" : ""}">
-          ${shellThumbCell(l)}
-          ${shellReviewCell(l)}
-          ${itemCell({
-            primary: l.brand,
-            secondary: l.form || null,
-            asin: l.asin,
-            amazon: l.amazon,
-            badgeHtml: crown,
-          })}
-          <td><span class="badge ${works}">${works}</span></td>
-          <td class="num">${formatUnitPrice(l.unit_price_usd, "shell")}</td>
-          <td class="num">${formatPack(l.pack_qty, l.pack_price_usd)}</td>
-          <td class="num">${l.mah_label ? l.mah_label.toLocaleString() : dash}</td>
-        </tr>`;
-        })
-        .join("");
-
-      const GEAR_CONSUMABLES = [
-        {
-          asin: "B01HXU1PKS",
-          brand: "HiLetgo",
-          title: "U.FL to SMA female pigtails, 15 cm",
-          pack_qty: 5,
-          pack_price_usd: 7.79,
-          unit_price_usd: 1.56,
-          unit_label: "pigtail",
-          profile: "gear/B01HXU1PKS/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B01HXU1PKS",
-          note: "IPEX/U.FL on radio to bulkhead SMA for the whip. 50 Ω coax. One per node.",
-        },
-        {
-          asin: "B07QJDJYC6",
-          brand: "E6000",
-          title: "E6000+ adhesive, 0.9 oz",
-          pack_qty: 1,
-          pack_price_usd: 8.29,
-          unit_price_usd: 8.29,
-          unit_label: "tube",
-          profile: "gear/B07QJDJYC6/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B07QJDJYC6",
-          note: "IPEX dab and SMA nut seal. Not structural glue for the whole shell.",
-        },
-        {
-          asin: "B013JRWCBU",
-          brand: "Letool",
-          title: "JST 1.25 mm 2-pin pigtails",
-          pack_qty: 30,
-          pack_price_usd: 6.99,
-          unit_price_usd: 0.23,
-          unit_label: "pair",
-          profile: "gear/B013JRWCBU/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B013JRWCBU",
-          note: "Solar and small board jumpers (~80 mm leads).",
-        },
-        {
-          asin: "B09JZC28DP",
-          brand: "FainWan",
-          title: "JST PH 2.0 mm 2-pin pigtails",
-          pack_qty: 100,
-          pack_price_usd: 16.99,
-          unit_price_usd: 0.17,
-          unit_label: "set",
-          profile: "gear/B09JZC28DP/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B09JZC28DP",
-          note: "RAK19003 battery JST-PH and similar (~120 mm leads).",
-        },
-        {
-          asin: "B0953NGKXR",
-          brand: "Outus",
-          title: "No-clean rosin flux pens (3×)",
-          pack_qty: 3,
-          pack_price_usd: 9.99,
-          unit_price_usd: 3.33,
-          unit_label: "pen",
-          profile: "gear/B0953NGKXR/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0953NGKXR",
-          note: "Pairs with solder wire below. Flux pens alone are not enough.",
-        },
-        {
-          asin: "B075WB98FJ",
-          brand: "MAIYUM",
-          title: "Sn63/Pb37 rosin-core solder, 0.8 mm",
-          pack_qty: 1,
-          pack_price_usd: 8.99,
-          unit_price_usd: 8.99,
-          unit_label: "spool",
-          profile: "gear/B075WB98FJ/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B075WB98FJ",
-          note: "50 g spool. Leaded 63/37 for bench joints. Wash hands after use.",
-        },
-      ];
-
-      const BOARDS = [
-        {
-          sku: "115093",
-          brand: "RAKwireless",
-          title: "Mini starter kit (RAK19003 + RAK4631)",
-          pack_qty: 1,
-          pack_price_usd: 31.97,
-          unit_price_usd: 31.97,
-          unit_label: "kit",
-          vendor: "Rokland",
-          buy_url:
-            "https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093",
-          profile: "kits/115093/profile.jpg",
-          king: true,
-          note: "30×35 mm mini base. Best fit for tight shells. Kit antenna is bench-only; deploy with a field whip below.",
-        },
-        {
-          sku: "116016",
-          brand: "RAKwireless",
-          title: "WisBlock starter kit (RAK19007 + RAK4631)",
-          pack_qty: 1,
-          pack_price_usd: 34.97,
-          unit_price_usd: 34.97,
-          unit_label: "kit",
-          vendor: "Rokland",
-          buy_url:
-            "https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit",
-          profile: "kits/116016/profile.jpg",
-          note: "30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.",
-        },
-      ];
-
-      const GEAR_ANTENNAS = [
-        {
-          asin: "B0FSTD4BYM",
-          brand: "muzi WORKS",
-          title: "915 MHz whip antenna, 17 cm",
-          pack_qty: 4,
-          pack_price_usd: 39.9,
-          unit_price_usd: 9.98,
-          unit_label: "antenna",
-          profile: "gear/B0FSTD4BYM/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0FSTD4BYM",
-          vswr_min: 1.45,
-          vswr_min_mhz: 915,
-          vswr_shots: [
-            {
-              src: "gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg",
-              label: "NanoVNA",
-              alt: "muzi whip VSWR sweep 900–930 MHz",
-            },
-          ],
-          note: "17 cm field whip. E6000 on nut only; keep silicone off SMA mating surface.",
-        },
-        {
-          asin: "B0CTXL61LY",
-          brand: "Tenmory",
-          title: "915 MHz 3 dBi omni + U.FL pigtail (2×)",
-          pack_qty: 2,
-          pack_price_usd: 11.99,
-          unit_price_usd: 5.99,
-          unit_label: "antenna",
-          profile: "gear/B0CTXL61LY/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0CTXL61LY",
-          vswr_min: 1.1,
-          vswr_min_mhz: 916,
-          vswr_shots: [
-            {
-              src: "gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png",
-              label: "NanoVNA",
-              alt: "Tenmory duck VSWR sweep, NanoVNA",
-            },
-            {
-              src: "gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png",
-              label: "N1201SA",
-              alt: "Tenmory duck VSWR sweep, N1201SA",
-            },
-          ],
-          king: true,
-          note: "Bendable rubber duck ~7.6 cm, SMA male. Pigtail in box. Current deploy pick.",
-        },
-      ];
-
-      const sortKingFirst = (arr) =>
-        [...arr].sort((a, b) => Number(!!b.king) - Number(!!a.king));
-
-      const KING_BOARD = BOARDS.find((k) => k.king) || BOARDS[0];
-      const KING_ANTENNA =
-        GEAR_ANTENNAS.find((a) => a.king) || GEAR_ANTENNAS[0];
-      const nodeTotal =
-        KING.unit_price_usd +
-        KING_BOARD.unit_price_usd +
-        KING_ANTENNA.unit_price_usd;
-
-      const heroCardBuy = (item) => {
-        const href = item.buy_url || item.amazon;
-        const store = item.vendor || "Amazon";
-        return `<a class="hero-card-buy" href="${href}" target="_blank" rel="noopener noreferrer" title="Buy on ${store}">Buy</a>`;
-      };
-
-      const heroCard = (item, label, name, mediaClass = "") =>
-        `<figure class="hero-stack-item">
-          <div class="hero-card-media${mediaClass}">
-            <img src="${item.profile}" alt="${item.brand} ${item.title || name}" />
-          </div>
-          <figcaption class="hero-card-info">
-            <span class="hero-card-label">${label}</span>
-            <span class="hero-card-name">${name}</span>
-            <div class="hero-card-foot">
-              <span class="hero-card-price">${money(item.unit_price_usd)}</span>
-              ${heroCardBuy(item)}
-            </div>
-          </figcaption>
-        </figure>`;
-
-      document.getElementById("hero").innerHTML = `
-        <h2 class="hero-headline">Build a Meshtastic or MeshCore solar repeater for<br /><span class="hero-headline-price">${money(nodeTotal)}</span></h2>
-        <div class="hero-stack">
-          ${heroCard(KING, "Shell", `${KING.brand} · ${KING.title}`, " hero-card-media--cover")}
-          ${heroCard(KING_BOARD, "Board", KING_BOARD.title)}
-          ${heroCard(KING_ANTENNA, "Antenna", `${KING_ANTENNA.brand} · ${KING_ANTENNA.title}`)}
-        </div>`;
-
-      const GEAR_TOOLS = [
-        {
-          asin: "B0CGHD7GW5",
-          brand: "ANBES",
-          title: "90W digital soldering iron kit (10-in-1)",
-          pack_qty: 1,
-          pack_price_usd: 14.95,
-          unit_price_usd: 14.95,
-          unit_label: "kit",
-          group: "solder",
-          profile: "gear/B0CGHD7GW5/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0CGHD7GW5",
-          note: "Corded 90W, ceramic heater, LCD temp, auto sleep. Tips, stand, starter solder tube included.",
-        },
-        {
-          asin: "B073RFKHD6",
-          brand: "Kaisi",
-          title: "S-160 silicone soldering mat",
-          pack_qty: 1,
-          pack_price_usd: 12.99,
-          unit_price_usd: 12.99,
-          unit_label: "mat",
-          group: "solder",
-          profile: "gear/B073RFKHD6/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B073RFKHD6",
-          note: "Heat-safe bench surface; magnetic trays for screws.",
-        },
-        {
-          asin: "B0CLV8R7QF",
-          brand: "AstroAI",
-          title: "AM33B digital multimeter",
-          pack_qty: 1,
-          pack_price_usd: 14.59,
-          unit_price_usd: 14.59,
-          unit_label: "meter",
-          group: "measure",
-          profile: "gear/B0CLV8R7QF/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0CLV8R7QF",
-          note: "Solar keep-up checks (I_load, I_net). No AC current.",
-        },
-        {
-          asin: "B07Z5VY7B6",
-          brand: "AURSINC",
-          title: "NanoVNA-H antenna analyzer",
-          pack_qty: 1,
-          pack_price_usd: 52.99,
-          unit_price_usd: 52.99,
-          unit_label: "analyzer",
-          group: "measure",
-          optional: true,
-          profile: "gear/B07Z5VY7B6/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B07Z5VY7B6",
-          note: "Optional. Tune 915 MHz whips; overkill for a first node.",
-        },
-        {
-          asin: "B09KGQ91BM",
-          brand: "AVID POWER",
-          title: "20V cordless drill kit, 3/8 in.",
-          pack_qty: 1,
-          pack_price_usd: 39.99,
-          unit_price_usd: 39.99,
-          unit_label: "kit",
-          group: "fabrication",
-          profile: "gear/B09KGQ91BM/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B09KGQ91BM",
-          note: "SMA bulkhead holes and shell mods. Includes 10 drill + 10 driver bits.",
-        },
-        {
-          asin: "B07PGRKM8C",
-          brand: "COMOWARE",
-          title: "Ti-coated step drill set (5 pc)",
-          pack_qty: 1,
-          pack_price_usd: 24.99,
-          unit_price_usd: 24.99,
-          unit_label: "set",
-          group: "fabrication",
-          profile: "gear/B07PGRKM8C/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B07PGRKM8C",
-          note: "Step bits + center punch. Sized holes without a bit drawer.",
-        },
-        {
-          asin: "B0FGXL88XP",
-          brand: "SEESII",
-          title: "Handheld battery spot welder",
-          pack_qty: 1,
-          pack_price_usd: 34.99,
-          unit_price_usd: 34.99,
-          unit_label: "welder",
-          group: "fabrication",
-          optional: true,
-          profile: "gear/B0FGXL88XP/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B0FGXL88XP",
-          note: "Optional. For custom 18650 packs. Janknodes use single cells + BMS.",
-        },
-        {
-          asin: "B097SZ1F7W",
-          brand: "KAIWEETS",
-          title: "KWS-103 wire stripper",
-          pack_qty: 1,
-          pack_price_usd: 13.99,
-          unit_price_usd: 13.99,
-          unit_label: "tool",
-          group: "hand",
-          profile: "gear/B097SZ1F7W/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B097SZ1F7W",
-          note: "Self-adjusting 10–24 AWG strip/cut/crimp.",
-        },
-        {
-          asin: "B07G9LKCML",
-          brand: "WORKPRO",
-          title: "6-piece pliers and wrench set",
-          pack_qty: 1,
-          pack_price_usd: 22.79,
-          unit_price_usd: 22.79,
-          unit_label: "set",
-          group: "hand",
-          profile: "gear/B07G9LKCML/profile.jpg",
-          amazon: "https://www.amazon.com/dp/B07G9LKCML",
-          note: "Long-nose and diagonal cutters cover most bench work.",
-        },
-      ];
-
-      const formatVswrShots = (shots) => {
-        if (!shots?.length) return "";
-        return `<div class="vna-shots">${shots
-          .map(
-            (s) =>
-              `<a class="vna-shot" href="${s.src}" target="_blank" rel="noopener" title="Open full sweep">
-                <img src="${s.src}" alt="${s.alt || s.label}" loading="lazy" />
-                <span>${s.label}</span>
-              </a>`,
-          )
-          .join("")}</div>`;
-      };
-
-      const formatVswrCell = (a) => {
-        const value =
-          a.vswr_min != null && a.vswr_min_mhz != null
-            ? `<span class="vswr-measured">${a.vswr_min.toFixed(2)} @ ${a.vswr_min_mhz}</span>`
-            : dash;
-        const plots = formatVswrShots(a.vswr_shots);
-        return `<td class="vswr-cell">${value}${plots}</td>`;
-      };
-
-      const gearRow = (
-        g,
-        extraClass = "",
-        extraCells = "",
-        kingLabel = "pick",
-      ) => {
-        const opt = g.optional
-          ? ' <span class="badge optional">optional</span>'
-          : "";
-        const crown = g.king
-          ? `<span class="king-mark" title="King ${kingLabel}">👑</span>`
-          : "";
-        const rowClass = [g.king ? "king-row" : "", extraClass]
-          .filter(Boolean)
-          .join(" ");
-        return `<tr class="${rowClass}">
-          <td>${gearThumb(g)}</td>
-          ${itemCell({
-            primary: `${g.title}${opt}`,
-            secondary: g.brand,
-            asin: g.asin,
-            amazon: g.amazon,
-            sku: g.sku,
-            buy_url: g.buy_url,
-            vendor: g.vendor,
-            badgeHtml: crown,
-          })}
-          <td class="num">${formatUnitPrice(g.unit_price_usd, g.unit_label)}</td>
-          <td class="num">${formatPack(g.pack_qty, g.pack_price_usd)}</td>
-          ${extraCells}
-          <td>${g.note || dash}</td>
-        </tr>`;
-      };
-
-      document.getElementById("gear-boards").innerHTML = sortKingFirst(BOARDS)
-        .map((g) => gearRow(g, "", "", "board"))
-        .join("");
-
-      document.getElementById("gear-antennas").innerHTML = sortKingFirst(
-        GEAR_ANTENNAS,
-      )
-        .map((g) => gearRow(g, "", formatVswrCell(g), "antenna"))
-        .join("");
-
-      document.getElementById("gear-consumables").innerHTML =
-        GEAR_CONSUMABLES.map((g) => gearRow(g)).join("");
-
-      document.getElementById("gear-tools").innerHTML = GEAR_TOOLS.map((g) => {
-        const rowClass = [
-          g.pairs_with ? "pair-row" : "",
-          g.optional ? "optional-row" : "",
-        ]
-          .filter(Boolean)
-          .join(" ");
-        return gearRow(g, rowClass);
-      }).join("");
-    </script>
   </body>
 </html>
