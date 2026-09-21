@@ -22,6 +22,9 @@ unit_label:
   value: antenna
   source: agent
 amazon: https://www.amazon.com/dp/B0FSTD4BYM
+gain_dbi:
+  value:
+  source: unknown
 vswr_min:
   value: 1.45
   source: measured
@@ -33,7 +36,7 @@ optional:
   source: agent
 last_verified: 2026-09-21
 notes: |
-  Field whip for janknodes. E6000 on nut only; keep silicone off SMA mating surface. NanoVNA 900–930 MHz sweep on file.
+  Longer field whip. E6000 on nut only; keep silicone off SMA mating surface. NanoVNA 900–930 MHz sweep on file.
 ---
 
 # B0FSTD4BYM

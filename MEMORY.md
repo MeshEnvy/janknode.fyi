@@ -43,11 +43,11 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 **King board:** Mini RAK19003 + RAK4631 (115093, $31.97). Alt: WisBlock RAK19007 + RAK4631 (116016, $34.97).
 
-## Antennas (2 listings)
+## Antennas (4 listings)
 
-**King antenna:** Tenmory bendable duck + pigtail (B0CTXL61LY, VSWR 1.10 @ 916 MHz, $5.99). Alt: muzi 17 cm whip (B0FSTD4BYM).
+**King antenna:** XWXGG 20 cm whip + pigtail (B0FQK27BSP, 6 dBi listed, VSWR 1.00 @ 915 MHz, $6.50). Alts: XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY), muzi 17 cm whip (B0FSTD4BYM, no listing gain).
 
-**Hero BOM:** king shell + board + antenna + required consumables ≈ $42/node estimated material (2026-09-21). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Buy buttons show pack price; `/node` is estimated usage.
+**Hero BOM:** king shell + board + antenna + required consumables ≈ $42.52/node estimated material (2026-09-21). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (15 listings)
 

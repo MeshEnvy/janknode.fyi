@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Janknode Review Guide — solar repeater from $42.01</title>
-    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $42.01. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $42.01 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
+    <title>Janknode Review Guide — solar repeater from $42.52</title>
+    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $42.52. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $42.52 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
     <link rel="canonical" href="https://janknode.fyi/" />
     <link rel="icon" href="logo-small-favicon.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -449,12 +449,16 @@
           background: #fff;
         }
         .catalog-table td.col-vswr,
+        .catalog-table td.col-gain,
+        .catalog-table td.col-unit,
         .catalog-table td.col-notes {
           flex-direction: column;
           align-items: stretch;
           text-align: left;
         }
-        .catalog-table td.col-vswr::before {
+        .catalog-table td.col-vswr::before,
+        .catalog-table td.col-gain::before,
+        .catalog-table td.col-unit::before {
           margin-bottom: 0.3rem;
         }
         .catalog-table td.col-notes::before,
@@ -761,12 +765,19 @@
       th.num {
         text-align: right;
       }
+      .gain-listed,
       .vswr-measured {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
         font-size: 0.82rem;
         font-variant-numeric: tabular-nums;
         color: var(--good);
         font-weight: 600;
+      }
+      .gain-listed {
+        color: var(--ink);
+      }
+      .col-gain {
+        white-space: nowrap;
       }
       .vswr-cell {
         text-align: left;
@@ -1172,7 +1183,7 @@
       <header class="banner">
         <h1>Janknode Review Guide</h1>
       </header>
-      <aside class="current-record" aria-label="Current winning build"><div class="current-record__strip"><div class="current-record__badge"><span class="current-record__badge-icon" aria-hidden="true">👑</span> Current best</div><div class="current-record__viewport"><div class="current-record__track"><span class="current-record__item"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.01</span></span><span class="current-record__item" aria-hidden="true"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.01</span></span></div></div></div></aside>
+      <aside class="current-record" aria-label="Current winning build"><div class="current-record__strip"><div class="current-record__badge"><span class="current-record__badge-icon" aria-hidden="true">👑</span> Current best</div><div class="current-record__viewport"><div class="current-record__track"><span class="current-record__item"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.52</span></span><span class="current-record__item" aria-hidden="true"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.52</span></span></div></div></div></aside>
     </main>
 
     <section
@@ -1204,7 +1215,7 @@
           <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY" /></td>
           <td class="col-role" data-label="Role">Shell</td>
           <td class="col-item" data-label="">
-            <div class="item-title">HMCITY · 120 LED solar wall light</div>
+            <div class="item-title">120 LED solar wall light</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$3.33</span></td>
@@ -1219,19 +1230,19 @@
           <td class="col-cost num" data-label="$/node"><span class="num">$31.97</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy $31.97</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B0CTXL61LY/profile.jpg" alt="Tenmory" /></td>
+          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B0FQK27BSP/profile.jpg" alt="XWXGG" /></td>
           <td class="col-role" data-label="Role">Antenna</td>
           <td class="col-item" data-label="">
-            <div class="item-title">Tenmory · 915 MHz bendable duck</div>
+            <div class="item-title">915 MHz 20 cm omni + U.FL pigtail (2×)</div>
             
           </td>
-          <td class="col-cost num" data-label="$/node"><span class="num">$5.99</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0CTXL61LY" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $11.99</span></a></td>
+          <td class="col-cost num" data-label="$/node"><span class="num">$6.50</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FQK27BSP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $12.99</span></a></td>
         </tr><tr class="bom-row">
           <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
           <td class="col-role" data-label="Role">Glue</td>
           <td class="col-item" data-label="">
-            <div class="item-title">E6000+ adhesive</div>
+            <div class="item-title">E6000+ adhesive 0.9 oz</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.40</span></td>
@@ -1240,7 +1251,7 @@
           <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
           <td class="col-role" data-label="Role">JST PH</td>
           <td class="col-item" data-label="">
-            <div class="item-title">2-pin pigtails</div>
+            <div class="item-title">JST PH 2.0 mm 2-pin pigtails</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.17</span></td>
@@ -1249,15 +1260,15 @@
           <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
           <td class="col-role" data-label="Role">Solder</td>
           <td class="col-item" data-label="">
-            <div class="item-title">Sn63/Pb37 rosin core</div>
+            <div class="item-title">Sn63/Pb37 rosin-core solder 0.8 mm</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.15</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.99</span></a></td>
         </tr><tr class="bom-total-row">
           <td colspan="3" class="bom-total-label" data-label="">Total</td>
-          <td class="col-cost num" data-label="$/node"><span class="num">$42.01</span></td>
-          <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">$98.21</span></td>
+          <td class="col-cost num" data-label="$/node"><span class="num">$42.52</span></td>
+          <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">$99.21</span></td>
         </tr>
             </tbody>
           </table>
@@ -1285,6 +1296,7 @@
                 <th>Shell</th>
                 <th>Works?</th>
                 <th class="num">mAh</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
@@ -1298,6 +1310,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge likely">likely</span></td>
           <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B08H81Z1RW/profile.jpg" alt="SOLPEX" /></td>
@@ -1308,6 +1321,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$2.50</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B08H81Z1RW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $29.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0GH63TL8H/profile.jpg" alt="AUDERWIN" /></td>
@@ -1318,6 +1332,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0GH63TL8H" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D0RNV327/profile.jpg" alt="TECKNET" /></td>
@@ -1328,6 +1343,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0D0RNV327" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0G2BKN15W/profile.jpg" alt="NIORSUN" /></td>
@@ -1338,6 +1354,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh">500</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$3.83</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0G2BKN15W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $45.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C7B2Z39G/profile.jpg" alt="CLAONER" /></td>
@@ -1348,6 +1365,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$4.17</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C7B2Z39G" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $24.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B07WPHTWBP/profile.jpg" alt="ROSHWEY" /></td>
@@ -1358,6 +1376,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$4.67</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07WPHTWBP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $27.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0H3LWZHHW/profile.jpg" alt="Toeuitie" /></td>
@@ -1368,6 +1387,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0H3LWZHHW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.96</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C813SJXP/profile.jpg" alt="FLITI" /></td>
@@ -1378,6 +1398,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C813SJXP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FGCM9TBN/profile.jpg" alt="JOFIOS" /></td>
@@ -1388,6 +1409,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FGCM9TBN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DMNH8QDN/profile.jpg" alt="WENATY" /></td>
@@ -1398,6 +1420,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh">1,500</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.42</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DMNH8QDN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $64.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FHQH9LPQ/profile.jpg" alt="NACINIC" /></td>
@@ -1408,6 +1431,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$6.25</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FHQH9LPQ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 8-pack $49.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B085242PLC/profile.jpg" alt="LECLESTAR" /></td>
@@ -1418,6 +1442,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
           <td class="col-mah num" data-label="mAh">4,000</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$15.99</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B085242PLC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $31.98</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78HJYJ1/profile.jpg" alt="VOLISUN" /></td>
@@ -1428,6 +1453,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78KYJDC/profile.jpg" alt="VOLISUN" /></td>
@@ -1438,6 +1464,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D99X4M48/profile.jpg" alt="NACINIC" /></td>
@@ -1448,6 +1475,7 @@
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D99X4M48" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr>
             </tbody>
@@ -1484,6 +1512,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">30×35 mm mini base. Best fit for tight shells. Kit antenna is bench-only; deploy with a field whip below.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy $31.97</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="kits/116016/profile.jpg" alt="RAKwireless" /></td>
@@ -1493,6 +1522,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy $34.97</span></a></td>
         </tr>
             </tbody>
@@ -1507,8 +1537,8 @@
       >
         <h2 class="gear-title" id="antennas-heading">Antennas</h2>
         <p class="gear-hint gear-block">
-          Swap the winning whip if you want a different 915 MHz option. VSWR
-          sweeps when we have them.
+          Swap the winning whip if you want a different 915 MHz option. Gain is
+          the listing claim. VSWR sweeps when we have them.
         </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
@@ -1516,39 +1546,69 @@
               <tr>
                 <th></th>
                 <th>Antenna</th>
+                <th class="num">Gain</th>
                 <th class="num">915 MHz VSWR</th>
                 <th>Notes</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
             <tbody id="gear-antennas">
               <tr class="">
-          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CTXL61LY/profile.jpg" alt="Tenmory" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FQK27BSP/profile.jpg" alt="XWXGG" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">915 MHz 3 dBi omni + U.FL pigtail (2×)</div>
-            <div class="item-sub">Tenmory</div>
+            <div class="item-title">915 MHz 20 cm omni + U.FL pigtail (2×)</div>
+            <div class="item-sub">XWXGG</div>
           </td>
-          <td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.10 @ 916</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" data-vna-label="NanoVNA" aria-label="View NanoVNA sweep">
-                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" alt="Tenmory VSWR sweep, NanoVNA" loading="lazy" />
+          <td class="col-gain num" data-label="Gain"><span class="gain-listed">6 dBi</span></td><td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.00 @ 915</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0FQK27BSP/shots/2026-09-21-vna-nanovna.jpg" data-vna-label="NanoVNA" aria-label="View NanoVNA sweep">
+                <img src="gear/B0FQK27BSP/shots/2026-09-21-vna-nanovna.jpg" alt="XWXGG VSWR sweep, NanoVNA" loading="lazy" />
                 <span>NanoVNA</span>
-              </button><button type="button" class="vna-shot" data-vna-src="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" data-vna-label="N1201SA" aria-label="View N1201SA sweep">
-                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" alt="Tenmory VSWR sweep, N1201SA" loading="lazy" />
-                <span>N1201SA</span>
               </button></div></td>
-          <td class="col-notes" data-label="Notes">Bendable rubber duck ~7.6 cm, SMA male. Pigtail in box. Current deploy pick.</td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0CTXL61LY" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $11.99</span></a></td>
+          <td class="col-notes" data-label="Notes">Straight 20 cm whip, SMA male. Pigtail in box. Current deploy pick.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$6.50</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FQK27BSP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $12.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
           <td class="col-item" data-label="">
             <div class="item-title">915 MHz whip antenna, 17 cm</div>
             <div class="item-sub">muzi WORKS</div>
           </td>
-          <td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.45 @ 915</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" data-vna-label="NanoVNA" aria-label="View NanoVNA sweep">
+          <td class="col-gain num" data-label="Gain"><span class="empty">—</span></td><td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.45 @ 915</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" data-vna-label="NanoVNA" aria-label="View NanoVNA sweep">
                 <img src="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" alt="muzi WORKS VSWR sweep, NanoVNA" loading="lazy" />
                 <span>NanoVNA</span>
               </button></div></td>
-          <td class="col-notes" data-label="Notes">Field deploy pick. E6000 on nut only; keep silicone off SMA mating surface.</td>
+          <td class="col-notes" data-label="Notes">Longer field whip. E6000 on nut only; keep silicone off SMA mating surface.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$9.98</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 4-pack $39.90</span></a></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CTXL61LY/profile.jpg" alt="Tenmory" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">915 MHz short omni + U.FL pigtail (2×)</div>
+            <div class="item-sub">Tenmory</div>
+          </td>
+          <td class="col-gain num" data-label="Gain"><span class="gain-listed">3 dBi</span></td><td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.10 @ 916</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" data-vna-label="NanoVNA" aria-label="View NanoVNA sweep">
+                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-nanovna.png" alt="Tenmory VSWR sweep, NanoVNA" loading="lazy" />
+                <span>NanoVNA</span>
+              </button><button type="button" class="vna-shot" data-vna-src="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" data-vna-label="N1201SA" aria-label="View N1201SA sweep">
+                <img src="gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png" alt="Tenmory VSWR sweep, N1201SA" loading="lazy" />
+                <span>N1201SA</span>
+              </button></div></td>
+          <td class="col-notes" data-label="Notes">Short ~7.6 cm duck, SMA male. Pigtail in box.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.99</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0CTXL61LY" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $11.99</span></a></td>
+        </tr><tr class="">
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0DY7KSYTV/profile.jpg" alt="XWXGG" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">915 MHz 19.5 cm omni + U.FL pigtail (2×)</div>
+            <div class="item-sub">XWXGG</div>
+          </td>
+          <td class="col-gain num" data-label="Gain"><span class="gain-listed">5 dBi</span></td><td class="col-vswr vswr-cell" data-label="915 MHz VSWR"><span class="vswr-measured">1.18 @ 915</span><div class="vna-shots"><button type="button" class="vna-shot" data-vna-src="gear/B0DY7KSYTV/shots/2026-09-21-vna-n1201sa.jpg" data-vna-label="N1201SA" aria-label="View N1201SA sweep">
+                <img src="gear/B0DY7KSYTV/shots/2026-09-21-vna-n1201sa.jpg" alt="XWXGG VSWR sweep, N1201SA" loading="lazy" />
+                <span>N1201SA</span>
+              </button></div></td>
+          <td class="col-notes" data-label="Notes">Right-angle rubber duck ~19.5 cm, SMA male. Pigtail in box.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DY7KSYTV" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $9.99</span></a></td>
         </tr>
             </tbody>
           </table>
@@ -1575,6 +1635,7 @@
                 <th></th>
                 <th>Item</th>
                 <th>Notes</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
@@ -1586,7 +1647,8 @@
             
           </td>
           
-          <td class="col-notes" data-label="Notes">Optional spare. RAK4631 kit ships with a U.FL pigtail; Tenmory antenna box includes one too.</td>
+          <td class="col-notes" data-label="Notes">Optional spare. RAK4631 kit ships with a U.FL pigtail; XWXGG antenna box includes one too.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$1.56</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B01HXU1PKS" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 5-pack $7.79</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
@@ -1596,6 +1658,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">IPEX dab + SMA nut seal. Not a structural glue for the whole enclosure.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$8.29</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.29</span></a></td>
         </tr><tr class="optional-row">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B013JRWCBU/profile.jpg" alt="Letool" /></td>
@@ -1605,6 +1668,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Optional. JST 1.25 mm pigtails for solar or small-board jumpers (~80 mm leads).</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$0.23</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B013JRWCBU" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 30-pack $6.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
@@ -1614,6 +1678,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">RAK19003 battery JST-PH and similar (~120 mm leads).</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$0.17</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 100-pack $16.99</span></a></td>
         </tr><tr class="optional-row">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0953NGKXR/profile.jpg" alt="Outus" /></td>
@@ -1623,6 +1688,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Optional. Rosin flux pen for stubborn joints. Pairs with solder wire below.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0953NGKXR" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 3-pack $9.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
@@ -1632,6 +1698,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">50 g spool. Leaded 63/37. Wash hands after use.</td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$8.99</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.99</span></a></td>
         </tr>
             </tbody>
@@ -1659,6 +1726,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Corded 90W, ceramic heater, LCD temp, auto sleep. Tips, stand, starter solder tube included.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0CGHD7GW5" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $14.95</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B073RFKHD6/profile.jpg" alt="Kaisi" /></td>
@@ -1668,6 +1736,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Heat-safe bench surface; magnetic trays for screws.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B073RFKHD6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $12.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0CLV8R7QF/profile.jpg" alt="AstroAI" /></td>
@@ -1677,6 +1746,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Solar keep-up DMM checks (I_load, I_net). No AC current mode.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0CLV8R7QF" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $14.59</span></a></td>
         </tr><tr class="optional-row">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07Z5VY7B6/profile.jpg" alt="AURSINC" /></td>
@@ -1686,6 +1756,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Optional. Tune 915 MHz whips; overkill for a first node.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07Z5VY7B6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $52.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09KGQ91BM/profile.jpg" alt="AVID POWER" /></td>
@@ -1695,6 +1766,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">SMA bulkhead holes and shell mods. 10 drill + 10 driver bits.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09KGQ91BM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $39.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07PGRKM8C/profile.jpg" alt="COMOWARE" /></td>
@@ -1704,6 +1776,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Step bits + center punch for sized enclosure holes.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07PGRKM8C" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $24.99</span></a></td>
         </tr><tr class="optional-row">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FGXL88XP/profile.jpg" alt="SEESII" /></td>
@@ -1713,6 +1786,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Optional. Custom 18650 packs only; janknodes use single cells + BMS.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FGXL88XP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $34.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B097SZ1F7W/profile.jpg" alt="KAIWEETS" /></td>
@@ -1722,6 +1796,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Self-adjusting 10–24 AWG strip/cut/crimp.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B097SZ1F7W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $13.99</span></a></td>
         </tr><tr class="">
           <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07G9LKCML/profile.jpg" alt="WORKPRO" /></td>
@@ -1731,6 +1806,7 @@
           </td>
           
           <td class="col-notes" data-label="Notes">Long-nose + diagonal cutters cover most bench work.</td>
+          
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07G9LKCML" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $22.79</span></a></td>
         </tr>
             </tbody>

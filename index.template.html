@@ -449,12 +449,16 @@
           background: #fff;
         }
         .catalog-table td.col-vswr,
+        .catalog-table td.col-gain,
+        .catalog-table td.col-unit,
         .catalog-table td.col-notes {
           flex-direction: column;
           align-items: stretch;
           text-align: left;
         }
-        .catalog-table td.col-vswr::before {
+        .catalog-table td.col-vswr::before,
+        .catalog-table td.col-gain::before,
+        .catalog-table td.col-unit::before {
           margin-bottom: 0.3rem;
         }
         .catalog-table td.col-notes::before,
@@ -761,12 +765,19 @@
       th.num {
         text-align: right;
       }
+      .gain-listed,
       .vswr-measured {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
         font-size: 0.82rem;
         font-variant-numeric: tabular-nums;
         color: var(--good);
         font-weight: 600;
+      }
+      .gain-listed {
+        color: var(--ink);
+      }
+      .col-gain {
+        white-space: nowrap;
       }
       .vswr-cell {
         text-align: left;
@@ -1227,6 +1238,7 @@
                 <th>Shell</th>
                 <th>Works?</th>
                 <th class="num">mAh</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
@@ -1271,8 +1283,8 @@
       >
         <h2 class="gear-title" id="antennas-heading">Antennas</h2>
         <p class="gear-hint gear-block">
-          Swap the winning whip if you want a different 915 MHz option. VSWR
-          sweeps when we have them.
+          Swap the winning whip if you want a different 915 MHz option. Gain is
+          the listing claim. VSWR sweeps when we have them.
         </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
@@ -1280,8 +1292,10 @@
               <tr>
                 <th></th>
                 <th>Antenna</th>
+                <th class="num">Gain</th>
                 <th class="num">915 MHz VSWR</th>
                 <th>Notes</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
@@ -1312,6 +1326,7 @@
                 <th></th>
                 <th>Item</th>
                 <th>Notes</th>
+                <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>

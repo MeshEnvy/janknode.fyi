@@ -116,6 +116,22 @@ const formatVswrShots = (shots) => {
     .join("")}</div>`;
 };
 
+const formatUnitCostCell = (item) => {
+  const value =
+    item.unit_price_usd != null
+      ? `<span class="num">${escapeHtml(money(item.unit_price_usd))}</span>`
+      : dash;
+  return labeledTd("$/unit", value, "col-unit num");
+};
+
+const formatGainCell = (a) => {
+  const value =
+    a.gain_dbi != null
+      ? `<span class="gain-listed">${escapeHtml(String(a.gain_dbi))} dBi</span>`
+      : dash;
+  return labeledTd("Gain", value, "col-gain num");
+};
+
 const formatVswrCell = (a) => {
   const value =
     a.vswr_min != null && a.vswr_min_mhz != null
@@ -129,7 +145,7 @@ const gearRow = (
   g,
   extraClass = "",
   extraCells = "",
-  { priced = true, showBrand = true } = {},
+  { priced = true, showBrand = true, unitCost = false } = {},
 ) => {
   const opt = g.optional ? ' <span class="badge optional">optional</span>' : "";
   return `<tr class="${extraClass}">
@@ -140,6 +156,7 @@ const gearRow = (
           })}
           ${extraCells}
           ${labeledTd("Notes", g.note ? escapeHtml(g.note) : dash, "col-notes")}
+          ${unitCost ? formatUnitCostCell(g) : ""}
           ${buyCell(g, { priced })}
         </tr>`;
 };
@@ -156,6 +173,7 @@ const shellRow = (l) => {
           })}
           ${labeledTd("Works?", `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`, "col-works")}
           ${labeledTd("mAh", l.mah_label != null ? escapeHtml(l.mah_label.toLocaleString()) : dash, "col-mah num")}
+          ${formatUnitCostCell(l)}
           ${buyCell(l)}
         </tr>`;
 };
@@ -178,13 +196,13 @@ function computeBom(catalog) {
     {
       item: king,
       role: "Shell",
-      name: `${king.brand} · ${king.title || king.form}`,
+      name: king.title || king.form,
     },
     { item: kingBoard, role: "Board", name: kingBoard.title },
     {
       item: kingAntenna,
       role: "Antenna",
-      name: `${kingAntenna.brand} · ${hero.antenna_display || "915 MHz antenna"}`,
+      name: kingAntenna.title,
     },
   ];
   const bomHeroConsumables = (hero.consumables || [])
@@ -209,7 +227,7 @@ export function renderPage(catalog) {
   const bomConsumableRows = (hero.consumables || [])
     .map((row) => {
       const item = consumables.find((c) => c.asin === row.asin);
-      return item ? bomTableRow(item, row.label, row.name) : "";
+      return item ? bomTableRow(item, row.label, item.title) : "";
     })
     .join("");
 
@@ -245,11 +263,18 @@ export function renderPage(catalog) {
       .map((g) => gearRow(g))
       .join(""),
     antenna_rows: sortKingFirst(antennas)
-      .map((g) => gearRow(g, "", formatVswrCell(g)))
+      .map((g) =>
+        gearRow(g, "", `${formatGainCell(g)}${formatVswrCell(g)}`, {
+          unitCost: true,
+        }),
+      )
       .join(""),
     consumable_rows: consumables
       .map((g) =>
-        gearRow(g, g.optional ? "optional-row" : "", "", { showBrand: false }),
+        gearRow(g, g.optional ? "optional-row" : "", "", {
+          showBrand: false,
+          unitCost: true,
+        }),
       )
       .join(""),
     tool_rows: tools

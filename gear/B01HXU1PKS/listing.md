@@ -33,7 +33,7 @@ optional:
   source: agent
 last_verified: 2026-09-21
 notes: |
-  Optional spare. RAK4631 kit ships with a U.FL pigtail; Tenmory antenna box includes one too.
+  Optional spare. RAK4631 kit ships with a U.FL pigtail; XWXGG antenna box includes one too.
   50 Ω coax, 6 in / 15 cm. IPEX/U.FL to SMA female bulkhead.
 ---
 

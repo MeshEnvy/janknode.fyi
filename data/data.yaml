@@ -7,17 +7,13 @@ last_verified: 2026-09-21
 king: B0DT95J4QC
 
 hero:
-  antenna_display: 915 MHz bendable duck
   consumables:
     - asin: B07QJDJYC6
       label: Glue
-      name: E6000+ adhesive
     - asin: B09JZC28DP
       label: JST PH
-      name: 2-pin pigtails
     - asin: B075WB98FJ
       label: Solder
-      name: Sn63/Pb37 rosin core
 
 shells:
   - asin: B08H81Z1RW
@@ -255,14 +251,15 @@ antennas:
     vswr_shots:
       - src: gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg
         label: NanoVNA
-    note: Field deploy pick. E6000 on nut only; keep silicone off SMA mating surface.
+    note: Longer field whip. E6000 on nut only; keep silicone off SMA mating surface.
   - asin: B0CTXL61LY
     brand: Tenmory
-    title: 915 MHz 3 dBi omni + U.FL pigtail (2×)
+    title: 915 MHz short omni + U.FL pigtail (2×)
     pack_qty: 2
     pack_price_usd: 11.99
     unit_price_usd: 5.99
     unit_label: antenna
+    gain_dbi: 3
     vswr_min: 1.10
     vswr_min_mhz: 916
     vswr_shots:
@@ -270,8 +267,36 @@ antennas:
         label: NanoVNA
       - src: gear/B0CTXL61LY/shots/2026-09-21-vna-n1201sa.png
         label: N1201SA
+    note: Short ~7.6 cm duck, SMA male. Pigtail in box.
+  - asin: B0DY7KSYTV
+    brand: XWXGG
+    title: 915 MHz 19.5 cm omni + U.FL pigtail (2×)
+    pack_qty: 2
+    pack_price_usd: 9.99
+    unit_price_usd: 5.00
+    unit_label: antenna
+    gain_dbi: 5
+    vswr_min: 1.175
+    vswr_min_mhz: 915
+    vswr_shots:
+      - src: gear/B0DY7KSYTV/shots/2026-09-21-vna-n1201sa.jpg
+        label: N1201SA
+    note: Right-angle rubber duck ~19.5 cm, SMA male. Pigtail in box.
+  - asin: B0FQK27BSP
+    brand: XWXGG
+    title: 915 MHz 20 cm omni + U.FL pigtail (2×)
+    pack_qty: 2
+    pack_price_usd: 12.99
+    unit_price_usd: 6.50
+    unit_label: antenna
+    gain_dbi: 6
+    vswr_min: 1.0
+    vswr_min_mhz: 915
+    vswr_shots:
+      - src: gear/B0FQK27BSP/shots/2026-09-21-vna-nanovna.jpg
+        label: NanoVNA
     king: true
-    note: Bendable rubber duck ~7.6 cm, SMA male. Pigtail in box. Current deploy pick.
+    note: Straight 20 cm whip, SMA male. Pigtail in box. Current deploy pick.
 
 consumables:
   - asin: B01HXU1PKS
@@ -283,7 +308,7 @@ consumables:
     unit_label: pigtail
     node_cost_usd: 1.56
     optional: true
-    note: Optional spare. RAK4631 kit ships with a U.FL pigtail; Tenmory antenna box includes one too.
+    note: Optional spare. RAK4631 kit ships with a U.FL pigtail; XWXGG antenna box includes one too.
   - asin: B07QJDJYC6
     brand: E6000
     title: E6000+ adhesive 0.9 oz
