@@ -237,6 +237,7 @@ export function renderPage(catalog) {
     title: `Janknode Review Guide — solar repeater from ${bomLabel}`,
     description: `Build a Meshtastic or MeshCore solar repeater from ${bomLabel}. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools.`,
     json_ld: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    copyright_year: String(new Date().getFullYear()),
     record_strip_html: recordStripHtml,
     bom_rows: bomRows,
     shell_rows: sortKingFirst(lights).map(shellRow).join(""),
@@ -270,6 +271,7 @@ export function applyTemplate(template, parts) {
     .replace("{{title}}", escapeHtml(parts.title))
     .replace("{{description}}", escapeHtml(parts.description))
     .replace("{{json_ld}}", parts.json_ld)
+    .replace("{{copyright_year}}", escapeHtml(parts.copyright_year))
     .replace("{{record_strip_html}}", parts.record_strip_html)
     .replace("{{bom_rows}}", parts.bom_rows)
     .replace("{{shell_rows}}", parts.shell_rows)

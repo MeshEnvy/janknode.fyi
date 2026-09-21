@@ -77,7 +77,7 @@
         padding-top: 1.75rem;
       }
       .page-main--catalog {
-        padding-bottom: 4rem;
+        padding-bottom: 2rem;
       }
       .winner-band {
         width: 100%;
@@ -981,6 +981,40 @@
       .gear-block {
         margin-bottom: 2.25rem;
       }
+      .site-footer {
+        margin-top: 1rem;
+        padding: 2rem 1.25rem 2.75rem;
+        border-top: 1px solid var(--line);
+        text-align: center;
+      }
+      .site-footer__inner {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .site-footer__contrib {
+        margin: 0 0 0.75rem;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+      .site-footer__github {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 600;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .site-footer__github:hover {
+        color: var(--pop-dark);
+      }
+      .site-footer__copy {
+        margin: 0;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+      }
       .pair-callout {
         margin: 0 0 2.25rem;
         padding: 1rem 1.25rem;
@@ -1231,6 +1265,23 @@
         </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__contrib">
+          <a
+            class="site-footer__github"
+            href="https://github.com/MeshEnvy/janknode"
+            rel="noopener noreferrer"
+            ><i class="fa-brands fa-github" aria-hidden="true"></i> Contribute on
+            GitHub</a
+          >
+          — rankings, prices, and field notes live in the repo. Pull requests
+          welcome.
+        </p>
+        <p class="site-footer__copy">© {{copyright_year}} MeshEnvy NCC</p>
+      </div>
+    </footer>
     <script>
       (() => {
         const nav = document.getElementById("site-nav");
