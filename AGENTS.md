@@ -1,8 +1,8 @@
 # AGENTS.md — Janknode Review Guide
 
-Janknode review guide: solar light **shells** and **build gear**. Single static page: `index.html`.
+Janknode review guide: **shells**, **boards**, **antennas**, **consumables**, **tools**. Single static page: `index.html`.
 
-Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Gear lives in `gear/<ASIN>/` and `data/gear.yaml`.
+Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Amazon parts: `gear/<ASIN>/`. Rokland RAK kits: `kits/<SKU>/`. Catalog: `data/gear.yaml`.
 
 ## Power path
 
@@ -25,11 +25,13 @@ Full-browser PDP preferred (URL bar = ASIN). Incomplete shots are normal.
 
 ## Ingest build gear
 
-1. Copy `gear/_template/` to `gear/<ASIN>/`.
-2. Save PDP as `shots/YYYY-MM-DD-pdp.jpg`. Crop `profile.jpg`.
-3. Fill `listing.md`. Set `kind: consumable | tool` and `group` for tools (`solder`, `measure`, `fabrication`, `hand`).
-4. Update `data/gear.yaml` and the matching `GEAR_CONSUMABLES` or `GEAR_TOOLS` array in `index.html`.
-5. **Pinecil (B096X6SG13)** must stay paired with a USB-C PD 60W+ listing (`pairs_with`, currently B07G61YB6S). No PSU ships in the Pinecil box.
+1. **Amazon:** copy `gear/_template/` → `gear/<ASIN>/`. **Rokland kits:** copy `kits/_template/` → `kits/<SKU>/`.
+2. Save PDP as `shots/YYYY-MM-DD-pdp.jpg`. Crop `profile.jpg` (product on white, no store chrome).
+3. Fill `listing.md`. Kits: `kind: kit`. Gear: `kind: antenna | consumable | tool`. Tools also need `group` (`solder`, `measure`, `fabrication`, `hand`).
+4. Update `data/gear.yaml` and the matching array in `index.html`: `LIGHTS`, `BOARDS`, `GEAR_ANTENNAS`, `GEAR_CONSUMABLES`, `GEAR_TOOLS`.
+   - One `king: true` row per category (shells, boards, antennas). King sorts first; green row + 👑 in table.
+   - Rokland boards: `sku`, `vendor`, `buy_url` (no `asin` / `amazon`). Antennas: `vswr_min` + `vswr_min_mhz` when a bench sweep exists; plots under `gear/<ASIN>/shots/`.
+5. Bench solder iron is **ANBES 90W kit (B0CGHD7GW5)** — corded, no separate PSU row. Pair with MAIYUM spool (B075WB98FJ) in notes if needed.
 
 ## Privacy
 
