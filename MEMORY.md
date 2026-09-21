@@ -31,9 +31,9 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | unknown |
 | B0FHQH9LPQ | NACINIC | spotlight | $6.25 | unknown |
 | B085242PLC | LECLESTAR | flood | $15.99 | unknown |
-| B0D78HJYJ1 | VOLISUN | spotlight | — | unknown (OOS) |
-| B0D78KYJDC | VOLISUN | spotlight | — | unknown (OOS) |
-| B0D99X4M48 | NACINIC | spotlight | — | unknown (OOS) |
+| B0D78HJYJ1 | VOLISUN | spotlight | — | pass (OOS) |
+| B0D78KYJDC | VOLISUN | spotlight | — | pass (OOS) |
+| B0D99X4M48 | NACINIC | spotlight | — | pass (OOS) |
 
 ## Boards (2 listings)
 

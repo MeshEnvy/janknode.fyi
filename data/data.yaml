@@ -187,7 +187,7 @@ shells:
     ip: IP67
     size_in: null
     mah_label: null
-    works: unknown
+    works: pass
     in_stock: false
     profile: lights/B0D78HJYJ1/profile.jpg
     amazon: https://www.amazon.com/dp/B0D78HJYJ1
@@ -200,7 +200,7 @@ shells:
     ip: IP67
     size_in: null
     mah_label: null
-    works: unknown
+    works: pass
     in_stock: false
     profile: lights/B0D78KYJDC/profile.jpg
     amazon: https://www.amazon.com/dp/B0D78KYJDC
@@ -213,7 +213,7 @@ shells:
     ip: IP65
     size_in: null
     mah_label: null
-    works: unknown
+    works: pass
     in_stock: false
     profile: lights/B0D99X4M48/profile.jpg
     amazon: https://www.amazon.com/dp/B0D99X4M48
