@@ -1,6 +1,6 @@
-# Janknode Review Guide (janknode.fyi repo)
+# Janknode Review Guide (janknode.fyi)
 
-GitHub: `MeshEnvy/janknode.fyi` (local checkout may still be `meshlight.dev/`).
+GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.fyi/`.
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
