@@ -13,6 +13,14 @@
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg: #f7f5ef;
@@ -49,10 +57,28 @@
         font-family: "IBM Plex Sans", system-ui, sans-serif;
         line-height: 1.45;
       }
-      main {
+      .page-main {
         max-width: 1180px;
         margin: 0 auto;
-        padding: 2.5rem 1.25rem 4rem;
+        padding: 0 1.25rem;
+      }
+      .page-main--intro {
+        padding-top: 2.5rem;
+      }
+      .page-main--catalog {
+        padding-bottom: 4rem;
+      }
+      .winner-band {
+        width: 100%;
+        margin: 2rem 0 2.5rem;
+        padding: 2rem 0 2.35rem;
+        background: var(--win-light);
+        border-top: 3px solid var(--win-line);
+      }
+      .winner-band .section-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
       }
       .banner {
         margin: 0 0 1rem;
@@ -85,298 +111,122 @@
         font-size: clamp(1.15rem, 2.8vw, 1.4rem);
         line-height: 1.55;
         max-width: 40rem;
-        margin: 0 auto 1.75rem;
+        margin: 0 auto;
         text-align: center;
       }
-      .hero {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.25rem 2rem;
-        align-items: stretch;
-        max-width: 920px;
-        margin: 0 auto 2.5rem;
-        padding: 1.25rem 1.5rem;
-        border: 1px solid var(--win-line);
-        border-radius: 16px;
-        background: linear-gradient(
-          145deg,
-          #f8fcf8 0%,
-          var(--win-light) 55%,
-          #eef6ee 100%
-        );
-        box-shadow: 0 4px 28px rgb(22 163 74 / 16%);
-      }
-      .hero-stack {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.75rem;
-        align-items: stretch;
-      }
-      .hero-stack-item {
+      .winner-section {
         margin: 0;
-        border: 1px solid var(--win-line);
-        border-radius: 12px;
-        background: #fff;
-        overflow: hidden;
+      }
+      .bom-heading {
         display: flex;
         flex-direction: column;
-        height: 100%;
-      }
-      .hero-card-media {
-        display: flex;
         align-items: center;
-        justify-content: center;
-        height: 152px;
-        padding: 0.65rem;
-        background: #fff;
-        border-bottom: 1px solid var(--win-line);
-        overflow: hidden;
-      }
-      .hero-card-media img {
-        display: block;
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-      }
-      .hero-card-media--cover img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-      .hero-card-info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-        padding: 0.65rem 0.7rem 0.75rem;
+        margin: 0 0 1.35rem;
         text-align: center;
-        border-top: 1px solid var(--win-line);
-        background: rgb(255 255 255 / 85%);
-        flex: 1;
-        min-height: 7.25rem;
       }
-      .hero-card-label {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.65rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-      .hero-card-name {
-        flex: 1;
-        font-size: 0.82rem;
-        font-weight: 600;
-        line-height: 1.3;
-        color: var(--ink);
-        min-height: 2.6em;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-      }
-      .hero-card-cost {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--pop-dark);
-        margin-top: 0.15rem;
-      }
-      .hero-card-foot {
-        margin-top: auto;
-        padding-top: 0.35rem;
-      }
-      .hero-card-foot .row-buy {
+      .bom-heading-lede {
         display: inline-flex;
+        align-items: center;
         justify-content: center;
-        width: 100%;
-      }
-      .hero-bom-heading {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.68rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
+        gap: 0.35rem;
+        margin: 0 0 0.85rem;
+        padding: 0.38rem 0.85rem;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
-        color: var(--muted);
-        margin: 0.35rem 0 0.5rem;
-        text-align: center;
+        color: var(--pop-dark);
+        background: rgb(255 255 255 / 72%);
+        border: 1px solid var(--win-line);
+        border-radius: 999px;
+        box-shadow: 0 1px 4px rgb(45 106 46 / 12%);
       }
-      .hero-bom {
+      .bom-heading-lede__icon {
+        font-size: 0.95rem;
+        line-height: 1;
+      }
+      .bom-heading-main {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-      }
-      .hero-bom-row {
-        display: grid;
-        grid-template-columns: 52px minmax(0, 1fr) auto auto;
-        gap: 0.55rem 0.65rem;
         align-items: center;
-        padding: 0.55rem 0.65rem;
-        border: 1px solid var(--win-line);
-        border-radius: 10px;
-        background: #fff;
+        gap: 0.15rem;
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.65rem, 4.5vw, 2.15rem);
+        font-weight: 600;
+        line-height: 1.2;
       }
-      .hero-bom-thumb {
-        width: 52px;
-        height: 52px;
-        object-fit: cover;
-        object-position: center;
-        background: #fff;
-        border: 1px solid var(--win-line);
-        border-radius: 6px;
+      .bom-heading-main__text {
         display: block;
       }
-      .hero-bom-label {
+      .bom-hero-price {
+        display: block;
+        line-height: 1;
+      }
+      .bom-hero-price__amount {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.6rem;
+        font-size: clamp(2.25rem, 7vw, 3.25rem);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        background: linear-gradient(
+          155deg,
+          #4ade80 0%,
+          var(--pop) 38%,
+          var(--pop-dark) 72%,
+          #14532d 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 2px 10px rgb(22 163 74 / 40%));
+      }
+      #bom .catalog-table {
+        table-layout: fixed;
+      }
+      @media (min-width: 641px) {
+        #bom .catalog-table th.num,
+        #bom .catalog-table td.col-cost {
+          width: 6.5rem;
+          text-align: right;
+        }
+      }
+      .bom-total-row .bom-total-buy {
+        text-align: center;
+      }
+      .bom-total-row td {
+        border-top: 2px solid var(--line);
+        background: var(--win-light);
+        font-weight: 600;
+      }
+      .bom-total-label {
+        text-align: right;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .bom-total-row .num {
+        font-weight: 700;
+        color: var(--pop-dark);
+      }
+      .catalog-table td.col-role {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
         font-weight: 500;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--muted);
-        line-height: 1.2;
-      }
-      .hero-bom-name {
-        font-size: 0.8rem;
-        font-weight: 600;
-        line-height: 1.3;
-        color: var(--ink);
-        margin-top: 0.1rem;
-      }
-      .hero-bom-cost {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.75rem;
-        font-weight: 600;
-        font-variant-numeric: tabular-nums;
-        color: var(--pop-dark);
         white-space: nowrap;
-        text-align: right;
-      }
-      .hero-bom-note {
-        margin: 0.65rem 0 0;
-        font-size: 0.82rem;
-        line-height: 1.45;
-        color: var(--muted);
-        text-align: center;
-      }
-      .hero-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--win);
-        margin: 0;
-        padding: 0.25rem 0.55rem;
-        border: 1px solid var(--win-line);
-        border-radius: 999px;
-        background: rgb(255 255 255 / 65%);
-      }
-      .hero-kicker-crown {
-        font-size: 0.95rem;
-        line-height: 1;
-      }
-      .hero-headline {
-        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
-        font-size: clamp(1.35rem, 3.2vw, 1.85rem);
-        font-weight: 600;
-        line-height: 1.35;
-        margin: 0 auto;
-        color: var(--ink);
-        max-width: 36rem;
-        text-align: center;
-      }
-      .hero-headline-price {
-        display: inline-block;
-        margin-top: 0.2em;
-        padding: 0.08em 0.28em 0.12em;
-        font-size: clamp(1.85rem, 5.5vw, 2.75rem);
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1;
-        white-space: nowrap;
-        color: var(--pop-dark);
-        background: linear-gradient(
-          160deg,
-          #4ade80 0%,
-          var(--pop) 42%,
-          var(--pop-dark) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 3px 10px var(--pop-glow));
-      }
-      .hero-brand {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin: 0 0 0.2rem;
-      }
-      .hero-title {
-        font-size: clamp(1.35rem, 3vw, 1.65rem);
-        font-weight: 600;
-        line-height: 1.2;
-        margin: 0;
-      }
-      .hero-foot {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem 1.5rem;
-        flex-wrap: wrap;
-        padding-top: 1rem;
-        border-top: 1px solid rgb(158 196 158 / 45%);
-      }
-      .hero-price {
-        display: flex;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 0.3rem 0.55rem;
-      }
-      .hero-price-main {
-        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
-        font-size: clamp(1.85rem, 4vw, 2.35rem);
-        font-weight: 600;
-        line-height: 1;
-        color: var(--win);
-        letter-spacing: -0.02em;
-      }
-      .hero-price-label,
-      .hero-pack {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.82rem;
-        font-weight: 500;
-        color: var(--muted);
-      }
-      .hero-price-sep {
-        color: var(--win-line);
-        font-size: 0.82rem;
-      }
-      .hero-cta {
-        display: inline-block;
-        padding: 0.65rem 1.15rem;
-        background: var(--ink);
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 500;
-        border-radius: 8px;
-        white-space: nowrap;
-      }
-      .hero-cta:hover {
-        background: #3d3a32;
       }
       .king-mark {
         margin-left: 0.35rem;
         font-size: 0.85rem;
+      }
+      .card-winner-badge {
+        display: none;
       }
       tr.king-row td {
         background: var(--win-light);
@@ -385,47 +235,18 @@
         background: #dcebd8;
       }
       @media (max-width: 640px) {
-        .hero {
-          padding: 1rem;
+        .winner-band {
+          margin-top: 1.75rem;
+          padding: 1.65rem 0 2rem;
         }
-        .hero-stack {
-          grid-template-columns: 1fr;
+        .lede {
+          margin-bottom: 0;
         }
-        .hero-card-media {
-          height: 200px;
-        }
-        .hero-bom-row {
-          grid-template-columns: 44px minmax(0, 1fr);
-          grid-template-areas:
-            "thumb name"
-            "thumb cost"
-            "thumb buy";
-        }
-        .hero-bom-thumb {
-          grid-area: thumb;
-        }
-        .hero-bom-row > div {
-          grid-area: name;
-        }
-        .hero-bom-cost {
-          grid-area: cost;
-          text-align: left;
-        }
-        .hero-bom-row .row-buy {
-          grid-area: buy;
-          justify-self: start;
-        }
-        .hero-foot {
-          flex-direction: column;
-          align-items: stretch;
+        .bom-heading {
+          margin-bottom: 1.15rem;
         }
         .hero-cta {
           text-align: center;
-        }
-        .catalog-scroll {
-          overflow-x: visible;
-          border: none;
-          background: transparent;
         }
         .catalog-table {
           min-width: 0;
@@ -445,37 +266,84 @@
         .catalog-table tbody {
           display: flex;
           flex-direction: column;
-          gap: 0.75rem;
+          gap: 1rem;
         }
         .catalog-table tr {
+          --card-border: var(--line);
           display: block;
-          border: 1px solid var(--line);
+          width: 100%;
+          border: 1px solid var(--card-border);
           border-radius: 12px;
           background: var(--panel);
-          padding: 0.75rem;
+          padding: 0;
+          overflow: hidden;
         }
         .catalog-table tr:hover td {
           background: transparent;
         }
         .catalog-table tr.king-row {
-          border-color: var(--win-line);
+          --card-border: var(--win-line);
           background: var(--win-light);
+        }
+        .catalog-table tr.king-row td {
+          background: transparent;
+        }
+        .catalog-table tr.king-row,
+        .catalog-table tr.bom-row {
+          position: relative;
+        }
+        .catalog-table td.col-thumb {
+          position: static;
+        }
+        .card-winner-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.2rem;
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 3;
+          padding: 0.28rem 0.55rem 0.22rem 0.48rem;
+          font-family: "IBM Plex Sans", system-ui, sans-serif;
+          font-size: 0.62rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--pop-dark);
+          background: #fff;
+          border: 1px solid var(--card-border);
+          border-top: none;
+          border-right: none;
+          border-radius: 0 11px 0 0.55rem;
+          pointer-events: none;
+        }
+        .card-winner-badge__icon {
+          font-size: 0.72rem;
+          line-height: 1;
+        }
+        .king-row .king-mark {
+          display: none;
         }
         .catalog-table tr.pair-row {
           background: #fff8e6;
+        }
+        .catalog-table tr.pair-row td {
+          background: transparent;
+        }
+        .catalog-table tr.bom-total-row {
+          display: none;
         }
         .catalog-table td {
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 0.75rem;
-          padding: 0.45rem 0;
-          border-bottom: 1px solid var(--line);
-          text-align: right;
-        }
-        .catalog-table tr td:last-child {
+          box-sizing: border-box;
+          width: 100%;
+          margin: 0;
+          padding: 0.65rem 0.9rem;
           border-bottom: none;
-          padding-bottom: 0;
+          text-align: right;
         }
         .catalog-table td[data-label]:not([data-label=""])::before {
           content: attr(data-label);
@@ -492,9 +360,9 @@
         .catalog-table td.col-thumb,
         .catalog-table td.col-item {
           display: block;
-          border-bottom: 1px solid var(--line);
+          border-bottom: none;
           padding-bottom: 0.65rem;
-          margin-bottom: 0.2rem;
+          margin-bottom: 0;
           text-align: left;
         }
         .catalog-table td.col-thumb {
@@ -502,10 +370,12 @@
         }
         .catalog-table .thumb {
           width: 100%;
-          max-width: 220px;
-          height: auto;
-          aspect-ratio: 4 / 3;
-          margin: 0 auto;
+          max-width: none;
+          height: 11rem;
+          aspect-ratio: auto;
+          object-fit: contain;
+          margin: 0;
+          background: #fff;
         }
         .catalog-table td.col-vswr,
         .catalog-table td.col-notes {
@@ -527,23 +397,128 @@
           width: 100%;
           max-width: 220px;
         }
-      }
-      .stamp {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 0.75rem;
-        color: var(--muted);
-        margin-bottom: 1.25rem;
+        .catalog-table td.col-buy,
+        .catalog-table th.col-buy {
+          display: block;
+          width: 100%;
+          min-width: 0;
+          max-width: none;
+          border-bottom: none;
+          padding-top: 0.65rem;
+          margin-top: 0;
+          text-align: center;
+        }
+        .catalog-table td.col-buy::before {
+          display: block;
+          margin-bottom: 0.35rem;
+          text-align: center;
+        }
+        .catalog-table td.col-buy .buy-btn {
+          display: grid;
+          width: 100%;
+          max-width: none;
+          box-sizing: border-box;
+        }
       }
       .scroll {
         overflow-x: auto;
         border: 1px solid var(--line);
         background: var(--panel);
       }
+      @media (max-width: 640px) {
+        .scroll {
+          overflow-x: visible;
+          border: none;
+          background: transparent;
+        }
+      }
       table {
         width: 100%;
         border-collapse: collapse;
         min-width: 480px;
         font-size: 0.92rem;
+      }
+      @media (max-width: 640px) {
+        table.catalog-table,
+        .catalog-table tr {
+          display: block;
+          width: 100%;
+          min-width: 0;
+          max-width: none;
+          box-sizing: border-box;
+        }
+        table.catalog-table {
+          min-width: 0;
+        }
+        .catalog-table td {
+          width: 100%;
+          min-width: 0;
+          max-width: none;
+          box-sizing: border-box;
+        }
+        .catalog-table td.col-buy {
+          display: block;
+        }
+        .catalog-table td.col-buy .buy-btn {
+          display: grid;
+          width: 100%;
+          max-width: none;
+        }
+        #bom .catalog-table tr.bom-row {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas:
+            "thumb thumb"
+            "title price"
+            "buy buy";
+          padding: 0;
+        }
+        #bom .bom-row td.col-thumb {
+          grid-area: thumb;
+          padding: 0.55rem 0.75rem 0.35rem;
+        }
+        #bom .bom-row td.col-role {
+          display: none;
+        }
+        #bom .bom-row td.col-item {
+          grid-area: title;
+          display: block;
+          padding: 0.6rem 0 0.6rem 0.75rem;
+          border-bottom: none;
+        }
+        #bom .bom-row td.col-item .item-title {
+          font-size: 0.95rem;
+          line-height: 1.25;
+        }
+        #bom .bom-row td.col-cost {
+          grid-area: price;
+          display: block;
+          padding: 0.6rem 0.75rem 0.6rem 0;
+          border-bottom: none;
+          text-align: right;
+          white-space: nowrap;
+        }
+        #bom .bom-row td.col-cost::before {
+          display: none;
+        }
+        #bom .bom-row td.col-cost .num::after {
+          content: "/node";
+          margin-left: 0.1em;
+          font-weight: 500;
+          color: var(--muted);
+          font-size: 0.82em;
+        }
+        #bom .bom-row td.col-buy {
+          grid-area: buy;
+          padding: 0.45rem 0.75rem 0.75rem;
+        }
+        #bom .bom-row td.col-buy::before {
+          display: none;
+        }
+        #bom .bom-row .thumb {
+          height: 7.5rem;
+          object-fit: contain;
+        }
       }
       th,
       td {
@@ -611,45 +586,75 @@
         font-size: 0.88rem;
         margin-top: 0.1rem;
       }
-      .row-buy {
-        display: inline-flex;
+      @media (min-width: 641px) {
+        td.col-buy,
+        th.col-buy {
+          width: 17rem;
+          min-width: 17rem;
+          max-width: 17rem;
+          text-align: center;
+        }
+      }
+      .col-buy .buy-btn {
+        --buy-btn-icon-col: 1.15rem;
+        display: grid;
+        grid-template-columns: var(--buy-btn-icon-col) minmax(0, 1fr) var(
+            --buy-btn-icon-col
+          );
         align-items: center;
-        gap: 0.35rem;
-        padding: 0.45rem 0.7rem;
-        background: var(--ink);
-        color: #fff;
-        text-decoration: none;
+        column-gap: 0.25rem;
+        min-height: 2.25rem;
         font-family: "IBM Plex Mono", ui-monospace, monospace;
         font-size: 0.78rem;
         font-weight: 600;
         font-variant-numeric: tabular-nums;
-        border-radius: 8px;
         white-space: nowrap;
+        --bs-btn-padding-y: 0.45rem;
+        --bs-btn-padding-x: 0.55rem;
+        --bs-btn-border-radius: 8px;
       }
-      .row-buy:hover {
-        background: #3d3a32;
+      .col-buy .buy-btn__icon {
+        grid-column: 1;
+        width: var(--buy-btn-icon-col);
+        height: var(--buy-btn-icon-col);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: center;
       }
-      .row-buy--unavailable {
-        background: #fff;
-        color: var(--muted);
-        border: 1px solid var(--line);
-        font-weight: 500;
+      .col-buy .buy-btn__icon .fa-fw {
+        width: var(--buy-btn-icon-col);
+        font-size: 0.95rem;
+        line-height: 1;
+        text-align: center;
       }
-      .row-buy--unavailable:hover {
-        background: var(--bg);
-        color: var(--ink);
+      .col-buy .buy-btn__icon .buy-store-icon {
+        width: 1rem;
+        height: 1rem;
+        object-fit: contain;
+        display: block;
       }
-      .buy-store-icon {
-        width: 1.05rem;
-        height: 1.05rem;
-        flex-shrink: 0;
-        opacity: 0.92;
+      .col-buy .buy-btn__label {
+        grid-column: 2;
+        text-align: center;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      td.col-buy {
-        text-align: right;
+      .col-buy .btn-dark {
+        --bs-btn-bg: var(--ink);
+        --bs-btn-border-color: var(--ink);
+        --bs-btn-hover-bg: #3d3a32;
+        --bs-btn-hover-border-color: #3d3a32;
+        --bs-btn-active-bg: #3d3a32;
+        --bs-btn-active-border-color: #3d3a32;
       }
-      th.col-buy {
-        text-align: right;
+      .col-buy .btn-outline-secondary {
+        --bs-btn-color: var(--muted);
+        --bs-btn-border-color: var(--line);
+        --bs-btn-hover-bg: var(--bg);
+        --bs-btn-hover-color: var(--ink);
+        --bs-btn-hover-border-color: var(--line);
       }
       .badge {
         display: inline-block;
@@ -742,6 +747,11 @@
         padding-top: 2.5rem;
         border-top: 2px solid var(--line);
       }
+      .page-main--catalog > .section-divider:first-child {
+        margin-top: 0;
+        padding-top: 2.5rem;
+        border-top: none;
+      }
       .gear-title {
         font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
         font-size: clamp(1.55rem, 4vw, 2rem);
@@ -813,27 +823,61 @@
         background: #fff8e6;
         border-color: #e0c878;
       }
+      @media (max-width: 640px) {
+        .catalog-table tbody {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .catalog-table td {
+          border-bottom: none;
+          border-top: none;
+        }
+      }
     </style>
   </head>
   <body>
-    <main>
+    <main class="page-main page-main--intro">
       <header class="banner">
         <h1>
           <span class="title-icon" aria-hidden="true">☀️</span> Janknode Review
           Guide
         </h1>
       </header>
-      <p class="lede">
-        Looking for an inexpensive solar repeater? China to the rescue! Solar
-        lawn and fence lights are the least expensive way to get a solar panel,
-        a battery, and an enclosure for your repeater.
-      </p>
-      <section class="hero" id="hero" aria-label="Starter repeater cost">
-        {{hero}}
-      </section>
-      <p class="stamp" id="stamp">{{stamp}}</p>
+    </main>
 
-      <section id="shells" aria-labelledby="shells-heading">
+    <section
+      class="winner-band winner-section"
+      id="bom"
+      aria-labelledby="bom-heading"
+    >
+      <div class="section-inner">
+        <h2 class="bom-heading" id="bom-heading">{{bom_heading_html}}</h2>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Role</th>
+                <th>Item</th>
+                <th class="num">$/node</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>
+            <tbody id="bom-rows">
+              {{bom_rows}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <main class="page-main page-main--catalog">
+      <section
+        class="section-divider"
+        id="shells"
+        aria-labelledby="shells-heading"
+      >
         <h2 class="gear-title" id="shells-heading">Shells</h2>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
@@ -843,11 +887,13 @@
                 <th>Review</th>
                 <th>Shell</th>
                 <th>Works?</th>
-                <th class="col-buy">Buy</th>
                 <th class="num">mAh</th>
+                <th class="col-buy">Buy</th>
               </tr>
             </thead>
-            <tbody id="rows">{{shell_rows}}</tbody>
+            <tbody id="rows">
+              {{shell_rows}}
+            </tbody>
           </table>
         </div>
       </section>
@@ -868,11 +914,13 @@
               <tr>
                 <th></th>
                 <th>Board</th>
-                <th class="col-buy">Buy</th>
                 <th>Notes</th>
+                <th class="col-buy">Buy</th>
               </tr>
             </thead>
-            <tbody id="gear-boards">{{board_rows}}</tbody>
+            <tbody id="gear-boards">
+              {{board_rows}}
+            </tbody>
           </table>
         </div>
       </section>
@@ -892,12 +940,14 @@
               <tr>
                 <th></th>
                 <th>Antenna</th>
-                <th class="col-buy">Buy</th>
                 <th class="num">915 MHz VSWR</th>
                 <th>Notes</th>
+                <th class="col-buy">Buy</th>
               </tr>
             </thead>
-            <tbody id="gear-antennas">{{antenna_rows}}</tbody>
+            <tbody id="gear-antennas">
+              {{antenna_rows}}
+            </tbody>
           </table>
         </div>
       </section>
@@ -917,11 +967,13 @@
               <tr>
                 <th></th>
                 <th>Item</th>
-                <th class="col-buy">Buy</th>
                 <th>Notes</th>
+                <th class="col-buy">Buy</th>
               </tr>
             </thead>
-            <tbody id="gear-consumables">{{consumable_rows}}</tbody>
+            <tbody id="gear-consumables">
+              {{consumable_rows}}
+            </tbody>
           </table>
         </div>
       </section>
@@ -941,11 +993,13 @@
               <tr>
                 <th></th>
                 <th>Tool</th>
-                <th class="col-buy">Buy</th>
                 <th>Notes</th>
+                <th class="col-buy">Buy</th>
               </tr>
             </thead>
-            <tbody id="gear-tools">{{tool_rows}}</tbody>
+            <tbody id="gear-tools">
+              {{tool_rows}}
+            </tbody>
           </table>
         </div>
       </section>
