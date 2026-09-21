@@ -7,6 +7,7 @@
     <meta name="description" content="{{description}}" />
     {{json_ld}}
     <link rel="canonical" href="https://janknode.fyi/" />
+    <link rel="icon" href="logo-small-favicon.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,6 +50,9 @@
       * {
         box-sizing: border-box;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       html,
       body {
         margin: 0;
@@ -57,21 +61,28 @@
         font-family: "IBM Plex Sans", system-ui, sans-serif;
         line-height: 1.45;
       }
+      #bom,
+      #shells,
+      #boards,
+      #antennas,
+      #shop {
+        scroll-margin-top: 3.25rem;
+      }
       .page-main {
         max-width: 1180px;
         margin: 0 auto;
         padding: 0 1.25rem;
       }
       .page-main--intro {
-        padding-top: 2.5rem;
+        padding-top: 1.75rem;
       }
       .page-main--catalog {
         padding-bottom: 4rem;
       }
       .winner-band {
         width: 100%;
-        margin: 2rem 0 2.5rem;
-        padding: 2rem 0 2.35rem;
+        margin: 2rem 0 3rem;
+        padding: 2rem 0 3rem;
         background: var(--win-light);
         border-top: 3px solid var(--win-line);
       }
@@ -80,31 +91,29 @@
         margin: 0 auto;
         padding: 0 1.25rem;
       }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
       .banner {
-        margin: 0 0 1rem;
-        padding: 1.25rem 0 1rem;
-        border-bottom: 1px solid var(--line);
+        margin: 0 0 0.65rem;
+        padding: 1.25rem 0 0.35rem;
         text-align: center;
       }
       .banner h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.55rem;
         font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
         font-size: clamp(1.85rem, 5vw, 2.75rem);
         font-weight: 600;
         letter-spacing: 0.01em;
         line-height: 1.15;
         margin: 0;
-      }
-      .title-icon {
-        font-family:
-          "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-        font-size: clamp(1.6rem, 4vw, 2.1rem);
-        line-height: 1;
-        letter-spacing: 0;
-        filter: drop-shadow(0 1px 2px rgb(154 107 0 / 25%));
       }
       .lede {
         color: var(--muted);
@@ -117,19 +126,17 @@
       .winner-section {
         margin: 0;
       }
-      .bom-heading {
+      .winner-badge {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 0 1.35rem;
-        text-align: center;
+        justify-content: center;
+        margin: 0 0 1.15rem;
       }
-      .bom-heading-lede {
+      .winner-badge__pill {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 0.35rem;
-        margin: 0 0 0.85rem;
+        margin: 0;
         padding: 0.38rem 0.85rem;
         font-family: "IBM Plex Sans", system-ui, sans-serif;
         font-size: 0.72rem;
@@ -142,45 +149,103 @@
         border-radius: 999px;
         box-shadow: 0 1px 4px rgb(45 106 46 / 12%);
       }
-      .bom-heading-lede__icon {
+      .winner-badge__icon {
         font-size: 0.95rem;
         line-height: 1;
       }
-      .bom-heading-main {
+      .current-record {
+        margin: 0 0 1.5rem;
+      }
+      .current-record__strip {
         display: flex;
-        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        overflow: hidden;
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 70%),
+          0 1px 3px rgb(28 27 23 / 6%);
+      }
+      .current-record__badge {
+        flex: 0 0 auto;
+        display: flex;
         align-items: center;
-        gap: 0.15rem;
-        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
-        font-size: clamp(1.65rem, 4.5vw, 2.15rem);
-        font-weight: 600;
-        line-height: 1.2;
+        gap: 0.35rem;
+        padding: 0.72rem 0.95rem;
+        background: var(--ink);
+        color: var(--bg);
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        border-right: 3px solid var(--gold);
+        white-space: nowrap;
       }
-      .bom-heading-main__text {
-        display: block;
-      }
-      .bom-hero-price {
-        display: block;
+      .current-record__badge-icon {
+        font-size: 0.85rem;
         line-height: 1;
       }
-      .bom-hero-price__amount {
+      .current-record__viewport {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0,
+          #000 1.25rem,
+          #000 calc(100% - 1.25rem),
+          transparent 100%
+        );
+      }
+      .current-record__track {
+        display: flex;
+        width: max-content;
+        animation: record-ticker 32s linear infinite;
+      }
+      .current-record__item {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.45rem;
+        padding: 0.72rem 1.35rem;
         font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: clamp(2.25rem, 7vw, 3.25rem);
+        font-size: clamp(0.78rem, 2.2vw, 0.88rem);
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        color: var(--ink);
+      }
+      .current-record__copy {
+        color: var(--muted);
+      }
+      .current-record__price {
         font-weight: 700;
         font-variant-numeric: tabular-nums;
-        letter-spacing: -0.03em;
-        line-height: 1;
-        background: linear-gradient(
-          155deg,
-          #4ade80 0%,
-          var(--pop) 38%,
-          var(--pop-dark) 72%,
-          #14532d 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        filter: drop-shadow(0 2px 10px rgb(22 163 74 / 40%));
+        letter-spacing: -0.02em;
+        color: var(--pop);
+      }
+      @keyframes record-ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .current-record__viewport {
+          mask-image: none;
+        }
+        .current-record__track {
+          width: 100%;
+          animation: none;
+          justify-content: center;
+        }
+        .current-record__item[aria-hidden="true"] {
+          display: none;
+        }
       }
       #bom .catalog-table {
         table-layout: fixed;
@@ -221,29 +286,46 @@
         color: var(--muted);
         white-space: nowrap;
       }
-      .king-mark {
-        margin-left: 0.35rem;
-        font-size: 0.85rem;
-      }
       .card-winner-badge {
         display: none;
-      }
-      tr.king-row td {
-        background: var(--win-light);
-      }
-      tr.king-row:hover td {
-        background: #dcebd8;
       }
       @media (max-width: 640px) {
         .winner-band {
           margin-top: 1.75rem;
-          padding: 1.65rem 0 2rem;
+          margin-bottom: 2.5rem;
+          padding: 1.65rem 0 2.75rem;
         }
         .lede {
           margin-bottom: 0;
         }
-        .bom-heading {
-          margin-bottom: 1.15rem;
+        .current-record {
+          margin-bottom: 1.25rem;
+        }
+        .current-record__strip {
+          flex-direction: column;
+        }
+        .current-record__badge {
+          justify-content: center;
+          border-right: none;
+          border-bottom: 3px solid var(--gold);
+        }
+        .current-record__viewport {
+          mask-image: none;
+        }
+        .current-record__track {
+          width: 100%;
+          animation: none;
+          justify-content: center;
+        }
+        .current-record__item {
+          white-space: normal;
+          text-align: center;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 0.85rem 1rem 1rem;
+        }
+        .current-record__item[aria-hidden="true"] {
+          display: none;
         }
         .hero-cta {
           text-align: center;
@@ -281,21 +363,13 @@
         .catalog-table tr:hover td {
           background: transparent;
         }
-        .catalog-table tr.king-row {
-          --card-border: var(--win-line);
-          background: var(--win-light);
-        }
-        .catalog-table tr.king-row td {
-          background: transparent;
-        }
-        .catalog-table tr.king-row,
-        .catalog-table tr.bom-row {
+        #bom .catalog-table tr.bom-row {
           position: relative;
         }
-        .catalog-table td.col-thumb {
+        #bom .catalog-table td.col-thumb {
           position: static;
         }
-        .card-winner-badge {
+        #bom .card-winner-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.2rem;
@@ -317,12 +391,9 @@
           border-radius: 0 11px 0 0.55rem;
           pointer-events: none;
         }
-        .card-winner-badge__icon {
+        #bom .card-winner-badge__icon {
           font-size: 0.72rem;
           line-height: 1;
-        }
-        .king-row .king-mark {
-          display: none;
         }
         .catalog-table tr.pair-row {
           background: #fff8e6;
@@ -744,20 +815,31 @@
       }
       .section-divider {
         margin: 3.5rem 0 0;
-        padding-top: 2.5rem;
-        border-top: 2px solid var(--line);
+        padding-top: 0;
       }
       .page-main--catalog > .section-divider:first-child {
         margin-top: 0;
-        padding-top: 2.5rem;
-        border-top: none;
       }
       .gear-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
         font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
         font-size: clamp(1.55rem, 4vw, 2rem);
         font-weight: 600;
         margin: 0 0 0.65rem;
         text-align: center;
+      }
+      .gear-title::before,
+      .catalog-shop__title::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 0.42em;
+        height: 0.72em;
+        margin-top: 0.06em;
+        background: currentColor;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
       }
       .gear-lede {
         color: var(--muted);
@@ -775,7 +857,126 @@
       .gear-hint {
         color: var(--muted);
         font-size: 0.92rem;
+        line-height: 1.5;
         margin: 0 0 0.85rem;
+        text-align: center;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgb(247 245 239 / 94%);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .site-nav__inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0.6rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.85rem;
+      }
+      .site-nav__link {
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 0.28rem 0.4rem;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+      .site-nav__link:hover {
+        color: var(--ink);
+      }
+      .site-nav__link.is-active {
+        color: var(--pop-dark);
+        background: var(--win-light);
+        font-weight: 600;
+      }
+      .site-nav__link--home {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        padding-inline: 0.35rem;
+      }
+      .site-nav__link--home .site-nav__logo {
+        width: 1.65rem;
+        height: 1.65rem;
+        object-fit: contain;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .site-nav__inner {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+        .site-nav__inner::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      .section-divider--compare .gear-title {
+        margin-bottom: 0.35rem;
+      }
+      .section-divider--swap {
+        margin-top: 2.25rem;
+        padding-top: 0;
+      }
+      .section-divider--swap .gear-title {
+        font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+        margin-bottom: 0.35rem;
+      }
+      .catalog-shop {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--line);
+      }
+      .catalog-shop__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: clamp(1.1rem, 2.8vw, 1.25rem);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: center;
+        margin: 0 0 0.35rem;
+      }
+      .catalog-shop__lede {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: center;
+        max-width: 36rem;
+        margin: 0 auto 1.5rem;
+      }
+      .catalog-shop .gear-sub {
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        margin: 2rem 0 0.65rem;
+        color: var(--ink);
+      }
+      .catalog-shop .gear-sub:first-of-type {
+        margin-top: 0;
+      }
+      .catalog-shop .gear-hint {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
       }
       .gear-block {
         margin-bottom: 2.25rem;
@@ -837,13 +1038,32 @@
     </style>
   </head>
   <body>
+    <nav class="site-nav" id="site-nav" aria-label="Page sections">
+      <div class="site-nav__inner">
+        <a
+          class="site-nav__link site-nav__link--home"
+          href="#bom"
+          data-nav="bom"
+          aria-label="Winning setup"
+          ><img
+            class="site-nav__logo"
+            src="logo-small.webp"
+            alt=""
+            width="26"
+            height="26"
+        /></a>
+        <a class="site-nav__link" href="#shells" data-nav="shells">Shells</a>
+        <a class="site-nav__link" href="#boards" data-nav="boards">Boards</a>
+        <a class="site-nav__link" href="#antennas" data-nav="antennas">Antennas</a>
+        <a class="site-nav__link" href="#shop" data-nav="shop">Shop</a>
+      </div>
+    </nav>
+
     <main class="page-main page-main--intro">
       <header class="banner">
-        <h1>
-          <span class="title-icon" aria-hidden="true">☀️</span> Janknode Review
-          Guide
-        </h1>
+        <h1>Janknode Review Guide</h1>
       </header>
+      {{record_strip_html}}
     </main>
 
     <section
@@ -852,7 +1072,13 @@
       aria-labelledby="bom-heading"
     >
       <div class="section-inner">
-        <h2 class="bom-heading" id="bom-heading">{{bom_heading_html}}</h2>
+        <h2 class="sr-only" id="bom-heading">Winning bill of materials</h2>
+        <p class="winner-badge">
+          <span class="winner-badge__pill"
+            ><span class="winner-badge__icon" aria-hidden="true">👑</span> Current
+            winning setup</span
+          >
+        </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -874,11 +1100,15 @@
 
     <main class="page-main page-main--catalog">
       <section
-        class="section-divider"
+        class="section-divider section-divider--compare"
         id="shells"
         aria-labelledby="shells-heading"
       >
         <h2 class="gear-title" id="shells-heading">Shells</h2>
+        <p class="gear-hint gear-block">
+          Solar lights we ranked. See the winning setup above for our current
+          pick.
+        </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -899,14 +1129,14 @@
       </section>
 
       <section
-        class="section-divider"
+        class="section-divider section-divider--swap"
         id="boards"
         aria-labelledby="boards-heading"
       >
         <h2 class="gear-title" id="boards-heading">Boards</h2>
         <p class="gear-hint gear-block">
-          RAK4631 + base from Rokland. Mini for tight shells; full WisBlock base
-          when you want IO slots.
+          Swap the winning board if you want a different WisBlock base or a
+          tighter fit.
         </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
@@ -926,13 +1156,14 @@
       </section>
 
       <section
-        class="section-divider"
+        class="section-divider section-divider--swap"
         id="antennas"
         aria-labelledby="antennas-heading"
       >
         <h2 class="gear-title" id="antennas-heading">Antennas</h2>
         <p class="gear-hint gear-block">
-          915 MHz options with bench VSWR when we have a sweep. One per node.
+          Swap the winning whip if you want a different 915 MHz option. VSWR
+          sweeps when we have them.
         </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
@@ -953,14 +1184,18 @@
       </section>
 
       <section
-        class="section-divider"
-        id="consumables"
-        aria-labelledby="consumables-heading"
+        class="catalog-shop"
+        id="shop"
+        aria-labelledby="shop-heading"
       >
-        <h2 class="gear-title" id="consumables-heading">Consumables</h2>
-        <p class="gear-hint gear-block">
-          Glue, connectors, flux. Budget these per node.
+        <h2 class="catalog-shop__title" id="shop-heading">Also buy</h2>
+        <p class="catalog-shop__lede">
+          Glue, connectors, and bench tools. Budget consumables per node. Tools
+          are buy-once.
         </p>
+
+        <h3 class="gear-sub" id="consumables-heading">Consumables</h3>
+        <p class="gear-hint">Per-node supplies for the build.</p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -976,17 +1211,9 @@
             </tbody>
           </table>
         </div>
-      </section>
 
-      <section
-        class="section-divider"
-        id="tools"
-        aria-labelledby="tools-heading"
-      >
-        <h2 class="gear-title" id="tools-heading">Tools</h2>
-        <p class="gear-hint gear-block">
-          Buy once. Soldering, measure, fabrication, hand tools.
-        </p>
+        <h3 class="gear-sub" id="tools-heading">Tools</h3>
+        <p class="gear-hint">Soldering, measure, fabrication, hand tools.</p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -1004,5 +1231,33 @@
         </div>
       </section>
     </main>
+    <script>
+      (() => {
+        const nav = document.getElementById("site-nav");
+        if (!nav) return;
+        const links = [...nav.querySelectorAll("[data-nav]")];
+        const sectionIds = links.map((a) => a.dataset.nav);
+        const sections = sectionIds
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+
+        const setActive = () => {
+          const offset = nav.offsetHeight + 12;
+          let current = sectionIds[0];
+          for (const section of sections) {
+            if (section.offsetTop <= window.scrollY + offset) {
+              current = section.id;
+            }
+          }
+          links.forEach((link) => {
+            link.classList.toggle("is-active", link.dataset.nav === current);
+          });
+        };
+
+        setActive();
+        window.addEventListener("scroll", setActive, { passive: true });
+        window.addEventListener("resize", setActive);
+      })();
+    </script>
   </body>
 </html>

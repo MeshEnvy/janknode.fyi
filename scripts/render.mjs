@@ -79,7 +79,7 @@ const gearThumb = (g) =>
     : `<div class="thumb thumb-empty" aria-hidden="true">no shot</div>`;
 
 const shellThumbCell = (l) =>
-  `<td class="col-thumb" data-label="">${l.king ? winnerBadgeHtml() : ""}<img class="thumb" src="${attr(l.profile)}" alt="${attr(l.brand)}" /></td>`;
+  `<td class="col-thumb" data-label=""><img class="thumb" src="${attr(l.profile)}" alt="${attr(l.brand)}" /></td>`;
 
 const shellReviewCell = (l) => {
   const play = l.youtube_review
@@ -129,22 +129,14 @@ const gearRow = (
   g,
   extraClass = "",
   extraCells = "",
-  kingLabel = "pick",
   { priced = true, showBrand = true } = {},
 ) => {
   const opt = g.optional ? ' <span class="badge optional">optional</span>' : "";
-  const crown = g.king
-    ? `<span class="king-mark" title="King ${attr(kingLabel)}">👑</span>`
-    : "";
-  const rowClass = [g.king ? "king-row" : "", extraClass]
-    .filter(Boolean)
-    .join(" ");
-  return `<tr class="${rowClass}">
-          ${labeledTd("", `${g.king ? winnerBadgeHtml() : ""}${gearThumb(g)}`, "col-thumb")}
+  return `<tr class="${extraClass}">
+          ${labeledTd("", gearThumb(g), "col-thumb")}
           ${itemCell({
             primary: `${escapeHtml(g.title)}${opt}`,
             secondary: showBrand ? g.brand : null,
-            badgeHtml: crown,
           })}
           ${extraCells}
           ${labeledTd("Notes", g.note ? escapeHtml(g.note) : dash, "col-notes")}
@@ -155,16 +147,12 @@ const gearRow = (
 const shellRow = (l) => {
   const works = l.works || "unknown";
   const worksClass = /^[\w-]+$/.test(works) ? works : "unknown";
-  const crown = l.king
-    ? '<span class="king-mark" title="King shell">👑</span>'
-    : "";
-  return `<tr class="${l.king ? "king-row" : ""}">
+  return `<tr>
           ${shellThumbCell(l)}
           ${shellReviewCell(l)}
           ${itemCell({
             primary: escapeHtml(l.brand),
             secondary: l.form || null,
-            badgeHtml: crown,
           })}
           ${labeledTd("Works?", `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`, "col-works")}
           ${labeledTd("mAh", l.mah_label != null ? escapeHtml(l.mah_label.toLocaleString()) : dash, "col-mah num")}
@@ -231,7 +219,10 @@ export function renderPage(catalog) {
           <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">${escapeHtml(firstBuyLabel)}</span></td>
         </tr>`;
 
-  const bomHeadingHtml = `<span class="bom-heading-lede"><span class="bom-heading-lede__icon" aria-hidden="true">👑</span> Current winning setup</span><span class="bom-heading-main"><span class="bom-heading-main__text">Build a Meshtastic or MeshCore solar repeater for</span><span class="bom-hero-price"><span class="bom-hero-price__amount">${escapeHtml(bomLabel)}</span></span></span>`;
+  const recordCopy = "Build a Meshtastic or MeshCore solar repeater for";
+  const recordItem = (hidden) =>
+    `<span class="current-record__item"${hidden ? ' aria-hidden="true"' : ""}><span class="current-record__copy">${escapeHtml(recordCopy)}</span> <span class="current-record__price">${escapeHtml(bomLabel)}</span></span>`;
+  const recordStripHtml = `<aside class="current-record" aria-label="Current winning build"><div class="current-record__strip"><div class="current-record__badge"><span class="current-record__badge-icon" aria-hidden="true">👑</span> Current best</div><div class="current-record__viewport"><div class="current-record__track">${recordItem(false)}${recordItem(true)}</div></div></div></aside>`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -246,20 +237,18 @@ export function renderPage(catalog) {
     title: `Janknode Review Guide — solar repeater from ${bomLabel}`,
     description: `Build a Meshtastic or MeshCore solar repeater from ${bomLabel}. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools.`,
     json_ld: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
-    bom_heading_html: bomHeadingHtml,
+    record_strip_html: recordStripHtml,
     bom_rows: bomRows,
     shell_rows: sortKingFirst(lights).map(shellRow).join(""),
     board_rows: sortKingFirst(boards)
-      .map((g) => gearRow(g, "", "", "board"))
+      .map((g) => gearRow(g))
       .join(""),
     antenna_rows: sortKingFirst(antennas)
-      .map((g) => gearRow(g, "", formatVswrCell(g), "antenna"))
+      .map((g) => gearRow(g, "", formatVswrCell(g)))
       .join(""),
     consumable_rows: consumables
       .map((g) =>
-        gearRow(g, g.optional ? "optional-row" : "", "", "pick", {
-          showBrand: false,
-        }),
+        gearRow(g, g.optional ? "optional-row" : "", "", { showBrand: false }),
       )
       .join(""),
     tool_rows: tools
@@ -270,7 +259,7 @@ export function renderPage(catalog) {
         ]
           .filter(Boolean)
           .join(" ");
-        return gearRow(g, rowClass, "", "pick", { showBrand: false });
+        return gearRow(g, rowClass, "", { showBrand: false });
       })
       .join(""),
   };
@@ -281,7 +270,7 @@ export function applyTemplate(template, parts) {
     .replace("{{title}}", escapeHtml(parts.title))
     .replace("{{description}}", escapeHtml(parts.description))
     .replace("{{json_ld}}", parts.json_ld)
-    .replace("{{bom_heading_html}}", parts.bom_heading_html)
+    .replace("{{record_strip_html}}", parts.record_strip_html)
     .replace("{{bom_rows}}", parts.bom_rows)
     .replace("{{shell_rows}}", parts.shell_rows)
     .replace("{{board_rows}}", parts.board_rows)
