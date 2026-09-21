@@ -29,11 +29,12 @@ pairs_with:
   value:
   source: agent
 optional:
-  value: false
+  value: true
   source: agent
 last_verified: 2026-09-21
 notes: |
-  IPEX/U.FL on the radio to bulkhead SMA for the whip. 50 Ω coax, 6 in / 15 cm. One per node.
+  Optional spare. RAK4631 kit ships with a U.FL pigtail; Tenmory antenna box includes one too.
+  50 Ω coax, 6 in / 15 cm. IPEX/U.FL to SMA female bulkhead.
 ---
 
 # B01HXU1PKS
