@@ -1,0 +1,41 @@
+---
+asin: B0EXAMPLE
+brand:
+  value:
+  source: listing
+title:
+  value:
+  source: listing
+kind:
+  value: consumable # consumable | tool
+  source: agent
+group:
+  value: # solder | measure | hand | null
+  source: agent
+pack_qty:
+  value:
+  source: listing
+pack_price_usd:
+  value:
+  source: listing
+unit_price_usd:
+  value:
+  source: listing
+unit_label:
+  value:
+  source: agent
+amazon: https://www.amazon.com/dp/B0EXAMPLE
+pairs_with:
+  value:
+  source: agent
+optional:
+  value: false
+  source: agent
+last_verified: YYYY-MM-DD
+notes: |
+  One line for the table Notes column.
+---
+
+# B0EXAMPLE
+
+Paste PDP into `shots/`. Crop `profile.jpg`.

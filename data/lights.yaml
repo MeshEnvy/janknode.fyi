@@ -1,0 +1,204 @@
+# Table source. Keep in sync with the LIGHTS array in index.html.
+#
+# Optional per shell (omit or null until a video ships):
+#   youtube_review: https://www.youtube.com/watch?v=…
+#   youtube_assembly: https://www.youtube.com/watch?v=…
+last_verified: 2026-09-21
+king: B0DT95J4QC
+lights:
+  - asin: B08H81Z1RW
+    brand: SOLPEX
+    form: fence-wedge
+    pack_qty: 12
+    pack_price_usd: 29.99
+    unit_price_usd: 2.50
+    ip: null
+    size_in: 3.9 × 1.1 × 3.1
+    mah_label: null
+    works: unknown
+    profile: lights/B08H81Z1RW/profile.jpg
+    amazon: https://www.amazon.com/dp/B08H81Z1RW
+  - asin: B0GH63TL8H
+    brand: AUDERWIN
+    form: fence-step
+    pack_qty: 12
+    pack_price_usd: 32.99
+    unit_price_usd: 2.75
+    ip: IP65
+    size_in: null
+    mah_label: null
+    works: unknown
+    profile: lights/B0GH63TL8H/profile.jpg
+    amazon: https://www.amazon.com/dp/B0GH63TL8H
+  - asin: B0D0RNV327
+    brand: TECKNET
+    form: fence-cap
+    pack_qty: 12
+    pack_price_usd: 32.99
+    unit_price_usd: 2.75
+    ip: IP66
+    size_in: 3.58 × 2.36 × 0.98
+    mah_label: null
+    works: unknown
+    profile: lights/B0D0RNV327/profile.jpg
+    amazon: https://www.amazon.com/dp/B0D0RNV327
+  - asin: B0DT95J4QC
+    brand: HMCITY
+    form: wall-wedge
+    pack_qty: 6
+    pack_price_usd: 19.98
+    unit_price_usd: 3.33
+    ip: IP65
+    size_in: 4.12 × 3.65 × 2.08
+    mah_label: 1200
+    works: likely
+    king: true
+    profile: lights/B0DT95J4QC/profile.jpg
+    amazon: https://www.amazon.com/dp/B0DT95J4QC
+  - asin: B0G2BKN15W
+    brand: NIORSUN
+    form: fence-wedge
+    pack_qty: 12
+    pack_price_usd: 45.99
+    unit_price_usd: 3.83
+    ip: IP65
+    size_in: null
+    mah_label: 500
+    works: unknown
+    profile: lights/B0G2BKN15W/profile.jpg
+    amazon: https://www.amazon.com/dp/B0G2BKN15W
+  - asin: B0C7B2Z39G
+    brand: CLAONER
+    form: pir-wall
+    pack_qty: 6
+    pack_price_usd: 24.99
+    unit_price_usd: 4.17
+    ip: IP65
+    size_in: null
+    mah_label: 1200
+    works: unknown
+    profile: lights/B0C7B2Z39G/profile.jpg
+    amazon: https://www.amazon.com/dp/B0C7B2Z39G
+  - asin: B07WPHTWBP
+    brand: ROSHWEY
+    form: fence-wedge
+    pack_qty: 6
+    pack_price_usd: 27.99
+    unit_price_usd: 4.67
+    ip: IP55
+    size_in: null
+    mah_label: null
+    works: unknown
+    profile: lights/B07WPHTWBP/profile.jpg
+    amazon: https://www.amazon.com/dp/B07WPHTWBP
+  - asin: B0H3LWZHHW
+    brand: Toeuitie
+    form: fence-wedge
+    pack_qty: 12
+    pack_price_usd: 59.96
+    unit_price_usd: 5.00
+    ip: IP65
+    size_in: 3.86 × 2.28 × 1.79
+    mah_label: null
+    works: unknown
+    profile: lights/B0H3LWZHHW/profile.jpg
+    amazon: https://www.amazon.com/dp/B0H3LWZHHW
+  - asin: B0C813SJXP
+    brand: FLITI
+    form: fence-wedge
+    pack_qty: 12
+    pack_price_usd: 59.99
+    unit_price_usd: 5.00
+    ip: null
+    size_in: null
+    mah_label: null
+    works: unknown
+    profile: lights/B0C813SJXP/profile.jpg
+    amazon: https://www.amazon.com/dp/B0C813SJXP
+  - asin: B0FGCM9TBN
+    brand: JOFIOS
+    form: fence-step
+    pack_qty: 12
+    pack_price_usd: 59.99
+    unit_price_usd: 5.00
+    ip: IP65
+    size_in: 5.16 × 1.54 × 1.77
+    mah_label: 1200
+    works: unknown
+    profile: lights/B0FGCM9TBN/profile.jpg
+    amazon: https://www.amazon.com/dp/B0FGCM9TBN
+  - asin: B0DMNH8QDN
+    brand: WENATY
+    form: spotlight
+    pack_qty: 12
+    pack_price_usd: 64.99
+    unit_price_usd: 5.42
+    ip: IP65
+    size_in: null
+    mah_label: 1500
+    works: unknown
+    profile: lights/B0DMNH8QDN/profile.jpg
+    amazon: https://www.amazon.com/dp/B0DMNH8QDN
+  - asin: B0FHQH9LPQ
+    brand: NACINIC
+    form: spotlight
+    pack_qty: 8
+    pack_price_usd: 49.99
+    unit_price_usd: 6.25
+    ip: IP65
+    size_in: null
+    mah_label: null
+    works: unknown
+    profile: lights/B0FHQH9LPQ/profile.jpg
+    amazon: https://www.amazon.com/dp/B0FHQH9LPQ
+  - asin: B085242PLC
+    brand: LECLESTAR
+    form: flood
+    pack_qty: 2
+    pack_price_usd: 31.98
+    unit_price_usd: 15.99
+    ip: IP65
+    size_in: null
+    mah_label: 4000
+    works: unknown
+    profile: lights/B085242PLC/profile.jpg
+    amazon: https://www.amazon.com/dp/B085242PLC
+  - asin: B0D78HJYJ1
+    brand: VOLISUN
+    form: spotlight
+    pack_qty: 12
+    pack_price_usd: null
+    unit_price_usd: null
+    ip: IP67
+    size_in: null
+    mah_label: null
+    works: unknown
+    in_stock: false
+    profile: lights/B0D78HJYJ1/profile.jpg
+    amazon: https://www.amazon.com/dp/B0D78HJYJ1
+  - asin: B0D78KYJDC
+    brand: VOLISUN
+    form: spotlight
+    pack_qty: 8
+    pack_price_usd: null
+    unit_price_usd: null
+    ip: IP67
+    size_in: null
+    mah_label: null
+    works: unknown
+    in_stock: false
+    profile: lights/B0D78KYJDC/profile.jpg
+    amazon: https://www.amazon.com/dp/B0D78KYJDC
+  - asin: B0D99X4M48
+    brand: NACINIC
+    form: spotlight
+    pack_qty: 10
+    pack_price_usd: null
+    unit_price_usd: null
+    ip: IP65
+    size_in: null
+    mah_label: null
+    works: unknown
+    in_stock: false
+    profile: lights/B0D99X4M48/profile.jpg
+    amazon: https://www.amazon.com/dp/B0D99X4M48

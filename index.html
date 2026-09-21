@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Janknode Review Guide</title>
+    <meta
+      name="description"
+      content="Janknode review guide: solar light shells and bench gear for field repeater builds. Shell rankings plus consumables and tools to assemble them."
+    />
+    <link rel="canonical" href="https://janknode.fyi/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f5ef;
+        --panel: #fff;
+        --line: #ddd8cb;
+        --ink: #1c1b17;
+        --muted: #6b6558;
+        --amber: #9a6b00;
+        --good: #2d6a2e;
+        --bad: #b33a28;
+        --link: #5c4a1a;
+        --head: #f0ece2;
+        --hover: #f5f2ea;
+        --thumb-bg: #ebe6da;
+        --gold: #c9a227;
+        --gold-light: #f5ecd0;
+        --gold-line: #e8d49a;
+        --win: #2d6a2e;
+        --win-light: #e8f3e8;
+        --win-mid: #c5dfc5;
+        --win-line: #9ec49e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+      .banner {
+        margin: 0 0 1rem;
+        padding: 1.25rem 0 1rem;
+        border-bottom: 1px solid var(--line);
+        text-align: center;
+      }
+      .banner h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.85rem, 5vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        line-height: 1.15;
+        margin: 0;
+      }
+      .title-icon {
+        font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        font-size: clamp(1.6rem, 4vw, 2.1rem);
+        line-height: 1;
+        letter-spacing: 0;
+        filter: drop-shadow(0 1px 2px rgb(154 107 0 / 25%));
+      }
+      .lede {
+        color: var(--muted);
+        font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+        line-height: 1.55;
+        max-width: 40rem;
+        margin: 0 auto 1.75rem;
+        text-align: center;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(180px, 260px) 1fr;
+        gap: 1.75rem;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto 2.5rem;
+        padding: 1.75rem 2rem;
+        border: 1px solid var(--win-line);
+        border-radius: 16px;
+        background: linear-gradient(135deg, #f4faf4 0%, var(--win-light) 50%, #eef8ee 100%);
+        box-shadow: 0 2px 12px rgb(45 106 46 / 10%);
+      }
+      .hero-art {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        border: 1px solid var(--win-line);
+        border-radius: 12px;
+        background: var(--thumb-bg);
+        overflow: hidden;
+      }
+      .hero-art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-crown {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.6rem;
+        line-height: 1;
+        filter: drop-shadow(0 1px 2px rgb(0 0 0 / 15%));
+      }
+      .hero-kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.88rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--win);
+        margin: 0 0 0.5rem;
+      }
+      .hero-kicker-crown {
+        font-size: 1.05rem;
+        line-height: 1;
+      }
+      .hero-title {
+        font-size: 1.55rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 0 0 0.65rem;
+      }
+      .hero-price {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.65rem;
+        margin: 0 0 0.85rem;
+      }
+      .hero-price-main {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(2.1rem, 5vw, 2.75rem);
+        font-weight: 600;
+        line-height: 1;
+        color: var(--win);
+        letter-spacing: -0.02em;
+      }
+      .hero-price-label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+      .hero-price-pack {
+        flex: 1 1 100%;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .hero-sub {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin: 0 0 1rem;
+        max-width: 36rem;
+      }
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.25rem;
+        margin: 0 0 1.15rem;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.82rem;
+      }
+      .hero-stats span {
+        color: var(--muted);
+      }
+      .hero-bullets {
+        margin: 0 0 1.25rem;
+        padding-left: 1.2rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+      .hero-bullets li {
+        margin: 0.35rem 0;
+      }
+      .hero-cta {
+        display: inline-block;
+        padding: 0.7rem 1.25rem;
+        background: var(--ink);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.98rem;
+        font-weight: 500;
+        border-radius: 8px;
+      }
+      .hero-cta:hover {
+        background: #3d3a32;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin: 0 0 1.25rem;
+      }
+      .hero-cta-secondary {
+        display: inline-block;
+        padding: 0.65rem 1.1rem;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 500;
+        border-radius: 8px;
+      }
+      .hero-cta-secondary:hover {
+        background: var(--hover);
+        border-color: var(--muted);
+      }
+      .video-links {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        line-height: 1.55;
+      }
+      .video-links a {
+        color: var(--link);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .video-links a:hover {
+        text-decoration: underline;
+      }
+      .video-sep {
+        color: var(--muted);
+        margin: 0 0.2rem;
+      }
+      .hero-caveat {
+        margin: 0.75rem 0 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .king-mark {
+        margin-left: 0.35rem;
+        font-size: 0.85rem;
+      }
+      tr.king-row td {
+        background: var(--win-light);
+      }
+      tr.king-row:hover td {
+        background: #dcebd8;
+      }
+      @media (max-width: 640px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          max-width: 280px;
+        }
+      }
+      .stamp {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+      }
+      .scroll {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 520px;
+        font-size: 0.92rem;
+      }
+      th,
+      td {
+        padding: 0.7rem 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+        vertical-align: middle;
+      }
+      th {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: var(--head);
+        position: sticky;
+        top: 0;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      tr:hover td {
+        background: var(--hover);
+      }
+      .thumb {
+        width: 88px;
+        height: 64px;
+        object-fit: cover;
+        background: var(--thumb-bg);
+        display: block;
+      }
+      .brand {
+        font-weight: 600;
+      }
+      .asin a {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .asin a:hover {
+        color: var(--link);
+        text-decoration: underline;
+      }
+      .badge {
+        display: inline-block;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+        border: 1px solid var(--line);
+      }
+      .badge.unknown {
+        color: var(--amber);
+        background: #fff8e6;
+        border-color: #e0c878;
+      }
+      .badge.pass {
+        color: var(--good);
+        background: #eef6ee;
+        border-color: #9ec49e;
+      }
+      .badge.fail {
+        color: var(--bad);
+        background: #fdf0ed;
+        border-color: #e0a89a;
+      }
+      .badge.likely {
+        color: var(--win);
+        background: #eef6ee;
+        border-color: var(--win-line);
+      }
+      .num {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-variant-numeric: tabular-nums;
+      }
+      a {
+        color: var(--link);
+      }
+      .empty {
+        color: var(--muted);
+      }
+      footer {
+        margin-top: 1.75rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        max-width: 42rem;
+      }
+      .section-divider {
+        margin: 3.5rem 0 0;
+        padding-top: 2.5rem;
+        border-top: 2px solid var(--line);
+      }
+      .gear-title {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: clamp(1.55rem, 4vw, 2rem);
+        font-weight: 600;
+        margin: 0 0 0.65rem;
+        text-align: center;
+      }
+      .gear-lede {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.55;
+        max-width: 44rem;
+        margin: 0 auto 2rem;
+        text-align: center;
+      }
+      .gear-sub {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin: 0 0 0.35rem;
+      }
+      .gear-hint {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin: 0 0 0.85rem;
+      }
+      .gear-block {
+        margin-bottom: 2.25rem;
+      }
+      .pair-callout {
+        margin: 0 0 2.25rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--gold-line);
+        border-radius: 12px;
+        background: var(--gold-light);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 44rem;
+      }
+      .pair-callout strong {
+        font-weight: 600;
+      }
+      .gear-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.45;
+        max-width: 44rem;
+      }
+      .unit-price {
+        font-family: "Fredoka", "Comic Sans MS", cursive, sans-serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--win);
+        letter-spacing: -0.02em;
+      }
+      .unit-label {
+        display: block;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.68rem;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        margin-top: 0.1rem;
+      }
+      .gear-item-title {
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .gear-item-brand {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      tr.pair-row td {
+        background: #fff8e6;
+      }
+      tr.pair-row:hover td {
+        background: #ffefc8;
+      }
+      tr.optional-row td {
+        opacity: 0.92;
+      }
+      .thumb-empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.65rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .badge.optional {
+        color: var(--amber);
+        background: #fff8e6;
+        border-color: #e0c878;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="banner">
+        <h1><span class="title-icon" aria-hidden="true">☀️</span> Janknode Review Guide</h1>
+      </header>
+      <p class="lede">
+        Looking for an inexpensive solar repeater? China to the rescue! Solar lawn and fence lights
+        are the least expensive way to get your repeater up and running FAST.
+      </p>
+      <section class="hero" id="hero" aria-label="King shell"></section>
+      <p class="stamp" id="stamp"></p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Shell</th>
+              <th>Works?</th>
+              <th>$ / shell</th>
+              <th>Pack</th>
+              <th>mAh</th>
+              <th>Video</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <footer>
+        Listing claims are not measurements. Chemistry is unknown until a battery-bay photo.
+        Contribute shots and notes in this repo. No repeater names or locations on this page.
+        Review and build videos link per shell as we publish them.
+      </footer>
+
+      <section class="section-divider" id="build-gear" aria-labelledby="gear-heading">
+        <h2 class="gear-title" id="gear-heading">Build gear</h2>
+        <p class="gear-lede">
+          Shells are half the story. This is the bench kit we use to wire, seal, and sanity-check
+          janknodes. Split into things you burn through per node and tools you buy once.
+        </p>
+
+        <div class="gear-block">
+          <h3 class="gear-sub">Consumables</h3>
+          <p class="gear-hint">Antennas, glue, connectors, flux. Budget these per node.</p>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Item</th>
+                  <th>$ / unit</th>
+                  <th>Pack</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="gear-consumables"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pair-callout" id="solder-pair">
+          <strong>Pinecil + USB-C PD.</strong> The Pinecil ships without a power supply. Pair it with
+          a USB-C PD brick that can deliver <strong>20V at 3A</strong> (60W class). A 2-pack with
+          long USB-C cables covers bench plus travel.
+        </div>
+
+        <div class="gear-block">
+          <h3 class="gear-sub">Bench tools</h3>
+          <p class="gear-hint">Buy once. Soldering → measure → fabrication → hand tools.</p>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="gear-tools"></tbody>
+            </table>
+          </div>
+          <p class="gear-note" style="margin-top: 1rem">
+            Heat-shrink, IPEX→SMA pigtails, and a bench supply are not cataloged yet. PR a PDP if you
+            have a favorite listing.
+          </p>
+        </div>
+      </section>
+    </main>
+    <script>
+      const KING = {
+        asin: "B0DT95J4QC",
+        brand: "HMCITY",
+        title: "120 LED solar wall light",
+        form: "wall wedge",
+        pack_qty: 6,
+        pack_price_usd: 19.98,
+        unit_price_usd: 3.33,
+        ip: "IP65",
+        mah_label: 1200,
+        works: "likely",
+        profile: "lights/B0DT95J4QC/profile.jpg",
+        amazon: "https://www.amazon.com/dp/B0DT95J4QC",
+        why: [
+          "Ships with a 3.7 V 18650 in the cradle (1S Li-ion).",
+          "Modular teardown: panel lid, cavity, lens.",
+          "Keyholes for T-post + mending plate mount.",
+          "Best $/shell in the catalog so far.",
+        ],
+        caveat: "Fit-check and keep-up still open.",
+      };
+
+      const LIGHTS = [
+        {
+          asin: "B08H81Z1RW",
+          brand: "SOLPEX",
+          form: "fence wedge",
+          pack_qty: 12,
+          pack_price_usd: 29.99,
+          unit_price_usd: 2.5,
+          ip: null,
+          size_in: "3.9 × 1.1 × 3.1",
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B08H81Z1RW/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B08H81Z1RW",
+        },
+        {
+          asin: "B0GH63TL8H",
+          brand: "AUDERWIN",
+          form: "fence step",
+          pack_qty: 12,
+          pack_price_usd: 32.99,
+          unit_price_usd: 2.75,
+          ip: "IP65",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0GH63TL8H/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0GH63TL8H",
+        },
+        {
+          asin: "B0D0RNV327",
+          brand: "TECKNET",
+          form: "fence cap",
+          pack_qty: 12,
+          pack_price_usd: 32.99,
+          unit_price_usd: 2.75,
+          ip: "IP66",
+          size_in: "3.58 × 2.36 × 0.98",
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0D0RNV327/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0D0RNV327",
+        },
+        {
+          asin: "B0DT95J4QC",
+          brand: "HMCITY",
+          form: "wall wedge",
+          pack_qty: 6,
+          pack_price_usd: 19.98,
+          unit_price_usd: 3.33,
+          ip: "IP65",
+          size_in: "4.12 × 3.65 × 2.08",
+          mah_label: 1200,
+          works: "likely",
+          profile: "lights/B0DT95J4QC/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0DT95J4QC",
+          king: true,
+        },
+        {
+          asin: "B0G2BKN15W",
+          brand: "NIORSUN",
+          form: "fence wedge",
+          pack_qty: 12,
+          pack_price_usd: 45.99,
+          unit_price_usd: 3.83,
+          ip: "IP65",
+          size_in: null,
+          mah_label: 500,
+          works: "unknown",
+          profile: "lights/B0G2BKN15W/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0G2BKN15W",
+        },
+        {
+          asin: "B0C7B2Z39G",
+          brand: "CLAONER",
+          form: "PIR wall",
+          pack_qty: 6,
+          pack_price_usd: 24.99,
+          unit_price_usd: 4.17,
+          ip: "IP65",
+          size_in: null,
+          mah_label: 1200,
+          works: "unknown",
+          profile: "lights/B0C7B2Z39G/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0C7B2Z39G",
+        },
+        {
+          asin: "B07WPHTWBP",
+          brand: "ROSHWEY",
+          form: "fence wedge",
+          pack_qty: 6,
+          pack_price_usd: 27.99,
+          unit_price_usd: 4.67,
+          ip: "IP55",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B07WPHTWBP/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07WPHTWBP",
+        },
+        {
+          asin: "B0H3LWZHHW",
+          brand: "Toeuitie",
+          form: "fence wedge",
+          pack_qty: 12,
+          pack_price_usd: 59.96,
+          unit_price_usd: 5.0,
+          ip: "IP65",
+          size_in: "3.86 × 2.28 × 1.79",
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0H3LWZHHW/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0H3LWZHHW",
+        },
+        {
+          asin: "B0C813SJXP",
+          brand: "FLITI",
+          form: "fence wedge",
+          pack_qty: 12,
+          pack_price_usd: 59.99,
+          unit_price_usd: 5.0,
+          ip: null,
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0C813SJXP/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0C813SJXP",
+        },
+        {
+          asin: "B0FGCM9TBN",
+          brand: "JOFIOS",
+          form: "fence step",
+          pack_qty: 12,
+          pack_price_usd: 59.99,
+          unit_price_usd: 5.0,
+          ip: "IP65",
+          size_in: "5.16 × 1.54 × 1.77",
+          mah_label: 1200,
+          works: "unknown",
+          profile: "lights/B0FGCM9TBN/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0FGCM9TBN",
+        },
+        {
+          asin: "B0DMNH8QDN",
+          brand: "WENATY",
+          form: "spotlight",
+          pack_qty: 12,
+          pack_price_usd: 64.99,
+          unit_price_usd: 5.42,
+          ip: "IP65",
+          size_in: null,
+          mah_label: 1500,
+          works: "unknown",
+          profile: "lights/B0DMNH8QDN/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0DMNH8QDN",
+        },
+        {
+          asin: "B0FHQH9LPQ",
+          brand: "NACINIC",
+          form: "spotlight",
+          pack_qty: 8,
+          pack_price_usd: 49.99,
+          unit_price_usd: 6.25,
+          ip: "IP65",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0FHQH9LPQ/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0FHQH9LPQ",
+        },
+        {
+          asin: "B085242PLC",
+          brand: "LECLESTAR",
+          form: "flood",
+          pack_qty: 2,
+          pack_price_usd: 31.98,
+          unit_price_usd: 15.99,
+          ip: "IP65",
+          size_in: null,
+          mah_label: 4000,
+          works: "unknown",
+          profile: "lights/B085242PLC/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B085242PLC",
+        },
+        {
+          asin: "B0D78HJYJ1",
+          brand: "VOLISUN",
+          form: "spotlight",
+          pack_qty: 12,
+          pack_price_usd: null,
+          unit_price_usd: null,
+          ip: "IP67",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0D78HJYJ1/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0D78HJYJ1",
+        },
+        {
+          asin: "B0D78KYJDC",
+          brand: "VOLISUN",
+          form: "spotlight",
+          pack_qty: 8,
+          pack_price_usd: null,
+          unit_price_usd: null,
+          ip: "IP67",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0D78KYJDC/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0D78KYJDC",
+        },
+        {
+          asin: "B0D99X4M48",
+          brand: "NACINIC",
+          form: "spotlight",
+          pack_qty: 10,
+          pack_price_usd: null,
+          unit_price_usd: null,
+          ip: "IP65",
+          size_in: null,
+          mah_label: null,
+          works: "unknown",
+          profile: "lights/B0D99X4M48/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0D99X4M48",
+        },
+      ];
+
+      const money = (n) =>
+        n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+      const dash = '<span class="empty">—</span>';
+
+      const videoLinks = (row) => {
+        const parts = [];
+        if (row.youtube_review) {
+          parts.push(
+            `<a href="${row.youtube_review}" target="_blank" rel="noopener noreferrer">Review</a>`
+          );
+        }
+        if (row.youtube_assembly) {
+          parts.push(
+            `<a href="${row.youtube_assembly}" target="_blank" rel="noopener noreferrer">Build</a>`
+          );
+        }
+        if (!parts.length) return dash;
+        return `<div class="video-links">${parts.join('<span class="video-sep">·</span>')}</div>`;
+      };
+
+      const heroActions = (row) => {
+        const btns = [
+          `<a class="hero-cta" href="${row.amazon}" target="_blank" rel="noopener noreferrer">Buy on Amazon</a>`,
+        ];
+        if (row.youtube_review) {
+          btns.push(
+            `<a class="hero-cta-secondary" href="${row.youtube_review}" target="_blank" rel="noopener noreferrer">Watch review</a>`
+          );
+        }
+        if (row.youtube_assembly) {
+          btns.push(
+            `<a class="hero-cta-secondary" href="${row.youtube_assembly}" target="_blank" rel="noopener noreferrer">Watch build</a>`
+          );
+        }
+        return `<div class="hero-actions">${btns.join("")}</div>`;
+      };
+
+      document.getElementById("stamp").textContent =
+        "Last verified 2026-09-21 · " + LIGHTS.length + " shells · listing only";
+
+      document.getElementById("hero").innerHTML = `
+        <div class="hero-art">
+          <span class="hero-crown" aria-hidden="true">👑</span>
+          <img src="${KING.profile}" alt="${KING.brand} ${KING.title}" />
+        </div>
+        <div>
+          <p class="hero-kicker"><span class="hero-kicker-crown" aria-hidden="true">👑</span> King shell</p>
+          <h2 class="hero-title">${KING.brand} · ${KING.title}</h2>
+          <div class="hero-price">
+            <span class="hero-price-main">${money(KING.unit_price_usd)}</span>
+            <span class="hero-price-label">per shell</span>
+            <span class="hero-price-pack">${KING.pack_qty}-pack · ${money(KING.pack_price_usd)} total</span>
+          </div>
+          <p class="hero-sub">The janknode enclosure we would buy today. Panel charges the stock board; the radio only taps the cell.</p>
+          <div class="hero-stats">
+            <span>${KING.ip}</span>
+            <span>${KING.mah_label.toLocaleString()} mAh claim</span>
+          </div>
+          <ul class="hero-bullets">
+            ${KING.why.map((w) => `<li>${w}</li>`).join("")}
+          </ul>
+          ${heroActions(KING)}
+          <p class="hero-caveat">${KING.caveat}</p>
+        </div>`;
+
+      document.getElementById("rows").innerHTML = LIGHTS.map((l) => {
+        const works = l.works || "unknown";
+        const crown = l.king ? '<span class="king-mark" title="King shell">👑</span>' : "";
+        return `<tr class="${l.king ? "king-row" : ""}">
+          <td><img class="thumb" src="${l.profile}" alt="${l.brand}" /></td>
+          <td>
+            <div class="brand">${l.brand}${crown}</div>
+            <div class="asin"><a href="${l.amazon}" target="_blank" rel="noopener noreferrer">${l.asin}</a></div>
+          </td>
+          <td><span class="badge ${works}">${works}</span></td>
+          <td class="num">${l.unit_price_usd != null ? money(l.unit_price_usd) : dash}</td>
+          <td class="num">${l.pack_price_usd != null ? l.pack_qty + " · " + money(l.pack_price_usd) : l.pack_qty + " · " + dash}</td>
+          <td class="num">${l.mah_label ? l.mah_label.toLocaleString() + " claim" : dash}</td>
+          <td>${videoLinks(l)}</td>
+        </tr>`;
+      }).join("");
+
+      const GEAR_CONSUMABLES = [
+        {
+          asin: "B0FSTD4BYM",
+          brand: "muzi WORKS",
+          title: "915 MHz whip antenna, 17 cm",
+          pack_qty: 4,
+          pack_price_usd: 39.9,
+          unit_price_usd: 9.98,
+          unit_label: "antenna",
+          profile: "gear/B0FSTD4BYM/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0FSTD4BYM",
+          note: "One per node. E6000 on nut only; keep silicone off the SMA mating surface.",
+        },
+        {
+          asin: "B07QJDJYC6",
+          brand: "E6000",
+          title: "E6000+ adhesive, 0.9 oz",
+          pack_qty: 1,
+          pack_price_usd: 8.29,
+          unit_price_usd: 8.29,
+          unit_label: "tube",
+          profile: "gear/B07QJDJYC6/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07QJDJYC6",
+          note: "IPEX dab and SMA nut seal. Not structural glue for the whole shell.",
+        },
+        {
+          asin: "B013JRWCBU",
+          brand: "Letool",
+          title: "JST 1.25 mm 2-pin pigtails",
+          pack_qty: 30,
+          pack_price_usd: 6.99,
+          unit_price_usd: 0.23,
+          unit_label: "pair",
+          profile: "gear/B013JRWCBU/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B013JRWCBU",
+          note: "Solar and small board jumpers (~80 mm leads).",
+        },
+        {
+          asin: "B09JZC28DP",
+          brand: "FainWan",
+          title: "JST PH 2.0 mm 2-pin pigtails",
+          pack_qty: 100,
+          pack_price_usd: 16.99,
+          unit_price_usd: 0.17,
+          unit_label: "set",
+          profile: "gear/B09JZC28DP/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B09JZC28DP",
+          note: "RAK19003 battery JST-PH and similar (~120 mm leads).",
+        },
+        {
+          asin: "B0953NGKXR",
+          brand: "Outus",
+          title: "No-clean rosin flux pens (3×)",
+          pack_qty: 3,
+          pack_price_usd: 9.99,
+          unit_price_usd: 3.33,
+          unit_label: "pen",
+          profile: "gear/B0953NGKXR/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0953NGKXR",
+          note: "Pairs with solder wire below. Flux pens alone are not enough.",
+        },
+        {
+          asin: "B075WB98FJ",
+          brand: "MAIYUM",
+          title: "Sn63/Pb37 rosin-core solder, 0.8 mm",
+          pack_qty: 1,
+          pack_price_usd: 8.99,
+          unit_price_usd: 8.99,
+          unit_label: "spool",
+          profile: "gear/B075WB98FJ/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B075WB98FJ",
+          note: "50 g spool. Leaded 63/37 flows easy on a Pinecil. Wash hands after use.",
+        },
+      ];
+
+      const GEAR_TOOLS = [
+        {
+          asin: "B096X6SG13",
+          brand: "PINE64",
+          title: "Pinecil v2 soldering iron",
+          pack_price_usd: 39.99,
+          group: "solder",
+          pairs_with: "B07G61YB6S",
+          profile: "gear/B096X6SG13/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B096X6SG13",
+          note: "No PSU in box. Needs USB-C PD 20V/3A.",
+        },
+        {
+          asin: "B07G61YB6S",
+          brand: "Ubearkk",
+          title: "60W USB-C PD brick (2-pack + cables)",
+          pack_price_usd: 32.99,
+          group: "solder",
+          pairs_with: "B096X6SG13",
+          profile: "gear/B07G61YB6S/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07G61YB6S",
+          note: "2 bricks + 2× 10 ft USB-C cables (~$16.50/brick). Pairs with Pinecil.",
+        },
+        {
+          asin: "B073RFKHD6",
+          brand: "Kaisi",
+          title: "S-160 silicone soldering mat",
+          pack_price_usd: 12.99,
+          group: "solder",
+          profile: "gear/B073RFKHD6/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B073RFKHD6",
+          note: "Heat-safe bench surface; magnetic trays for screws.",
+        },
+        {
+          asin: "B0CLV8R7QF",
+          brand: "AstroAI",
+          title: "AM33B digital multimeter",
+          pack_price_usd: 14.59,
+          group: "measure",
+          profile: "gear/B0CLV8R7QF/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0CLV8R7QF",
+          note: "Solar keep-up checks (I_load, I_net). No AC current.",
+        },
+        {
+          asin: "B07Z5VY7B6",
+          brand: "AURSINC",
+          title: "NanoVNA-H antenna analyzer",
+          pack_price_usd: 52.99,
+          group: "measure",
+          optional: true,
+          profile: "gear/B07Z5VY7B6/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07Z5VY7B6",
+          note: "Optional. Tune 915 MHz whips; overkill for a first node.",
+        },
+        {
+          asin: "B09KGQ91BM",
+          brand: "AVID POWER",
+          title: "20V cordless drill kit, 3/8 in.",
+          pack_price_usd: 39.99,
+          group: "fabrication",
+          profile: "gear/B09KGQ91BM/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B09KGQ91BM",
+          note: "SMA bulkhead holes and shell mods. Includes 10 drill + 10 driver bits.",
+        },
+        {
+          asin: "B07PGRKM8C",
+          brand: "COMOWARE",
+          title: "Ti-coated step drill set (5 pc)",
+          pack_price_usd: 24.99,
+          group: "fabrication",
+          profile: "gear/B07PGRKM8C/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07PGRKM8C",
+          note: "Step bits + center punch. Sized holes without a bit drawer.",
+        },
+        {
+          asin: "B0FGXL88XP",
+          brand: "SEESII",
+          title: "Handheld battery spot welder",
+          pack_price_usd: 34.99,
+          group: "fabrication",
+          optional: true,
+          profile: "gear/B0FGXL88XP/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B0FGXL88XP",
+          note: "Optional. For custom 18650 packs. Janknodes use single cells + BMS.",
+        },
+        {
+          asin: "B097SZ1F7W",
+          brand: "KAIWEETS",
+          title: "KWS-103 wire stripper",
+          pack_price_usd: 13.99,
+          group: "hand",
+          profile: "gear/B097SZ1F7W/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B097SZ1F7W",
+          note: "Self-adjusting 10–24 AWG strip/cut/crimp.",
+        },
+        {
+          asin: "B07G9LKCML",
+          brand: "WORKPRO",
+          title: "6-piece pliers and wrench set",
+          pack_price_usd: 22.79,
+          group: "hand",
+          profile: "gear/B07G9LKCML/profile.jpg",
+          amazon: "https://www.amazon.com/dp/B07G9LKCML",
+          note: "Long-nose and diagonal cutters cover most bench work.",
+        },
+      ];
+
+      const gearThumb = (g) =>
+        g.profile
+          ? `<img class="thumb" src="${g.profile}" alt="${g.brand}" />`
+          : `<div class="thumb thumb-empty" aria-hidden="true">no shot</div>`;
+
+      const gearItemCell = (g) => {
+        const opt = g.optional ? ' <span class="badge optional">optional</span>' : "";
+        return `<td>
+            <div class="gear-item-title">${g.title}${opt}</div>
+            <div class="gear-item-brand">${g.brand}</div>
+            <div class="asin"><a href="${g.amazon}" target="_blank" rel="noopener noreferrer">${g.asin}</a></div>
+          </td>`;
+      };
+
+      document.getElementById("gear-consumables").innerHTML = GEAR_CONSUMABLES.map((g) => {
+        const unitLabel = g.unit_label
+          ? `<span class="unit-label">per ${g.unit_label}</span>`
+          : "";
+        const pack =
+          g.pack_qty > 1
+            ? `${g.pack_qty} · ${money(g.pack_price_usd)}`
+            : money(g.pack_price_usd);
+        return `<tr>
+          <td>${gearThumb(g)}</td>
+          ${gearItemCell(g)}
+          <td class="num"><span class="unit-price">${money(g.unit_price_usd)}</span>${unitLabel}</td>
+          <td class="num">${pack}</td>
+          <td>${g.note || dash}</td>
+        </tr>`;
+      }).join("");
+
+      document.getElementById("gear-tools").innerHTML = GEAR_TOOLS.map((g) => {
+        const rowClass = [g.pairs_with ? "pair-row" : "", g.optional ? "optional-row" : ""]
+          .filter(Boolean)
+          .join(" ");
+        return `<tr class="${rowClass}">
+          <td>${gearThumb(g)}</td>
+          ${gearItemCell(g)}
+          <td class="num"><span class="unit-price">${money(g.pack_price_usd)}</span></td>
+          <td>${g.note || dash}</td>
+        </tr>`;
+      }).join("");
+    </script>
+  </body>
+</html>

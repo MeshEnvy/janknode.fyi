@@ -1,0 +1,118 @@
+# Build gear — sync with index.html GEAR_* arrays
+last_verified: 2026-09-21
+
+consumables:
+  - asin: B0FSTD4BYM
+    brand: muzi WORKS
+    title: 915 MHz whip antenna 17 cm
+    pack_qty: 4
+    pack_price_usd: 39.9
+    unit_price_usd: 9.98
+    unit_label: antenna
+    note: One per node. E6000 on nut only; keep silicone off SMA mating surface.
+  - asin: B07QJDJYC6
+    brand: E6000
+    title: E6000+ adhesive 0.9 oz
+    pack_qty: 1
+    pack_price_usd: 8.29
+    unit_price_usd: 8.29
+    unit_label: tube
+    note: IPEX dab + SMA nut seal. Not a structural glue for the whole enclosure.
+  - asin: B013JRWCBU
+    brand: Letool
+    title: JST 1.25 mm 2-pin pigtails
+    pack_qty: 30
+    pack_price_usd: 6.99
+    unit_price_usd: 0.23
+    unit_label: pair
+    note: Solar and small board jumpers (~80 mm leads).
+  - asin: B09JZC28DP
+    brand: FainWan
+    title: JST PH 2.0 mm 2-pin pigtails
+    pack_qty: 100
+    pack_price_usd: 16.99
+    unit_price_usd: 0.17
+    unit_label: set
+    note: RAK19003 battery JST-PH and similar (~120 mm leads).
+  - asin: B0953NGKXR
+    brand: Outus
+    title: No-clean rosin flux pens (3×)
+    pack_qty: 3
+    pack_price_usd: 9.99
+    unit_price_usd: 3.33
+    unit_label: pen
+    note: Pairs with solder wire. Flux pens alone are not enough.
+  - asin: B075WB98FJ
+    brand: MAIYUM
+    title: Sn63/Pb37 rosin-core solder 0.8 mm
+    pack_qty: 1
+    pack_price_usd: 8.99
+    unit_price_usd: 8.99
+    unit_label: spool
+    note: 50 g spool. Leaded 63/37. Wash hands after use.
+
+tools:
+  - asin: B096X6SG13
+    brand: PINE64
+    title: Pinecil v2 soldering iron
+    pack_price_usd: 39.99
+    group: solder
+    pairs_with: B07G61YB6S
+    note: No power supply in box. Needs USB-C PD 20V/3A.
+  - asin: B07G61YB6S
+    brand: Ubearkk
+    title: 60W USB-C PD brick (2-pack + cables)
+    pack_price_usd: 32.99
+    group: solder
+    pairs_with: B096X6SG13
+    note: 2 bricks + 2× 10 ft USB-C cables (~$16.50/brick).
+  - asin: B073RFKHD6
+    brand: Kaisi
+    title: S-160 silicone soldering mat
+    pack_price_usd: 12.99
+    group: solder
+    note: Heat-safe bench surface; magnetic trays for screws.
+  - asin: B0CLV8R7QF
+    brand: AstroAI
+    title: AM33B digital multimeter
+    pack_price_usd: 14.59
+    group: measure
+    note: Solar keep-up DMM checks (I_load, I_net). No AC current mode.
+  - asin: B07Z5VY7B6
+    brand: AURSINC
+    title: NanoVNA-H antenna analyzer
+    pack_price_usd: 52.99
+    group: measure
+    optional: true
+    note: Optional. Tune 915 MHz whips; overkill for a first node.
+  - asin: B09KGQ91BM
+    brand: AVID POWER
+    title: 20V cordless drill kit, 3/8 in.
+    pack_price_usd: 39.99
+    group: fabrication
+    note: SMA bulkhead holes and shell mods. 10 drill + 10 driver bits.
+  - asin: B07PGRKM8C
+    brand: COMOWARE
+    title: Ti-coated step drill set (5 pc)
+    pack_price_usd: 24.99
+    group: fabrication
+    note: Step bits + center punch for sized enclosure holes.
+  - asin: B0FGXL88XP
+    brand: SEESII
+    title: Handheld battery spot welder
+    pack_price_usd: 34.99
+    group: fabrication
+    optional: true
+    note: Optional. Custom 18650 packs only; janknodes use single cells + BMS.
+  - asin: B097SZ1F7W
+    brand: KAIWEETS
+    title: KWS-103 wire stripper
+    pack_price_usd: 13.99
+    group: hand
+    note: Self-adjusting 10–24 AWG strip/cut/crimp.
+  - asin: B07G9LKCML
+    brand: WORKPRO
+    title: 6-piece pliers and wrench set
+    pack_price_usd: 22.79
+    group: hand
+    note: Long-nose + diagonal cutters cover most bench work.
