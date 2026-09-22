@@ -62,3 +62,4 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 - Listing-only until bay photos. Chemistry gate still open on all non-king rows.
 - SOLPEX cheapest $/shell on paper; king stays field-proven HMCITY.
 - Gear gaps: heat-shrink, bench supply PDPs.
+- Profile tiles: AI extract (`extract-profile` skill). ANBES iron done; remaining rows still PDP crops.

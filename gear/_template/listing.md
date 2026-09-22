@@ -38,4 +38,4 @@ notes: |
 
 # B0EXAMPLE
 
-Paste PDP into `shots/`. Crop `profile.jpg`.
+Paste PDP into `shots/`. Save the product-detail capture as `product-detail-snapshot.jpg`. Extract a clean 512×512 `profile.jpg` with the extract-profile skill.
