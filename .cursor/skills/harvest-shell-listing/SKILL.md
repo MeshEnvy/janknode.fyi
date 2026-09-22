@@ -89,7 +89,7 @@ Apply only from **listing-derived** facts (not bench):
 
 | `works` | Condition |
 |---|---|
-| **fail** | `1.2V-nimh`, AAA/AA NiMH, alkaline, or listing says non-rechargeable |
+| **fail** | `1.2V-nimh`, AAA/AA NiMH, alkaline, or listing says non-rechargeable. Set **`fail_reason`**: `nimh`, `alkaline`, `sealed` (reviews/listing), or `underpowered` (Li-ion but tiny mAh). |
 | **maybe** | `1S-li-ion` but `mah_label` ≤ 600 **or** cell form unknown with only mAh claim |
 | **likely** | `1S-li-ion`, mAh ≥ 800, cell 18650/14500 stated on PDP |
 | **unknown** | No chemistry signal, or conflicting review vs listing |

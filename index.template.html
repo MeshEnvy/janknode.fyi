@@ -997,6 +997,41 @@
         font-weight: 600;
         margin: 0 0 0.35rem;
       }
+      .shell-failed {
+        margin-top: 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background: #fafafa;
+      }
+      .shell-failed__summary {
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--muted);
+        list-style: none;
+      }
+      .shell-failed__summary::-webkit-details-marker {
+        display: none;
+      }
+      .shell-failed__summary::before {
+        content: "▸ ";
+        display: inline-block;
+        width: 1rem;
+        transition: transform 0.15s ease;
+      }
+      .shell-failed[open] .shell-failed__summary::before {
+        transform: rotate(90deg);
+      }
+      .shell-failed__summary:hover {
+        color: var(--text);
+      }
+      .shell-failed__hint {
+        margin: 0 1rem 0.75rem;
+      }
+      .shell-failed .catalog-scroll {
+        margin: 0 0.5rem 0.5rem;
+      }
       .gear-hint {
         color: var(--muted);
         font-size: 0.92rem;
@@ -1303,6 +1338,7 @@
             </tbody>
           </table>
         </div>
+        {{shell_failed_section}}
       </section>
 
       <section

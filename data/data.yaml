@@ -34,6 +34,7 @@ shells:
     nominal_v: 1.2
     mah_label: 700
     works: fail
+    fail_reason: nimh
     profile: lights/B08H81Z1RW/profile.jpg
     amazon: https://www.amazon.com/dp/B08H81Z1RW
   - asin: B0GH63TL8H
@@ -77,6 +78,7 @@ shells:
     nominal_v: 3.7
     mah_label: 1200
     works: fail
+    fail_reason: sealed
     youtube_review: https://www.youtube.com/watch?v=FCZbJHRHioc
     profile_video: true
     youtube_thumb: lights/B0DT95J4QC/youtube-thumb.jpg
@@ -108,6 +110,21 @@ shells:
     works: likely
     profile: lights/B0C7B2Z39G/profile.jpg
     amazon: https://www.amazon.com/dp/B0C7B2Z39G
+  - asin: B0GDWFY3MJ
+    brand: NIORSUN
+    title: Outdoor step lights, 28 LED (8 pack)
+    form: fence-step
+    pack_qty: 8
+    pack_price_usd: 35.99
+    unit_price_usd: 4.50
+    ip: IP67
+    size_in: 3.94 × 3.94 × 2.36
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
+    mah_label: 1200
+    works: maybe
+    profile: lights/B0GDWFY3MJ/profile.jpg
+    amazon: https://www.amazon.com/dp/B0GDWFY3MJ
   - asin: B07WPHTWBP
     brand: ROSHWEY
     form: fence-wedge
@@ -119,6 +136,7 @@ shells:
     chemistry: 1.2V-nimh
     nominal_v: 1.2
     works: fail
+    fail_reason: nimh
     profile: lights/B07WPHTWBP/profile.jpg
     amazon: https://www.amazon.com/dp/B07WPHTWBP
   - asin: B0H3LWZHHW
@@ -159,6 +177,19 @@ shells:
     works: maybe
     profile: lights/B0FGCM9TBN/profile.jpg
     amazon: https://www.amazon.com/dp/B0FGCM9TBN
+  - asin: B0C5J9Z4ZY
+    brand: Tadyreal
+    form: spotlight
+    pack_qty: 10
+    pack_price_usd: 56.99
+    unit_price_usd: 5.70
+    ip: IP65
+    size_in: null
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
+    works: maybe
+    profile: lights/B0C5J9Z4ZY/profile.jpg
+    amazon: https://www.amazon.com/dp/B0C5J9Z4ZY
   - asin: B0DMNH8QDN
     brand: WENATY
     form: spotlight
@@ -181,9 +212,23 @@ shells:
     ip: IP65
     size_in: null
     mah_label: 1800
-    works: maybe
+    works: fail
+    fail_reason: sealed
     profile: lights/B0FHQH9LPQ/profile.jpg
     amazon: https://www.amazon.com/dp/B0FHQH9LPQ
+  - asin: B09XM9GZ5F
+    brand: Bridika
+    form: fence-wedge
+    pack_qty: 12
+    pack_price_usd: 79.99
+    unit_price_usd: 6.67
+    ip: IP65
+    size_in: 4.1 × 2.2 × 2.8
+    cell: 18650
+    chemistry: 1S-li-ion
+    works: maybe
+    profile: lights/B09XM9GZ5F/profile.jpg
+    amazon: https://www.amazon.com/dp/B09XM9GZ5F
   - asin: B085242PLC
     brand: LECLESTAR
     form: flood

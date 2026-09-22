@@ -45,6 +45,9 @@ mah_label:
 works:
   value: unknown # pass | fail | maybe | likely | unknown
   source: unknown
+fail_reason:
+  value: # when works is fail: sealed | nimh | underpowered | alkaline
+  source: unknown
 amazon: https://www.amazon.com/dp/B0EXAMPLE
 youtube_review:
   value: # full https://youtube.com/watch?v=… or youtu.be/… URL; null until published

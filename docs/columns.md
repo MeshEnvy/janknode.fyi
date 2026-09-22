@@ -8,7 +8,9 @@ How we fill the table. Listing claims are a start. Measured beats claimed.
 |---|---|
 | Works? | **pass** = 1S Li-ion (~3.7 V) with enough capacity for repeater duty. **fail** = wrong chemistry (1.2 V NiMH, etc.) or hard blocker (sealed shell). **maybe** = chemistry OK but suspect (tiny mAh, unverified keep-up). **likely** / **unknown** = not bench-settled. No boost assumed unless measured. |
 
-Do not score keep-up, cavity, or mount on a fail. Fail rows stay on the page so people stop buying them.
+When `works: fail`, set **`fail_reason`** so the badge says why: **sealed** (molded shut), **nimh** (1.2 V / NiMH), **underpowered** (Li-ion but too small for repeater duty), **alkaline**. Hidden fail table shows the reason, not the word "fail".
+
+Do not score keep-up, cavity, or mount on a fail. Fail rows stay in the collapsed table so people stop buying them.
 
 ## Shopping list
 

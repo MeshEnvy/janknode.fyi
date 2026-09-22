@@ -45,6 +45,9 @@ mah_label:
 works:
   value: fail
   source: measured
+fail_reason:
+  value: nimh
+  source: measured
 amazon: https://www.amazon.com/dp/B08H81Z1RW
 in_stock:
   value: true

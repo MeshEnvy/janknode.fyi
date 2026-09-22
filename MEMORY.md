@@ -16,22 +16,25 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 ## Catalog (16 shells)
 
-Sorted by $/shell in `index.html`. Spotlight stake units are filed for comparison but are unlikely repeater shells.
+Sorted by $/shell in `index.html`. **`works: fail` rows live in a collapsed `<details>` block below the main shell table** (click to expand). Spotlight stake units are filed for comparison but are unlikely repeater shells.
 
 | ASIN | Brand | Class | $/shell | Works? |
 |---|---|---|---|---|
-| B08H81Z1RW | SOLPEX | fence wedge | $2.50 | **fail** (AAA NiMH) |
+| B08H81Z1RW | SOLPEX | fence wedge | $2.50 | **NiMH** (AAA, bench) |
 | B0GH63TL8H | AUDERWIN | fence step | $2.75 | maybe (14500, 500 mAh) |
 | B0DRNRZV32 | TECKNET | fence cap | $2.75 | maybe (600 mAh listing) |
-| B0DT95J4QC | HMCITY | wall wedge | $3.33 | **fail** (molded shut) |
+| B0DT95J4QC | HMCITY | wall wedge | $3.33 | **sealed** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | maybe (500 mAh listing) |
 | B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **likely** (18650, 1200 mAh) |
-| B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **fail** (1.2 V NiMH) |
+| B0GDWFY3MJ | NIORSUN | fence step | $4.50 | maybe (1200 mAh, 3.7 V) |
+| B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **NiMH** (1.2 V listing) |
 | B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | unknown (PDP silent) |
 | B0C813SJXP | FLITI | fence wedge | $5.00 | maybe (1200 mAh listing) |
 | B0FGCM9TBN | JOFIOS | fence step | $5.00 | maybe (Li-ion, 1200 mAh) |
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | maybe (LiPo, 1500 mAh) |
-| B0FHQH9LPQ | NACINIC | spotlight | $6.25 | maybe (1800 mAh listing) |
+| B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | maybe (3.7 V, mAh unknown) |
+| B0FHQH9LPQ | NACINIC | spotlight | $6.25 | **sealed** (bench) |
+| B09XM9GZ5F | Bridika | fence wedge | $6.67 | maybe (replaceable 18650) |
 | B085242PLC | LECLESTAR | flood | $15.99 | maybe (4400 mAh listing) |
 | B0D78HJYJ1 | VOLISUN | spotlight | — | pass (OOS) |
 | B0D78KYJDC | VOLISUN | spotlight | — | pass (OOS) |

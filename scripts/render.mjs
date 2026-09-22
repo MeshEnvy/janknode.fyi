@@ -274,16 +274,32 @@ const batteryRow = (b, dailyMah) => {
         </tr>`;
 };
 
-const shellRow = (l) => {
+const FAIL_REASON_LABELS = {
+  sealed: "sealed",
+  nimh: "NiMH",
+  underpowered: "underpowered",
+  alkaline: "alkaline",
+};
+
+const formatWorksBadge = (l) => {
   const works = l.works || "unknown";
+  if (works === "fail") {
+    const reason = l.fail_reason || "fail";
+    const label = FAIL_REASON_LABELS[reason] || reason;
+    return `<span class="badge fail">${escapeHtml(label)}</span>`;
+  }
   const worksClass = /^[\w-]+$/.test(works) ? works : "unknown";
+  return `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`;
+};
+
+const shellRow = (l) => {
   return `<tr>
           ${shellThumbCell(l)}
           ${itemCell({
             primary: escapeHtml(l.brand),
             secondary: l.form || null,
           })}
-          ${labeledTd("Works?", `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`, "col-works")}
+          ${labeledTd("Works?", formatWorksBadge(l), "col-works")}
           ${formatCellCell(l)}
           ${formatChemistryCell(l)}
           ${formatNominalVCell(l)}
@@ -291,6 +307,50 @@ const shellRow = (l) => {
           ${formatUnitCostCell(l)}
           ${buyCell(l)}
         </tr>`;
+};
+
+const partitionShells = (lights) => {
+  const active = [];
+  const failed = [];
+  for (const l of lights) {
+    if (l.works === "fail") failed.push(l);
+    else active.push(l);
+  }
+  return { active, failed };
+};
+
+const shellTableHead = `<thead>
+              <tr>
+                <th></th>
+                <th>Shell</th>
+                <th>Works?</th>
+                <th>Cell</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
+                <th class="num">mAh</th>
+                <th class="num">$/unit</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>`;
+
+const renderFailedShellSection = (failed) => {
+  if (!failed.length) return "";
+  const rows = sortKingFirst(failed).map(shellRow).join("");
+  const count = failed.length;
+  const label = count === 1 ? "1 failed shell" : `${count} failed shells`;
+  return `<details class="shell-failed">
+          <summary class="shell-failed__summary">${escapeHtml(label)}</summary>
+          <p class="gear-hint gear-block shell-failed__hint">
+            Bench checked. Sealed shut, wrong chemistry, or otherwise not viable
+            for a janknode build.
+          </p>
+          <div class="scroll catalog-scroll">
+            <table class="catalog-table">
+              ${shellTableHead}
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </details>`;
 };
 
 const bomTableRow = (item, role, name) =>
@@ -349,6 +409,7 @@ export function renderPage(catalog) {
     radio_daily_mah,
   } = catalog;
   const { bomCore, bomTotal, firstBuyTotal } = computeBom(catalog);
+  const { active: activeShells, failed: failedShells } = partitionShells(lights);
   const bomLabel = money(bomTotal);
   const firstBuyLabel = money(firstBuyTotal);
 
@@ -386,7 +447,8 @@ export function renderPage(catalog) {
     copyright_year: String(new Date().getFullYear()),
     record_strip_html: recordStripHtml,
     bom_rows: bomRows,
-    shell_rows: sortKingFirst(lights).map(shellRow).join(""),
+    shell_rows: sortKingFirst(activeShells).map(shellRow).join(""),
+    shell_failed_section: renderFailedShellSection(failedShells),
     board_rows: sortKingFirst(boards)
       .map((g) => gearRow(g))
       .join(""),
@@ -431,6 +493,7 @@ export function applyTemplate(template, parts) {
     .replace("{{record_strip_html}}", parts.record_strip_html)
     .replace("{{bom_rows}}", parts.bom_rows)
     .replace("{{shell_rows}}", parts.shell_rows)
+    .replace("{{shell_failed_section}}", parts.shell_failed_section)
     .replace("{{board_rows}}", parts.board_rows)
     .replace("{{antenna_rows}}", parts.antenna_rows)
     .replace("{{battery_rows}}", parts.battery_rows)

@@ -42,6 +42,9 @@ mah_label:
 works:
   value: fail
   source: measured
+fail_reason:
+  value: sealed
+  source: measured
 amazon: https://www.amazon.com/dp/B0DT95J4QC
 youtube_review:
   value: https://www.youtube.com/watch?v=FCZbJHRHioc

@@ -37,8 +37,11 @@ mah_label:
   value: 1800
   source: listing
 works:
-  value: maybe
-  source: agent
+  value: fail
+  source: measured
+fail_reason:
+  value: sealed
+  source: measured
 amazon: https://www.amazon.com/dp/B0FHQH9LPQ
 in_stock:
   value: true
@@ -48,4 +51,5 @@ notes: |
   Stake or wall mount spotlight. Four brightness modes. Amazon's Choice.
   Product description: "1800mAh rechargeable battery." No chemistry or cell
   on PDP. Harvest 2026-09-22.
+  Bench 2026-09-22: returned — sealed shut, no enclosure access.
 ---

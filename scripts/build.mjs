@@ -92,6 +92,11 @@ const html = applyTemplate(template, parts)
 
 writeFileSync(join(root, 'index.html'), html)
 
+const failedShellCount = catalog.lights.filter((l) => l.works === 'fail').length
+const activeShellCount = catalog.lights.length - failedShellCount
+const failedNote =
+  failedShellCount > 0 ? ` (+ ${failedShellCount} failed hidden)` : ''
+
 console.log(
-  `index.html: ${catalog.lights.length} shells, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
+  `index.html: ${activeShellCount} shells${failedNote}, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
 )

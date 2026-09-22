@@ -42,6 +42,9 @@ mah_label:
 works:
   value: fail
   source: agent
+fail_reason:
+  value: nimh
+  source: listing
 amazon: https://www.amazon.com/dp/B07WPHTWBP
 in_stock:
   value: true
