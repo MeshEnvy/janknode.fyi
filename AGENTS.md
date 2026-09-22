@@ -27,7 +27,7 @@ Full-browser PDP preferred (URL bar = ASIN). Incomplete shots are normal.
 
 1. **Amazon:** copy `gear/_template/` → `gear/<ASIN>/`. **Rokland kits:** copy `kits/_template/` → `kits/<SKU>/`.
 2. Save PDP as `shots/YYYY-MM-DD-pdp.jpg`. Save the product-detail capture as `product-detail-snapshot.jpg`.
-3. Cut out **512×512** `profile.jpg` with the `extract-profile` skill. Set `profile_source` to the best PDP shot. Antennas: `connector` + `profile_extract` to pick one unit without redrawing.
+3. Cut out **512×512** `profile.jpg` with the `extract-profile` skill. Prefer `profile_method: crop` + `profile_crop` from a clean hero (`node scripts/crop-profile.mjs`). AI cutout only for messy backgrounds. Never invent connectors the hero does not show.
 4. Fill `listing.md`. Kits: `kind: kit`. Gear: `kind: antenna | consumable | tool`. Tools also need `group` (`solder`, `measure`, `fabrication`, `hand`).
 5. Update `data/data.yaml` (`boards`, `antennas`, `consumables`, `tools`), then `npm run build`.
    - One `king: true` row per category (shells, boards, antennas). King sorts first; green row + 👑 in table.

@@ -2,31 +2,29 @@
 name: extract-profile
 description: >-
   Isolate a product from a PDP/snapshot onto white for profile.jpg (512×512).
-  Background removal and crop only — do not re-render the product. Also
-  standardizes VNA sweep shots. Use for profile extract loop or regen.
+  Prefer pixel crop; AI cutout only for messy backgrounds. Do not re-render
+  products. Also standardizes VNA sweep shots.
 ---
 
 # Extract catalog profile
 
-`profile.jpg` is a 512×512 tile: **one product (or full set) cut out from a real photo on white**. Not a new render.
+`profile.jpg` is a 512×512 tile: **real pixels from a source photo on white**. Not a new render.
 
 Stamp: `profile.ai` + `profile.meta.yaml`.
 
-## Job (in order)
+## Method pick (strict order)
 
-1. **Isolate** the product from the best source photo.
-2. **Remove background** → pure white (`#FFFFFF`).
-3. **Crop / compose** to square with margin. Resize on install.
+1. **`profile_method: crop`** (or `profile_crop` set) → `node scripts/crop-profile.mjs <folder>`. **No GenerateImage.**
+2. **Clean product-on-white hero** → crop if you can determine bounds; else AI **background removal only** (see **Cutout prompt**).
+3. **Messy snapshot** (store chrome, hands) → AI cutout to drop chrome; still **do not redraw the product**.
 
-Only if the source cannot work (store chrome fills frame, wrong pack count with no single-unit shot, hands blocking product): minimal edit to drop chrome or pick one unit. **Do not change viewing angle, connector geometry, labels, or colors** unless the source truly lacks that detail.
+If the hero **does not show a connector** (smooth plastic base), output the hero as-is. **Never invent a metal connector** — models default to female bulkhead (external threads), which is wrong for SMA-male whips like muzi.
 
 ## Source pick
 
-1. `profile_source` in `listing.md` if set (repo-relative path under the folder).
-2. Else `product-detail-snapshot.jpg`.
-3. Else newest `shots/*pdp*`.
-
-Prefer a **clean product-on-white hero** over a full Amazon page capture when both exist.
+1. `profile_source` in `listing.md`
+2. Else `product-detail-snapshot.jpg`
+3. Else newest `shots/*pdp*`
 
 ## Queue
 
@@ -34,68 +32,64 @@ Prefer a **clean product-on-white hero** over a full Amazon page capture when bo
 npm run profile-queue
 ```
 
-`pending` = source image exists, no `profile.ai`. Prints `profile_source`, `connector`, `profile_extract` snippets.
+Prints `method`, `source`, `crop`, `connector`, `profile_extract`.
 
 ## Loop
 
-1. Next `pending` row (or the folder the user named).
+1. Next `pending` row (or folder the user named).
 2. Read `listing.md` (+ `profile.meta.yaml` fallback). Open the source image.
-3. `GenerateImage` — **cutout prompt only** (see **Prompt**). Pass the source as `reference_image_paths`. `aspect_ratio: "1:1"`, `filename: "profile.jpg"`.
-4. `node scripts/install-profile.mjs <generated.jpg> <folder>`.
-5. **Verify** the output against the source photo (not against imagination):
-   - Same product type, angle, proportions, colors, printed text.
-   - Antennas/pigtails: connector gender matches `connector` and the source.
-   - Tool sets: same pieces as `profile_extract` / listing, not substitutes.
-   - No store UI, prices, hands, watermarks.
-6. Fail → retry once with **stricter cutout language** ("copy pixels", "do not redraw"). Still bad → delete `profile.ai`, leave pending.
+3. **If `profile_method: crop` or `profile_crop` set:** run `crop-profile.mjs`. Skip GenerateImage.
+4. **Else:** GenerateImage with **cutout prompt only**. Pass source as `reference_image_paths`. `aspect_ratio: "1:1"`.
+5. `node scripts/install-profile.mjs <file> <folder>` (crop script calls this automatically).
+6. **Verify against source pixels:**
+   - Same angle, colors, labels, piece count.
+   - RF: if connector visible in source, gender must match. If **not** visible, base must stay smooth — no added metal jack.
+   - No store UI, hands, watermarks.
+7. Fail → for cutout, tighten prompt ("copy pixels, do not redraw"). For crop, fix `profile_crop`. Delete `profile.ai` if still bad.
 
-To redo: delete `profile.ai`, fix `listing.md`, re-run.
-
-## Listing hints (`listing.md`)
+## Listing hints
 
 | Field | When |
 |---|---|
-| `profile_source` | Best file to cut from (e.g. `shots/2026-09-21-pdp.jpg`) |
-| `connector` | RF parts where gender must survive cutout |
-| `profile_extract` | Which unit from a multi-pack, which items in a set, what not to drop |
+| `profile_method` | `crop` (pixel extract) or `cutout` (AI bg removal) |
+| `profile_source` | File to cut from |
+| `profile_crop` | `left,top,width,height` in source pixels (crop method) |
+| `connector` | RF gender — metadata only; do not paint from imagination |
+| `profile_extract` | Which unit from pack, set pieces, **do not invent connector** |
 
-`install-profile.mjs` copies all three into `profile.meta.yaml`.
-
-## What to show (isolation rules)
+## What to show
 
 | Category | Isolate |
 |---|---|
-| Lights | **One** shell from a multi-pack hero. No lawn/scene. |
-| Tools | **Every** piece in the set, same layout as source when possible. NanoVNA: restyle LCD only (see **VNA sweeps**). |
-| Consumables | Full set if the SKU is a set (pigtail fan, solder kit pieces). |
-| Antennas | **One** antenna unless pigtail is in-frame and part of SKU. Never redraw the connector — preserve from source. |
-| Kits | Kit as photographed. |
+| Lights | One shell from multi-pack hero |
+| Tools | Every piece in the set |
+| Consumables | Full set if SKU is a set |
+| Antennas | One antenna. **No invented connector.** |
+| Kits | Kit as photographed |
 
-## Prompt (cutout — default)
-
-Use this shape. Do not swap in "photorealistic catalog photo" or "studio render" language.
+## Cutout prompt (AI — last resort)
 
 ```
-Product cutout from the reference image only. Task: background removal and isolation — NOT a new product render.
+Product cutout from the reference image only. Background removal — NOT a new product render.
 
-Preserve the product exactly as photographed: same angle, shape, colors, labels, connector, and proportions. Copy from the reference; do not redraw or simplify.
+Preserve the product exactly as photographed: same angle, shape, colors, labels, and proportions. Copy pixels; do not redraw.
 
-[profile_extract if set]
+[profile_extract]
 
-Replace background with pure white. Remove store UI / hands / text outside the product. [If multi-pack: isolate ONE unit / or ALL pieces per rules above.]
+Replace background with pure white. Remove store UI / hands only.
 
-Do NOT invent details. Do NOT change connector gender. Do NOT change viewing angle unless impossible otherwise.
+Do NOT invent connectors, threads, or metal parts not visible in the source.
 ```
 
-**Forbidden prompt words:** "photorealistic catalog photo", "studio shot", "generate a product photo", "match Amazon hero layout" (when that implies redraw).
+**Forbidden:** "photorealistic catalog photo", "studio shot", "generate a product photo", naming connector geometry the source does not show.
 
 ## VNA sweeps
 
-Restyle `shots/*vna*` to simulated NanoVNA-H S11 SWR (see prior skill). That is the one case we **do** redraw content (meter LCD), not product cutouts.
+Restyle `shots/*vna*` to simulated NanoVNA-H S11 SWR. Only case we redraw content.
 
 ## Do not
 
+- Use GenerateImage when `profile_method: crop`
+- Invent SMA connectors when the hero shows a smooth plastic base
 - Re-render products when a clean PDP exists
-- Run `normalize-profiles.mjs` / `npm run profiles`
-- Overwrite `profile.ai` unless redo requested
 - Commit unless asked

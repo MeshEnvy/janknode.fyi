@@ -56,7 +56,9 @@ function main() {
       const src = snapshot ? 'snapshot' : basename(pdp)
       const meta = readListingMeta(folder)
       const hints = []
+      if (meta?.profile_method) hints.push(`method=${meta.profile_method}`)
       if (meta?.profile_source) hints.push(`source=${meta.profile_source}`)
+      if (meta?.profile_crop) hints.push(`crop=${meta.profile_crop}`)
       if (meta?.connector) hints.push(`connector=${meta.connector}`)
       if (meta?.profile_extract) hints.push(`extract: ${meta.profile_extract.slice(0, 80)}…`)
       const hint = hints.length ? `  [${hints.join('; ')}]` : ''

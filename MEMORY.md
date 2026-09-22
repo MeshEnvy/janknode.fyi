@@ -62,4 +62,4 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 - Listing-only until bay photos. Chemistry gate still open on all non-king rows.
 - SOLPEX cheapest $/shell on paper; king stays field-proven HMCITY.
 - Gear gaps: heat-shrink, bench supply PDPs.
-- Profile tiles: cutout/isolate from `profile_source` (`extract-profile` skill), not re-render. `profile.meta.yaml` for regen. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).
+- Profile tiles: prefer `profile_method: crop` + `profile_crop` (`scripts/crop-profile.mjs`); AI cutout only for messy backgrounds. Never invent connectors. `profile.meta.yaml` for regen. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).

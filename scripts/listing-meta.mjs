@@ -27,7 +27,9 @@ function fromListing(folder) {
   const root = doc.toJSON()
   if (!root || typeof root !== 'object') return null
   return {
+    profile_method: scalar(root.profile_method),
     profile_source: scalar(root.profile_source),
+    profile_crop: scalar(root.profile_crop),
     connector: scalar(root.connector),
     profile_extract: scalar(root.profile_extract),
     kind: scalar(root.kind),
@@ -43,7 +45,9 @@ function fromProfileMeta(folder) {
     const root = parse(readFileSync(path, 'utf8'))
     if (!root || typeof root !== 'object') return null
     return {
+      profile_method: root.profile_method ?? null,
       profile_source: root.profile_source ?? null,
+      profile_crop: root.profile_crop ?? null,
       connector: root.connector ?? null,
       profile_extract: root.profile_extract ?? null,
       kind: root.kind ?? null,
@@ -60,7 +64,9 @@ export function readListingMeta(folder) {
   const listing = fromListing(folder) ?? {}
   const saved = fromProfileMeta(folder) ?? {}
   const merged = {
+    profile_method: listing.profile_method || saved.profile_method || null,
     profile_source: listing.profile_source || saved.profile_source || null,
+    profile_crop: listing.profile_crop || saved.profile_crop || null,
     connector: listing.connector || saved.connector || null,
     profile_extract: listing.profile_extract || saved.profile_extract || null,
     kind: listing.kind || saved.kind || null,

@@ -32,7 +32,11 @@ if (!existsSync(folder)) {
 
 const dest = join(folder, 'profile.jpg')
 const tmp = `${dest}.tmp`
-await sharp(src).resize(SIZE, SIZE).jpeg({ quality: 86, mozjpeg: true }).toFile(tmp)
+await sharp(src)
+  .resize(SIZE, SIZE, { fit: 'contain', background: '#ffffff' })
+  .flatten({ background: '#ffffff' })
+  .jpeg({ quality: 86, mozjpeg: true })
+  .toFile(tmp)
 renameSync(tmp, dest)
 const meta = await sharp(dest).metadata()
 if (meta.width !== SIZE || meta.height !== SIZE) {
@@ -47,7 +51,9 @@ const profileMeta = {
   generated: new Date().toISOString().slice(0, 10),
   source: 'listing.md',
 }
+if (listing?.profile_method) profileMeta.profile_method = listing.profile_method
 if (listing?.profile_source) profileMeta.profile_source = listing.profile_source
+if (listing?.profile_crop) profileMeta.profile_crop = listing.profile_crop
 if (listing?.connector) profileMeta.connector = listing.connector
 if (listing?.profile_extract) profileMeta.profile_extract = listing.profile_extract
 if (listing?.kind) profileMeta.kind = listing.kind
