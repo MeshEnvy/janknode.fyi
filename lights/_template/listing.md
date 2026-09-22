@@ -30,6 +30,9 @@ size_in:
 weight:
   value:
   source: unknown
+cell:
+  value: # 14500 | 18650 | AAA | unknown
+  source: unknown
 chemistry:
   value: # 1S-li-ion | 1.2V-nimh | unknown
   source: unknown
@@ -40,7 +43,7 @@ mah_label:
   value:
   source: unknown
 works:
-  value: unknown # pass | fail | unknown
+  value: unknown # pass | fail | maybe | likely | unknown
   source: unknown
 amazon: https://www.amazon.com/dp/B0EXAMPLE
 youtube_review:

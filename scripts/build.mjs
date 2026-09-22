@@ -60,15 +60,25 @@ function loadCatalog() {
     enrichVswrShots(enrichAmazon(row)),
   )
 
+  const batteries = (doc.batteries || []).map((row) => {
+    const item = { ...row }
+    if (!item.profile && item.slug) {
+      item.profile = `batteries/${item.slug}/profile.jpg`
+    }
+    return item
+  })
+
   const consumables = (doc.consumables || []).map((row) => enrichAmazon(row))
   const tools = (doc.tools || []).map((row) => enrichAmazon(row))
 
   return {
     last_verified: doc.last_verified,
     king_shell_asin: kingAsin,
+    radio_daily_mah: doc.radio_daily_mah ?? 220,
     lights,
     boards,
     antennas,
+    batteries,
     consumables,
     tools,
     hero: doc.hero || {},
@@ -83,5 +93,5 @@ const html = applyTemplate(template, parts)
 writeFileSync(join(root, 'index.html'), html)
 
 console.log(
-  `index.html: ${catalog.lights.length} shells, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
+  `index.html: ${catalog.lights.length} shells, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
 )

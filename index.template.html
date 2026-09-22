@@ -477,6 +477,9 @@
           border-radius: 0;
         }
         .catalog-table td.col-works,
+        .catalog-table td.col-cell,
+        .catalog-table td.col-chemistry,
+        .catalog-table td.col-v,
         .catalog-table td.col-mah,
         .catalog-table td.col-unit,
         .catalog-table td.col-gain,
@@ -804,6 +807,11 @@
         color: var(--win);
         background: #eef6ee;
         border-color: var(--win-line);
+      }
+      .badge.maybe {
+        color: #8a6d1f;
+        background: #fff8e6;
+        border-color: #e6d08a;
       }
       .num {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -1220,6 +1228,7 @@
         <a class="site-nav__link" href="#shells" data-nav="shells">Shells</a>
         <a class="site-nav__link" href="#boards" data-nav="boards">Boards</a>
         <a class="site-nav__link" href="#antennas" data-nav="antennas">Antennas</a>
+        <a class="site-nav__link" href="#batteries" data-nav="batteries">Batteries</a>
         <a class="site-nav__link" href="#shop" data-nav="shop">Shop</a>
       </div>
     </nav>
@@ -1281,6 +1290,9 @@
                 <th></th>
                 <th>Shell</th>
                 <th>Works?</th>
+                <th>Cell</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
                 <th class="num">mAh</th>
                 <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
@@ -1345,6 +1357,41 @@
             </thead>
             <tbody id="gear-antennas">
               {{antenna_rows}}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider section-divider--swap"
+        id="batteries"
+        aria-labelledby="batteries-heading"
+      >
+        <h2 class="gear-title" id="batteries-heading">Batteries</h2>
+        <p class="gear-hint gear-block">
+          1S Li-ion cells for shells that ship an undersized 18650 or 14500.
+          Days column uses ~220 mAh/day RAK4631 slim repeater average
+          (powersaving on).
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Cell</th>
+                <th>Form</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
+                <th class="num">mAh</th>
+                <th>Top</th>
+                <th>Protected</th>
+                <th class="num">Days</th>
+                <th class="num">$/unit</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>
+            <tbody id="gear-batteries">
+              {{battery_rows}}
             </tbody>
           </table>
         </div>

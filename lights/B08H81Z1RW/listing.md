@@ -30,25 +30,29 @@ size_in:
 weight:
   value: 3.05 oz
   source: listing
+cell:
+  value: AAA
+  source: measured
 chemistry:
-  value:
-  source: unknown
+  value: 1.2V-nimh
+  source: measured
 nominal_v:
-  value:
-  source: unknown
+  value: 1.2
+  source: measured
 mah_label:
-  value:
-  source: unknown
+  value: 700
+  source: measured
 works:
-  value: unknown
-  source: unknown
+  value: fail
+  source: measured
 amazon: https://www.amazon.com/dp/B08H81Z1RW
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
-  Stainless wedge, upgraded laminate panel claim. Amazon's Choice. Listing
-  mentions AAA in one field — treat as drift until bay photo. Sold by HomeMark.
-  16-pack variant also listed.
+  **Out — AAA NiMH.** Bench measure 2026-09-22: AAA cell, 1.2 V, 700 mAh on the leads
+  the radio would tap. Immediate disqualifier (no 1S Li-ion). Stainless wedge,
+  upgraded laminate panel claim. Amazon's Choice. Sold by HomeMark. 16-pack
+  variant also listed.
 ---

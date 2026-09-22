@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { readListingMeta } from './listing-meta.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const CATALOG_DIRS = ['lights', 'gear', 'kits']
+const CATALOG_DIRS = ['lights', 'gear', 'kits', 'batteries']
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i
 
 function newestPdp(folder) {

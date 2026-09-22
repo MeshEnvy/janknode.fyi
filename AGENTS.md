@@ -1,8 +1,8 @@
 # AGENTS.md — Janknode Review Guide
 
-Janknode review guide: **shells**, **boards**, **antennas**, **consumables**, **tools**. Single static page: build-time SSG from `index.template.html` + `data/data.yaml` → generated `index.html`.
+Janknode review guide: **shells**, **boards**, **antennas**, **batteries**, **consumables**, **tools**. Single static page: build-time SSG from `index.template.html` + `data/data.yaml` → generated `index.html`.
 
-Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Amazon parts: `gear/<ASIN>/`. Rokland RAK kits: `kits/<SKU>/`. Catalog: `data/data.yaml`. Clean product tiles: [extract-profile](.cursor/skills/extract-profile/SKILL.md).
+Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Amazon parts: `gear/<ASIN>/`. Rokland RAK kits: `kits/<SKU>/`. Non-Amazon cells: `batteries/<slug>/`. Catalog: `data/data.yaml`. Clean product tiles: [extract-profile](.cursor/skills/extract-profile/SKILL.md).
 
 ## Power path
 
@@ -23,9 +23,18 @@ Radio needs **1S Li-ion (~3.7 V)**. **1.2 V NiMH** (and 2S/3S NiMH) = **Won't wo
 
 Full-browser PDP preferred (URL bar = ASIN). Incomplete shots are normal.
 
+## Ingest a cell
+
+1. Copy `batteries/_template/` → `batteries/<slug>/` (e.g. `inr18650-25r`).
+2. Save vendor PDP as `product-detail-snapshot.jpg`; cell photo in `shots/`.
+3. AI-extract **512×512** `profile.jpg` with the extract-profile skill.
+4. Fill `listing.md` (cell, chemistry, V, mAh, top, protected, vendor, buy_url).
+5. Add row under `batteries:` in `data/data.yaml`, then `npm run build`.
+6. One `king: true` row when we have a field pick for that form factor.
+
 ## Ingest build gear
 
-1. **Amazon:** copy `gear/_template/` → `gear/<ASIN>/`. **Rokland kits:** copy `kits/_template/` → `kits/<SKU>/`.
+1. **Amazon:** copy `gear/_template/` → `gear/<ASIN>/`. **Rokland kits:** copy `kits/<SKU>/`.
 2. Save PDP as `shots/YYYY-MM-DD-pdp.jpg`. Save the product-detail capture as `product-detail-snapshot.jpg`.
 3. AI-extract **512×512** `profile.jpg` with the `extract-profile` skill. Set `profile_extract` when the shot is a pack, a set, or the connector is easy to get wrong.
 4. Fill `listing.md`. Kits: `kind: kit`. Gear: `kind: antenna | consumable | tool`. Tools also need `group` (`solder`, `measure`, `fabrication`, `hand`).

@@ -142,6 +142,73 @@ const formatVswrShots = (shots) => {
     .join("")}</div>`;
 };
 
+const chemistryLabel = (chemistry) => {
+  if (chemistry == null) return null;
+  const key = String(chemistry).toLowerCase();
+  const labels = {
+    "1s-li-ion": "Li-ion",
+    "1.2v-nimh": "NiMH",
+    nimh: "NiMH",
+    "li-ion": "Li-ion",
+  };
+  return labels[key] || chemistry;
+};
+
+const formatCellCell = (l) =>
+  labeledTd("Cell", l.cell ? escapeHtml(String(l.cell)) : dash, "col-cell");
+
+const formatChemistryCell = (l) => {
+  const label = chemistryLabel(l.chemistry);
+  return labeledTd(
+    "Chemistry",
+    label ? escapeHtml(label) : dash,
+    "col-chemistry",
+  );
+};
+
+const formatNominalVCell = (l) => {
+  const value =
+    l.nominal_v != null
+      ? `<span class="num">${escapeHtml(String(l.nominal_v))}</span>`
+      : dash;
+  return labeledTd("V", value, "col-v num");
+};
+
+const formatMahCell = (item) => {
+  const value =
+    item.mah_label != null
+      ? `<span class="num">${escapeHtml(item.mah_label.toLocaleString())}</span>`
+      : dash;
+  return labeledTd("mAh", value, "col-mah num");
+};
+
+const formatTopCell = (b) =>
+  labeledTd(
+    "Top",
+    b.top ? escapeHtml(String(b.top)) : dash,
+    "col-top",
+  );
+
+const formatProtectedCell = (b) => {
+  if (b.protected == null) return labeledTd("Protected", dash, "col-protected");
+  const label = b.protected ? "Yes" : "No";
+  return labeledTd("Protected", escapeHtml(label), "col-protected");
+};
+
+const formatRuntimeDaysCell = (b, dailyMah) => {
+  if (b.mah_label == null || dailyMah == null || dailyMah <= 0) {
+    return labeledTd("Days", dash, "col-days num");
+  }
+  const days = b.mah_label / dailyMah;
+  const formatted =
+    days >= 10 ? String(Math.round(days)) : days.toFixed(1).replace(/\.0$/, "");
+  return labeledTd(
+    "Days",
+    `<span class="num">${escapeHtml(formatted)}</span>`,
+    "col-days num",
+  );
+};
+
 const formatUnitCostCell = (item) => {
   const value =
     item.unit_price_usd != null
@@ -187,6 +254,26 @@ const gearRow = (
         </tr>`;
 };
 
+const batteryRow = (b, dailyMah) => {
+  const kingBadge = b.king ? winnerBadgeHtml() : "";
+  return `<tr>
+          ${labeledTd("", gearThumb(b), "col-thumb")}
+          ${itemCell({
+            primary: `${escapeHtml(b.title)}${kingBadge}`,
+            secondary: b.brand,
+          })}
+          ${formatCellCell(b)}
+          ${formatChemistryCell(b)}
+          ${formatNominalVCell(b)}
+          ${formatMahCell(b)}
+          ${formatTopCell(b)}
+          ${formatProtectedCell(b)}
+          ${formatRuntimeDaysCell(b, dailyMah)}
+          ${formatUnitCostCell(b)}
+          ${buyCell(b)}
+        </tr>`;
+};
+
 const shellRow = (l) => {
   const works = l.works || "unknown";
   const worksClass = /^[\w-]+$/.test(works) ? works : "unknown";
@@ -197,7 +284,10 @@ const shellRow = (l) => {
             secondary: l.form || null,
           })}
           ${labeledTd("Works?", `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`, "col-works")}
-          ${labeledTd("mAh", l.mah_label != null ? `<span class="num">${escapeHtml(l.mah_label.toLocaleString())}</span>` : dash, "col-mah num")}
+          ${formatCellCell(l)}
+          ${formatChemistryCell(l)}
+          ${formatNominalVCell(l)}
+          ${formatMahCell(l)}
           ${formatUnitCostCell(l)}
           ${buyCell(l)}
         </tr>`;
@@ -247,8 +337,17 @@ function computeBom(catalog) {
 }
 
 export function renderPage(catalog) {
-  const { lights, boards, antennas, consumables, tools, hero, last_verified } =
-    catalog;
+  const {
+    lights,
+    boards,
+    antennas,
+    batteries,
+    consumables,
+    tools,
+    hero,
+    last_verified,
+    radio_daily_mah,
+  } = catalog;
   const { bomCore, bomTotal, firstBuyTotal } = computeBom(catalog);
   const bomLabel = money(bomTotal);
   const firstBuyLabel = money(firstBuyTotal);
@@ -282,7 +381,7 @@ export function renderPage(catalog) {
 
   return {
     title: `Janknode Review Guide — solar repeater from ${bomLabel}`,
-    description: `Build a Meshtastic or MeshCore solar repeater from ${bomLabel}. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools.`,
+    description: `Build a Meshtastic or MeshCore solar repeater from ${bomLabel}. Shell rankings, RAK boards, 915 MHz antennas, 18650 cells, consumables, and bench tools.`,
     json_ld: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
     copyright_year: String(new Date().getFullYear()),
     record_strip_html: recordStripHtml,
@@ -297,6 +396,9 @@ export function renderPage(catalog) {
           unitCost: true,
         }),
       )
+      .join(""),
+    battery_rows: sortKingFirst(batteries)
+      .map((b) => batteryRow(b, radio_daily_mah))
       .join(""),
     consumable_rows: consumables
       .map((g) =>
@@ -331,6 +433,7 @@ export function applyTemplate(template, parts) {
     .replace("{{shell_rows}}", parts.shell_rows)
     .replace("{{board_rows}}", parts.board_rows)
     .replace("{{antenna_rows}}", parts.antenna_rows)
+    .replace("{{battery_rows}}", parts.battery_rows)
     .replace("{{consumable_rows}}", parts.consumable_rows)
     .replace("{{tool_rows}}", parts.tool_rows);
 }

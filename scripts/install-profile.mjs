@@ -2,7 +2,7 @@
 /**
  * Resize a generated product photo to 512×512 and stamp the folder done.
  * Usage: node scripts/install-profile.mjs <generated.jpg> <folder>
- * Folder is lights/<ASIN>, gear/<ASIN>, or kits/<SKU> (repo-relative or absolute).
+ * Folder is lights/<ASIN>, gear/<ASIN>, kits/<SKU>, or batteries/<slug> (repo-relative or absolute).
  */
 import { existsSync, renameSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'

@@ -1,0 +1,13 @@
+generated: 2026-09-22
+source: listing.md
+profile_method: photo-crop
+profile_source: shots/2026-09-22-cell.png
+profile_crop: vertical cell, left of product shot
+profile_extract: Samsung INR21700-58E only — NOT an 18650 25R. Use the vertical
+  standing cell on the left of the reference. Bright lime-yellow-green wrap (not
+  mint/teal 18650 green, not dark green). Black dot-matrix text must show
+  +5330mAh and CC5493F A01. 21700 is longer and fatter than 18650 — keep that
+  proportion. Flat top. Remove the horizontal cell and floor reflection.
+kind: battery
+title: INR21700-58E (58E)
+brand: Samsung SDI

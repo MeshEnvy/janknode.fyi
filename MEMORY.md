@@ -4,11 +4,11 @@ GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.f
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-22
 
 ## What this is
 
-Static review guide for janknode builds: **shells**, **boards**, **antennas**, **consumables**, and **tools**. Five table sections; king row per category where we have a field pick. **Build:** `data/data.yaml` + `index.template.html` → `scripts/render.mjs` → `npm run build` → `index.html` (committed, full SEO HTML, no client JS). Screenshots and agent notes live in this repo so others can PR.
+Static review guide for janknode builds: **shells**, **boards**, **antennas**, **batteries**, **consumables**, and **tools**. Six table sections; king row per category where we have a field pick. **Build:** `data/data.yaml` + `index.template.html` → `scripts/render.mjs` → `npm run build` → `index.html` (committed, full SEO HTML, no client JS). Screenshots and agent notes live in this repo so others can PR.
 
 ## King
 
@@ -20,8 +20,8 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 | ASIN | Brand | Class | $/shell | Works? |
 |---|---|---|---|---|
-| B08H81Z1RW | SOLPEX | fence wedge | $2.50 | unknown |
-| B0GH63TL8H | AUDERWIN | fence step | $2.75 | unknown |
+| B08H81Z1RW | SOLPEX | fence wedge | $2.50 | **fail** (AAA NiMH) |
+| B0GH63TL8H | AUDERWIN | fence step | $2.75 | maybe (14500, 500 mAh) |
 | B0DRNRZV32 | TECKNET | fence cap | $2.75 | unknown |
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | **fail** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | unknown |
@@ -47,6 +47,16 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 **King antenna:** XWXGG 20 cm whip + pigtail (B0FQK27BSP, 6 dBi listed, VSWR 1.00 @ 915 MHz, $6.50). Alts: XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY), muzi 17 cm whip (B0FSTD4BYM, no listing gain).
 
+## Batteries (2 listings)
+
+YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
+
+**King 18650:** Samsung INR18650-25R (25R), 2500 mAh → **11 days** at 220 mAh/day RAK4631 draw.
+
+**King 21700:** Samsung INR21700-58E (58E), 5330 mAh → **24 days** at 220 mAh/day. 21700 bay only; verify cavity fit.
+
+**Runtime basis:** `radio_daily_mah: 220` in `data/data.yaml` (RAK4631 slim, powersaving on, planning estimate until bench logged).
+
 **Hero BOM:** board + antenna + required consumables only until a shell king returns (was ≈ $42.52 with HMCITY shell). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (15 listings)
@@ -60,7 +70,8 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 ## Active threads
 
 - Listing-only until bay photos. Chemistry gate still open on unknown shells.
-- SOLPEX cheapest $/shell on paper; no field king until teardown proves access.
+- SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
+- No field king until teardown proves 1S Li-ion access on a candidate shell.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).

@@ -1,0 +1,26 @@
+---
+description: Catalog profile.jpg — GenerateImage only; no source photo manipulation
+alwaysApply: true
+---
+
+# Profile extract — agentic only
+
+Catalog `profile.jpg` tiles come from **GenerateImage** (agentic prompt + reference photo). Skill: `.cursor/skills/extract-profile/SKILL.md`.
+
+## Required
+
+1. Read `listing.md` (`profile_source`, `profile_extract`, `connector`, kind, title).
+2. Pass the **exact** reference file from `profile_source` (or `product-detail-snapshot.jpg`) as `reference_image_paths`. Verify the path matches the SKU folder before generating.
+3. `GenerateImage` with the skill prompt + `profile_extract`. `aspect_ratio: "1:1"`.
+4. `node scripts/install-profile.mjs <generated.jpg> <folder>` — **only** on the GenerateImage output (resize to 512×512 + stamp). Never on `shots/` or snapshots.
+
+## Forbidden
+
+- **Any image manipulation on source/reference photos:** sharp crop/trim/extract/resize, ImageMagick, ffmpeg, pixel coordinates, manual crops, photo-crop scripts.
+- Generating a profile without opening the reference image and confirming it is the right SKU.
+- Substituting a different listing's shot (e.g. 18650 photo for a 21700 row).
+- Inventing product shape, color, connectors, or branding not in the reference.
+
+## Verify before stamp
+
+Read the generated tile. Fail and retry (once) if wrong form factor, wrong color, wrong markings, store chrome, or wrong product class. Delete `profile.ai` and leave pending if still bad.

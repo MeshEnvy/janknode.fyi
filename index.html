@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Janknode Review Guide — solar repeater from $39.19</title>
-    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $39.19. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $39.19 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
+    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $39.19. Shell rankings, RAK boards, 915 MHz antennas, 18650 cells, consumables, and bench tools." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $39.19 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-22"}</script>
     <link rel="canonical" href="https://janknode.fyi/" />
     <link rel="icon" href="logo-small-favicon.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -477,6 +477,9 @@
           border-radius: 0;
         }
         .catalog-table td.col-works,
+        .catalog-table td.col-cell,
+        .catalog-table td.col-chemistry,
+        .catalog-table td.col-v,
         .catalog-table td.col-mah,
         .catalog-table td.col-unit,
         .catalog-table td.col-gain,
@@ -804,6 +807,11 @@
         color: var(--win);
         background: #eef6ee;
         border-color: var(--win-line);
+      }
+      .badge.maybe {
+        color: #8a6d1f;
+        background: #fff8e6;
+        border-color: #e6d08a;
       }
       .num {
         font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -1220,6 +1228,7 @@
         <a class="site-nav__link" href="#shells" data-nav="shells">Shells</a>
         <a class="site-nav__link" href="#boards" data-nav="boards">Boards</a>
         <a class="site-nav__link" href="#antennas" data-nav="antennas">Antennas</a>
+        <a class="site-nav__link" href="#batteries" data-nav="batteries">Batteries</a>
         <a class="site-nav__link" href="#shop" data-nav="shop">Shop</a>
       </div>
     </nav>
@@ -1330,6 +1339,9 @@
                 <th></th>
                 <th>Shell</th>
                 <th>Works?</th>
+                <th>Cell</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
                 <th class="num">mAh</th>
                 <th class="num">$/unit</th>
                 <th class="col-buy">Buy</th>
@@ -1342,8 +1354,11 @@
             <div class="item-title">SOLPEX</div>
             <div class="item-sub">fence wedge</div>
           </td>
-          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-works" data-label="Works?"><span class="badge fail">fail</span></td>
+          <td class="col-cell" data-label="Cell">AAA</td>
+          <td class="col-chemistry" data-label="Chemistry">NiMH</td>
+          <td class="col-v num" data-label="V"><span class="num">1.2</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">700</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.50</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B08H81Z1RW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $29.99</span></a></td>
         </tr><tr>
@@ -1352,8 +1367,11 @@
             <div class="item-title">AUDERWIN</div>
             <div class="item-sub">fence step</div>
           </td>
-          <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-works" data-label="Works?"><span class="badge maybe">maybe</span></td>
+          <td class="col-cell" data-label="Cell">14500</td>
+          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0GH63TL8H" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
@@ -1363,7 +1381,10 @@
             <div class="item-sub">fence cap</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">600</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DRNRZV32" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
@@ -1373,6 +1394,9 @@
             <div class="item-sub">wall wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">fail</span></td>
+          <td class="col-cell" data-label="Cell">18650</td>
+          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
@@ -1383,6 +1407,9 @@
             <div class="item-sub">fence wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$3.83</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0G2BKN15W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $45.99</span></a></td>
@@ -1393,6 +1420,9 @@
             <div class="item-sub">PIR wall</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.17</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C7B2Z39G" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $24.99</span></a></td>
@@ -1403,6 +1433,9 @@
             <div class="item-sub">fence wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.67</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07WPHTWBP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $27.99</span></a></td>
@@ -1413,6 +1446,9 @@
             <div class="item-sub">fence wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0H3LWZHHW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.96</span></a></td>
@@ -1423,6 +1459,9 @@
             <div class="item-sub">fence wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C813SJXP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
@@ -1433,6 +1472,9 @@
             <div class="item-sub">fence step</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FGCM9TBN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
@@ -1443,6 +1485,9 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.42</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DMNH8QDN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $64.99</span></a></td>
@@ -1453,6 +1498,9 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$6.25</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FHQH9LPQ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 8-pack $49.99</span></a></td>
@@ -1463,6 +1511,9 @@
             <div class="item-sub">flood</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">4,000</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$15.99</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B085242PLC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $31.98</span></a></td>
@@ -1473,6 +1524,9 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
@@ -1483,6 +1537,9 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
@@ -1493,6 +1550,9 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="empty">—</span></td>
+          <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D99X4M48" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
@@ -1628,6 +1688,71 @@
           <td class="col-notes" data-label="Notes">Right-angle rubber duck ~19.5 cm, SMA male. Pigtail in box.</td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DY7KSYTV" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $9.99</span></a></td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section
+        class="section-divider section-divider--swap"
+        id="batteries"
+        aria-labelledby="batteries-heading"
+      >
+        <h2 class="gear-title" id="batteries-heading">Batteries</h2>
+        <p class="gear-hint gear-block">
+          1S Li-ion cells for shells that ship an undersized 18650 or 14500.
+          Days column uses ~220 mAh/day RAK4631 slim repeater average
+          (powersaving on).
+        </p>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Cell</th>
+                <th>Form</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
+                <th class="num">mAh</th>
+                <th>Top</th>
+                <th>Protected</th>
+                <th class="num">Days</th>
+                <th class="num">$/unit</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>
+            <tbody id="gear-batteries">
+              <tr>
+          <td class="col-thumb" data-label=""><img class="thumb" src="batteries/inr18650-25r/profile.jpg" alt="Samsung SDI" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">INR18650-25R (25R)<span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span></div>
+            <div class="item-sub">Samsung SDI</div>
+          </td>
+          <td class="col-cell" data-label="Cell">18650</td>
+          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-v num" data-label="V"><span class="num">3.6</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">2,500</span></td>
+          <td class="col-top" data-label="Top">flat</td>
+          <td class="col-protected" data-label="Protected">No</td>
+          <td class="col-days num" data-label="Days"><span class="num">11</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$4.99</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.18650batterystore.com/products/samsung-25r-18650" target="_blank" rel="noopener noreferrer" title="Buy on 18650 Battery Store"><span class="buy-btn__icon"><i class="fa-solid fa-bag-shopping fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $4.99</span></a></td>
+        </tr><tr>
+          <td class="col-thumb" data-label=""><img class="thumb" src="batteries/inr21700-58e/profile.jpg" alt="Samsung SDI" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">INR21700-58E (58E)<span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span></div>
+            <div class="item-sub">Samsung SDI</div>
+          </td>
+          <td class="col-cell" data-label="Cell">21700</td>
+          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-v num" data-label="V"><span class="num">3.6</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">5,330</span></td>
+          <td class="col-top" data-label="Top">flat</td>
+          <td class="col-protected" data-label="Protected">No</td>
+          <td class="col-days num" data-label="Days"><span class="num">24</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$4.99</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.18650batterystore.com/products/samsung-58e-21700-battery" target="_blank" rel="noopener noreferrer" title="Buy on 18650 Battery Store"><span class="buy-btn__icon"><i class="fa-solid fa-bag-shopping fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $4.99</span></a></td>
         </tr>
             </tbody>
           </table>

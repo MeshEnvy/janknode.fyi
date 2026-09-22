@@ -8,7 +8,11 @@ description: >-
 
 # Extract catalog profile
 
-`product-detail-snapshot.jpg` (or `profile_source`) is the raw capture. `profile.jpg` is the 512×512 tile. **Always use GenerateImage.** Do not hand-crop, do not run `extract-profile.mjs` / `crop-profile.mjs`.
+`product-detail-snapshot.jpg` (or `profile_source`) is the raw capture. `profile.jpg` is the 512×512 tile. **Always use GenerateImage (agentic prompt + reference photo).** No other path.
+
+**Forbidden on source/reference photos:** sharp, ImageMagick, ffmpeg, trim/crop/extract, pixel coordinates, photo-crop scripts, `extract-profile.mjs`, `crop-profile.mjs`, or any manual image edit. Agents must not run shell/node one-liners that manipulate `shots/` or snapshots.
+
+`install-profile.mjs` is allowed **only** on GenerateImage output (resize to 512×512 + stamp). Never pass a source shot to it.
 
 Some shots are full Amazon pages, multi-packs, or busy scenes. The model has to pull the product out. A rectangle crop cannot.
 
@@ -27,7 +31,7 @@ npm run profile-queue
 Until the queue is empty or the user stops:
 
 1. Next `pending` row (or the folder the user named).
-2. Read `listing.md` (`kind`, `connector`, `profile_extract`, brand, title). Fallback: `profile.meta.yaml`. Open the source image (`profile_source`, else `product-detail-snapshot.jpg`, else newest `shots/*pdp*`).
+2. Read `listing.md` (`kind`, `connector`, `profile_extract`, brand, title). Fallback: `profile.meta.yaml`. Open the source image (`profile_source`, else `product-detail-snapshot.jpg`, else newest `shots/*pdp*`). **Confirm the reference matches this SKU** (form factor, color, markings) before generating.
 3. `GenerateImage` with that file as `reference_image_paths`, `aspect_ratio: "1:1"`, `filename: "profile.jpg"`. Use **Prompt** below. Paste `profile_extract` and `connector` into it.
 4. `node scripts/install-profile.mjs <generated.jpg> <folder>`.
 5. Read `profile.jpg`. Fail if store chrome, prices, wrong product, a **pack of identical lights**, a **set missing pieces**, a **duplicated tool**, or a **connector the source does not show** (invented jack, flipped SMA gender, external threads on a male whip). Retry **once** with the same prompt plus the specific failure. Still bad → delete `profile.ai`, leave pending.
@@ -67,6 +71,7 @@ Forbidden: "photorealistic catalog photo", "studio shot of a new antenna", "draw
 | Consumables | The supply plus accessories in the photo. A pigtail 5-pack stays five cables. |
 | Antennas | One antenna. Pigtail only if it is in the photo and part of the SKU. |
 | Kits | The kit as photographed. |
+| Batteries | One cell. Match form factor (18650 vs 21700) and markings (+5330mAh, CC5493F, etc.) from the reference. Never swap in another cell size. |
 
 ## Listing hints
 
@@ -119,7 +124,8 @@ Restyle `shots/*vna*` to a simulated NanoVNA-H S11 SWR screen (dark LCD, cyan gr
 
 ## Do not
 
-- Manual pixel crops or `profile_crop`
+- Manual pixel crops, `profile_crop`, sharp, or any image tool on source photos
 - Generate a product that is not in the reference
+- Use the wrong listing's reference image (18650 shot for 21700, etc.)
 - Invent connectors
 - Commit unless asked

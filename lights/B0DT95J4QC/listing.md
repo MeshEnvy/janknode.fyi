@@ -27,6 +27,9 @@ color:
 size_in:
   value: 4.12 × 3.65 × 2.08
   source: listing
+cell:
+  value: 18650
+  source: listing
 chemistry:
   value: 1S-li-ion
   source: listing
@@ -62,7 +65,7 @@ last_verified: 2026-09-22
 notes: |
   **Out — molded shut.** Bench teardown 2026-09-21: no screws, no seam, no
   non-destructive enclosure access. Product images showed fasteners; actual unit
-  is a sealed monolith. Do not buy for janknode builds regardless of chemistry.
-  Front-button 6-pack, black shell. Listing claimed modular panel / cavity / lens;
-  not verified — could not open.
+  is a sealed monolith. Do not buy for janknode builds. Listing claims 18650
+  1200 mAh / 3.7 V Li-ion in a cradle; chemistry looked right on paper but
+  enclosure could not be opened to verify or convert.
 ---

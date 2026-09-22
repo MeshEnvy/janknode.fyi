@@ -6,7 +6,10 @@
 #   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
 #   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
-last_verified: 2026-09-21
+last_verified: 2026-09-22
+
+# RAK4631 slim repeater planning draw (powersaving on). Update when bench logged.
+radio_daily_mah: 220
 
 hero:
   consumables:
@@ -26,8 +29,11 @@ shells:
     unit_price_usd: 2.50
     ip: null
     size_in: 3.9 × 1.1 × 3.1
-    mah_label: null
-    works: unknown
+    cell: AAA
+    chemistry: 1.2V-nimh
+    nominal_v: 1.2
+    mah_label: 700
+    works: fail
     profile: lights/B08H81Z1RW/profile.jpg
     amazon: https://www.amazon.com/dp/B08H81Z1RW
   - asin: B0GH63TL8H
@@ -38,8 +44,11 @@ shells:
     unit_price_usd: 2.75
     ip: IP65
     size_in: null
-    mah_label: null
-    works: unknown
+    cell: 14500
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
+    mah_label: 500
+    works: maybe
     profile: lights/B0GH63TL8H/profile.jpg
     amazon: https://www.amazon.com/dp/B0GH63TL8H
   - asin: B0DRNRZV32
@@ -50,7 +59,7 @@ shells:
     unit_price_usd: 2.75
     ip: IP66
     size_in: 3.58 × 2.36 × 0.98
-    mah_label: null
+    mah_label: 600
     works: unknown
     profile: lights/B0DRNRZV32/profile.jpg
     amazon: https://www.amazon.com/dp/B0DRNRZV32
@@ -63,6 +72,9 @@ shells:
     unit_price_usd: 3.33
     ip: IP65
     size_in: 4.12 × 3.65 × 2.08
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
     mah_label: 1200
     works: fail
     youtube_review: https://www.youtube.com/watch?v=FCZbJHRHioc
@@ -304,6 +316,42 @@ antennas:
         label: NanoVNA
     king: true
     note: Straight 20 cm whip, SMA male. Pigtail in box. Current deploy pick.
+
+batteries:
+  - slug: inr18650-25r
+    brand: Samsung SDI
+    title: INR18650-25R (25R)
+    vendor: 18650 Battery Store
+    buy_url: https://www.18650batterystore.com/products/samsung-25r-18650
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.6
+    mah_label: 2500
+    cdr_a: 20
+    top: flat
+    protected: false
+    pack_qty: 1
+    pack_price_usd: 4.99
+    unit_price_usd: 4.99
+    unit_label: cell
+    king: true
+  - slug: inr21700-58e
+    brand: Samsung SDI
+    title: INR21700-58E (58E)
+    vendor: 18650 Battery Store
+    buy_url: https://www.18650batterystore.com/products/samsung-58e-21700-battery
+    cell: 21700
+    chemistry: 1S-li-ion
+    nominal_v: 3.6
+    mah_label: 5330
+    cdr_a: 10.7
+    top: flat
+    protected: false
+    pack_qty: 1
+    pack_price_usd: 4.99
+    unit_price_usd: 4.99
+    unit_label: cell
+    king: true
 
 consumables:
   - asin: B01HXU1PKS
