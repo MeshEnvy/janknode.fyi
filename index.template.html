@@ -997,6 +997,32 @@
         font-weight: 600;
         margin: 0 0 0.35rem;
       }
+      .shell-table-block {
+        margin-top: 1.25rem;
+      }
+      .shell-table-block:first-of-type {
+        margin-top: 0;
+      }
+      .shell-table-block__title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.35rem;
+      }
+      .shell-table-block--passing .shell-table-block__title {
+        color: var(--good);
+      }
+      .shell-table-block--evaluation .shell-table-block__title {
+        color: var(--muted);
+      }
+      .shell-table-block__hint {
+        margin-bottom: 0.65rem;
+      }
+      .shell-empty {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding: 1.25rem 0.85rem;
+      }
       .shell-failed {
         margin-top: 1.25rem;
         border: 1px solid var(--line);
@@ -1315,29 +1341,11 @@
       >
         <h2 class="gear-title" id="shells-heading">Shells</h2>
         <p class="gear-hint gear-block">
-          Solar lights we ranked. See the winning setup above for our current
-          pick.
+          Solar lights we ranked. Passing shells first; the rest are still under
+          evaluation. See the winning setup above for our current pick.
         </p>
-        <div class="scroll catalog-scroll">
-          <table class="catalog-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Shell</th>
-                <th>Works?</th>
-                <th>Cell</th>
-                <th>Chemistry</th>
-                <th class="num">V</th>
-                <th class="num">mAh</th>
-                <th class="num">$/unit</th>
-                <th class="col-buy">Buy</th>
-              </tr>
-            </thead>
-            <tbody id="rows">
-              {{shell_rows}}
-            </tbody>
-          </table>
-        </div>
+        {{shell_passing_section}}
+        {{shell_evaluation_section}}
         {{shell_failed_section}}
       </section>
 

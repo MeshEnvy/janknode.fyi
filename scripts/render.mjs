@@ -309,14 +309,18 @@ const shellRow = (l) => {
         </tr>`;
 };
 
+const isPassingShell = (l) => l.works === "pass" || l.works === "likely";
+
 const partitionShells = (lights) => {
-  const active = [];
+  const passing = [];
+  const evaluation = [];
   const failed = [];
   for (const l of lights) {
     if (l.works === "fail") failed.push(l);
-    else active.push(l);
+    else if (isPassingShell(l)) passing.push(l);
+    else evaluation.push(l);
   }
-  return { active, failed };
+  return { passing, evaluation, failed };
 };
 
 const shellTableHead = `<thead>
@@ -332,6 +336,24 @@ const shellTableHead = `<thead>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>`;
+
+const shellEmptyRow =
+  '<tr><td colspan="9" class="shell-empty" data-label="">None yet.</td></tr>';
+
+const renderShellTableBlock = (title, hint, shells, modifier = "") => {
+  const rows = sortKingFirst(shells).map(shellRow).join("");
+  const modClass = modifier ? ` shell-table-block--${modifier}` : "";
+  return `<div class="shell-table-block${modClass}">
+          <h3 class="shell-table-block__title">${escapeHtml(title)}</h3>
+          <p class="gear-hint gear-block shell-table-block__hint">${escapeHtml(hint)}</p>
+          <div class="scroll catalog-scroll">
+            <table class="catalog-table">
+              ${shellTableHead}
+              <tbody>${shells.length ? rows : shellEmptyRow}</tbody>
+            </table>
+          </div>
+        </div>`;
+};
 
 const renderFailedShellSection = (failed) => {
   if (!failed.length) return "";
@@ -409,7 +431,7 @@ export function renderPage(catalog) {
     radio_daily_mah,
   } = catalog;
   const { bomCore, bomTotal, firstBuyTotal } = computeBom(catalog);
-  const { active: activeShells, failed: failedShells } = partitionShells(lights);
+  const { passing, evaluation, failed: failedShells } = partitionShells(lights);
   const bomLabel = money(bomTotal);
   const firstBuyLabel = money(firstBuyTotal);
 
@@ -447,7 +469,18 @@ export function renderPage(catalog) {
     copyright_year: String(new Date().getFullYear()),
     record_strip_html: recordStripHtml,
     bom_rows: bomRows,
-    shell_rows: sortKingFirst(activeShells).map(shellRow).join(""),
+    shell_passing_section: renderShellTableBlock(
+      "Passing",
+      "Bench pass or strong 1S Li-ion signals from the listing.",
+      passing,
+      "passing",
+    ),
+    shell_evaluation_section: renderShellTableBlock(
+      "Under evaluation",
+      "Harvested from Amazon. Teardown or field test still pending.",
+      evaluation,
+      "evaluation",
+    ),
     shell_failed_section: renderFailedShellSection(failedShells),
     board_rows: sortKingFirst(boards)
       .map((g) => gearRow(g))
@@ -492,7 +525,8 @@ export function applyTemplate(template, parts) {
     .replace("{{copyright_year}}", escapeHtml(parts.copyright_year))
     .replace("{{record_strip_html}}", parts.record_strip_html)
     .replace("{{bom_rows}}", parts.bom_rows)
-    .replace("{{shell_rows}}", parts.shell_rows)
+    .replace("{{shell_passing_section}}", parts.shell_passing_section)
+    .replace("{{shell_evaluation_section}}", parts.shell_evaluation_section)
     .replace("{{shell_failed_section}}", parts.shell_failed_section)
     .replace("{{board_rows}}", parts.board_rows)
     .replace("{{antenna_rows}}", parts.antenna_rows)

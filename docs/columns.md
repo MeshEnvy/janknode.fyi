@@ -10,6 +10,8 @@ How we fill the table. Listing claims are a start. Measured beats claimed.
 
 When `works: fail`, set **`fail_reason`** so the badge says why: **sealed** (molded shut), **nimh** (1.2 V / NiMH), **underpowered** (Li-ion but too small for repeater duty), **alkaline**. Hidden fail table shows the reason, not the word "fail".
 
+Shell table layout on the site: **Passing** (`pass`, `likely`) → **Under evaluation** (`maybe`, `unknown`) → collapsed **failed** (`fail`).
+
 Do not score keep-up, cavity, or mount on a fail. Fail rows stay in the collapsed table so people stop buying them.
 
 ## Shopping list

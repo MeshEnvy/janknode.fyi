@@ -92,11 +92,18 @@ const html = applyTemplate(template, parts)
 
 writeFileSync(join(root, 'index.html'), html)
 
-const failedShellCount = catalog.lights.filter((l) => l.works === 'fail').length
-const activeShellCount = catalog.lights.length - failedShellCount
+const shellCounts = catalog.lights.reduce(
+  (acc, l) => {
+    if (l.works === 'fail') acc.failed += 1
+    else if (l.works === 'pass' || l.works === 'likely') acc.passing += 1
+    else acc.evaluation += 1
+    return acc
+  },
+  { passing: 0, evaluation: 0, failed: 0 },
+)
 const failedNote =
-  failedShellCount > 0 ? ` (+ ${failedShellCount} failed hidden)` : ''
+  shellCounts.failed > 0 ? ` (+ ${shellCounts.failed} failed hidden)` : ''
 
 console.log(
-  `index.html: ${activeShellCount} shells${failedNote}, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
+  `index.html: ${shellCounts.passing} passing, ${shellCounts.evaluation} under eval${failedNote}, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
 )
