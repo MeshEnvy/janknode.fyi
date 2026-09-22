@@ -9,6 +9,9 @@ title:
 kind:
   value: antenna
   source: agent
+connector:
+  value: SMA male
+  source: listing
 group:
   value:
   source: agent

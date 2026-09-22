@@ -9,6 +9,12 @@ title:
 kind:
   value: consumable
   source: agent
+connector:
+  value: SMA female
+  source: listing
+profile_extract:
+  value: Show all 5 pigtail cables fanned out as sold. Tiny gold U.FL/IPEX on one end of each cable. Other end is SMA female bulkhead — external threads on the barrel, center socket/receptacle (hole, no pin). Hex nut for panel mount. Do NOT render SMA male (no center pin protruding).
+  source: listing
 group:
   value:
   source: agent

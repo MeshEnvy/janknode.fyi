@@ -7,7 +7,16 @@ title:
   value:
   source: listing
 kind:
-  value: consumable # consumable | tool
+  value: consumable # consumable | tool | antenna
+  source: agent
+connector:
+  value: # antennas only — SMA male | SMA female | RP-SMA male | RP-SMA female
+  source: listing
+profile_source:
+  value: # optional — best cutout source, e.g. shots/YYYY-MM-DD-pdp.jpg
+  source: agent
+profile_extract:
+  value: # optional — isolation hints (one from pack, set pieces, do not redraw connector)
   source: agent
 group:
   value: # solder | measure | hand | null

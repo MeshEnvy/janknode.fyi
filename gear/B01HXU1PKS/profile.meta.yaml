@@ -1,0 +1,10 @@
+generated: 2026-09-22
+source: listing.md
+connector: SMA female
+profile_extract: Show all 5 pigtail cables fanned out as sold. Tiny gold
+  U.FL/IPEX on one end of each cable. Other end is SMA female bulkhead —
+  external threads on the barrel, center socket/receptacle (hole, no pin). Hex
+  nut for panel mount. Do NOT render SMA male (no center pin protruding).
+kind: consumable
+title: U.FL to SMA female pigtails, 15 cm (5×)
+brand: HiLetgo

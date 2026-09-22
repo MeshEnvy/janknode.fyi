@@ -7,7 +7,9 @@
 import { existsSync, renameSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { stringify } from 'yaml'
 import sharp from 'sharp'
+import { readListingMeta } from './listing-meta.mjs'
 
 const SIZE = 512
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -39,4 +41,18 @@ if (meta.width !== SIZE || meta.height !== SIZE) {
 }
 
 writeFileSync(join(folder, 'profile.ai'), '')
+
+const listing = readListingMeta(folder)
+const profileMeta = {
+  generated: new Date().toISOString().slice(0, 10),
+  source: 'listing.md',
+}
+if (listing?.profile_source) profileMeta.profile_source = listing.profile_source
+if (listing?.connector) profileMeta.connector = listing.connector
+if (listing?.profile_extract) profileMeta.profile_extract = listing.profile_extract
+if (listing?.kind) profileMeta.kind = listing.kind
+if (listing?.title) profileMeta.title = listing.title
+if (listing?.brand) profileMeta.brand = listing.brand
+writeFileSync(join(folder, 'profile.meta.yaml'), stringify(profileMeta))
+
 console.log(`wrote ${relative(root, dest)} ${SIZE}×${SIZE}`)

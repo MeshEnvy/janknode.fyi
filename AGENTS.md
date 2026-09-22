@@ -15,8 +15,8 @@ Radio needs **1S Li-ion (~3.7 V)**. **1.2 V NiMH** (and 2S/3S NiMH) = **Won't wo
 1. Copy `lights/_template/` to `lights/<ASIN>/`.
 2. Save the PDP (or bay / cavity / back) as `shots/YYYY-MM-DD-pdp.jpg` (or `-bay`, `-cavity`, `-back`).
 3. Save the Amazon/PDP capture as `product-detail-snapshot.jpg` (store chrome is fine; this is the raw snapshot).
-4. Extract a clean **512×512** `profile.jpg` with the `extract-profile` skill (white background, product only, no store UI).
-5. Fill `listing.md` front matter. Every field has `value` + `source: listing | measured | unknown`. Do not guess chemistry.
+4. Cut out a **512×512** `profile.jpg` with the `extract-profile` skill (isolate product from PDP on white — do not re-render).
+5. Fill `listing.md` front matter. Every field has `value` + `source: listing | measured | unknown`. Do not guess chemistry. Antennas: set `connector`. Use `profile_extract` when the agent needs extra image hints (single vs pack, connector detail).
 6. Add or update the row in `data/data.yaml` under `shells:`, then `npm run build`.
 7. Only one king shell. Set top-level `king:` ASIN in `data/data.yaml` or `king: true` on one shell row.
 8. When a shell gets a YouTube **review** or **assembly** video, set `youtube_review` and/or `youtube_assembly` in `data/data.yaml`. The table **Review** column updates automatically.
@@ -27,7 +27,7 @@ Full-browser PDP preferred (URL bar = ASIN). Incomplete shots are normal.
 
 1. **Amazon:** copy `gear/_template/` → `gear/<ASIN>/`. **Rokland kits:** copy `kits/_template/` → `kits/<SKU>/`.
 2. Save PDP as `shots/YYYY-MM-DD-pdp.jpg`. Save the product-detail capture as `product-detail-snapshot.jpg`.
-3. Extract a clean **512×512** `profile.jpg` with the `extract-profile` skill (white background, product only).
+3. Cut out **512×512** `profile.jpg` with the `extract-profile` skill. Set `profile_source` to the best PDP shot. Antennas: `connector` + `profile_extract` to pick one unit without redrawing.
 4. Fill `listing.md`. Kits: `kind: kit`. Gear: `kind: antenna | consumable | tool`. Tools also need `group` (`solder`, `measure`, `fabrication`, `hand`).
 5. Update `data/data.yaml` (`boards`, `antennas`, `consumables`, `tools`), then `npm run build`.
    - One `king: true` row per category (shells, boards, antennas). King sorts first; green row + 👑 in table.
@@ -45,7 +45,7 @@ npm run dev            # watch + rebuild + live reload at http://localhost:5173
 npm run build          # one-shot: data/data.yaml + index.template.html → index.html
 ```
 
-Snapshot vs profile: `product-detail-snapshot.jpg` is the raw PDP capture. `profile.jpg` is the 512×512 product tile. Do not crop the snapshot. Use the `extract-profile` skill. Commit `profile.jpg` with catalog changes.
+Snapshot vs profile: `product-detail-snapshot.jpg` is the raw store capture. `profile.jpg` is a 512×512 **cutout** (background removal + isolate product), not a re-render. Prefer `profile_source` pointing at a clean PDP shot. Use the `extract-profile` skill. Commit `profile.jpg`, `profile.meta.yaml`, and catalog changes together.
 
 Edit layout/CSS in `index.template.html`. Edit row HTML in `scripts/render.mjs`. Commit `data/data.yaml`, template changes, and the generated `index.html` together. CI runs build before deploy (must match committed output).
 

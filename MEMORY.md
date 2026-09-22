@@ -22,7 +22,7 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 |---|---|---|---|---|
 | B08H81Z1RW | SOLPEX | fence wedge | $2.50 | unknown |
 | B0GH63TL8H | AUDERWIN | fence step | $2.75 | unknown |
-| B0D0RNV327 | TECKNET | fence cap | $2.75 | unknown |
+| B0DRNRZV32 | TECKNET | fence cap | $2.75 | unknown |
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | likely |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | unknown |
 | B0C7B2Z39G | CLAONER | PIR wall | $4.17 | unknown |
@@ -62,4 +62,4 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 - Listing-only until bay photos. Chemistry gate still open on all non-king rows.
 - SOLPEX cheapest $/shell on paper; king stays field-proven HMCITY.
 - Gear gaps: heat-shrink, bench supply PDPs.
-- Profile tiles: AI extract (`extract-profile` skill). ANBES iron done; remaining rows still PDP crops.
+- Profile tiles: cutout/isolate from `profile_source` (`extract-profile` skill), not re-render. `profile.meta.yaml` for regen. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).

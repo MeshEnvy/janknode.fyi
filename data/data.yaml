@@ -251,7 +251,7 @@ antennas:
     vswr_shots:
       - src: gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg
         label: NanoVNA
-    note: Longer field whip. E6000 on nut only; keep silicone off SMA mating surface.
+    note: Longer field whip, SMA male. E6000 on nut only; keep silicone off SMA mating surface.
   - asin: B0CTXL61LY
     brand: Tenmory
     title: 915 MHz short omni + U.FL pigtail (2×)
@@ -440,4 +440,4 @@ tools:
     unit_price_usd: 22.79
     unit_label: set
     group: hand
-    note: Long-nose + diagonal cutters cover most bench work.
+    note: 10" water pump, 10" slip joint, 8" long nose, 8" linesman, 6" diagonal, 8" adjustable wrench.

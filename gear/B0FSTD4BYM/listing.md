@@ -9,6 +9,15 @@ title:
 kind:
   value: antenna
   source: agent
+profile_source:
+  value: shots/2026-09-21-pdp.jpg
+  source: listing
+connector:
+  value: SMA male
+  source: measured
+profile_extract:
+  value: Cut out the leftmost single antenna from the 4-pack hero. Keep the real photographed SMA male connector, gold muzi WORKS / 915 MHz base text, black whip, and viewing angle exactly as in the source. Remove the other three antennas and background only. Do not redraw or simplify the connector.
+  source: measured
 pack_qty:
   value: 4
   source: listing

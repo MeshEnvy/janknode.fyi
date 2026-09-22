@@ -1,0 +1,11 @@
+generated: 2026-09-22
+source: listing.md
+profile_source: shots/2026-09-21-pdp.jpg
+connector: SMA male
+profile_extract: Cut out the leftmost single antenna from the 4-pack hero. Keep
+  the real photographed SMA male connector, gold muzi WORKS / 915 MHz base text,
+  black whip, and viewing angle exactly as in the source. Remove the other three
+  antennas and background only. Do not redraw or simplify the connector.
+kind: antenna
+title: 915 MHz whip antenna, 17 cm
+brand: muzi WORKS

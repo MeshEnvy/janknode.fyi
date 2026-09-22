@@ -9,6 +9,12 @@ title:
 kind:
   value: antenna
   source: agent
+connector:
+  value: SMA male
+  source: listing
+profile_extract:
+  value: Whip antenna plus U.FL-to-SMA female pigtail as sold. Whip base is SMA male (center pin). Pigtail bulkhead is SMA female.
+  source: listing
 group:
   value:
   source: agent

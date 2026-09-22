@@ -1,17 +1,32 @@
 ---
 name: extract-profile
 description: >-
-  Extract a clean 512x512 catalog profile.jpg from a product-detail-snapshot.jpg
-  using image generation. Use when ingesting Amazon or PDP screenshots, replacing
-  crop-script profiles, running the profile extract loop, or when the user asks
-  for a clean product photo.
+  Isolate a product from a PDP/snapshot onto white for profile.jpg (512×512).
+  Background removal and crop only — do not re-render the product. Also
+  standardizes VNA sweep shots. Use for profile extract loop or regen.
 ---
 
 # Extract catalog profile
 
-`product-detail-snapshot.jpg` is the raw store capture. `profile.jpg` is the 512×512 tile. Do not crop or letterbox the snapshot. Generate a clean product photo from it.
+`profile.jpg` is a 512×512 tile: **one product (or full set) cut out from a real photo on white**. Not a new render.
 
-Done example: `gear/B0CGHD7GW5/` (white studio shot, no Amazon chrome). Stamp: `profile.ai`.
+Stamp: `profile.ai` + `profile.meta.yaml`.
+
+## Job (in order)
+
+1. **Isolate** the product from the best source photo.
+2. **Remove background** → pure white (`#FFFFFF`).
+3. **Crop / compose** to square with margin. Resize on install.
+
+Only if the source cannot work (store chrome fills frame, wrong pack count with no single-unit shot, hands blocking product): minimal edit to drop chrome or pick one unit. **Do not change viewing angle, connector geometry, labels, or colors** unless the source truly lacks that detail.
+
+## Source pick
+
+1. `profile_source` in `listing.md` if set (repo-relative path under the folder).
+2. Else `product-detail-snapshot.jpg`.
+3. Else newest `shots/*pdp*`.
+
+Prefer a **clean product-on-white hero** over a full Amazon page capture when both exist.
 
 ## Queue
 
@@ -19,43 +34,68 @@ Done example: `gear/B0CGHD7GW5/` (white studio shot, no Amazon chrome). Stamp: `
 npm run profile-queue
 ```
 
-`pending` = snapshot (or PDP shot) and no `profile.ai`. `done` = stamp present. One named ASIN/SKU → that folder only.
+`pending` = source image exists, no `profile.ai`. Prints `profile_source`, `connector`, `profile_extract` snippets.
 
 ## Loop
 
-Until the queue is empty or the user stops:
+1. Next `pending` row (or the folder the user named).
+2. Read `listing.md` (+ `profile.meta.yaml` fallback). Open the source image.
+3. `GenerateImage` — **cutout prompt only** (see **Prompt**). Pass the source as `reference_image_paths`. `aspect_ratio: "1:1"`, `filename: "profile.jpg"`.
+4. `node scripts/install-profile.mjs <generated.jpg> <folder>`.
+5. **Verify** the output against the source photo (not against imagination):
+   - Same product type, angle, proportions, colors, printed text.
+   - Antennas/pigtails: connector gender matches `connector` and the source.
+   - Tool sets: same pieces as `profile_extract` / listing, not substitutes.
+   - No store UI, prices, hands, watermarks.
+6. Fail → retry once with **stricter cutout language** ("copy pixels", "do not redraw"). Still bad → delete `profile.ai`, leave pending.
 
-1. Take the next `pending` row.
-2. Read `listing.md` (brand, title, `kind`) and the snapshot image. If `product-detail-snapshot.jpg` is missing, use the newest `shots/*pdp*`. Pick the extract rule from **What to show**.
-3. `GenerateImage` with that file as `reference_image_paths`, `aspect_ratio: "1:1"`, `filename: "profile.jpg"`.
-4. `node scripts/install-profile.mjs <generated.jpg> <folder>` → writes 512×512 `profile.jpg` + `profile.ai`.
-5. Read the written `profile.jpg`. Fail if it has store chrome, prices, ratings, invented logos/text, the wrong product, a **pack of lights**, or a **tool/supply set missing pieces**. Retry once with a tighter prompt. Still bad → leave pending, continue.
-6. Next item immediately. Do not wait for a timer.
+To redo: delete `profile.ai`, fix `listing.md`, re-run.
 
-Stop after one item only when the user named a single listing.
+## Listing hints (`listing.md`)
 
-## What to show
+| Field | When |
+|---|---|
+| `profile_source` | Best file to cut from (e.g. `shots/2026-09-21-pdp.jpg`) |
+| `connector` | RF parts where gender must survive cutout |
+| `profile_extract` | Which unit from a multi-pack, which items in a set, what not to drop |
 
-Read `kind` (and folder) before writing the prompt. Only include objects that are actually in the snapshot. Do not invent extras.
+`install-profile.mjs` copies all three into `profile.meta.yaml`.
 
-| Category | Folders / `kind` | Extract |
-|---|---|---|
-| **Lights** | `lights/` | A **single** instance of the light. Never the 6-pack / 12-pack grid. No fence, lawn, or house scene. |
-| **Tools** | `gear/` `kind: tool` | The **main tool(s) plus main accessories** in the picture. If the listing is a **collection** (pliers set, drill kit, step-bit case, solder kit), show **every tool in the set**, not one hero piece. |
-| **Supplies** | `gear/` `kind: consumable` | The **main supply plus related accessories** shown with it (caps, extra pens, pigtails in a fan). Same rule as tools: if the pack is a set, show the set. |
-| Antennas | `gear/` `kind: antenna` | One antenna of that listing. Include the pigtail only if it is in the snapshot and part of the SKU. |
-| Boards | `kits/` | The kit as sold (base + module + antenna if they are in the snapshot). |
+## What to show (isolation rules)
 
-Examples: one ROSHWEY wedge, not six. WORKPRO 6-piece → all pliers and the wrench. ANBES iron → iron, stand, solder tube, flux. HiLetgo pigtails → the fan of cables, not one connector.
+| Category | Isolate |
+|---|---|
+| Lights | **One** shell from a multi-pack hero. No lawn/scene. |
+| Tools | **Every** piece in the set, same layout as source when possible. NanoVNA: restyle LCD only (see **VNA sweeps**). |
+| Consumables | Full set if the SKU is a set (pigtail fan, solder kit pieces). |
+| Antennas | **One** antenna unless pigtail is in-frame and part of SKU. Never redraw the connector — preserve from source. |
+| Kits | Kit as photographed. |
 
-## Prompt
+## Prompt (cutout — default)
 
-Photorealistic square catalog photo of the exact product in the reference, pure white background. Compose per **What to show**. Everything in the composition fully in frame with margin. Match real shape and colors. No store UI, no prices, no watermarks, no hands, no readable invented labels.
+Use this shape. Do not swap in "photorealistic catalog photo" or "studio render" language.
 
-Name the object from `listing.md`. Leave LCDs blank. Blank lids if the model keeps inventing text.
+```
+Product cutout from the reference image only. Task: background removal and isolation — NOT a new product render.
+
+Preserve the product exactly as photographed: same angle, shape, colors, labels, connector, and proportions. Copy from the reference; do not redraw or simplify.
+
+[profile_extract if set]
+
+Replace background with pure white. Remove store UI / hands / text outside the product. [If multi-pack: isolate ONE unit / or ALL pieces per rules above.]
+
+Do NOT invent details. Do NOT change connector gender. Do NOT change viewing angle unless impossible otherwise.
+```
+
+**Forbidden prompt words:** "photorealistic catalog photo", "studio shot", "generate a product photo", "match Amazon hero layout" (when that implies redraw).
+
+## VNA sweeps
+
+Restyle `shots/*vna*` to simulated NanoVNA-H S11 SWR (see prior skill). That is the one case we **do** redraw content (meter LCD), not product cutouts.
 
 ## Do not
 
-- Run or restore `normalize-profiles.mjs` / `npm run profiles`
-- Overwrite a folder that already has `profile.ai` unless the user asked to redo it
+- Re-render products when a clean PDP exists
+- Run `normalize-profiles.mjs` / `npm run profiles`
+- Overwrite `profile.ai` unless redo requested
 - Commit unless asked

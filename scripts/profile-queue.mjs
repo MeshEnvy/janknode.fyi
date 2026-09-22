@@ -6,6 +6,7 @@
 import { existsSync, readdirSync, statSync } from 'node:fs'
 import { basename, dirname, join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readListingMeta } from './listing-meta.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const CATALOG_DIRS = ['lights', 'gear', 'kits']
@@ -53,7 +54,13 @@ function main() {
     }
     if (snapshot || pdp) {
       const src = snapshot ? 'snapshot' : basename(pdp)
-      console.log(`pending  ${rel}  (${src})`)
+      const meta = readListingMeta(folder)
+      const hints = []
+      if (meta?.profile_source) hints.push(`source=${meta.profile_source}`)
+      if (meta?.connector) hints.push(`connector=${meta.connector}`)
+      if (meta?.profile_extract) hints.push(`extract: ${meta.profile_extract.slice(0, 80)}…`)
+      const hint = hints.length ? `  [${hints.join('; ')}]` : ''
+      console.log(`pending  ${rel}  (${src})${hint}`)
       pending++
       continue
     }

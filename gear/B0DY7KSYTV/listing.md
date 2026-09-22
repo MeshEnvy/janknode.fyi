@@ -9,6 +9,12 @@ title:
 kind:
   value: antenna
   source: agent
+connector:
+  value: SMA male
+  source: listing
+profile_extract:
+  value: Right-angle rubber duck antenna plus U.FL pigtail as sold. Duck base is SMA male (center pin).
+  source: listing
 group:
   value:
   source: agent
