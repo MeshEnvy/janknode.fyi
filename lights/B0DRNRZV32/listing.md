@@ -1,5 +1,5 @@
 ---
-asin: B0D0RNV327
+asin: B0DRNRZV32
 brand:
   value: TECKNET
   source: listing
@@ -42,7 +42,7 @@ mah_label:
 works:
   value: unknown
   source: unknown
-amazon: https://www.amazon.com/dp/B0D0RNV327
+amazon: https://www.amazon.com/dp/B0DRNRZV32
 in_stock:
   value: true
   source: listing
