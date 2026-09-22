@@ -348,16 +348,18 @@
         .catalog-table tbody {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.85rem;
         }
         .catalog-table tr {
           --card-border: var(--line);
-          display: block;
+          --card-spec-label: 5.75rem;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
           width: 100%;
           border: 1px solid var(--card-border);
           border-radius: 12px;
           background: var(--panel);
-          padding: 0;
+          padding: 0 0 0.55rem;
           overflow: hidden;
         }
         .catalog-table tr:hover td {
@@ -365,6 +367,15 @@
         }
         #bom .catalog-table tr.bom-row {
           position: relative;
+          display: grid;
+          grid-template-columns: 5.25rem minmax(0, 1fr) auto;
+          grid-template-areas:
+            "thumb title price"
+            "buy buy buy";
+          align-items: center;
+          column-gap: 0.7rem;
+          row-gap: 0.4rem;
+          padding: 0.7rem 0.75rem 0.7rem;
         }
         #bom .catalog-table td.col-thumb {
           position: static;
@@ -405,19 +416,23 @@
           display: none;
         }
         .catalog-table td {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: var(--card-spec-label) minmax(0, 1fr);
           align-items: center;
-          gap: 0.75rem;
+          column-gap: 0.75rem;
           box-sizing: border-box;
           width: 100%;
+          min-width: 0;
+          max-width: none;
           margin: 0;
-          padding: 0.65rem 0.9rem;
-          border-bottom: none;
-          text-align: right;
+          padding: 0.36rem 0.85rem;
+          border: none;
+          text-align: unset;
+          grid-column: 1 / -1;
         }
         .catalog-table td[data-label]:not([data-label=""])::before {
           content: attr(data-label);
+          grid-column: 1;
           font-family: "IBM Plex Mono", ui-monospace, monospace;
           font-size: 0.62rem;
           font-weight: 500;
@@ -425,66 +440,94 @@
           text-transform: uppercase;
           color: var(--muted);
           text-align: left;
-          flex: 0 0 auto;
-          max-width: 46%;
         }
-        .catalog-table td.col-thumb,
-        .catalog-table td.col-item {
-          display: block;
-          border-bottom: none;
-          padding-bottom: 0.65rem;
-          margin-bottom: 0;
-          text-align: left;
+        .catalog-table td[data-label]:not([data-label=""]) > * {
+          grid-column: 2;
+          justify-self: end;
+          text-align: right;
         }
         .catalog-table td.col-thumb {
-          padding-bottom: 0.55rem;
+          display: block;
+          grid-column: 1 / -1;
+          padding: 0;
+          background: #fff;
         }
         .catalog-table .thumb {
           width: 100%;
           max-width: none;
-          height: 11rem;
+          height: 10.25rem;
           aspect-ratio: auto;
           object-fit: contain;
-          margin: 0;
+          margin: 0 auto;
           background: #fff;
         }
-        .catalog-table td.col-vswr,
-        .catalog-table td.col-gain,
-        .catalog-table td.col-unit,
-        .catalog-table td.col-notes {
-          flex-direction: column;
-          align-items: stretch;
+        .catalog-table td.col-item {
+          display: block;
+          grid-column: 1;
+          grid-row: 2;
+          padding: 0.6rem 0.5rem 0.35rem 0.85rem;
           text-align: left;
         }
-        .catalog-table td.col-vswr::before,
-        .catalog-table td.col-gain::before,
-        .catalog-table td.col-unit::before {
-          margin-bottom: 0.3rem;
+        .catalog-table td.col-review {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-start;
+          grid-column: 2;
+          grid-row: 2;
+          padding: 0.6rem 0.85rem 0.35rem 0;
         }
-        .catalog-table td.col-notes::before,
-        .catalog-table td.col-buy::before {
+        .catalog-table td.col-review::before {
           display: none;
         }
+        .catalog-table tr:not(:has(td.col-review)) td.col-item {
+          grid-column: 1 / -1;
+        }
+        .catalog-table td.col-works,
+        .catalog-table td.col-mah,
+        .catalog-table td.col-unit,
+        .catalog-table td.col-gain,
+        .catalog-table td.col-vswr,
+        .catalog-table td.col-notes,
+        .catalog-table td.col-cost {
+          border-top: 1px solid var(--line);
+        }
+        .catalog-table td.col-notes,
+        .catalog-table td.col-vswr {
+          align-items: start;
+        }
+        .catalog-table td.col-notes::before {
+          padding-top: 0.12rem;
+        }
+        .catalog-table td.col-vswr .vswr-measured {
+          display: block;
+          grid-column: 2;
+          justify-self: end;
+        }
+        .catalog-table td.col-vswr .vna-shots {
+          grid-column: 1 / -1;
+          margin-top: 0.2rem;
+        }
         .catalog-table .num {
-          white-space: normal;
+          white-space: nowrap;
         }
         .catalog-table .review-cell {
           width: auto;
         }
         .catalog-table .vna-shot img {
           width: 100%;
-          max-width: 220px;
+          max-width: 160px;
         }
         .catalog-table td.col-buy,
         .catalog-table th.col-buy {
           display: block;
-          width: 100%;
+          width: auto;
           min-width: 0;
           max-width: none;
-          border-bottom: none;
-          padding-top: 0.65rem;
-          margin-top: 0;
+          padding: 0.55rem 0.85rem 0.1rem;
           text-align: center;
+        }
+        .catalog-table td.col-buy::before {
+          display: none;
         }
         .catalog-table td.col-buy .buy-btn {
           display: grid;
@@ -512,43 +555,28 @@
         font-size: 0.92rem;
       }
       @media (max-width: 640px) {
-        table.catalog-table,
-        .catalog-table tr {
-          display: block;
-          width: 100%;
-          min-width: 0;
-          max-width: none;
-          box-sizing: border-box;
-        }
         table.catalog-table {
-          min-width: 0;
-        }
-        .catalog-table td {
+          display: block;
           width: 100%;
           min-width: 0;
           max-width: none;
           box-sizing: border-box;
         }
-        .catalog-table td.col-buy {
-          display: block;
+        .catalog-table tr,
+        .catalog-table td {
+          min-width: 0;
+          max-width: none;
+          box-sizing: border-box;
         }
         .catalog-table td.col-buy .buy-btn {
           display: grid;
           width: 100%;
           max-width: none;
         }
-        #bom .catalog-table tr.bom-row {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) auto;
-          grid-template-areas:
-            "thumb thumb"
-            "title price"
-            "buy buy";
-          padding: 0;
-        }
         #bom .bom-row td.col-thumb {
           grid-area: thumb;
-          padding: 0.55rem 0.75rem 0.35rem;
+          padding: 0;
+          background: transparent;
         }
         #bom .bom-row td.col-role {
           display: none;
@@ -556,8 +584,9 @@
         #bom .bom-row td.col-item {
           grid-area: title;
           display: block;
-          padding: 0.6rem 0 0.6rem 0.75rem;
-          border-bottom: none;
+          grid-column: unset;
+          grid-row: unset;
+          padding: 0;
         }
         #bom .bom-row td.col-item .item-title {
           font-size: 0.95rem;
@@ -566,8 +595,8 @@
         #bom .bom-row td.col-cost {
           grid-area: price;
           display: block;
-          padding: 0.6rem 0.75rem 0.6rem 0;
-          border-bottom: none;
+          padding: 0;
+          border-top: none;
           text-align: right;
           white-space: nowrap;
         }
@@ -583,14 +612,17 @@
         }
         #bom .bom-row td.col-buy {
           grid-area: buy;
-          padding: 0.45rem 0.75rem 0.75rem;
+          padding: 0.15rem 0 0;
         }
         #bom .bom-row td.col-buy::before {
           display: none;
         }
         #bom .bom-row .thumb {
-          height: 7.5rem;
+          width: 5.25rem;
+          height: 5.25rem;
+          aspect-ratio: 1;
           object-fit: contain;
+          background: #fff;
         }
       }
       th,
@@ -619,8 +651,8 @@
       }
       .thumb {
         width: 88px;
-        height: 64px;
-        object-fit: cover;
+        height: 88px;
+        object-fit: contain;
         background: var(--thumb-bg);
         display: block;
       }
@@ -1148,11 +1180,7 @@
         .catalog-table tbody {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
-        }
-        .catalog-table td {
-          border-bottom: none;
-          border-top: none;
+          gap: 0.85rem;
         }
       }
     </style>
@@ -1309,7 +1337,7 @@
             <div class="item-sub">wall wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge likely">likely</span></td>
-          <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
         </tr><tr>
@@ -1353,7 +1381,7 @@
             <div class="item-sub">fence wedge</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh">500</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$3.83</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0G2BKN15W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $45.99</span></a></td>
         </tr><tr>
@@ -1364,7 +1392,7 @@
             <div class="item-sub">PIR wall</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.17</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C7B2Z39G" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $24.99</span></a></td>
         </tr><tr>
@@ -1408,7 +1436,7 @@
             <div class="item-sub">fence step</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh">1,200</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FGCM9TBN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
         </tr><tr>
@@ -1419,7 +1447,7 @@
             <div class="item-sub">spotlight</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh">1,500</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.42</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DMNH8QDN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $64.99</span></a></td>
         </tr><tr>
@@ -1441,7 +1469,7 @@
             <div class="item-sub">flood</div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge unknown">unknown</span></td>
-          <td class="col-mah num" data-label="mAh">4,000</td>
+          <td class="col-mah num" data-label="mAh"><span class="num">4,000</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$15.99</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B085242PLC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $31.98</span></a></td>
         </tr><tr>
@@ -1577,7 +1605,7 @@
                 <img src="gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg" alt="muzi WORKS VSWR sweep, NanoVNA" loading="lazy" />
                 <span>NanoVNA</span>
               </button></div></td>
-          <td class="col-notes" data-label="Notes">Longer field whip. E6000 on nut only; keep silicone off SMA mating surface.</td>
+          <td class="col-notes" data-label="Notes">Longer field whip, SMA male. E6000 on nut only; keep silicone off SMA mating surface.</td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$9.98</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 4-pack $39.90</span></a></td>
         </tr><tr class="">
@@ -1805,7 +1833,7 @@
             
           </td>
           
-          <td class="col-notes" data-label="Notes">Long-nose + diagonal cutters cover most bench work.</td>
+          <td class="col-notes" data-label="Notes">10&quot; water pump, 10&quot; slip joint, 8&quot; long nose, 8&quot; linesman, 6&quot; diagonal, 8&quot; adjustable wrench.</td>
           
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07G9LKCML" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $22.79</span></a></td>
         </tr>

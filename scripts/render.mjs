@@ -172,7 +172,7 @@ const shellRow = (l) => {
             secondary: l.form || null,
           })}
           ${labeledTd("Works?", `<span class="badge ${worksClass}">${escapeHtml(works)}</span>`, "col-works")}
-          ${labeledTd("mAh", l.mah_label != null ? escapeHtml(l.mah_label.toLocaleString()) : dash, "col-mah num")}
+          ${labeledTd("mAh", l.mah_label != null ? `<span class="num">${escapeHtml(l.mah_label.toLocaleString())}</span>` : dash, "col-mah num")}
           ${formatUnitCostCell(l)}
           ${buyCell(l)}
         </tr>`;
