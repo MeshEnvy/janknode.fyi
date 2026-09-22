@@ -1,41 +1,41 @@
 ---
-asin: B0EXAMPLE
+asin: B075WB98FJ
 brand:
-  value:
+  value: MAIYUM
   source: listing
 title:
-  value:
+  value: Sn63/Pb37 rosin-core solder 0.8 mm
   source: listing
 kind:
-  value: consumable # consumable | tool
+  value: consumable
   source: agent
 group:
-  value: # solder | measure | hand | null
+  value: solder
   source: agent
 pack_qty:
-  value:
+  value: 1
   source: listing
 pack_price_usd:
-  value:
+  value: 8.99
   source: listing
 unit_price_usd:
-  value:
+  value: 8.99
   source: listing
 unit_label:
-  value:
+  value: spool
   source: agent
-amazon: https://www.amazon.com/dp/B0EXAMPLE
+amazon: https://www.amazon.com/dp/B075WB98FJ
 pairs_with:
-  value:
+  value: B0CGHD7GW5
   source: agent
 optional:
   value: false
   source: agent
-last_verified: YYYY-MM-DD
+last_verified: 2026-09-21
 notes: |
-  One line for the table Notes column.
+  50 g spool. Leaded 63/37. Wash hands after use.
 ---
 
-# B0EXAMPLE
+# B075WB98FJ
 
-Paste PDP into `shots/`. Crop `profile.jpg`.
+MAIYUM Sn63/Pb37 rosin-core solder, 0.8 mm, 50 g spool.

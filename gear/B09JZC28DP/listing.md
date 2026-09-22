@@ -1,41 +1,41 @@
 ---
-asin: B0EXAMPLE
+asin: B09JZC28DP
 brand:
-  value:
+  value: FainWan
   source: listing
 title:
-  value:
+  value: JST PH 2.0 mm 2-pin pigtails
   source: listing
 kind:
-  value: consumable # consumable | tool
+  value: consumable
   source: agent
 group:
-  value: # solder | measure | hand | null
+  value:
   source: agent
 pack_qty:
-  value:
+  value: 100
   source: listing
 pack_price_usd:
-  value:
+  value: 16.99
   source: listing
 unit_price_usd:
-  value:
+  value: 0.17
   source: listing
 unit_label:
-  value:
+  value: set
   source: agent
-amazon: https://www.amazon.com/dp/B0EXAMPLE
+amazon: https://www.amazon.com/dp/B09JZC28DP
 pairs_with:
   value:
   source: agent
 optional:
   value: false
   source: agent
-last_verified: YYYY-MM-DD
+last_verified: 2026-09-21
 notes: |
-  One line for the table Notes column.
+  RAK19003 battery JST-PH and similar (~120 mm leads).
 ---
 
-# B0EXAMPLE
+# B09JZC28DP
 
-Paste PDP into `shots/`. Crop `profile.jpg`.
+FainWan JST PH 2.0 mm 2-pin pigtails, 100 sets, ~120 mm red/black leads.
