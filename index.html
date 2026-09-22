@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Janknode Review Guide — solar repeater from $42.52</title>
-    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $42.52. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $42.52 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
+    <title>Janknode Review Guide — solar repeater from $39.19</title>
+    <meta name="description" content="Build a Meshtastic or MeshCore solar repeater from $39.19. Shell rankings, RAK boards, 915 MHz antennas, consumables, and bench tools." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Janknode Review Guide","description":"Solar repeater shell rankings and build BOM from $39.19 per node.","url":"https://janknode.fyi/","dateModified":"2026-09-21"}</script>
     <link rel="canonical" href="https://janknode.fyi/" />
     <link rel="icon" href="logo-small-favicon.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -463,24 +463,18 @@
         }
         .catalog-table td.col-item {
           display: block;
-          grid-column: 1;
+          grid-column: 1 / -1;
           grid-row: 2;
-          padding: 0.6rem 0.5rem 0.35rem 0.85rem;
+          padding: 0.6rem 0.85rem 0.35rem;
           text-align: left;
         }
-        .catalog-table td.col-review {
-          display: flex;
-          justify-content: flex-end;
-          align-items: flex-start;
-          grid-column: 2;
-          grid-row: 2;
-          padding: 0.6rem 0.85rem 0.35rem 0;
+        .catalog-table td.col-thumb--video {
+          background: #111;
         }
-        .catalog-table td.col-review::before {
-          display: none;
-        }
-        .catalog-table tr:not(:has(td.col-review)) td.col-item {
-          grid-column: 1 / -1;
+        .catalog-table td.col-thumb--video .shell-video-thumb {
+          width: 100%;
+          max-width: none;
+          border-radius: 0;
         }
         .catalog-table td.col-works,
         .catalog-table td.col-mah,
@@ -509,9 +503,6 @@
         }
         .catalog-table .num {
           white-space: nowrap;
-        }
-        .catalog-table .review-cell {
-          width: auto;
         }
         .catalog-table .vna-shot img {
           width: 100%;
@@ -656,31 +647,57 @@
         background: var(--thumb-bg);
         display: block;
       }
-      .review-play {
-        display: inline-flex;
+      .shell-video-thumb {
+        position: relative;
+        display: block;
+        width: 9.5rem;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 6px;
+        text-decoration: none;
+        background: #111;
+      }
+      .shell-video-thumb__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .shell-video-thumb__play {
+        position: absolute;
+        right: 0.35rem;
+        bottom: 0.35rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: 1.65rem;
-        height: 1.65rem;
         border-radius: 50%;
-        background: var(--ink);
+        background: rgba(0, 0, 0, 0.72);
         color: #fff;
-        text-decoration: none;
         font-size: 0.62rem;
         line-height: 1;
-        flex-shrink: 0;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
       }
-      .review-play:hover {
-        background: #3d3a32;
+      .shell-video-thumb:hover .shell-video-thumb__play {
+        background: rgba(0, 0, 0, 0.88);
       }
-      .review-cell {
-        text-align: center;
-        width: 3rem;
+      .shell-video-thumb--no-img {
+        background: linear-gradient(145deg, #2a2822 0%, #111 100%);
       }
-      .review-play-pending {
-        background: var(--line);
-        color: var(--muted);
-        cursor: default;
+      .shell-video-thumb--no-img .shell-video-thumb__img {
+        display: none;
+      }
+      .shell-video-thumb--no-img .shell-video-thumb__play {
+        background: transparent;
+        font-size: 1.15rem;
+      }
+      @media (min-width: 641px) {
+        .catalog-table th.col-thumb,
+        .catalog-table td.col-thumb--video {
+          width: 10.5rem;
+          min-width: 10.5rem;
+        }
       }
       .item-title {
         font-weight: 600;
@@ -1211,7 +1228,7 @@
       <header class="banner">
         <h1>Janknode Review Guide</h1>
       </header>
-      <aside class="current-record" aria-label="Current winning build"><div class="current-record__strip"><div class="current-record__badge"><span class="current-record__badge-icon" aria-hidden="true">👑</span> Current best</div><div class="current-record__viewport"><div class="current-record__track"><span class="current-record__item"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.52</span></span><span class="current-record__item" aria-hidden="true"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$42.52</span></span></div></div></div></aside>
+      <aside class="current-record" aria-label="Current winning build"><div class="current-record__strip"><div class="current-record__badge"><span class="current-record__badge-icon" aria-hidden="true">👑</span> Current best</div><div class="current-record__viewport"><div class="current-record__track"><span class="current-record__item"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$39.19</span></span><span class="current-record__item" aria-hidden="true"><span class="current-record__copy">Build a Meshtastic or MeshCore solar repeater for</span> <span class="current-record__price">$39.19</span></span></div></div></div></aside>
     </main>
 
     <section
@@ -1240,15 +1257,6 @@
             </thead>
             <tbody id="bom-rows">
               <tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY" /></td>
-          <td class="col-role" data-label="Role">Shell</td>
-          <td class="col-item" data-label="">
-            <div class="item-title">120 LED solar wall light</div>
-            
-          </td>
-          <td class="col-cost num" data-label="$/node"><span class="num">$3.33</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
-        </tr><tr class="bom-row">
           <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
           <td class="col-role" data-label="Role">Board</td>
           <td class="col-item" data-label="">
@@ -1295,8 +1303,8 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.99</span></a></td>
         </tr><tr class="bom-total-row">
           <td colspan="3" class="bom-total-label" data-label="">Total</td>
-          <td class="col-cost num" data-label="$/node"><span class="num">$42.52</span></td>
-          <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">$99.21</span></td>
+          <td class="col-cost num" data-label="$/node"><span class="num">$39.19</span></td>
+          <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">$79.23</span></td>
         </tr>
             </tbody>
           </table>
@@ -1320,7 +1328,6 @@
             <thead>
               <tr>
                 <th></th>
-                <th>Review</th>
                 <th>Shell</th>
                 <th>Works?</th>
                 <th class="num">mAh</th>
@@ -1330,19 +1337,7 @@
             </thead>
             <tbody id="rows">
               <tr>
-          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="HMCITY review not published yet">▶</span></td>
-          <td class="col-item" data-label="">
-            <div class="item-title">HMCITY</div>
-            <div class="item-sub">wall wedge</div>
-          </td>
-          <td class="col-works" data-label="Works?"><span class="badge likely">likely</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
-          <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
-        </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B08H81Z1RW/profile.jpg" alt="SOLPEX" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="SOLPEX review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">SOLPEX</div>
             <div class="item-sub">fence wedge</div>
@@ -1353,7 +1348,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B08H81Z1RW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $29.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0GH63TL8H/profile.jpg" alt="AUDERWIN" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="AUDERWIN review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">AUDERWIN</div>
             <div class="item-sub">fence step</div>
@@ -1364,7 +1358,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0GH63TL8H" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DRNRZV32/profile.jpg" alt="TECKNET" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="TECKNET review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">TECKNET</div>
             <div class="item-sub">fence cap</div>
@@ -1374,8 +1367,17 @@
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DRNRZV32" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $32.99</span></a></td>
         </tr><tr>
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DT95J4QC/profile.jpg" alt="HMCITY" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-title">HMCITY</div>
+            <div class="item-sub">wall wedge</div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge fail">fail</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DT95J4QC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $19.98</span></a></td>
+        </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0G2BKN15W/profile.jpg" alt="NIORSUN" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NIORSUN review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">NIORSUN</div>
             <div class="item-sub">fence wedge</div>
@@ -1386,7 +1388,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0G2BKN15W" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $45.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C7B2Z39G/profile.jpg" alt="CLAONER" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="CLAONER review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">CLAONER</div>
             <div class="item-sub">PIR wall</div>
@@ -1397,7 +1398,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C7B2Z39G" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $24.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B07WPHTWBP/profile.jpg" alt="ROSHWEY" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="ROSHWEY review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">ROSHWEY</div>
             <div class="item-sub">fence wedge</div>
@@ -1408,7 +1408,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07WPHTWBP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 6-pack $27.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0H3LWZHHW/profile.jpg" alt="Toeuitie" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="Toeuitie review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">Toeuitie</div>
             <div class="item-sub">fence wedge</div>
@@ -1419,7 +1418,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0H3LWZHHW" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.96</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C813SJXP/profile.jpg" alt="FLITI" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="FLITI review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">FLITI</div>
             <div class="item-sub">fence wedge</div>
@@ -1430,7 +1428,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0C813SJXP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FGCM9TBN/profile.jpg" alt="JOFIOS" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="JOFIOS review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">JOFIOS</div>
             <div class="item-sub">fence step</div>
@@ -1441,7 +1438,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FGCM9TBN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $59.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DMNH8QDN/profile.jpg" alt="WENATY" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="WENATY review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">WENATY</div>
             <div class="item-sub">spotlight</div>
@@ -1452,7 +1448,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0DMNH8QDN" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 12-pack $64.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FHQH9LPQ/profile.jpg" alt="NACINIC" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NACINIC review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">NACINIC</div>
             <div class="item-sub">spotlight</div>
@@ -1463,7 +1458,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FHQH9LPQ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 8-pack $49.99</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B085242PLC/profile.jpg" alt="LECLESTAR" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="LECLESTAR review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">LECLESTAR</div>
             <div class="item-sub">flood</div>
@@ -1473,8 +1467,7 @@
           <td class="col-unit num" data-label="$/unit"><span class="num">$15.99</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B085242PLC" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2-pack $31.98</span></a></td>
         </tr><tr>
-          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78HJYJ1/profile.jpg" alt="VOLISUN" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="VOLISUN review not published yet">▶</span></td>
+          <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=ZIx43smeGGE" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch VOLISUN review"><img class="shell-video-thumb__img" src="lights/B0D78HJYJ1/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
             <div class="item-title">VOLISUN</div>
             <div class="item-sub">spotlight</div>
@@ -1485,7 +1478,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78KYJDC/profile.jpg" alt="VOLISUN" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="VOLISUN review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">VOLISUN</div>
             <div class="item-sub">spotlight</div>
@@ -1496,7 +1488,6 @@
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D99X4M48/profile.jpg" alt="NACINIC" /></td>
-          <td class="col-review review-cell" data-label="Review"><span class="review-play review-play-pending" title="Review coming soon" aria-label="NACINIC review not published yet">▶</span></td>
           <td class="col-item" data-label="">
             <div class="item-title">NACINIC</div>
             <div class="item-sub">spotlight</div>

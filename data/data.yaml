@@ -3,8 +3,10 @@
 # Shell optional fields (omit until a video ships):
 #   youtube_review: https://www.youtube.com/watch?v=…
 #   youtube_assembly: https://www.youtube.com/watch?v=…
+#   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
+#   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
+#   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
 last_verified: 2026-09-21
-king: B0DT95J4QC
 
 hero:
   consumables:
@@ -62,8 +64,7 @@ shells:
     ip: IP65
     size_in: 4.12 × 3.65 × 2.08
     mah_label: 1200
-    works: likely
-    king: true
+    works: fail
     profile: lights/B0DT95J4QC/profile.jpg
     amazon: https://www.amazon.com/dp/B0DT95J4QC
   - asin: B0G2BKN15W
@@ -185,6 +186,9 @@ shells:
     mah_label: null
     works: pass
     in_stock: false
+    youtube_review: https://www.youtube.com/watch?v=ZIx43smeGGE
+    profile_video: true
+    youtube_thumb: lights/B0D78HJYJ1/youtube-thumb.jpg
     profile: lights/B0D78HJYJ1/profile.jpg
     amazon: https://www.amazon.com/dp/B0D78HJYJ1
   - asin: B0D78KYJDC

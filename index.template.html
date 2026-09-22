@@ -463,24 +463,18 @@
         }
         .catalog-table td.col-item {
           display: block;
-          grid-column: 1;
+          grid-column: 1 / -1;
           grid-row: 2;
-          padding: 0.6rem 0.5rem 0.35rem 0.85rem;
+          padding: 0.6rem 0.85rem 0.35rem;
           text-align: left;
         }
-        .catalog-table td.col-review {
-          display: flex;
-          justify-content: flex-end;
-          align-items: flex-start;
-          grid-column: 2;
-          grid-row: 2;
-          padding: 0.6rem 0.85rem 0.35rem 0;
+        .catalog-table td.col-thumb--video {
+          background: #111;
         }
-        .catalog-table td.col-review::before {
-          display: none;
-        }
-        .catalog-table tr:not(:has(td.col-review)) td.col-item {
-          grid-column: 1 / -1;
+        .catalog-table td.col-thumb--video .shell-video-thumb {
+          width: 100%;
+          max-width: none;
+          border-radius: 0;
         }
         .catalog-table td.col-works,
         .catalog-table td.col-mah,
@@ -509,9 +503,6 @@
         }
         .catalog-table .num {
           white-space: nowrap;
-        }
-        .catalog-table .review-cell {
-          width: auto;
         }
         .catalog-table .vna-shot img {
           width: 100%;
@@ -656,31 +647,57 @@
         background: var(--thumb-bg);
         display: block;
       }
-      .review-play {
-        display: inline-flex;
+      .shell-video-thumb {
+        position: relative;
+        display: block;
+        width: 9.5rem;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 6px;
+        text-decoration: none;
+        background: #111;
+      }
+      .shell-video-thumb__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .shell-video-thumb__play {
+        position: absolute;
+        right: 0.35rem;
+        bottom: 0.35rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: 1.65rem;
-        height: 1.65rem;
         border-radius: 50%;
-        background: var(--ink);
+        background: rgba(0, 0, 0, 0.72);
         color: #fff;
-        text-decoration: none;
         font-size: 0.62rem;
         line-height: 1;
-        flex-shrink: 0;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
       }
-      .review-play:hover {
-        background: #3d3a32;
+      .shell-video-thumb:hover .shell-video-thumb__play {
+        background: rgba(0, 0, 0, 0.88);
       }
-      .review-cell {
-        text-align: center;
-        width: 3rem;
+      .shell-video-thumb--no-img {
+        background: linear-gradient(145deg, #2a2822 0%, #111 100%);
       }
-      .review-play-pending {
-        background: var(--line);
-        color: var(--muted);
-        cursor: default;
+      .shell-video-thumb--no-img .shell-video-thumb__img {
+        display: none;
+      }
+      .shell-video-thumb--no-img .shell-video-thumb__play {
+        background: transparent;
+        font-size: 1.15rem;
+      }
+      @media (min-width: 641px) {
+        .catalog-table th.col-thumb,
+        .catalog-table td.col-thumb--video {
+          width: 10.5rem;
+          min-width: 10.5rem;
+        }
       }
       .item-title {
         font-weight: 600;
@@ -1262,7 +1279,6 @@
             <thead>
               <tr>
                 <th></th>
-                <th>Review</th>
                 <th>Shell</th>
                 <th>Works?</th>
                 <th class="num">mAh</th>

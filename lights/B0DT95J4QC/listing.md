@@ -37,14 +37,14 @@ mah_label:
   value: 1200
   source: listing
 works:
-  value: likely
-  source: listing
+  value: fail
+  source: measured
 amazon: https://www.amazon.com/dp/B0DT95J4QC
-king: true
-king_since: 2026-09-21
 last_verified: 2026-09-21
 notes: |
-  Current field pick (Official 1.0 shell). Front-button 6-pack, black shell.
-  Ships with 18650 1200 mAh in cradle. Modular panel / cavity / lens. Keyholes
-  for T-post. Real PDP + profile filed 2026-09-21.
+  **Out — molded shut.** Bench teardown 2026-09-21: no screws, no seam, no
+  non-destructive enclosure access. Product images showed fasteners; actual unit
+  is a sealed monolith. Do not buy for janknode builds regardless of chemistry.
+  Front-button 6-pack, black shell. Listing claimed modular panel / cavity / lens;
+  not verified — could not open.
 ---

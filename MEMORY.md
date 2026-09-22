@@ -12,7 +12,7 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 ## King
 
-**B0DT95J4QC** — HMCITY 120 LED wall wedge, 6-pack $19.98 ($3.33/shell). Current field pick. Real PDP + profile on file.
+**Shell: vacant.** HMCITY **B0DT95J4QC** failed bench teardown 2026-09-21 (molded shut, no enclosure access; listing screw photos wrong). Next king needs a field-proven openable shell.
 
 ## Catalog (16 shells)
 
@@ -23,7 +23,7 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 | B08H81Z1RW | SOLPEX | fence wedge | $2.50 | unknown |
 | B0GH63TL8H | AUDERWIN | fence step | $2.75 | unknown |
 | B0DRNRZV32 | TECKNET | fence cap | $2.75 | unknown |
-| B0DT95J4QC | HMCITY | wall wedge | $3.33 | likely |
+| B0DT95J4QC | HMCITY | wall wedge | $3.33 | **fail** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | unknown |
 | B0C7B2Z39G | CLAONER | PIR wall | $4.17 | unknown |
 | B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | unknown |
@@ -47,7 +47,7 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 
 **King antenna:** XWXGG 20 cm whip + pigtail (B0FQK27BSP, 6 dBi listed, VSWR 1.00 @ 915 MHz, $6.50). Alts: XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY), muzi 17 cm whip (B0FSTD4BYM, no listing gain).
 
-**Hero BOM:** king shell + board + antenna + required consumables ≈ $42.52/node estimated material (2026-09-21). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
+**Hero BOM:** board + antenna + required consumables only until a shell king returns (was ≈ $42.52 with HMCITY shell). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (15 listings)
 
@@ -59,7 +59,8 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 
 ## Active threads
 
-- Listing-only until bay photos. Chemistry gate still open on all non-king rows.
-- SOLPEX cheapest $/shell on paper; king stays field-proven HMCITY.
+- Listing-only until bay photos. Chemistry gate still open on unknown shells.
+- SOLPEX cheapest $/shell on paper; no field king until teardown proves access.
+- HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).

@@ -78,14 +78,40 @@ const gearThumb = (g) =>
     ? `<img class="thumb" src="${attr(g.profile)}" alt="${attr(g.brand)}" />`
     : `<div class="thumb thumb-empty" aria-hidden="true">no shot</div>`;
 
-const shellThumbCell = (l) =>
-  `<td class="col-thumb" data-label=""><img class="thumb" src="${attr(l.profile)}" alt="${attr(l.brand)}" /></td>`;
+const youtubeVideoId = (url) => {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes("youtu.be")) return u.pathname.slice(1).split("/")[0] || null;
+    if (u.searchParams.has("v")) return u.searchParams.get("v");
+    const embed = u.pathname.match(/\/embed\/([^/?]+)/);
+    if (embed) return embed[1];
+  } catch {
+    return null;
+  }
+  return null;
+};
 
-const shellReviewCell = (l) => {
-  const play = l.youtube_review
-    ? `<a class="review-play" href="${attr(l.youtube_review)}" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch ${attr(l.brand)} review">▶</a>`
-    : `<span class="review-play review-play-pending" title="Review coming soon" aria-label="${attr(l.brand)} review not published yet">▶</span>`;
-  return labeledTd("Review", play, "col-review review-cell");
+const shellVideoUrl = (l) => l.youtube_review || l.youtube_assembly;
+
+const shellVideoLabel = (l) => (l.youtube_review ? "review" : "build video");
+
+const shellVideoThumbSrc = (l) => {
+  if (l.youtube_thumb) return l.youtube_thumb;
+  const videoId = youtubeVideoId(shellVideoUrl(l));
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null;
+};
+
+const shellThumbCell = (l) => {
+  const videoUrl = shellVideoUrl(l);
+  if (l.profile_video && videoUrl) {
+    const label = shellVideoLabel(l);
+    const thumbSrc = shellVideoThumbSrc(l);
+    if (thumbSrc) {
+      return `<td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="${attr(videoUrl)}" target="_blank" rel="noopener noreferrer" title="Watch ${label}" aria-label="Watch ${attr(l.brand)} ${label}"><img class="shell-video-thumb__img" src="${attr(thumbSrc)}" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>`;
+    }
+  }
+  return `<td class="col-thumb" data-label=""><img class="thumb" src="${attr(l.profile)}" alt="${attr(l.brand)}" /></td>`;
 };
 
 const sortKingFirst = (arr) =>
@@ -166,7 +192,6 @@ const shellRow = (l) => {
   const worksClass = /^[\w-]+$/.test(works) ? works : "unknown";
   return `<tr>
           ${shellThumbCell(l)}
-          ${shellReviewCell(l)}
           ${itemCell({
             primary: escapeHtml(l.brand),
             secondary: l.form || null,
@@ -193,11 +218,15 @@ function computeBom(catalog) {
   const kingBoard = boards.find((k) => k.king) || boards[0];
   const kingAntenna = antennas.find((a) => a.king) || antennas[0];
   const bomCore = [
-    {
-      item: king,
-      role: "Shell",
-      name: king.title || king.form,
-    },
+    ...(king
+      ? [
+          {
+            item: king,
+            role: "Shell",
+            name: king.title || king.form,
+          },
+        ]
+      : []),
     { item: kingBoard, role: "Board", name: kingBoard.title },
     {
       item: kingAntenna,

@@ -78,6 +78,41 @@ Forbidden: "photorealistic catalog photo", "studio shot of a new antenna", "draw
 
 Both `connector` and `profile_extract` are pasted into the prompt. They are not a crop recipe.
 
+## YouTube shell thumb (16:9)
+
+When a shell has `youtube_review` or `youtube_assembly` and **`profile_video: true`**, the catalog **thumb column** is the video link (not `profile.jpg`). Other shells keep the square product tile.
+
+### Branded theme (default)
+
+Catalog thumbs match the **review channel look**, not raw YouTube CDN frames.
+
+| Piece | Source |
+|---|---|
+| Face | `assets/operator-face.jpg` — **cut out**, background removed, not pasted with original sky/desert |
+| Pose | Person **looks at** the product (reviewing / presenting), left or lower-left |
+| Product | `profile.jpg` or a filed still under `shots/` — hero subject, right or center-right |
+| Tagline | `youtube_thumb_tagline` in `listing.md` — short quote, verdict, or hook per video |
+
+Set one tagline per shell video, e.g. `This actually works!`, `Molded shut.`, `Cheapest shell on paper.`
+
+1. Read `youtube_thumb_tagline`, `youtube_thumb_extract`, `profile.jpg`.
+2. `GenerateImage` with `aspect_ratio: "16:9"`, `reference_image_paths`: `[assets/operator-face.jpg, profile or still]`.
+3. `node scripts/install-youtube-thumb.mjs <generated.jpg> <folder>` → `youtube-thumb.jpg` (1280×720), `youtube-thumb.ai`, `youtube-thumb.meta.yaml`.
+4. `youtube_thumb` + `profile_video: true` in `listing.md` and `data/data.yaml`. Rebuild.
+
+Prompt:
+
+```
+YouTube review thumbnail, 16:9, bright and saturated, full contrast (not faded).
+Cut out the person from the face reference with background removed. Person looks at
+the product from the product reference (reviewing pose). Product is the hero subject.
+Bold white headline with dark outline, exact text: [youtube_thumb_tagline]
+Readable at small size. No YouTube logo, no baked play button.
+[youtube_thumb_extract]
+```
+
+YouTube CDN (`i.ytimg.com/vi/{id}/hqdefault.jpg`) is a fallback only when no branded thumb is needed. Private or fresh uploads may 404 for an hour.
+
 ## VNA sweeps
 
 Restyle `shots/*vna*` to a simulated NanoVNA-H S11 SWR screen (dark LCD, cyan grid, yellow trace, marker at `vswr_min` @ `vswr_min_mhz`). That is the only redraw. Product tiles are extracts.

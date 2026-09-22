@@ -19,7 +19,7 @@ Radio needs **1S Li-ion (~3.7 V)**. **1.2 V NiMH** (and 2S/3S NiMH) = **Won't wo
 5. Fill `listing.md` front matter. Every field has `value` + `source: listing | measured | unknown`. Do not guess chemistry. Antennas: set `connector`. Use `profile_extract` when the agent needs extra image hints (single vs pack, connector detail).
 6. Add or update the row in `data/data.yaml` under `shells:`, then `npm run build`.
 7. Only one king shell. Set top-level `king:` ASIN in `data/data.yaml` or `king: true` on one shell row.
-8. When a shell gets a YouTube **review** or **assembly** video, set `youtube_review` and/or `youtube_assembly` in `data/data.yaml`. The table **Review** column updates automatically.
+8. When a shell gets a YouTube **review** or **assembly** video and should use the video as its catalog thumb, set `profile_video: true`, `youtube_review` / `youtube_assembly`, and `youtube_thumb` (`lights/<ASIN>/youtube-thumb.jpg` from `install-youtube-thumb.mjs`). See `extract-profile` skill § YouTube shell thumb.
 
 Full-browser PDP preferred (URL bar = ASIN). Incomplete shots are normal.
 
