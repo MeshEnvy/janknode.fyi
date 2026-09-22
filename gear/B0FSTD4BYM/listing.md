@@ -9,20 +9,14 @@ title:
 kind:
   value: antenna
   source: agent
-profile_method:
-  value: crop
-  source: measured
 profile_source:
-  value: product-detail-snapshot.jpg
-  source: measured
-profile_crop:
-  value: 28,0,78,328
-  source: measured
+  value: shots/2026-09-21-pdp.jpg
+  source: listing
 connector:
   value: SMA male
   source: measured
 profile_extract:
-  value: Pixel crop only. Hero shows smooth black plastic base — SMA male is inside, not visible. Do NOT add or redraw a metal connector. External threads = wrong (that is female).
+  value: Isolate ONE antenna from the 4-pack. Drop the other three and any store UI. The photographed base is smooth black plastic with gold muzi WORKS and 915 MHz text. Do not add a metal connector. Do not add external threads. SMA male is inside the base and is not visible in the hero.
   source: measured
 pack_qty:
   value: 4

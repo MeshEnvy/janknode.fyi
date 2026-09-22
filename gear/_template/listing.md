@@ -12,17 +12,11 @@ kind:
 connector:
   value: # antennas only — SMA male | SMA female | RP-SMA male | RP-SMA female
   source: listing
-profile_method:
-  value: # crop | cutout — crop = pixel extract (preferred when source is clean); cutout = AI bg removal only
-  source: agent
 profile_source:
-  value: # optional — best cutout source, e.g. shots/YYYY-MM-DD-pdp.jpg
+  value: # optional — reference image, e.g. shots/YYYY-MM-DD-pdp.jpg
   source: agent
-profile_crop:
-  value: # crop method only — left,top,width,height in source pixels
-  source: measured
 profile_extract:
-  value: # optional — isolation hints (one from pack, set pieces, do not redraw connector)
+  value: # optional — pasted into the GenerateImage prompt (one from pack, set contents, connector rules)
   source: agent
 group:
   value: # solder | measure | hand | null
