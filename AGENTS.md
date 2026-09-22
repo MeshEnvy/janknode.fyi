@@ -2,7 +2,7 @@
 
 Janknode review guide: **shells**, **boards**, **antennas**, **batteries**, **consumables**, **tools**. Single static page: build-time SSG from `index.template.html` + `data/data.yaml` → generated `index.html`.
 
-Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Amazon parts: `gear/<ASIN>/`. Rokland RAK kits: `kits/<SKU>/`. Non-Amazon cells: `batteries/<slug>/`. Catalog: `data/data.yaml`. Clean product tiles: [extract-profile](.cursor/skills/extract-profile/SKILL.md).
+Read `MEMORY.md` then `docs/columns.md` before adding or scoring a shell. Amazon parts: `gear/<ASIN>/`. Rokland RAK kits: `kits/<SKU>/`. Non-Amazon cells: `batteries/<slug>/`. Catalog: `data/data.yaml`. Clean product tiles: [extract-profile](.cursor/skills/extract-profile/SKILL.md). Fill battery columns from Amazon PDP + Q&A + reviews: [harvest-shell-listing](.cursor/skills/harvest-shell-listing/SKILL.md).
 
 ## Power path
 

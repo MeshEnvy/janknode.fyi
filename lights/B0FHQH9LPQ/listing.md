@@ -34,17 +34,18 @@ nominal_v:
   value:
   source: unknown
 mah_label:
-  value:
-  source: unknown
+  value: 1800
+  source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0FHQH9LPQ
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
   Stake or wall mount spotlight. Four brightness modes. Amazon's Choice.
-  Landscape form factor, not a fence wedge. Chemistry unknown.
+  Product description: "1800mAh rechargeable battery." No chemistry or cell
+  on PDP. Harvest 2026-09-22.
 ---

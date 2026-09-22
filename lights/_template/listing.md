@@ -2,7 +2,7 @@
 asin: B0EXAMPLE
 brand:
   value:
-  source: unknown
+  source: unknown # listing | measured | review | qa | agent | unknown
 title:
   value:
   source: listing

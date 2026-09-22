@@ -28,23 +28,24 @@ size_in:
   value: 5.16 × 1.54 × 1.77
   source: listing
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: listing
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: listing
 mah_label:
   value: 1200
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0FGCM9TBN
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
-  White ABS fence cap, thin profile. RGB + warm/cool white modes. 1200 mAh claim.
-  Screw or tape mount. Chemistry unknown.
+  White ABS fence cap, thin profile. RGB + warm/cool white modes. About this
+  item: "1200mAh long-lasting battery." Product information: Voltage 3.7 volts.
+  Cell form not on PDP. Harvest 2026-09-22.
 ---

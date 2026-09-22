@@ -27,6 +27,9 @@ color:
 size_in:
   value:
   source: unknown
+cell:
+  value:
+  source: unknown
 chemistry:
   value:
   source: unknown
@@ -37,14 +40,15 @@ mah_label:
   value: 500
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0G2BKN15W
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
   Black ABS wedge. 3000K / 4000K / 6000K switch. Wide-angle downlight on fence.
-  Amazon's Choice. 16-pack variant also listed. Chemistry unknown.
+  Amazon's Choice. 16-pack variant also listed. About this item: "500mAh battery."
+  No chemistry or cell on PDP. Harvest 2026-09-22.
 ---

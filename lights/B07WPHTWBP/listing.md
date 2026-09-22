@@ -31,23 +31,24 @@ weight:
   value:
   source: unknown
 chemistry:
-  value:
-  source: unknown
+  value: 1.2V-nimh
+  source: listing
 nominal_v:
-  value:
-  source: unknown
+  value: 1.2
+  source: listing
 mah_label:
   value:
   source: unknown
 works:
-  value: unknown
-  source: unknown
+  value: fail
+  source: agent
 amazon: https://www.amazon.com/dp/B07WPHTWBP
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
   Brushed stainless wedge. 30-LED face, large monocrystalline panel claim.
-  Amazon's Choice. Dusk-to-dawn auto. Chemistry unknown until bay photo.
+  Amazon's Choice. Dusk-to-dawn auto. Product information table: Voltage 1.2
+  volts (NiMH). No mAh on PDP. Harvest 2026-09-22.
 ---

@@ -52,4 +52,6 @@ Voltage rise in sun is not mAh recovery. A fat cell that cannot charge is a bric
 
 ## Provenance
 
-Every cell is `listing`, `measured`, or `unknown`. A screenshot is listing. Do not promote it to measured.
+Every field uses `source` in `listing.md`: `listing`, `measured`, `review`, `qa`, `agent`, or `unknown`. A screenshot is listing. Amazon customer text is `review` or `qa`. Do not promote listing or review claims to `measured` without bench work.
+
+Batch harvest workflow: `.cursor/skills/harvest-shell-listing/SKILL.md`.

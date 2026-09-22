@@ -22,17 +22,17 @@ Sorted by $/shell in `index.html`. Spotlight stake units are filed for compariso
 |---|---|---|---|---|
 | B08H81Z1RW | SOLPEX | fence wedge | $2.50 | **fail** (AAA NiMH) |
 | B0GH63TL8H | AUDERWIN | fence step | $2.75 | maybe (14500, 500 mAh) |
-| B0DRNRZV32 | TECKNET | fence cap | $2.75 | unknown |
+| B0DRNRZV32 | TECKNET | fence cap | $2.75 | maybe (600 mAh listing) |
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | **fail** (molded shut) |
-| B0G2BKN15W | NIORSUN | fence wedge | $3.83 | unknown |
-| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | unknown |
-| B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | unknown |
-| B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | unknown |
-| B0C813SJXP | FLITI | fence wedge | $5.00 | unknown |
-| B0FGCM9TBN | JOFIOS | fence step | $5.00 | unknown |
-| B0DMNH8QDN | WENATY | spotlight | $5.42 | unknown |
-| B0FHQH9LPQ | NACINIC | spotlight | $6.25 | unknown |
-| B085242PLC | LECLESTAR | flood | $15.99 | unknown |
+| B0G2BKN15W | NIORSUN | fence wedge | $3.83 | maybe (500 mAh listing) |
+| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **likely** (18650, 1200 mAh) |
+| B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **fail** (1.2 V NiMH) |
+| B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | unknown (PDP silent) |
+| B0C813SJXP | FLITI | fence wedge | $5.00 | maybe (1200 mAh listing) |
+| B0FGCM9TBN | JOFIOS | fence step | $5.00 | maybe (Li-ion, 1200 mAh) |
+| B0DMNH8QDN | WENATY | spotlight | $5.42 | maybe (LiPo, 1500 mAh) |
+| B0FHQH9LPQ | NACINIC | spotlight | $6.25 | maybe (1800 mAh listing) |
+| B085242PLC | LECLESTAR | flood | $15.99 | maybe (4400 mAh listing) |
 | B0D78HJYJ1 | VOLISUN | spotlight | — | pass (OOS) |
 | B0D78KYJDC | VOLISUN | spotlight | — | pass (OOS) |
 | B0D99X4M48 | NACINIC | spotlight | — | pass (OOS) |

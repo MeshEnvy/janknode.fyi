@@ -37,17 +37,18 @@ nominal_v:
   value:
   source: unknown
 mah_label:
-  value:
-  source: unknown
+  value: 1200
+  source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0C813SJXP
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
   Black acrylic fence/deck wedge. RGB + warm white modes. Pack options 4 / 8 /
-  12 / 18. Smaller wedge class than a 120-LED wall light. Chemistry unknown.
+  12 / 18. About this item: "1200mAh battery." No chemistry or cell on PDP.
+  Harvest 2026-09-22.
 ---

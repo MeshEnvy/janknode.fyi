@@ -28,8 +28,8 @@ size_in:
   value:
   source: unknown
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: listing
 nominal_v:
   value:
   source: unknown
@@ -37,14 +37,15 @@ mah_label:
   value: 1500
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0DMNH8QDN
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
-  Stake/wall landscape spotlight. 1500 mAh claim, 35% panel efficiency claim.
-  Not a fence wedge shell. Chemistry unknown.
+  Stake/wall landscape spotlight. About this item: "1500mAh rechargeable
+  battery." Product description: "1,500mAh lithium polymer battery." Cell
+  form not on PDP. Harvest 2026-09-22.
 ---

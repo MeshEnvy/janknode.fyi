@@ -30,9 +30,12 @@ size_in:
 weight:
   value:
   source: unknown
+cell:
+  value: 18650
+  source: listing
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: listing
 nominal_v:
   value:
   source: unknown
@@ -40,15 +43,16 @@ mah_label:
   value: 1200
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: likely
+  source: agent
 amazon: https://www.amazon.com/dp/B0C7B2Z39G
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
-  Mid-size PIR wall / fence. Amazon's Choice. 126 LED, 1200 mAh claim.
-  Pack options 4 through 20. Bigger than the TECKNET cap. Chemistry unknown.
-  Sold by CLAONER. PDP + profile refreshed 2026-09-21.
+  Mid-size PIR wall / fence. Amazon's Choice. 126 LED. Product detail table:
+  Battery Capacity 1200mAh; Model Number IMR18650-1200mAh. About this item:
+  "built-in 1200mAh rechargeable battery." Pack options 4 through 20.
+  Harvest 2026-09-22.
 ---

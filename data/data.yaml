@@ -60,7 +60,7 @@ shells:
     ip: IP66
     size_in: 3.58 × 2.36 × 0.98
     mah_label: 600
-    works: unknown
+    works: maybe
     profile: lights/B0DRNRZV32/profile.jpg
     amazon: https://www.amazon.com/dp/B0DRNRZV32
   - asin: B0DT95J4QC
@@ -91,7 +91,7 @@ shells:
     ip: IP65
     size_in: null
     mah_label: 500
-    works: unknown
+    works: maybe
     profile: lights/B0G2BKN15W/profile.jpg
     amazon: https://www.amazon.com/dp/B0G2BKN15W
   - asin: B0C7B2Z39G
@@ -102,8 +102,10 @@ shells:
     unit_price_usd: 4.17
     ip: IP65
     size_in: null
+    cell: 18650
+    chemistry: 1S-li-ion
     mah_label: 1200
-    works: unknown
+    works: likely
     profile: lights/B0C7B2Z39G/profile.jpg
     amazon: https://www.amazon.com/dp/B0C7B2Z39G
   - asin: B07WPHTWBP
@@ -114,8 +116,9 @@ shells:
     unit_price_usd: 4.67
     ip: IP55
     size_in: null
-    mah_label: null
-    works: unknown
+    chemistry: 1.2V-nimh
+    nominal_v: 1.2
+    works: fail
     profile: lights/B07WPHTWBP/profile.jpg
     amazon: https://www.amazon.com/dp/B07WPHTWBP
   - asin: B0H3LWZHHW
@@ -138,8 +141,8 @@ shells:
     unit_price_usd: 5.00
     ip: null
     size_in: null
-    mah_label: null
-    works: unknown
+    mah_label: 1200
+    works: maybe
     profile: lights/B0C813SJXP/profile.jpg
     amazon: https://www.amazon.com/dp/B0C813SJXP
   - asin: B0FGCM9TBN
@@ -150,8 +153,10 @@ shells:
     unit_price_usd: 5.00
     ip: IP65
     size_in: 5.16 × 1.54 × 1.77
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
     mah_label: 1200
-    works: unknown
+    works: maybe
     profile: lights/B0FGCM9TBN/profile.jpg
     amazon: https://www.amazon.com/dp/B0FGCM9TBN
   - asin: B0DMNH8QDN
@@ -162,8 +167,9 @@ shells:
     unit_price_usd: 5.42
     ip: IP65
     size_in: null
+    chemistry: 1S-li-ion
     mah_label: 1500
-    works: unknown
+    works: maybe
     profile: lights/B0DMNH8QDN/profile.jpg
     amazon: https://www.amazon.com/dp/B0DMNH8QDN
   - asin: B0FHQH9LPQ
@@ -174,8 +180,8 @@ shells:
     unit_price_usd: 6.25
     ip: IP65
     size_in: null
-    mah_label: null
-    works: unknown
+    mah_label: 1800
+    works: maybe
     profile: lights/B0FHQH9LPQ/profile.jpg
     amazon: https://www.amazon.com/dp/B0FHQH9LPQ
   - asin: B085242PLC
@@ -186,8 +192,8 @@ shells:
     unit_price_usd: 15.99
     ip: IP65
     size_in: null
-    mah_label: 4000
-    works: unknown
+    mah_label: 4400
+    works: maybe
     profile: lights/B085242PLC/profile.jpg
     amazon: https://www.amazon.com/dp/B085242PLC
   - asin: B0D78HJYJ1

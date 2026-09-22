@@ -37,18 +37,18 @@ nominal_v:
   value:
   source: unknown
 mah_label:
-  value: 4000
+  value: 4400
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B085242PLC
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-22
 notes: |
-  Largest shell in this cut. PIR + LED array. Panel owns the top face.
-  4000 mAh is a listing claim, not chemistry. Mode button on the back.
-  Seller GUTEKEN. ABS.
+  Largest shell in this cut. PIR + LED array. Panel owns the top face. About
+  this item: "4400mAh rechargeable battery." No chemistry or cell on PDP.
+  Mode button on the back. Seller GUTEKEN. ABS. Harvest 2026-09-22.
 ---

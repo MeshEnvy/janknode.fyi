@@ -40,15 +40,15 @@ mah_label:
   value: 600
   source: listing
 works:
-  value: unknown
-  source: unknown
+  value: maybe
+  source: agent
 amazon: https://www.amazon.com/dp/B0DRNRZV32
 in_stock:
   value: true
   source: listing
 last_verified: 2026-09-22
 notes: |
-  0.98 in / 25 mm thick. Listing claims 600 mAh battery. Chemistry and cell
-  form unverified. Unlikely to hold an 18650 and a radio. Two LED eyes.
-  Screws or tape. IP66 claimed.
+  0.98 in / 25 mm thick. About this item + product description: "600mAh battery."
+  No chemistry or cell form on PDP. Two LED eyes. Screws or tape. IP66 claimed.
+  Harvest 2026-09-22.
 ---
