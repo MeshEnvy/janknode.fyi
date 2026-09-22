@@ -65,6 +65,9 @@ shells:
     size_in: 4.12 × 3.65 × 2.08
     mah_label: 1200
     works: fail
+    youtube_review: https://www.youtube.com/watch?v=FCZbJHRHioc
+    profile_video: true
+    youtube_thumb: lights/B0DT95J4QC/youtube-thumb.jpg
     profile: lights/B0DT95J4QC/profile.jpg
     amazon: https://www.amazon.com/dp/B0DT95J4QC
   - asin: B0G2BKN15W

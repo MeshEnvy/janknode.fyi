@@ -40,7 +40,25 @@ works:
   value: fail
   source: measured
 amazon: https://www.amazon.com/dp/B0DT95J4QC
-last_verified: 2026-09-21
+youtube_review:
+  value: https://www.youtube.com/watch?v=FCZbJHRHioc
+  source: listing
+profile_video:
+  value: true
+  source: measured
+youtube_thumb:
+  value: lights/B0DT95J4QC/youtube-thumb.jpg
+  source: measured
+youtube_thumb_tagline:
+  value: Molded shut.
+  source: listing
+youtube_thumb_extract:
+  value: |
+    Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
+    (background removed). Skeptical review pose, looking at sealed HMCITY wall
+    wedge from profile.jpg. Tagline from youtube_thumb_tagline.
+  source: listing
+last_verified: 2026-09-22
 notes: |
   **Out — molded shut.** Bench teardown 2026-09-21: no screws, no seam, no
   non-destructive enclosure access. Product images showed fasteners; actual unit
