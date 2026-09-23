@@ -7,6 +7,7 @@
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
 #   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
 last_verified: 2026-09-22
+king: B0C7B2Z39G
 
 # RAK4631 slim repeater planning draw (powersaving on). Update when bench logged.
 radio_daily_mah: 220
@@ -98,6 +99,7 @@ shells:
     amazon: https://www.amazon.com/dp/B0G2BKN15W
   - asin: B0C7B2Z39G
     brand: CLAONER
+    title: Solar motion lights outdoor, 126 LED PIR (6 pack)
     form: pir-wall
     pack_qty: 6
     pack_price_usd: 24.99
@@ -107,7 +109,11 @@ shells:
     cell: 18650
     chemistry: 1S-li-ion
     mah_label: 1200
-    works: likely
+    works: pass
+    king: true
+    profile_video: true
+    youtube_thumb: lights/B0C7B2Z39G/youtube-thumb.jpg
+    youtube_thumb_tagline: CLAON WARS
     profile: lights/B0C7B2Z39G/profile.jpg
     amazon: https://www.amazon.com/dp/B0C7B2Z39G
   - asin: B0GDWFY3MJ

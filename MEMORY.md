@@ -12,7 +12,7 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 ## King
 
-**Shell: vacant.** HMCITY **B0DT95J4QC** failed bench teardown 2026-09-21 (molded shut, no enclosure access; listing screw photos wrong). Next king needs a field-proven openable shell.
+**Shell: CLAONER B0C7B2Z39G** — PIR wall, 18650, $4.17/shell, IP65. Replaces HMCITY **B0DT95J4QC** (failed 2026-09-21, molded shut).
 
 ## Catalog (16 shells)
 
@@ -25,7 +25,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0DRNRZV32 | TECKNET | fence cap | $2.75 | maybe (600 mAh listing) |
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | **sealed** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | maybe (500 mAh listing) |
-| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **likely** (18650, 1200 mAh) |
+| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **pass** 👑 (18650, 1200 mAh) |
 | B0GDWFY3MJ | NIORSUN | fence step | $4.50 | maybe (1200 mAh, 3.7 V) |
 | B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **NiMH** (1.2 V listing) |
 | B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | unknown (PDP silent) |
@@ -60,7 +60,7 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 **Runtime basis:** `radio_daily_mah: 220` in `data/data.yaml` (RAK4631 slim, powersaving on, planning estimate until bench logged).
 
-**Hero BOM:** board + antenna + required consumables only until a shell king returns (was ≈ $42.52 with HMCITY shell). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
+**Hero BOM:** ≈ **$43.36/node** (CLAONER shell + RAK19003 kit + XWXGG whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (16 listings)
 
@@ -74,7 +74,8 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 
 - Listing-only until bay photos. Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
-- No field king until teardown proves 1S Li-ion access on a candidate shell.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
+- CLAONER B0C7B2Z39G: shell king; YouTube thumb **CLAON WARS** (`youtube-thumb.jpg`); add `youtube_review` URL when video publishes.
+- CLAONER fit-check still owed before Official 1.0 bag commits.
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).
