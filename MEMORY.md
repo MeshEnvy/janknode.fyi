@@ -4,7 +4,7 @@ GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.f
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-09-23
 
 ## What this is
 
@@ -70,12 +70,18 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 
 **Tools (10):** ANBES 90W solder kit (B0CGHD7GW5), Kaisi mat, AstroAI DMM, NanoVNA-H (optional), AVID 20V drill, COMOWARE step bits, SEESII spot welder (optional), KAIWEETS stripper, WORKPRO pliers, GRENPRO precision drivers (B0DQSHNPCT).
 
+## Scope (locked 2026-09-23)
+
+A janknode is a **rapid deploy**: battery, shell, and panel already in one piece, then a little solder. That head start is the product. The site stays a catalog of shells, boards, antennas, cells, consumables, and tools for that pattern.
+
+It does not become a general project forge (fork a build, list every DIY form, Makerverse-shaped). Custom radio builds already have other sites. Operator supersede rule for the king shell: more battery capacity, or a vertical SMA so the antenna does not need an elbow.
+
 ## Active threads
 
 - Listing-only until bay photos. Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
-- CLAONER B0C7B2Z39G: shell king; review [u3XQ3FCROro](https://youtu.be/u3XQ3FCROro), thumb **The New MeshCore Repeater King**.
-- CLAONER fit-check still owed before Official 1.0 bag commits.
+- CLAONER B0C7B2Z39G: shell king. Operator 09-23: this is the Silver Triangle shell unless a later one has more battery or a vertical SMA. Review [u3XQ3FCROro](https://youtu.be/u3XQ3FCROro).
+- CLAONER fit-check still owed before the bag commits (bay size, panel keep-up).
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).
