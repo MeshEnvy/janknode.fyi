@@ -47,7 +47,7 @@ works:
   source: agent
 amazon: https://www.amazon.com/dp/B0C7B2Z39G
 youtube_review:
-  value: https://www.youtube.com/watch?v=4nnQrvFD1LU
+  value: https://www.youtube.com/watch?v=u3XQ3FCROro
   source: listing
 profile_video:
   value: true
@@ -56,14 +56,15 @@ youtube_thumb:
   value: lights/B0C7B2Z39G/youtube-thumb.jpg
   source: listing
 youtube_thumb_tagline:
-  value: CLAON WARS
+  value: The New MeshCore Repeater King
   source: listing
 youtube_thumb_extract:
   value: |
     Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
     (background removed). Triumphant review pose, presenting the CLAONER PIR wall
-    light from profile.jpg as the hero subject on the right. Subtle epic sci-fi
-    energy (not Star Wars logos). Tagline from youtube_thumb_tagline.
+    light from profile.jpg as the hero subject on the right. Crown or royal gold
+    accent optional; bright high contrast. Tagline from youtube_thumb_tagline,
+    stack on two lines if needed for readability.
   source: listing
 in_stock:
   value: true
