@@ -40,15 +40,19 @@ mah_label:
   value: 600
   source: listing
 works:
-  value: maybe
+  value: fail
+  source: agent
+fail_reason:
+  value: no-space
   source: agent
 amazon: https://www.amazon.com/dp/B0DRNRZV32
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   0.98 in / 25 mm thick. About this item + product description: "600mAh battery."
   No chemistry or cell form on PDP. Two LED eyes. Screws or tape. IP66 claimed.
   Harvest 2026-09-22.
+  Operator 2026-09-23: DQ, no space for the radio. Do not buy.
 ---

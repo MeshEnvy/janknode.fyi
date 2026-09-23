@@ -6,7 +6,7 @@
 #   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
 #   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 king: B0C7B2Z39G
 
 # RAK4631 slim repeater planning draw (powersaving on). Update when bench logged.
@@ -48,11 +48,26 @@ shells:
     size_in: null
     cell: 14500
     chemistry: 1S-li-ion
-    nominal_v: 3.7
-    mah_label: 500
-    works: maybe
+    nominal_v: 4.7
+    mah_label: 520
+    works: fail
+    fail_reason: no-space
     profile: lights/B0GH63TL8H/profile.jpg
     amazon: https://www.amazon.com/dp/B0GH63TL8H
+  - asin: B0H36282BG
+    brand: AUDERWIN
+    title: Solar fence lights, 3000K/4000K/6000K, model 11796 (12 pack)
+    form: fence-step
+    pack_qty: 12
+    pack_price_usd: 32.99
+    unit_price_usd: 2.75
+    ip: IP65
+    size_in: null
+    mah_label: null
+    works: fail
+    fail_reason: sealed
+    profile: lights/B0H36282BG/profile.jpg
+    amazon: https://www.amazon.com/dp/B0H36282BG
   - asin: B0DRNRZV32
     brand: TECKNET
     form: fence-cap
@@ -62,7 +77,8 @@ shells:
     ip: IP66
     size_in: 3.58 × 2.36 × 0.98
     mah_label: 600
-    works: maybe
+    works: fail
+    fail_reason: no-space
     profile: lights/B0DRNRZV32/profile.jpg
     amazon: https://www.amazon.com/dp/B0DRNRZV32
   - asin: B0DT95J4QC
@@ -94,7 +110,8 @@ shells:
     ip: IP65
     size_in: null
     mah_label: 500
-    works: maybe
+    works: fail
+    fail_reason: sealed
     profile: lights/B0G2BKN15W/profile.jpg
     amazon: https://www.amazon.com/dp/B0G2BKN15W
   - asin: B0C7B2Z39G
@@ -154,8 +171,12 @@ shells:
     unit_price_usd: 5.00
     ip: IP65
     size_in: 3.86 × 2.28 × 1.79
-    mah_label: null
-    works: unknown
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
+    mah_label: 1200
+    works: fail
+    fail_reason: no-space
     profile: lights/B0H3LWZHHW/profile.jpg
     amazon: https://www.amazon.com/dp/B0H3LWZHHW
   - asin: B0C813SJXP
@@ -166,8 +187,12 @@ shells:
     unit_price_usd: 5.00
     ip: null
     size_in: null
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
     mah_label: 1200
-    works: maybe
+    works: fail
+    fail_reason: no-space
     profile: lights/B0C813SJXP/profile.jpg
     amazon: https://www.amazon.com/dp/B0C813SJXP
   - asin: B0FGCM9TBN
@@ -178,10 +203,11 @@ shells:
     unit_price_usd: 5.00
     ip: IP65
     size_in: 5.16 × 1.54 × 1.77
+    cell: 18650
     chemistry: 1S-li-ion
     nominal_v: 3.7
     mah_label: 1200
-    works: maybe
+    works: pass
     profile: lights/B0FGCM9TBN/profile.jpg
     amazon: https://www.amazon.com/dp/B0FGCM9TBN
   - asin: B0C5J9Z4ZY
@@ -207,7 +233,8 @@ shells:
     size_in: null
     chemistry: 1S-li-ion
     mah_label: 1500
-    works: maybe
+    works: fail
+    fail_reason: sealed
     profile: lights/B0DMNH8QDN/profile.jpg
     amazon: https://www.amazon.com/dp/B0DMNH8QDN
   - asin: B0FHQH9LPQ
@@ -233,7 +260,10 @@ shells:
     size_in: 4.1 × 2.2 × 2.8
     cell: 18650
     chemistry: 1S-li-ion
-    works: maybe
+    nominal_v: 3.7
+    mah_label: 1500
+    works: fail
+    fail_reason: no-space
     profile: lights/B09XM9GZ5F/profile.jpg
     amazon: https://www.amazon.com/dp/B09XM9GZ5F
   - asin: B085242PLC
@@ -245,7 +275,8 @@ shells:
     ip: IP65
     size_in: null
     mah_label: 4400
-    works: maybe
+    works: fail
+    fail_reason: too-big
     profile: lights/B085242PLC/profile.jpg
     amazon: https://www.amazon.com/dp/B085242PLC
   - asin: B0D78HJYJ1

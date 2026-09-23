@@ -38,22 +38,27 @@ chemistry:
   value: 1S-li-ion
   source: review
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
-  value:
-  source: unknown
+  value: 1500
+  source: measured
 works:
-  value: maybe
+  value: fail
+  source: agent
+fail_reason:
+  value: no-space
   source: agent
 amazon: https://www.amazon.com/dp/B09XM9GZ5F
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Medium fence wedge (4.1×2.2×2.8 in). Product description: "Battery:
   Replaceable battery" and "Can the battery be replaceable? Yes." Reviews
   cite user-replaceable 18650 lithium cells. About this item claims "large
   battery capacity" but no mAh on PDP. 8 colors + 4 modes. Ingest 2026-09-22.
+  Operator 2026-09-23: installed battery is 1500 mAh at 3.7 V.
+  Same day: DQ, no space. Recessed body will not take the radio. Do not buy.
 ---

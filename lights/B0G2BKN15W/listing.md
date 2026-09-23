@@ -40,15 +40,19 @@ mah_label:
   value: 500
   source: listing
 works:
-  value: maybe
+  value: fail
+  source: agent
+fail_reason:
+  value: sealed
   source: agent
 amazon: https://www.amazon.com/dp/B0G2BKN15W
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Black ABS wedge. 3000K / 4000K / 6000K switch. Wide-angle downlight on fence.
   Amazon's Choice. 16-pack variant also listed. About this item: "500mAh battery."
   No chemistry or cell on PDP. Harvest 2026-09-22.
+  Operator 2026-09-23: DQ as sealed. Do not buy.
 ---

@@ -6,9 +6,9 @@ How we fill the table. Listing claims are a start. Measured beats claimed.
 
 | Column | Meaning |
 |---|---|
-| Works? | **pass** = 1S Li-ion (~3.7 V) with enough capacity for repeater duty. **fail** = wrong chemistry (1.2 V NiMH, etc.) or hard blocker (sealed shell). **maybe** = chemistry OK but suspect (tiny mAh, unverified keep-up). **likely** / **unknown** = not bench-settled. No boost assumed unless measured. |
+| Works? | **pass** = 1S Li-ion (~3.7 V) with enough capacity for repeater duty. **fail** = wrong chemistry (1.2 V NiMH, etc.) or a hard blocker (sealed shell, no room for the radio, or the shell is too big to pack). **maybe** = chemistry OK but suspect (tiny mAh, unverified keep-up). **likely** / **unknown** = not bench-settled. No boost assumed unless measured. |
 
-When `works: fail`, set **`fail_reason`** so the badge says why: **sealed** (molded shut), **nimh** (1.2 V / NiMH), **underpowered** (Li-ion but too small for repeater duty), **alkaline**. Hidden fail table shows the reason, not the word "fail".
+When `works: fail`, set **`fail_reason`** so the badge says why: **sealed** (molded shut), **nimh** (1.2 V / NiMH), **underpowered** (Li-ion but too small for repeater duty), **alkaline**, **no-space** (cavity will not take the radio), **too-big** (shell is too large to pack). Hidden fail table shows the reason, not the word "fail".
 
 Shell table layout on the site: **Passing** (`pass`, `likely`) → **Under evaluation** (`maybe`, `unknown`) → collapsed **failed** (`fail`).
 

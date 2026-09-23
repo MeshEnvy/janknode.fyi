@@ -29,27 +29,30 @@ size_in:
   source: unknown
 cell:
   value: 14500
-  source: listing
+  source: measured
 chemistry:
   value: 1S-li-ion
   source: listing
 nominal_v:
-  value: 3.7
-  source: listing
+  value: 4.7
+  source: measured
 mah_label:
-  value: 500
-  source: listing
+  value: 520
+  source: measured
 works:
-  value: maybe
-  source: listing
+  value: fail
+  source: agent
+fail_reason:
+  value: no-space
+  source: agent
 amazon: https://www.amazon.com/dp/B0GH63TL8H
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Compact black ABS step/fence cap. Lens LED, three color temps. Model 11351.
-  Listing claims 14500 / 3.7 V / 500 mAh — passes chemistry gate but tiny cell;
-  likely too little reserve for dawn-to-dawn repeater duty. 16- and 20-pack
-  options on PDP.
+  Listing claimed 14500 / 3.7 V / 500 mAh. 16- and 20-pack options on PDP.
+  Operator 2026-09-23: installed cell is a 14500, 4.7 V, 520 mAh.
+  Same day: DQ, no space for the radio. Do not buy.
 ---

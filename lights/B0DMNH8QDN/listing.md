@@ -37,15 +37,19 @@ mah_label:
   value: 1500
   source: listing
 works:
-  value: maybe
+  value: fail
+  source: agent
+fail_reason:
+  value: sealed
   source: agent
 amazon: https://www.amazon.com/dp/B0DMNH8QDN
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Stake/wall landscape spotlight. About this item: "1500mAh rechargeable
   battery." Product description: "1,500mAh lithium polymer battery." Cell
   form not on PDP. Harvest 2026-09-22.
+  Operator 2026-09-23: DQ as sealed. Do not buy.
 ---

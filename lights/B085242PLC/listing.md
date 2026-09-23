@@ -40,15 +40,19 @@ mah_label:
   value: 4400
   source: listing
 works:
-  value: maybe
+  value: fail
+  source: agent
+fail_reason:
+  value: too-big
   source: agent
 amazon: https://www.amazon.com/dp/B085242PLC
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Largest shell in this cut. PIR + LED array. Panel owns the top face. About
   this item: "4400mAh rechargeable battery." No chemistry or cell on PDP.
   Mode button on the back. Seller GUTEKEN. ABS. Harvest 2026-09-22.
+  Operator 2026-09-23: DQ, too big. Do not buy.
 ---

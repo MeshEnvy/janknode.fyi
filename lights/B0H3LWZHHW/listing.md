@@ -30,26 +30,34 @@ size_in:
 weight:
   value: 2.88 oz
   source: listing
+cell:
+  value: 18650
+  source: measured
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: measured
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
-  value:
-  source: unknown
+  value: 1200
+  source: measured
 works:
-  value: unknown
-  source: unknown
+  value: fail
+  source: agent
+fail_reason:
+  value: no-space
+  source: agent
 amazon: https://www.amazon.com/dp/B0H3LWZHHW
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Smaller than a typical 120-LED wall light (~palm / 13 cm). External 58 mm
   width is tight for RAK19007. Pack variants 2 / 6 / 12 / 16. Seller
   JialuZ_Store. PDP silent on battery mAh, chemistry, and cell form (About
   this item + product information). Harvest 2026-09-22.
+  Operator 2026-09-23: installed cell is a 1200 mAh 18650 at 3.7 V.
+  Same day: DQ, no space for the radio. Do not buy.
 ---

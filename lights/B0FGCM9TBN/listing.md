@@ -27,6 +27,9 @@ color:
 size_in:
   value: 5.16 × 1.54 × 1.77
   source: listing
+cell:
+  value: 18650
+  source: measured
 chemistry:
   value: 1S-li-ion
   source: listing
@@ -37,15 +40,16 @@ mah_label:
   value: 1200
   source: listing
 works:
-  value: maybe
+  value: pass
   source: agent
 amazon: https://www.amazon.com/dp/B0FGCM9TBN
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   White ABS fence cap, thin profile. RGB + warm/cool white modes. About this
   item: "1200mAh long-lasting battery." Product information: Voltage 3.7 volts.
   Cell form not on PDP. Harvest 2026-09-22.
+  Operator 2026-09-23: pass. Installed cell is an 18650.
 ---

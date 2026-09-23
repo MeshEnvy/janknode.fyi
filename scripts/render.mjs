@@ -295,6 +295,8 @@ const FAIL_REASON_LABELS = {
   nimh: "NiMH",
   underpowered: "underpowered",
   alkaline: "alkaline",
+  "no-space": "no space",
+  "too-big": "too big",
 };
 
 const formatWorksBadge = (l) => {

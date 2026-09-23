@@ -46,7 +46,7 @@ works:
   value: unknown # pass | fail | maybe | likely | unknown
   source: unknown
 fail_reason:
-  value: # when works is fail: sealed | nimh | underpowered | alkaline
+  value: # when works is fail: sealed | nimh | underpowered | alkaline | no-space | too-big
   source: unknown
 amazon: https://www.amazon.com/dp/B0EXAMPLE
 youtube_review:
