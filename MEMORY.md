@@ -62,13 +62,13 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 **Hero BOM:** board + antenna + required consumables only until a shell king returns (was ≈ $42.52 with HMCITY shell). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
-## Consumables + tools (15 listings)
+## Consumables + tools (16 listings)
 
 YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`.
 
 **Consumables (6):** HiLetgo IPEX→SMA pigtails (B01HXU1PKS), E6000+, JST 1.25, JST PH 2.0, flux pens, MAIYUM solder (B075WB98FJ).
 
-**Tools (9):** ANBES 90W solder kit (B0CGHD7GW5), Kaisi mat, AstroAI DMM, NanoVNA-H (optional), AVID 20V drill, COMOWARE step bits, SEESII spot welder (optional), KAIWEETS stripper, WORKPRO pliers.
+**Tools (10):** ANBES 90W solder kit (B0CGHD7GW5), Kaisi mat, AstroAI DMM, NanoVNA-H (optional), AVID 20V drill, COMOWARE step bits, SEESII spot welder (optional), KAIWEETS stripper, WORKPRO pliers, GRENPRO precision drivers (B0DQSHNPCT).
 
 ## Active threads
 
