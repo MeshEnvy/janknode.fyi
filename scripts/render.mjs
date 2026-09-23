@@ -92,26 +92,42 @@ const youtubeVideoId = (url) => {
   return null;
 };
 
-const shellVideoUrl = (l) => l.youtube_review || l.youtube_assembly;
+const productVideoUrl = (item) => item.youtube_review || item.youtube_assembly;
 
-const shellVideoLabel = (l) => (l.youtube_review ? "review" : "build video");
+const productVideoLabel = (item) =>
+  item.youtube_review ? "review" : "build video";
 
-const shellVideoThumbSrc = (l) => {
-  if (l.youtube_thumb) return l.youtube_thumb;
-  const videoId = youtubeVideoId(shellVideoUrl(l));
+const productVideoThumbSrc = (item) => {
+  if (item.youtube_thumb) return item.youtube_thumb;
+  const videoId = youtubeVideoId(productVideoUrl(item));
   return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : null;
 };
 
+const productVideoThumbHtml = (item) => {
+  const videoUrl = productVideoUrl(item);
+  if (!videoUrl) return null;
+  const thumbSrc = productVideoThumbSrc(item);
+  if (!thumbSrc) return null;
+  const label = productVideoLabel(item);
+  const brand = item.brand || item.title || "product";
+  return `<a class="shell-video-thumb" href="${attr(videoUrl)}" target="_blank" rel="noopener noreferrer" title="Watch ${label}" aria-label="Watch ${attr(brand)} ${label}"><img class="shell-video-thumb__img" src="${attr(thumbSrc)}" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a>`;
+};
+
 const shellThumbCell = (l) => {
-  const videoUrl = shellVideoUrl(l);
-  if (l.profile_video && videoUrl) {
-    const label = shellVideoLabel(l);
-    const thumbSrc = shellVideoThumbSrc(l);
-    if (thumbSrc) {
-      return `<td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="${attr(videoUrl)}" target="_blank" rel="noopener noreferrer" title="Watch ${label}" aria-label="Watch ${attr(l.brand)} ${label}"><img class="shell-video-thumb__img" src="${attr(thumbSrc)}" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>`;
-    }
+  const videoHtml = productVideoThumbHtml(l);
+  if (videoHtml) {
+    return `<td class="col-thumb col-thumb--video" data-label="">${videoHtml}</td>`;
   }
   return `<td class="col-thumb" data-label=""><img class="thumb" src="${attr(l.profile)}" alt="${attr(l.brand)}" /></td>`;
+};
+
+const bomThumbCell = (item) => {
+  const badge = winnerBadgeHtml();
+  const videoHtml = productVideoThumbHtml(item);
+  if (videoHtml) {
+    return `<td class="col-thumb col-thumb--video" data-label="">${badge}${videoHtml}</td>`;
+  }
+  return labeledTd("", `${badge}${gearThumb(item)}`, "col-thumb");
 };
 
 const sortKingFirst = (arr) =>
@@ -375,14 +391,17 @@ const renderFailedShellSection = (failed) => {
         </details>`;
 };
 
-const bomTableRow = (item, role, name) =>
-  `<tr class="bom-row">
-          ${labeledTd("", `${winnerBadgeHtml()}${gearThumb(item)}`, "col-thumb")}
+const bomTableRow = (item, role, name) => {
+  const videoHtml = productVideoThumbHtml(item);
+  const rowClass = videoHtml ? "bom-row bom-row--video" : "bom-row";
+  return `<tr class="${rowClass}">
+          ${bomThumbCell(item)}
           ${labeledTd("Role", escapeHtml(role), "col-role")}
           ${itemCell({ primary: escapeHtml(name), secondary: null })}
           ${labeledTd("$/node", `<span class="num">${escapeHtml(money(nodeBomCost(item)))}</span>`, "col-cost num")}
           ${buyCell(item)}
         </tr>`;
+};
 
 function computeBom(catalog) {
   const { lights, boards, antennas, consumables, hero } = catalog;

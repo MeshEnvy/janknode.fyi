@@ -47,8 +47,8 @@ works:
   source: agent
 amazon: https://www.amazon.com/dp/B0C7B2Z39G
 youtube_review:
-  value:
-  source: unknown
+  value: https://www.youtube.com/watch?v=4nnQrvFD1LU
+  source: listing
 profile_video:
   value: true
   source: listing

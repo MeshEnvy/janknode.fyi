@@ -75,7 +75,7 @@ YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`
 - Listing-only until bay photos. Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
-- CLAONER B0C7B2Z39G: shell king; YouTube thumb **CLAON WARS** (`youtube-thumb.jpg`); add `youtube_review` URL when video publishes.
+- CLAONER B0C7B2Z39G: shell king; review [4nnQrvFD1LU](https://youtu.be/4nnQrvFD1LU), thumb **CLAON WARS**.
 - CLAONER fit-check still owed before Official 1.0 bag commits.
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).
