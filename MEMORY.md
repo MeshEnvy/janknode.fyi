@@ -79,6 +79,7 @@ It does not become a general project forge (fork a build, list every DIY form, M
 
 ## Active threads
 
+- **Published 2026-09-23** to [janknode.fyi](https://janknode.fyi). Cloudflare Pages deploy of `7415842` succeeded 18:43 PT. Review videos on the catalog: CLAONER, JOFIOS, VOLISUN (`B0D78HJYJ1`), HMCITY, TECKNET.
 - Listing-only until bay photos. Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
