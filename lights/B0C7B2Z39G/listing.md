@@ -37,8 +37,8 @@ chemistry:
   value: 1S-li-ion
   source: listing
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
   value: 1200
   source: listing
@@ -69,10 +69,11 @@ youtube_thumb_extract:
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Mid-size PIR wall / fence. Amazon's Choice. 126 LED. Product detail table:
   Battery Capacity 1200mAh; Model Number IMR18650-1200mAh. About this item:
   "built-in 1200mAh rechargeable battery." Pack options 4 through 20.
   Harvest 2026-09-22. Shell king 2026-09-22 (replaces failed HMCITY B0DT95J4QC).
+  Operator 2026-09-23: installed cell is an 18650, 1200 mAh, 3.7 V.
 ---

@@ -27,15 +27,18 @@ color:
 size_in:
   value:
   source: unknown
+cell:
+  value: 18650
+  source: measured
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: measured
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
-  value:
-  source: unknown
+  value: 1200
+  source: measured
 works:
   value: unknown
   source: unknown
@@ -43,7 +46,8 @@ amazon: https://www.amazon.com/dp/B0D78KYJDC
 in_stock:
   value: false
   source: listing
-last_verified: 2026-09-21
+last_verified: 2026-09-23
 notes: |
   Same VOLISUN stake spotlight family as B0D78HJYJ1. Unavailable on PDP capture.
+  Operator 2026-09-23: installed cell is an 18650, 1200 mAh, 3.7 V.
 ---

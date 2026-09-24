@@ -27,15 +27,18 @@ color:
 size_in:
   value:
   source: unknown
+cell:
+  value: 18650
+  source: measured
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: measured
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
-  value: 1800
-  source: listing
+  value: 1200
+  source: measured
 works:
   value: fail
   source: measured
@@ -46,10 +49,11 @@ amazon: https://www.amazon.com/dp/B0FHQH9LPQ
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-23
 notes: |
   Stake or wall mount spotlight. Four brightness modes. Amazon's Choice.
-  Product description: "1800mAh rechargeable battery." No chemistry or cell
-  on PDP. Harvest 2026-09-22.
+  Product description claimed "1800mAh rechargeable battery." No chemistry or
+  cell on PDP. Harvest 2026-09-22.
   Bench 2026-09-22: returned — sealed shut, no enclosure access.
+  Operator 2026-09-23: installed cell is an 18650, 1200 mAh, 3.7 V.
 ---
