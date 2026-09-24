@@ -79,6 +79,10 @@ shells:
     mah_label: 600
     works: fail
     fail_reason: no-space
+    youtube_review: https://www.youtube.com/watch?v=XFf3J_HDd1k
+    profile_video: true
+    youtube_thumb: lights/B0DRNRZV32/youtube-thumb.jpg
+    youtube_thumb_tagline: Big Node and Big Lawn Conspiracy
     profile: lights/B0DRNRZV32/profile.jpg
     amazon: https://www.amazon.com/dp/B0DRNRZV32
   - asin: B0DT95J4QC
@@ -208,6 +212,10 @@ shells:
     nominal_v: 3.7
     mah_label: 1200
     works: pass
+    youtube_review: https://www.youtube.com/watch?v=a_cK9JtqHUw
+    profile_video: true
+    youtube_thumb: lights/B0FGCM9TBN/youtube-thumb.jpg
+    youtube_thumb_tagline: Break in case of emergency
     profile: lights/B0FGCM9TBN/profile.jpg
     amazon: https://www.amazon.com/dp/B0FGCM9TBN
   - asin: B0C5J9Z4ZY

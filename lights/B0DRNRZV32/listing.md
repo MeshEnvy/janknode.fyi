@@ -46,6 +46,26 @@ fail_reason:
   value: no-space
   source: agent
 amazon: https://www.amazon.com/dp/B0DRNRZV32
+youtube_review:
+  value: https://www.youtube.com/watch?v=XFf3J_HDd1k
+  source: listing
+profile_video:
+  value: true
+  source: listing
+youtube_thumb:
+  value: lights/B0DRNRZV32/youtube-thumb.jpg
+  source: listing
+youtube_thumb_tagline:
+  value: Big Node and Big Lawn Conspiracy
+  source: listing
+youtube_thumb_extract:
+  value: |
+    Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
+    (background removed). Skeptical review pose, looking at the TECKNET fence-cap
+    light from profile.jpg as the hero subject on the right. Black background.
+    Stack the tagline on three lines, same words, same order:
+    Big Node and / Big Lawn / Conspiracy.
+  source: listing
 in_stock:
   value: true
   source: listing
@@ -55,4 +75,5 @@ notes: |
   No chemistry or cell form on PDP. Two LED eyes. Screws or tape. IP66 claimed.
   Harvest 2026-09-22.
   Operator 2026-09-23: DQ, no space for the radio. Do not buy.
+  Review: https://www.youtube.com/watch?v=XFf3J_HDd1k
 ---
