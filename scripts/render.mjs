@@ -19,6 +19,9 @@ const storeIconHtml = (href, store) => {
   if (/amazon\./i.test(href)) {
     return '<i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i>';
   }
+  if (/walmart\./i.test(href) || store === "Walmart") {
+    return '<svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg>';
+  }
   if (/rokland\./i.test(href) || store === "Rokland") {
     return '<img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" />';
   }

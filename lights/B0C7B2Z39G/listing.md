@@ -25,8 +25,8 @@ color:
   value: cool-white
   source: listing
 size_in:
-  value:
-  source: unknown
+  value: 4.33 × 1.5 × 3.7
+  source: listing
 weight:
   value:
   source: unknown
@@ -76,4 +76,13 @@ notes: |
   "built-in 1200mAh rechargeable battery." Pack options 4 through 20.
   Harvest 2026-09-22. Shell king 2026-09-22 (replaces failed HMCITY B0DT95J4QC).
   Operator 2026-09-23: installed cell is an 18650, 1200 mAh, 3.7 V.
+  Size graphic 2026-09-24: 11 × 8.7 × 4 cm (W × H × D). Pack includes one
+  screw and one 3M back sticker per light. Screw uses the top center hole.
+  Sticker covers the flat back. Filed `ops/docs/2026-09-24-claoner-size-install.jpg`.
+  Vendor copy (2026-09-24): polycrystalline panel, 22% conversion, "about 30%
+  better than traditional monocrystalline," and "no batteries required."
+  The ranking is backwards. Mono is the higher-efficiency silicon. The 18650
+  is the battery. Do not treat 22% as measured.
+  Operator 2026-09-24: this class of node puts a day's draw back in 1-2 hours
+  of sun. At ~240 mAh that is about 120-240 mA while the sun is on the panel.
 ---

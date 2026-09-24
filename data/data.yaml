@@ -126,7 +126,7 @@ shells:
     pack_price_usd: 24.99
     unit_price_usd: 4.17
     ip: IP65
-    size_in: null
+    size_in: 4.33 × 1.5 × 3.7
     cell: 18650
     chemistry: 1S-li-ion
     nominal_v: 3.7
@@ -219,6 +219,39 @@ shells:
     youtube_thumb_tagline: Break in case of emergency
     profile: lights/B0FGCM9TBN/profile.jpg
     amazon: https://www.amazon.com/dp/B0FGCM9TBN
+  - asin: "18433905661"
+    brand: DAYBETTER
+    vendor: Walmart
+    title: Outdoor solar spotlights, 3 modes, warm white (8 pack)
+    form: spotlight
+    pack_qty: 8
+    pack_price_usd: 44.99
+    unit_price_usd: 5.62
+    ip: IP65
+    color: warm-white
+    size_in: null
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
+    mah_label: 1500
+    works: maybe
+    profile: lights/18433905661/profile.jpg
+    amazon: https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661
+  - asin: "6918255256"
+    brand: CHARKEE
+    vendor: Walmart
+    title: Outdoor solar spotlights, 800 lm, 6500K (8 pack)
+    form: spotlight
+    pack_qty: 8
+    pack_price_usd: 44.99
+    unit_price_usd: 5.62
+    ip: IP65
+    color: white
+    size_in: null
+    mah_label: 1500
+    works: maybe
+    profile: lights/6918255256/profile.jpg
+    amazon: https://www.walmart.com/ip/CHARKEE-Solar-Spot-Lights-Outdoor-150-Adjustable-Panel-IP65-Waterproof-Powered-LED-Landscape-Path-Light-Outside-Yard-Garden-Garage-Patio-8-Pack/6918255256
   - asin: B0C5J9Z4ZY
     brand: Tadyreal
     form: spotlight

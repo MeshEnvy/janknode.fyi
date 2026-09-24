@@ -4,7 +4,7 @@ GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.f
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
-**Last updated:** 2026-09-23
+**Last updated:** 2026-09-24
 
 ## What this is
 
@@ -14,7 +14,7 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 **Shell: CLAONER B0C7B2Z39G** — PIR wall, 18650 1200 mAh 3.7 V, $4.17/shell, IP65. Replaces HMCITY **B0DT95J4QC** (failed 2026-09-21, molded shut).
 
-## Catalog (17 shells)
+## Catalog (19 shells)
 
 Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`pass`, `likely`), **Under evaluation** (`maybe`, `unknown`), collapsed **failed** (`fail` + `fail_reason`). Spotlight stake units are filed for comparison but are unlikely repeater shells.
 
@@ -33,6 +33,8 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0C813SJXP | FLITI | fence wedge | $5.00 | **no space** (18650, 1200 mAh, 3.7 V) |
 | B0FGCM9TBN | JOFIOS | fence step | $5.00 | **pass** (18650, 1200 mAh, 3.7 V) |
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | **sealed** (LiPo, 1500 mAh) |
+| 18433905661 | DAYBETTER | spotlight | $5.62 | maybe (18650 claimed, Walmart, ordered 09-24, not benched) |
+| 6918255256 | CHARKEE | spotlight | $5.62 | maybe (1500 mAh only, chemistry unstated, Walmart, ordered 09-24) |
 | B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | maybe (3.7 V, mAh unknown) |
 | B0FHQH9LPQ | NACINIC | spotlight | $6.25 | **sealed** (18650, 1200 mAh, 3.7 V) |
 | B09XM9GZ5F | Bridika | fence wedge | $6.67 | **no space** (18650, 1500 mAh, 3.7 V) |
