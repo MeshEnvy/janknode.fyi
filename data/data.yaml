@@ -521,6 +521,16 @@ consumables:
     unit_label: spool
     node_cost_usd: 0.15
     note: 50 g spool. Leaded 63/37. Wash hands after use.
+  - asin: B0GPQKTM2Q
+    brand: Rmolality
+    title: Waterproof liquid electrical tape, black (2 × 60 mL)
+    pack_qty: 2
+    pack_price_usd: 8.99
+    unit_price_usd: 4.50
+    unit_label: tube
+    note: Black vinyl liquid tape. 2 × 60 mL. Listing says it cures in 4 hours.
+    profile: gear/B0GPQKTM2Q/profile.jpg
+    amazon: https://www.amazon.com/dp/B0GPQKTM2Q
 
 tools:
   - asin: B0CGHD7GW5

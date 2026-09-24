@@ -67,7 +67,7 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 YAML: `data/data.yaml` `consumables` + `tools`. Detail: `gear/<ASIN>/listing.md`.
 
-**Consumables (6):** HiLetgo IPEX→SMA pigtails (B01HXU1PKS), E6000+, JST 1.25, JST PH 2.0, flux pens, MAIYUM solder (B075WB98FJ).
+**Consumables (7):** HiLetgo IPEX→SMA pigtails (B01HXU1PKS), E6000+, JST 1.25, JST PH 2.0, flux pens, MAIYUM solder (B075WB98FJ), Rmolality liquid electrical tape (B0GPQKTM2Q).
 
 **Tools (10):** ANBES 90W solder kit (B0CGHD7GW5), Kaisi mat, AstroAI DMM, NanoVNA-H (optional), AVID 20V drill, COMOWARE step bits, SEESII spot welder (optional), KAIWEETS stripper, WORKPRO pliers, GRENPRO precision drivers (B0DQSHNPCT).
 
