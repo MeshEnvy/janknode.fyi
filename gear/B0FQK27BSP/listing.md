@@ -43,10 +43,7 @@ vswr_min_mhz:
 optional:
   value: false
   source: agent
-king:
-  value: true
-  source: agent
-last_verified: 2026-09-21
+last_verified: 2026-09-25
 notes: |
   2× straight 20 cm whip + U.FL→SMA pigtail. NanoVNA-F V3 S11 SWR 1.0 @ 915.35 MHz.
 ---

@@ -46,16 +46,19 @@ mah_label:
   value:
   source: unknown
 works:
-  value: maybe
-  source: agent
+  value: fail
+  source: measured
+fail_reason:
+  value: sealed
+  source: measured
 amazon: https://www.amazon.com/dp/B0C5J9Z4ZY
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-25
 notes: |
   Stake or wall mount landscape spotlight. 46 LEDs, 800 lm claim, 3 brightness
   modes. Product information table: Voltage 3.7 volts. About this item mentions
   "large-capacity rechargeable battery" but no mAh or cell form. Pack variants
-  2 / 6 / 10. Ingest 2026-09-22.
+  2 / 6 / 10. Ingest 2026-09-22. Operator 2026-09-25: fail sealed, do not buy.
 ---

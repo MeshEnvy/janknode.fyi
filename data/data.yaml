@@ -150,7 +150,8 @@ shells:
     chemistry: 1S-li-ion
     nominal_v: 3.7
     mah_label: 1200
-    works: maybe
+    works: fail
+    fail_reason: sealed
     profile: lights/B0GDWFY3MJ/profile.jpg
     amazon: https://www.amazon.com/dp/B0GDWFY3MJ
   - asin: B07WPHTWBP
@@ -265,7 +266,8 @@ shells:
     size_in: null
     chemistry: 1S-li-ion
     nominal_v: 3.7
-    works: maybe
+    works: fail
+    fail_reason: sealed
     profile: lights/B0C5J9Z4ZY/profile.jpg
     amazon: https://www.amazon.com/dp/B0C5J9Z4ZY
   - asin: B0DMNH8QDN
@@ -416,7 +418,8 @@ antennas:
     vswr_shots:
       - src: gear/B0FSTD4BYM/shots/2026-09-21-vna-nanovna.jpg
         label: NanoVNA
-    note: Longer field whip, SMA male. E6000 on nut only; keep silicone off SMA mating surface.
+    king: true
+    note: Longer field whip, SMA male. E6000 on nut only; keep silicone off SMA mating surface. Current deploy pick.
   - asin: B0CTXL61LY
     brand: Tenmory
     title: 915 MHz short omni + U.FL pigtail (2×)
@@ -460,8 +463,7 @@ antennas:
     vswr_shots:
       - src: gear/B0FQK27BSP/shots/2026-09-21-vna-nanovna.jpg
         label: NanoVNA
-    king: true
-    note: Straight 20 cm whip, SMA male. Pigtail in box. Current deploy pick.
+    note: Straight 20 cm whip, SMA male. Pigtail in box.
 
 batteries:
   - slug: inr18650-25r

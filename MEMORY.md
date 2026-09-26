@@ -27,7 +27,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | **sealed** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | **sealed** (500 mAh listing) |
 | B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **pass** (18650, 1200 mAh, 3.7 V) |
-| B0GDWFY3MJ | NIORSUN | fence step | $4.50 | maybe (1200 mAh, 3.7 V) |
+| B0GDWFY3MJ | NIORSUN | fence step | $4.50 | **sealed** (1200 mAh listing) |
 | B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **NiMH** (1.2 V listing) |
 | B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | **no space** (18650, 1200 mAh, 3.7 V) |
 | B0C813SJXP | FLITI | fence wedge | $5.00 | **no space** (18650, 1200 mAh, 3.7 V) |
@@ -35,7 +35,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | **sealed** (LiPo, 1500 mAh) |
 | 18433905661 | DAYBETTER | spotlight | $5.62 | **pass** 👑 (18650, 1500 mAh, 3.7 V, Walmart, bench 09-25) |
 | 6918255256 | CHARKEE | spotlight | $5.62 | maybe (1500 mAh only, chemistry unstated, Walmart, ordered 09-24) |
-| B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | maybe (3.7 V, mAh unknown) |
+| B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | **sealed** (3.7 V listing) |
 | B0FHQH9LPQ | NACINIC | spotlight | $6.25 | **sealed** (18650, 1200 mAh, 3.7 V) |
 | B09XM9GZ5F | Bridika | fence wedge | $6.67 | **no space** (18650, 1500 mAh, 3.7 V) |
 | B085242PLC | LECLESTAR | flood | $15.99 | **too big** (4400 mAh listing) |
@@ -51,7 +51,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 
 ## Antennas (4 listings)
 
-**King antenna:** XWXGG 20 cm whip + pigtail (B0FQK27BSP, 6 dBi listed, VSWR 1.00 @ 915 MHz, $6.50). Alts: XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY), muzi 17 cm whip (B0FSTD4BYM, no listing gain).
+**King antenna:** muzi WORKS 17 cm whip (B0FSTD4BYM, VSWR ~1.45 @ 915 MHz, $9.98). Alts: XWXGG 20 cm whip + pigtail (B0FQK27BSP), XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY).
 
 ## Batteries (2 listings)
 
@@ -63,7 +63,7 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 **Runtime basis:** `radio_daily_mah: 220` in `data/data.yaml` (RAK4631 slim, powersaving on, planning estimate until bench logged).
 
-**Hero BOM:** ≈ **$44.81/node** (DAYBETTER shell + RAK19003 kit + XWXGG whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
+**Hero BOM:** ≈ **$48.29/node** (DAYBETTER shell + RAK19003 kit + muzi whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK kit ships U.FL pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (16 listings)
 

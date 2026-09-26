@@ -43,7 +43,10 @@ vswr_min_mhz:
 optional:
   value: false
   source: agent
-last_verified: 2026-09-21
+king:
+  value: true
+  source: measured
+last_verified: 2026-09-25
 notes: |
   Longer field whip. E6000 on nut only; keep silicone off SMA mating surface. NanoVNA 900–930 MHz sweep on file.
 ---

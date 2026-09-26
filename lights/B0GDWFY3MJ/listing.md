@@ -40,16 +40,19 @@ mah_label:
   value: 1200
   source: listing
 works:
-  value: maybe
-  source: agent
+  value: fail
+  source: measured
+fail_reason:
+  value: sealed
+  source: measured
 amazon: https://www.amazon.com/dp/B0GDWFY3MJ
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-22
+last_verified: 2026-09-25
 notes: |
   Large triangular step wedge. About this item: "1200mAh battery." Product
   information: Voltage 3.7 volts. High/medium brightness modes. 3M adhesive
   or screw mount. Distinct from NIORSUN B0G2BKN15W fence wedge. Ingest
-  2026-09-22.
+  2026-09-22. Operator 2026-09-25: fail sealed, do not buy.
 ---
