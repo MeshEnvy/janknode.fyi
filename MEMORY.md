@@ -4,7 +4,7 @@ GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.f
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
-**Last updated:** 2026-09-24
+**Last updated:** 2026-09-25
 
 ## What this is
 
@@ -12,7 +12,7 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 ## King
 
-**Shell: CLAONER B0C7B2Z39G** — PIR wall, 18650 1200 mAh 3.7 V, $4.17/shell, IP65. Replaces HMCITY **B0DT95J4QC** (failed 2026-09-21, molded shut).
+**Shell: DAYBETTER 18433905661 (Walmart)** — spotlight, 18650 1500 mAh 3.7 V, $5.62/shell, IP65, separate tilt panel. Replaces CLAONER **B0C7B2Z39G** (2026-09-25). YouTube thumb tagline: Long Live Shanknode.
 
 ## Catalog (19 shells)
 
@@ -26,14 +26,14 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0DRNRZV32 | TECKNET | fence cap | $2.75 | **no space** (600 mAh listing) |
 | B0DT95J4QC | HMCITY | wall wedge | $3.33 | **sealed** (molded shut) |
 | B0G2BKN15W | NIORSUN | fence wedge | $3.83 | **sealed** (500 mAh listing) |
-| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **pass** 👑 (18650, 1200 mAh, 3.7 V) |
+| B0C7B2Z39G | CLAONER | PIR wall | $4.17 | **pass** (18650, 1200 mAh, 3.7 V) |
 | B0GDWFY3MJ | NIORSUN | fence step | $4.50 | maybe (1200 mAh, 3.7 V) |
 | B07WPHTWBP | ROSHWEY | fence wedge | $4.67 | **NiMH** (1.2 V listing) |
 | B0H3LWZHHW | Toeuitie | fence wedge | $5.00 | **no space** (18650, 1200 mAh, 3.7 V) |
 | B0C813SJXP | FLITI | fence wedge | $5.00 | **no space** (18650, 1200 mAh, 3.7 V) |
 | B0FGCM9TBN | JOFIOS | fence step | $5.00 | **pass** (18650, 1200 mAh, 3.7 V) |
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | **sealed** (LiPo, 1500 mAh) |
-| 18433905661 | DAYBETTER | spotlight | $5.62 | maybe (18650 claimed, Walmart, ordered 09-24, not benched) |
+| 18433905661 | DAYBETTER | spotlight | $5.62 | **pass** 👑 (18650, 1500 mAh, 3.7 V, Walmart, bench 09-25) |
 | 6918255256 | CHARKEE | spotlight | $5.62 | maybe (1500 mAh only, chemistry unstated, Walmart, ordered 09-24) |
 | B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | maybe (3.7 V, mAh unknown) |
 | B0FHQH9LPQ | NACINIC | spotlight | $6.25 | **sealed** (18650, 1200 mAh, 3.7 V) |
@@ -63,7 +63,7 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 **Runtime basis:** `radio_daily_mah: 220` in `data/data.yaml` (RAK4631 slim, powersaving on, planning estimate until bench logged).
 
-**Hero BOM:** ≈ **$43.36/node** (CLAONER shell + RAK19003 kit + XWXGG whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
+**Hero BOM:** ≈ **$44.81/node** (DAYBETTER shell + RAK19003 kit + XWXGG whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK/antenna include pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
 
 ## Consumables + tools (16 listings)
 
@@ -82,10 +82,11 @@ It does not become a general project forge (fork a build, list every DIY form, M
 ## Active threads
 
 - **Published 2026-09-23** to [janknode.fyi](https://janknode.fyi). Cloudflare Pages deploy of `7415842` succeeded 18:43 PT. Review videos on the catalog: CLAONER, JOFIOS, VOLISUN (`B0D78HJYJ1`), HMCITY, TECKNET.
-- Listing-only until bay photos. Chemistry gate still open on unknown shells.
+- Listing-only until bay photos, except DAYBETTER 18433905661 (operator bench pass 2026-09-25). Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
-- CLAONER B0C7B2Z39G: shell king. Operator 09-23: this is the Silver Triangle shell unless a later one has more battery or a vertical SMA. Review [u3XQ3FCROro](https://youtu.be/u3XQ3FCROro).
+- DAYBETTER 18433905661: shell king 2026-09-25 (1500 mAh, separate panel). Branded thumb `Long Live Shanknode`. Add `youtube_review` when the review is live.
+- CLAONER B0C7B2Z39G: former king. Review [u3XQ3FCROro](https://youtu.be/u3XQ3FCROro).
 - CLAONER fit-check still owed before the bag commits (bay size, panel keep-up).
 - Gear gaps: heat-shrink, bench supply PDPs.
 - Profile tiles: AI extract (`extract-profile` skill + GenerateImage). `profile_extract` / `connector` in `listing.md` steer isolation. No manual crops. `profile.meta.yaml` stores the hints used. PDPs filed for MAIYUM solder (B075WB98FJ) and FainWan JST PH 2.0 (B09JZC28DP).

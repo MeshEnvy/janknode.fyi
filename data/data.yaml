@@ -6,8 +6,8 @@
 #   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
 #   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
-last_verified: 2026-09-23
-king: B0C7B2Z39G
+last_verified: 2026-09-25
+king: "18433905661"
 
 # RAK4631 slim repeater planning draw (powersaving on). Update when bench logged.
 radio_daily_mah: 220
@@ -132,7 +132,6 @@ shells:
     nominal_v: 3.7
     mah_label: 1200
     works: pass
-    king: true
     youtube_review: https://www.youtube.com/watch?v=u3XQ3FCROro
     profile_video: true
     youtube_thumb: lights/B0C7B2Z39G/youtube-thumb.jpg
@@ -234,7 +233,11 @@ shells:
     chemistry: 1S-li-ion
     nominal_v: 3.7
     mah_label: 1500
-    works: maybe
+    works: pass
+    king: true
+    profile_video: true
+    youtube_thumb: lights/18433905661/youtube-thumb.jpg
+    youtube_thumb_tagline: Long Live Shanknode
     profile: lights/18433905661/profile.jpg
     amazon: https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661
   - asin: "6918255256"
