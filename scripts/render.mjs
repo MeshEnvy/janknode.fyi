@@ -39,12 +39,39 @@ const winnerBadgeHtml = () =>
 const labeledTd = (label, content, className = "") =>
   `<td class="${className}" data-label="${attr(label)}">${content}</td>`;
 
+/** Noun for counting checkout lines (bulk Qty column, single-SKU buy label). */
+const orderUnit = (item) => {
+  if (item.order_unit) return item.order_unit;
+  const packQty = item.pack_qty ?? 1;
+  if (
+    item.bulk_unit_price_usd != null &&
+    item.bulk_min_qty != null &&
+    (item.unit_label === "kit" || item.sku)
+  ) {
+    return "kit";
+  }
+  if (packQty > 1) return "pack";
+  if (item.unit_label) return item.unit_label;
+  return "pack";
+};
+
+const pluralOrderCount = (count, unit) => {
+  if (count === 1) return `1 ${unit}`;
+  if (unit === "pack") return `${count} packs`;
+  if (unit === "kit") return `${count} kits`;
+  if (unit === "pair") return `${count} pairs`;
+  if (unit.endsWith("s")) return `${count} ${unit}`;
+  return `${count} ${unit}s`;
+};
+
 const buyButtonLabel = (item) => {
   const qty = item.pack_qty;
   const price = item.pack_price_usd;
   if (price == null) return null;
-  if (qty == null || qty <= 1) return `Buy ${money(price)}`;
-  return `Buy ${qty}-pack ${money(price)}`;
+  if (qty != null && qty > 1) return `Buy ${qty}-pack ${money(price)}`;
+  const unit = orderUnit(item);
+  if (unit !== "pack") return `Buy ${unit} ${money(price)}`;
+  return `Buy ${money(price)}`;
 };
 
 const buyLinkHtml = (item, { priced = true } = {}) => {
@@ -145,8 +172,48 @@ const nodeBomCost = (item) => {
   return 0;
 };
 
+const nodeBomCostBulk = (item) => {
+  if (item.bulk_unit_price_usd != null) return item.bulk_unit_price_usd;
+  return nodeBomCost(item);
+};
+
+const formatBomCostCell = (item) =>
+  `<span class="num">${escapeHtml(money(nodeBomCost(item)))}</span>`;
+
 const packBomCost = (item) =>
   item.pack_price_usd != null ? item.pack_price_usd : null;
+
+/** Units one catalog pack covers (pack_qty, or derived from node_cost_usd). */
+const unitsPerPack = (item) => {
+  if (
+    item.node_cost_usd != null &&
+    item.node_cost_usd > 0 &&
+    item.pack_price_usd != null
+  ) {
+    return item.pack_price_usd / item.node_cost_usd;
+  }
+  const q = item.pack_qty ?? 1;
+  return q > 0 ? q : 1;
+};
+
+const packsToBuildNodes = (item, nodes) => {
+  if (nodes == null || nodes <= 0) return 0;
+  return Math.ceil(nodes / unitsPerPack(item));
+};
+
+/** Line cost for a community build of `nodes` repeaters (exact pack multiples). */
+const communityLineCost = (item, nodes) => {
+  if (nodes == null || nodes <= 0) return packBomCost(item) ?? 0;
+  if (
+    item.bulk_unit_price_usd != null &&
+    item.bulk_min_qty != null &&
+    nodes >= item.bulk_min_qty
+  ) {
+    return nodes * item.bulk_unit_price_usd;
+  }
+  if (item.pack_price_usd == null) return 0;
+  return packsToBuildNodes(item, nodes) * item.pack_price_usd;
+};
 
 const formatVswrShots = (shots) => {
   if (!shots?.length) return "";
@@ -364,9 +431,12 @@ const shellEmptyRow =
 const renderShellTableBlock = (title, hint, shells, modifier = "") => {
   const rows = sortKingFirst(shells).map(shellRow).join("");
   const modClass = modifier ? ` shell-table-block--${modifier}` : "";
+  const hintHtml = hint
+    ? `<p class="gear-hint gear-block shell-table-block__hint">${escapeHtml(hint)}</p>`
+    : "";
   return `<div class="shell-table-block${modClass}">
           <h3 class="shell-table-block__title">${escapeHtml(title)}</h3>
-          <p class="gear-hint gear-block shell-table-block__hint">${escapeHtml(hint)}</p>
+          ${hintHtml}
           <div class="scroll catalog-scroll">
             <table class="catalog-table">
               ${shellTableHead}
@@ -383,10 +453,6 @@ const renderFailedShellSection = (failed) => {
   const label = count === 1 ? "1 failed shell" : `${count} failed shells`;
   return `<details class="shell-failed">
           <summary class="shell-failed__summary">${escapeHtml(label)}</summary>
-          <p class="gear-hint gear-block shell-failed__hint">
-            Bench checked. Sealed shut, wrong chemistry, or otherwise not viable
-            for a janknode build.
-          </p>
           <div class="scroll catalog-scroll">
             <table class="catalog-table">
               ${shellTableHead}
@@ -403,13 +469,69 @@ const bomTableRow = (item, role, name) => {
           ${bomThumbCell(item)}
           ${labeledTd("Role", escapeHtml(role), "col-role")}
           ${itemCell({ primary: escapeHtml(name), secondary: null })}
-          ${labeledTd("$/node", `<span class="num">${escapeHtml(money(nodeBomCost(item)))}</span>`, "col-cost num")}
+          ${labeledTd("$/node", formatBomCostCell(item), "col-cost num")}
           ${buyCell(item)}
         </tr>`;
 };
 
+const communityQtyLabel = (item, nodes) => {
+  if (!nodes) return dash;
+  const unit = orderUnit(item);
+  if (
+    item.bulk_unit_price_usd != null &&
+    item.bulk_min_qty != null &&
+    nodes >= item.bulk_min_qty
+  ) {
+    return pluralOrderCount(nodes, unit);
+  }
+  const packs = packsToBuildNodes(item, nodes);
+  return pluralOrderCount(packs, unit);
+};
+
+const communityBuyButtonLabel = (item, nodes) => {
+  const line = communityLineCost(item, nodes);
+  if (item.pack_price_usd == null && line <= 0) return null;
+  return `Buy ${money(line)}`;
+};
+
+const buyCellCommunity = (item, nodes) => {
+  const href = item.buy_url || item.amazon;
+  const label = communityBuyButtonLabel(item, nodes);
+  if (!href || label == null) return labeledTd("Buy", dash, "col-buy");
+  const store = item.vendor || "Amazon";
+  const icon = storeIconHtml(href, store);
+  const link = `<a class="${BUY_BTN_BASE} btn-dark" href="${attr(href)}" target="_blank" rel="noopener noreferrer" title="${attr(label)}"><span class="buy-btn__icon">${icon}</span><span class="buy-btn__label">${escapeHtml(label)}</span></a>`;
+  return labeledTd("Buy", link, "col-buy");
+};
+
+const bomTableRowBulk = (item, role, name, nodes) => {
+  const videoHtml = productVideoThumbHtml(item);
+  const rowClass = videoHtml
+    ? "bom-row bom-row--bulk bom-row--video"
+    : "bom-row bom-row--bulk";
+  const line = communityLineCost(item, nodes);
+  const qtyLabel = communityQtyLabel(item, nodes);
+  const qtyCell =
+    qtyLabel === dash
+      ? labeledTd("Qty", qtyLabel, "col-qty num")
+      : labeledTd(
+          "Qty",
+          `<span class="num">${escapeHtml(String(qtyLabel))}</span>`,
+          "col-qty num",
+        );
+  return `<tr class="${rowClass}">
+          ${bomThumbCell(item)}
+          ${labeledTd("Role", escapeHtml(role), "col-role")}
+          ${itemCell({ primary: escapeHtml(name), secondary: null })}
+          ${qtyCell}
+          ${labeledTd("Price", `<span class="num">${escapeHtml(money(line))}</span>`, "col-price num")}
+          ${buyCellCommunity(item, nodes)}
+        </tr>`;
+};
+
 function computeBom(catalog) {
-  const { lights, boards, antennas, consumables, hero } = catalog;
+  const { lights, boards, antennas, consumables, hero, community_build_qty } =
+    catalog;
   const king = lights.find((l) => l.king);
   const kingBoard = boards.find((k) => k.king) || boards[0];
   const kingAntenna = antennas.find((a) => a.king) || antennas[0];
@@ -439,7 +561,30 @@ function computeBom(catalog) {
     (sum, item) => sum + (packBomCost(item) ?? 0),
     0,
   );
-  return { king, bomCore, bomTotal, firstBuyTotal };
+  const bulkMinQty = kingBoard?.bulk_min_qty ?? null;
+  const communityBuildQty =
+    community_build_qty ?? bulkMinQty ?? null;
+  const firstBuyCommunityTotal =
+    communityBuildQty != null
+      ? bomItems.reduce(
+          (sum, item) => sum + communityLineCost(item, communityBuildQty),
+          0,
+        )
+      : firstBuyTotal;
+  const bomTotalBulk =
+    communityBuildQty != null && firstBuyCommunityTotal > 0
+      ? firstBuyCommunityTotal / communityBuildQty
+      : bomItems.reduce((sum, item) => sum + nodeBomCostBulk(item), 0);
+  return {
+    king,
+    bomCore,
+    bomTotal,
+    bomTotalBulk,
+    firstBuyTotal,
+    firstBuyCommunityTotal,
+    bulkMinQty,
+    communityBuildQty,
+  };
 }
 
 export function renderPage(catalog) {
@@ -454,10 +599,23 @@ export function renderPage(catalog) {
     last_verified,
     radio_daily_mah,
   } = catalog;
-  const { bomCore, bomTotal, firstBuyTotal } = computeBom(catalog);
+  const {
+    bomCore,
+    bomTotal,
+    bomTotalBulk,
+    firstBuyTotal,
+    firstBuyCommunityTotal,
+    communityBuildQty,
+  } = computeBom(catalog);
   const { passing, evaluation, failed: failedShells } = partitionShells(lights);
   const bomLabel = money(bomTotal);
   const firstBuyLabel = money(firstBuyTotal);
+  const hasBulkNote =
+    communityBuildQty != null &&
+    bomTotalBulk < bomTotal - 0.001 &&
+    firstBuyCommunityTotal > firstBuyTotal + 0.001;
+  const bulkPerNodeLabel = money(bomTotalBulk);
+  const communityBuyLabel = money(firstBuyCommunityTotal);
 
   const bomConsumableRows = (hero.consumables || [])
     .map((row) => {
@@ -471,6 +629,42 @@ export function renderPage(catalog) {
           <td class="col-cost num" data-label="$/node"><span class="num">${escapeHtml(bomLabel)}</span></td>
           <td class="col-buy num bom-total-buy" data-label="Buy"><span class="num">${escapeHtml(firstBuyLabel)}</span></td>
         </tr>`;
+
+  const bomBulkConsumableRows = (hero.consumables || [])
+    .map((row) => {
+      const item = consumables.find((c) => c.asin === row.asin);
+      return item
+        ? bomTableRowBulk(item, row.label, item.title, communityBuildQty)
+        : "";
+    })
+    .join("");
+
+  const bomBulkRows = hasBulkNote
+    ? `${bomCore.map((row) => bomTableRowBulk(row.item, row.role, row.name, communityBuildQty)).join("")}${bomBulkConsumableRows}`
+    : "";
+
+  const bomBulkBlockHtml = hasBulkNote
+    ? `<div class="bom-bulk-block" id="bom-bulk" aria-labelledby="bom-bulk-heading">
+        <h2 class="gear-title bom-bulk-title" id="bom-bulk-heading">Bulk Buy @ <span class="bom-bulk-title__rate num">${escapeHtml(bulkPerNodeLabel)}</span> <span class="bom-bulk-title__detail">(${escapeHtml(String(communityBuildQty))} nodes - ${escapeHtml(communityBuyLabel)})</span></h2>
+        <div class="scroll catalog-scroll">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Role</th>
+                <th>Item</th>
+                <th class="num col-qty">Qty</th>
+                <th class="num col-price">Price</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>
+            <tbody id="bom-bulk-rows">
+              ${bomBulkRows}
+            </tbody>
+          </table>
+        </div>
+      </div>`
+    : "";
 
   const recordCopy = "Build a Meshtastic or MeshCore solar repeater for";
   const recordItem = (hidden) =>
@@ -489,19 +683,20 @@ export function renderPage(catalog) {
   return {
     title: `Janknode Review Guide — solar repeater from ${bomLabel}`,
     description: `Build a Meshtastic or MeshCore solar repeater from ${bomLabel}. Shell rankings, RAK boards, 915 MHz antennas, 18650 cells, consumables, and bench tools.`,
+    bom_bulk_block_html: bomBulkBlockHtml,
     json_ld: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
     copyright_year: String(new Date().getFullYear()),
     record_strip_html: recordStripHtml,
     bom_rows: bomRows,
     shell_passing_section: renderShellTableBlock(
       "Passing",
-      "Bench pass or strong 1S Li-ion signals from the listing.",
+      "",
       passing,
       "passing",
     ),
     shell_evaluation_section: renderShellTableBlock(
       "Under evaluation",
-      "Harvested from Amazon. Teardown or field test still pending.",
+      "",
       evaluation,
       "evaluation",
     ),
@@ -549,6 +744,7 @@ export function applyTemplate(template, parts) {
     .replace("{{copyright_year}}", escapeHtml(parts.copyright_year))
     .replace("{{record_strip_html}}", parts.record_strip_html)
     .replace("{{bom_rows}}", parts.bom_rows)
+    .replace("{{bom_bulk_block_html}}", parts.bom_bulk_block_html ?? "")
     .replace("{{shell_passing_section}}", parts.shell_passing_section)
     .replace("{{shell_evaluation_section}}", parts.shell_evaluation_section)
     .replace("{{shell_failed_section}}", parts.shell_failed_section)

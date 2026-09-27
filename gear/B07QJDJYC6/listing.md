@@ -1,41 +1,38 @@
 ---
-asin: B0EXAMPLE
+asin: B07QJDJYC6
 brand:
-  value:
+  value: E6000
   source: listing
 title:
-  value:
+  value: E6000+ adhesive 0.9 oz
   source: listing
 kind:
-  value: consumable # consumable | tool
-  source: agent
-group:
-  value: # solder | measure | hand | null
+  value: consumable
   source: agent
 pack_qty:
-  value:
+  value: 1
   source: listing
 pack_price_usd:
-  value:
+  value: 8.29
   source: listing
 unit_price_usd:
-  value:
+  value: 8.29
   source: listing
 unit_label:
-  value:
-  source: agent
-amazon: https://www.amazon.com/dp/B0EXAMPLE
-pairs_with:
-  value:
-  source: agent
+  value: tube
+  source: listing
+order_unit:
+  value: tube
+  source: listing
+amazon: https://www.amazon.com/dp/B07QJDJYC6
 optional:
   value: false
   source: agent
-last_verified: YYYY-MM-DD
+last_verified: 2026-09-21
 notes: |
-  One line for the table Notes column.
+  IPEX dab + SMA nut seal. Not a structural glue for the whole enclosure.
 ---
 
-# B0EXAMPLE
+# B07QJDJYC6
 
-Paste PDP into `shots/`. Crop `profile.jpg`.
+E6000+ adhesive, 0.9 oz tube.

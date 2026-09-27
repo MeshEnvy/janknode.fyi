@@ -4,7 +4,7 @@ brand:
   value: FainWan
   source: listing
 title:
-  value: JST PH 2.0 mm 2-pin pigtails
+  value: JST PH 2.0 mm 2-pin pigtails (100 pigtails)
   source: listing
 kind:
   value: consumable

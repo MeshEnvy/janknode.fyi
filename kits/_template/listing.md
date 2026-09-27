@@ -21,6 +21,9 @@ unit_price_usd:
 unit_label:
   value: kit
   source: agent
+order_unit:
+  value: kit
+  source: agent
 vendor: Rokland
 buy_url:
 optional:

@@ -4,7 +4,7 @@ brand:
   value: muzi WORKS
   source: listing
 title:
-  value: 915 MHz whip antenna, 17 cm
+  value: 915 MHz whip antenna, 17 cm (4 antennas)
   source: listing
 kind:
   value: antenna

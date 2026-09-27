@@ -4,7 +4,7 @@ brand:
   value: CHARKEE
   source: listing
 title:
-  value: Outdoor solar spotlights, 800 lm, 6500K (8 pack)
+  value: Outdoor solar spotlights, 800 lm, 6500K (8 lights)
   source: listing
 form:
   value: spotlight
@@ -18,6 +18,12 @@ pack_price_usd:
 unit_price_usd:
   value: 5.62
   source: listing
+unit_label:
+  value: shell
+  source: agent
+order_unit:
+  value: pack
+  source: agent
 ip:
   value: IP65
   source: listing
@@ -28,20 +34,32 @@ size_in:
   value:
   source: unknown
 cell:
-  value:
-  source: unknown
+  value: 18650
+  source: measured
 chemistry:
-  value:
-  source: unknown
+  value: 1S-li-ion
+  source: measured
 nominal_v:
-  value:
-  source: unknown
+  value: 3.7
+  source: measured
 mah_label:
   value: 1500
   source: listing
 works:
-  value: maybe
-  source: agent
+  value: pass
+  source: measured
+profile_video:
+  value: true
+  source: listing
+youtube_review:
+  value: https://www.youtube.com/watch?v=I7VdbrMlzRo
+  source: listing
+youtube_thumb:
+  value: lights/18433905661/youtube-thumb.jpg
+  source: listing
+youtube_thumb_tagline:
+  value: Long Live Shanknode
+  source: listing
 profile_source: product-detail-snapshot.jpg
 profile_extract: |
   One CHARKEE ground spotlight from the 8-pack. Black head, cool-white LED grid
@@ -53,14 +71,14 @@ amazon: https://www.walmart.com/ip/CHARKEE-Solar-Spot-Lights-Outdoor-150-Adjusta
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-24
+last_verified: 2026-09-26
 notes: |
-  Walmart item 6918255256, not an Amazon ASIN. Ordered 2026-09-24, white, arrives
-  Sep 26. Clearance $44.99 for 8 (was $79.99). Page says 800 lm, 6500K, IP65, ABS
-  and PC, panel adjusts 150° on its own, ground stake or wall, "1500mAh battery"
-  that charges in 6–8 h and runs 8–20 h. No cell form and no voltage on the page,
-  so chemistry stays unknown. Separate panel is why it is in the catalog. Not pass
-  until the bay is opened.
+  Walmart item 6918255256, not an Amazon ASIN. Clearance $44.99 for 8 (was $79.99),
+  cool white (6500K / 800 lm listing). Same enclosure, panel, and 18650 bay as
+  DAYBETTER king shell 18433905661 (warm white SKU). Operator 2026-09-26: bench
+  pass; identical to DAYBETTER teardown. Review https://youtu.be/I7VdbrMlzRo (same
+  as DAYBETTER king). Specs: 3.7 V 1500 mAh 18650 Li, IP65, separate 150° panel,
+  stake or wall.
 ---
 
 # 6918255256

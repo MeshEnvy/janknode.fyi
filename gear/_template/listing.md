@@ -31,7 +31,10 @@ unit_price_usd:
   value:
   source: listing
 unit_label:
-  value:
+  value: # per-node BOM unit (tube, set, spool, antenna, …)
+  source: agent
+order_unit:
+  value: # checkout line noun (pack, tube, kit, spool). Default: pack if pack_qty > 1, else unit_label
   source: agent
 amazon: https://www.amazon.com/dp/B0EXAMPLE
 pairs_with:

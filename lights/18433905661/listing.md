@@ -4,7 +4,7 @@ brand:
   value: DAYBETTER
   source: listing
 title:
-  value: Outdoor solar spotlights, 3 modes, warm white (8 pack)
+  value: Outdoor solar spotlights, 3 modes, warm white (8 lights)
   source: listing
 form:
   value: spotlight
@@ -18,6 +18,12 @@ pack_price_usd:
 unit_price_usd:
   value: 5.62
   source: listing
+unit_label:
+  value: shell
+  source: agent
+order_unit:
+  value: pack
+  source: agent
 ip:
   value: IP65
   source: listing
@@ -45,6 +51,9 @@ works:
 profile_video:
   value: true
   source: listing
+youtube_review:
+  value: https://www.youtube.com/watch?v=I7VdbrMlzRo
+  source: listing
 youtube_thumb:
   value: lights/18433905661/youtube-thumb.jpg
   source: listing
@@ -69,7 +78,7 @@ amazon: https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground
 in_stock:
   value: true
   source: listing
-last_verified: 2026-09-25
+last_verified: 2026-09-26
 notes: |
   Walmart item 18433905661, not an Amazon ASIN. Ordered 2026-09-24. Clearance
   $44.99 for 8 (was $79.99), warm white. Specs on the page: "Battery: 3.7v
@@ -77,7 +86,7 @@ notes: |
   stake or wall. 6–8 h charge claim, 8–20 h run claim. Separate panel is why
   it is in the catalog. Operator 2026-09-25: bench pass. All tests passed.
   Shell king 2026-09-25 (replaces CLAONER B0C7B2Z39G): more mAh, separate panel.
-  Add youtube_review URL in listing + data.yaml when the review is published.
+  Review https://youtu.be/I7VdbrMlzRo (Long Live Shanknode).
 ---
 
 # 18433905661

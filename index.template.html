@@ -226,6 +226,42 @@
         letter-spacing: -0.02em;
         color: var(--pop);
       }
+      .current-record__price--bulk {
+        font-weight: 600;
+        font-size: 0.92em;
+        color: var(--muted);
+      }
+      .bom-bulk-hint {
+        display: block;
+        margin-top: 0.2rem;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        white-space: normal;
+        line-height: 1.35;
+      }
+      .col-buy .bom-bulk-hint {
+        max-width: 9.5rem;
+      }
+      .bom-bulk-block {
+        margin-top: 2rem;
+      }
+      .bom-bulk-title {
+        margin-top: 0;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.65rem;
+      }
+      .bom-bulk-title__rate {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+      }
+      .bom-bulk-title__detail {
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-size: clamp(0.88rem, 2vw, 1.05rem);
+        font-weight: 500;
+        color: var(--muted);
+      }
       @keyframes record-ticker {
         0% {
           transform: translateX(0);
@@ -254,6 +290,16 @@
         #bom .catalog-table th.num,
         #bom .catalog-table td.col-cost {
           width: 6.5rem;
+          text-align: right;
+        }
+        #bom-bulk .catalog-table th.num.col-qty,
+        #bom-bulk .catalog-table td.col-qty {
+          width: 7.25rem;
+          text-align: right;
+        }
+        #bom-bulk .catalog-table th.num.col-price,
+        #bom-bulk .catalog-table td.col-price {
+          width: 7rem;
           text-align: right;
         }
       }
@@ -616,6 +662,41 @@
           padding: 0.15rem 0 0;
         }
         #bom .bom-row td.col-buy::before {
+          display: none;
+        }
+        #bom-bulk .bom-row--bulk {
+          grid-template-areas:
+            "thumb title price"
+            "qty qty qty"
+            "buy buy buy";
+        }
+        #bom-bulk .bom-row--bulk td.col-qty {
+          grid-area: qty;
+          display: block;
+          padding: 0;
+          font-family: "IBM Plex Mono", ui-monospace, monospace;
+          font-size: 0.82rem;
+          color: var(--ink);
+        }
+        #bom-bulk .bom-row--bulk td.col-qty::before {
+          content: "Qty";
+          display: inline;
+          margin-right: 0.35rem;
+          font-family: "IBM Plex Sans", system-ui, sans-serif;
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--muted);
+        }
+        #bom-bulk .bom-row--bulk td.col-price {
+          grid-area: price;
+          display: block;
+          padding: 0;
+          text-align: right;
+          font-weight: 600;
+        }
+        #bom-bulk .bom-row--bulk td.col-price::before {
           display: none;
         }
         #bom .bom-row .thumb {
@@ -1337,6 +1418,7 @@
             </tbody>
           </table>
         </div>
+        {{bom_bulk_block_html}}
       </div>
     </section>
 
@@ -1347,10 +1429,6 @@
         aria-labelledby="shells-heading"
       >
         <h2 class="gear-title" id="shells-heading">Shells</h2>
-        <p class="gear-hint gear-block">
-          Solar lights we ranked. Passing shells first; the rest are still under
-          evaluation. See the winning setup above for our current pick.
-        </p>
         {{shell_passing_section}}
         {{shell_evaluation_section}}
         {{shell_failed_section}}
@@ -1362,10 +1440,6 @@
         aria-labelledby="boards-heading"
       >
         <h2 class="gear-title" id="boards-heading">Boards</h2>
-        <p class="gear-hint gear-block">
-          Swap the winning board if you want a different WisBlock base or a
-          tighter fit.
-        </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -1389,10 +1463,6 @@
         aria-labelledby="antennas-heading"
       >
         <h2 class="gear-title" id="antennas-heading">Antennas</h2>
-        <p class="gear-hint gear-block">
-          Swap the winning whip if you want a different 915 MHz option. Gain is
-          the listing claim. VSWR sweeps when we have them.
-        </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -1419,11 +1489,6 @@
         aria-labelledby="batteries-heading"
       >
         <h2 class="gear-title" id="batteries-heading">Batteries</h2>
-        <p class="gear-hint gear-block">
-          1S Li-ion cells for shells that ship an undersized 18650 or 14500.
-          Days column uses ~220 mAh/day RAK4631 slim repeater average
-          (powersaving on).
-        </p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -1454,13 +1519,8 @@
         aria-labelledby="shop-heading"
       >
         <h2 class="catalog-shop__title" id="shop-heading">Also buy</h2>
-        <p class="catalog-shop__lede">
-          Glue, connectors, and bench tools. Budget consumables per node. Tools
-          are buy-once.
-        </p>
 
         <h3 class="gear-sub" id="consumables-heading">Consumables</h3>
-        <p class="gear-hint">Per-node supplies for the build.</p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>
@@ -1479,7 +1539,6 @@
         </div>
 
         <h3 class="gear-sub" id="tools-heading">Tools</h3>
-        <p class="gear-hint">Soldering, measure, fabrication, hand tools.</p>
         <div class="scroll catalog-scroll">
           <table class="catalog-table">
             <thead>

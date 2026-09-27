@@ -18,6 +18,15 @@ pack_price_usd:
 unit_price_usd:
   value: 31.97
   source: listing
+bulk_min_qty:
+  value: 25
+  source: listing
+bulk_unit_price_usd:
+  value: 25.90
+  source: listing
+bulk_vendor:
+  value: Rokland
+  source: listing
 unit_label:
   value: kit
   source: agent
@@ -29,9 +38,11 @@ optional:
 king:
   value: true
   source: agent
-last_verified: 2026-09-21
+last_verified: 2026-09-26
 notes: |
-  30×35 mm mini base. Best fit for tight shells. Kit antenna is bench-only; deploy with a field whip below.
+  30×35 mm mini base. Best fit for tight shells. Street $31.97 on Rokland. Community
+  bulk 25+ @ $25.90 per kit (same SKU). Kit antenna is bench-only; deploy with a
+  field whip below.
 ---
 
 # 115093

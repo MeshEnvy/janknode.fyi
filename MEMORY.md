@@ -4,7 +4,7 @@ GitHub: `MeshEnvy/janknode.fyi`. Local: `/Volumes/Code/repos/meshenvy/janknode.f
 
 Living catalog state. Keep this short. Shell detail lives in `lights/<ASIN>/listing.md`.
 
-**Last updated:** 2026-09-25
+**Last updated:** 2026-09-26
 
 ## What this is
 
@@ -34,7 +34,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 | B0FGCM9TBN | JOFIOS | fence step | $5.00 | **pass** (18650, 1200 mAh, 3.7 V) |
 | B0DMNH8QDN | WENATY | spotlight | $5.42 | **sealed** (LiPo, 1500 mAh) |
 | 18433905661 | DAYBETTER | spotlight | $5.62 | **pass** 👑 (18650, 1500 mAh, 3.7 V, Walmart, bench 09-25) |
-| 6918255256 | CHARKEE | spotlight | $5.62 | maybe (1500 mAh only, chemistry unstated, Walmart, ordered 09-24) |
+| 6918255256 | CHARKEE | spotlight | $5.62 | **pass** (same hardware as DAYBETTER king, cool white SKU, bench 09-26) |
 | B0C5J9Z4ZY | Tadyreal | spotlight | $5.70 | **sealed** (3.7 V listing) |
 | B0FHQH9LPQ | NACINIC | spotlight | $6.25 | **sealed** (18650, 1200 mAh, 3.7 V) |
 | B09XM9GZ5F | Bridika | fence wedge | $6.67 | **no space** (18650, 1500 mAh, 3.7 V) |
@@ -51,7 +51,7 @@ Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`
 
 ## Antennas (4 listings)
 
-**King antenna:** muzi WORKS 17 cm whip (B0FSTD4BYM, VSWR ~1.45 @ 915 MHz, $9.98). Alts: XWXGG 20 cm whip + pigtail (B0FQK27BSP), XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY).
+**King antenna:** muzi WORKS 17 cm whip 4-pack (B0FSTD4BYM, VSWR ~1.45 @ 915 MHz, $9.98/antenna). Alts: XWXGG 20 cm whip + pigtail (B0FQK27BSP), XWXGG 19.5 cm 5 dBi duck (B0DY7KSYTV), Tenmory 3 dBi short duck (B0CTXL61LY).
 
 ## Batteries (2 listings)
 
@@ -63,7 +63,7 @@ YAML: `data/data.yaml` `batteries`. Detail: `batteries/<slug>/listing.md`.
 
 **Runtime basis:** `radio_daily_mah: 220` in `data/data.yaml` (RAK4631 slim, powersaving on, planning estimate until bench logged).
 
-**Hero BOM:** ≈ **$48.29/node** (DAYBETTER shell + RAK19003 kit + muzi whip + glue/JST PH/solder). Optional pigtail, JST 1.25, flux excluded (RAK kit ships U.FL pigtail). Catalog `$/unit` is pack price ÷ qty. Buy buttons show pack price. BOM `/node` is estimated usage.
+**Hero BOM:** ≈ **$48.29/node** street (DAYBETTER + Rokland 115093 @ $31.97 + muzi + glue/JST PH/solder). Bulk note under BOM only: **≈ $42.83/unit** if a **32-node** community shop (`community_build_qty`, pack math in `render.mjs`). Optional pigtail, JST 1.25, flux excluded (RAK kit ships U.FL pigtail).
 
 ## Consumables + tools (16 listings)
 
@@ -81,11 +81,11 @@ It does not become a general project forge (fork a build, list every DIY form, M
 
 ## Active threads
 
-- **Published 2026-09-23** to [janknode.fyi](https://janknode.fyi). Cloudflare Pages deploy of `7415842` succeeded 18:43 PT. Review videos on the catalog: CLAONER, JOFIOS, VOLISUN (`B0D78HJYJ1`), HMCITY, TECKNET.
+- **Published 2026-09-23** to [janknode.fyi](https://janknode.fyi). Cloudflare Pages deploy of `7415842` succeeded 18:43 PT. Review videos on the catalog: DAYBETTER, CLAONER, JOFIOS, VOLISUN (`B0D78HJYJ1`), HMCITY, TECKNET.
 - Listing-only until bay photos, except DAYBETTER 18433905661 (operator bench pass 2026-09-25). Chemistry gate still open on unknown shells.
 - SOLPEX B08H81Z1RW: fail — 1.2 V NiMH 700 mAh, do not buy.
 - HMCITY B0DT95J4QC: fail — sealed monolith, do not buy.
-- DAYBETTER 18433905661: shell king 2026-09-25 (1500 mAh, separate panel). Branded thumb `Long Live Shanknode`. Add `youtube_review` when the review is live.
+- DAYBETTER 18433905661: shell king 2026-09-25 (1500 mAh, separate panel). Review [I7VdbrMlzRo](https://youtu.be/I7VdbrMlzRo), thumb `Long Live Shanknode`.
 - CLAONER B0C7B2Z39G: former king. Review [u3XQ3FCROro](https://youtu.be/u3XQ3FCROro).
 - CLAONER fit-check still owed before the bag commits (bay size, panel keep-up).
 - Gear gaps: heat-shrink, bench supply PDPs.

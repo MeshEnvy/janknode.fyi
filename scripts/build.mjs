@@ -75,6 +75,7 @@ function loadCatalog() {
     last_verified: doc.last_verified,
     king_shell_asin: kingAsin,
     radio_daily_mah: doc.radio_daily_mah ?? 220,
+    community_build_qty: doc.community_build_qty ?? null,
     lights,
     boards,
     antennas,

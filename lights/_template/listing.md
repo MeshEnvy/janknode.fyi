@@ -18,6 +18,12 @@ pack_price_usd:
 unit_price_usd:
   value:
   source: listing
+unit_label:
+  value: shell
+  source: agent
+order_unit:
+  value: pack
+  source: agent
 ip:
   value:
   source: listing

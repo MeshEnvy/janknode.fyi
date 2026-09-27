@@ -20,7 +20,8 @@ Do not score keep-up, cavity, or mount on a fail. Fail rows stay in the collapse
 |---|---|
 | Brand | Listing brand. Confirm OCR. |
 | Form | path / stake, fence wedge, fence cap, PIR wall, flood. |
-| Cost | **$/unit from the pack**, plus pack size. |
+| Cost | **$/unit from the pack**, plus pack size. Street price is what buy links use (qty 1). Optional **bulk** on a row: `bulk_min_qty` + `bulk_unit_price_usd` when verified on the vendor PDP (boards first). Top-level **`community_build_qty`** (e.g. 32) drives the community shop: each BOM line gets `ceil(nodes ÷ units-per-pack) × pack price`, with board at bulk unit price when nodes ≥ MOQ. Consumables use `pack_price ÷ node_cost_usd` as units per pack. Bulk never replaces street on buy buttons. |
+| Units | **`unit_label`**: one node’s worth (tube, set, shell, kit, …). **`order_unit`**: what you count at checkout (pack, tube, kit, spool). Omit `order_unit` when `pack_qty > 1` → pack, or when `pack_qty === 1` → same as `unit_label`. Bulk BOM Qty and single-SKU buy labels use `order_unit`. |
 | Cell | Stock cell form when known (14500, 18650, AAA, …). |
 | Capacity | Chemistry + nominal V + mAh (label or measured). |
 | Panel voltage | Voc / Vmp of the **integrated panel**. Describes harvest into that light's charger, not a RAK solar jack. |

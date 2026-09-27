@@ -6,11 +6,14 @@
 #   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
 #   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
-last_verified: 2026-09-25
+last_verified: 2026-09-26
 king: "18433905661"
 
 # RAK4631 slim repeater planning draw (powersaving on). Update when bench logged.
 radio_daily_mah: 220
+
+# Community shop cart: pack counts sized to build this many nodes (see render.mjs).
+community_build_qty: 32
 
 hero:
   consumables:
@@ -222,11 +225,13 @@ shells:
   - asin: "18433905661"
     brand: DAYBETTER
     vendor: Walmart
-    title: Outdoor solar spotlights, 3 modes, warm white (8 pack)
+    title: Outdoor solar spotlights, 3 modes, warm white (8 lights)
     form: spotlight
     pack_qty: 8
     pack_price_usd: 44.99
     unit_price_usd: 5.62
+    unit_label: shell
+    order_unit: pack
     ip: IP65
     color: warm-white
     size_in: null
@@ -236,6 +241,7 @@ shells:
     mah_label: 1500
     works: pass
     king: true
+    youtube_review: https://www.youtube.com/watch?v=I7VdbrMlzRo
     profile_video: true
     youtube_thumb: lights/18433905661/youtube-thumb.jpg
     youtube_thumb_tagline: Long Live Shanknode
@@ -244,18 +250,28 @@ shells:
   - asin: "6918255256"
     brand: CHARKEE
     vendor: Walmart
-    title: Outdoor solar spotlights, 800 lm, 6500K (8 pack)
+    title: Outdoor solar spotlights, 800 lm, 6500K (8 lights)
     form: spotlight
     pack_qty: 8
     pack_price_usd: 44.99
     unit_price_usd: 5.62
+    unit_label: shell
+    order_unit: pack
     ip: IP65
     color: white
     size_in: null
+    cell: 18650
+    chemistry: 1S-li-ion
+    nominal_v: 3.7
     mah_label: 1500
-    works: maybe
+    works: pass
+    youtube_review: https://www.youtube.com/watch?v=I7VdbrMlzRo
+    profile_video: true
+    youtube_thumb: lights/18433905661/youtube-thumb.jpg
+    youtube_thumb_tagline: Long Live Shanknode
     profile: lights/6918255256/profile.jpg
     amazon: https://www.walmart.com/ip/CHARKEE-Solar-Spot-Lights-Outdoor-150-Adjustable-Panel-IP65-Waterproof-Powered-LED-Landscape-Path-Light-Outside-Yard-Garden-Garage-Patio-8-Pack/6918255256
+    note: Same hardware as DAYBETTER king shell (18433905661); cool white listing. Bench pass 2026-09-26. Review is the DAYBETTER king video.
   - asin: B0C5J9Z4ZY
     brand: Tadyreal
     form: spotlight
@@ -389,11 +405,15 @@ boards:
     pack_qty: 1
     pack_price_usd: 31.97
     unit_price_usd: 31.97
+    bulk_min_qty: 25
+    bulk_unit_price_usd: 25.90
+    bulk_vendor: Rokland
     unit_label: kit
+    order_unit: kit
     vendor: Rokland
     buy_url: https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093
     king: true
-    note: 30×35 mm mini base. Best fit for tight shells. Kit antenna is bench-only; deploy with a field whip below.
+    note: 30×35 mm mini base. Best fit for tight shells. Street $31.97; Rokland 25+ @ $25.90. Kit antenna is bench-only; deploy with a field whip below.
   - sku: "116016"
     brand: RAKwireless
     title: WisBlock starter kit (RAK19007 + RAK4631)
@@ -408,11 +428,12 @@ boards:
 antennas:
   - asin: B0FSTD4BYM
     brand: muzi WORKS
-    title: 915 MHz whip antenna, 17 cm
+    title: 915 MHz whip antenna, 17 cm (4 antennas)
     pack_qty: 4
     pack_price_usd: 39.9
     unit_price_usd: 9.98
     unit_label: antenna
+    order_unit: pack
     vswr_min: 1.45
     vswr_min_mhz: 915
     vswr_shots:
@@ -519,6 +540,7 @@ consumables:
     pack_price_usd: 8.29
     unit_price_usd: 8.29
     unit_label: tube
+    order_unit: tube
     node_cost_usd: 0.4
     note: IPEX dab + SMA nut seal. Not a structural glue for the whole enclosure.
   - asin: B013JRWCBU
@@ -533,11 +555,12 @@ consumables:
     note: Optional. JST 1.25 mm pigtails for solar or small-board jumpers (~80 mm leads).
   - asin: B09JZC28DP
     brand: FainWan
-    title: JST PH 2.0 mm 2-pin pigtails
+    title: JST PH 2.0 mm 2-pin pigtails (100 pigtails)
     pack_qty: 100
     pack_price_usd: 16.99
     unit_price_usd: 0.17
     unit_label: set
+    order_unit: pack
     node_cost_usd: 0.17
     note: RAK19003 battery JST-PH and similar (~120 mm leads).
   - asin: B0953NGKXR
@@ -557,6 +580,7 @@ consumables:
     pack_price_usd: 8.99
     unit_price_usd: 8.99
     unit_label: spool
+    order_unit: spool
     node_cost_usd: 0.15
     note: 50 g spool. Leaded 63/37. Wash hands after use.
   - asin: B0GPQKTM2Q
