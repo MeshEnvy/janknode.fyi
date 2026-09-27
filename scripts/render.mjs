@@ -64,21 +64,22 @@ const pluralOrderCount = (count, unit) => {
   return `${count} ${unit}s`;
 };
 
-const buyButtonLabel = (item) => {
+const buyButtonLabel = (item, { priceOnly = false } = {}) => {
   const qty = item.pack_qty;
   const price = item.pack_price_usd;
   if (price == null) return null;
+  if (priceOnly) return `Buy ${money(price)}`;
   if (qty != null && qty > 1) return `Buy ${qty}-pack ${money(price)}`;
   const unit = orderUnit(item);
   if (unit !== "pack") return `Buy ${unit} ${money(price)}`;
   return `Buy ${money(price)}`;
 };
 
-const buyLinkHtml = (item, { priced = true } = {}) => {
+const buyLinkHtml = (item, { priced = true, priceOnly = false } = {}) => {
   const href = item.buy_url || item.amazon;
   if (!href) return null;
 
-  const packLabel = buyButtonLabel(item);
+  const packLabel = buyButtonLabel(item, { priceOnly });
   const store = item.vendor || "Amazon";
   const icon = storeIconHtml(href, store);
 
@@ -91,17 +92,31 @@ const buyLinkHtml = (item, { priced = true } = {}) => {
   return `<a class="${BUY_BTN_BASE} btn-dark" href="${attr(href)}" target="_blank" rel="noopener noreferrer" title="${attr(title)}"><span class="buy-btn__icon">${icon}</span><span class="buy-btn__label">${escapeHtml(buttonText)}</span></a>`;
 };
 
-const buyCell = (item, { priced = true } = {}) => {
-  const link = buyLinkHtml(item, { priced });
+const buyCell = (item, { priced = true, priceOnly = false } = {}) => {
+  const link = buyLinkHtml(item, { priced, priceOnly });
   if (!link) return labeledTd("Buy", dash, "col-buy");
   return labeledTd("Buy", link, "col-buy");
 };
 
-const itemCell = ({ primary, secondary, badgeHtml = "" }) =>
-  `<td class="col-item" data-label="">
+const itemCell = ({
+  primary,
+  secondary,
+  badgeHtml = "",
+  inlineSecondary = false,
+}) => {
+  if (secondary && inlineSecondary) {
+    return `<td class="col-item" data-label="">
+            <div class="item-headline">
+              <div class="item-title">${primary}${badgeHtml}</div>
+              <div class="item-sub">${escapeHtml(secondary)}</div>
+            </div>
+          </td>`;
+  }
+  return `<td class="col-item" data-label="">
             <div class="item-title">${primary}${badgeHtml}</div>
             ${secondary ? `<div class="item-sub">${escapeHtml(secondary)}</div>` : ""}
           </td>`;
+};
 
 const gearThumb = (g) =>
   g.profile
@@ -152,12 +167,11 @@ const shellThumbCell = (l) => {
 };
 
 const bomThumbCell = (item) => {
-  const badge = winnerBadgeHtml();
   const videoHtml = productVideoThumbHtml(item);
   if (videoHtml) {
-    return `<td class="col-thumb col-thumb--video" data-label="">${badge}${videoHtml}</td>`;
+    return `<td class="col-thumb col-thumb--video" data-label="">${videoHtml}</td>`;
   }
-  return labeledTd("", `${badge}${gearThumb(item)}`, "col-thumb");
+  return labeledTd("", gearThumb(item), "col-thumb");
 };
 
 const sortKingFirst = (arr) =>
@@ -240,16 +254,19 @@ const chemistryLabel = (chemistry) => {
   return labels[key] || chemistry;
 };
 
-const formatCellCell = (l) =>
-  labeledTd("Cell", l.cell ? escapeHtml(String(l.cell)) : dash, "col-cell");
+const formatCellCell = (l) => {
+  const inner = l.cell
+    ? `<span class="num">${escapeHtml(String(l.cell))}</span>`
+    : dash;
+  return labeledTd("Cell", inner, "col-cell");
+};
 
 const formatChemistryCell = (l) => {
   const label = chemistryLabel(l.chemistry);
-  return labeledTd(
-    "Chemistry",
-    label ? escapeHtml(label) : dash,
-    "col-chemistry",
-  );
+  const inner = label
+    ? `<span class="num">${escapeHtml(label)}</span>`
+    : dash;
+  return labeledTd("Chemistry", inner, "col-chemistry");
 };
 
 const formatNominalVCell = (l) => {
@@ -386,6 +403,7 @@ const shellRow = (l) => {
           ${itemCell({
             primary: escapeHtml(l.brand),
             secondary: l.form || null,
+            inlineSecondary: true,
           })}
           ${labeledTd("Works?", formatWorksBadge(l), "col-works")}
           ${formatCellCell(l)}
@@ -399,16 +417,23 @@ const shellRow = (l) => {
 
 const isPassingShell = (l) => l.works === "pass" || l.works === "likely";
 
+const isDiscontinuedShell = (l) => l.in_stock === false;
+
 const partitionShells = (lights) => {
   const passing = [];
   const evaluation = [];
+  const discontinued = [];
   const failed = [];
   for (const l of lights) {
+    if (isDiscontinuedShell(l)) {
+      discontinued.push(l);
+      continue;
+    }
     if (l.works === "fail") failed.push(l);
     else if (isPassingShell(l)) passing.push(l);
     else evaluation.push(l);
   }
-  return { passing, evaluation, failed };
+  return { passing, evaluation, discontinued, failed };
 };
 
 const shellTableHead = `<thead>
@@ -446,13 +471,11 @@ const renderShellTableBlock = (title, hint, shells, modifier = "") => {
         </div>`;
 };
 
-const renderFailedShellSection = (failed) => {
-  if (!failed.length) return "";
-  const rows = sortKingFirst(failed).map(shellRow).join("");
-  const count = failed.length;
-  const label = count === 1 ? "1 failed shell" : `${count} failed shells`;
-  return `<details class="shell-failed">
-          <summary class="shell-failed__summary">${escapeHtml(label)}</summary>
+const renderCollapsedShellSection = (shells, detailsClass, summaryClass, label) => {
+  if (!shells.length) return "";
+  const rows = sortKingFirst(shells).map(shellRow).join("");
+  return `<details class="${detailsClass}">
+          <summary class="${summaryClass}">${escapeHtml(label)}</summary>
           <div class="scroll catalog-scroll">
             <table class="catalog-table">
               ${shellTableHead}
@@ -460,6 +483,29 @@ const renderFailedShellSection = (failed) => {
             </table>
           </div>
         </details>`;
+};
+
+const renderDiscontinuedShellSection = (shells) => {
+  const count = shells.length;
+  const label =
+    count === 1 ? "1 discontinued shell" : `${count} discontinued shells`;
+  return renderCollapsedShellSection(
+    shells,
+    "shell-discontinued",
+    "shell-discontinued__summary",
+    label,
+  );
+};
+
+const renderFailedShellSection = (failed) => {
+  const count = failed.length;
+  const label = count === 1 ? "1 failed shell" : `${count} failed shells`;
+  return renderCollapsedShellSection(
+    failed,
+    "shell-failed",
+    "shell-failed__summary",
+    label,
+  );
 };
 
 const bomTableRow = (item, role, name) => {
@@ -470,7 +516,7 @@ const bomTableRow = (item, role, name) => {
           ${labeledTd("Role", escapeHtml(role), "col-role")}
           ${itemCell({ primary: escapeHtml(name), secondary: null })}
           ${labeledTd("$/node", formatBomCostCell(item), "col-cost num")}
-          ${buyCell(item)}
+          ${buyCell(item, { priceOnly: true })}
         </tr>`;
 };
 
@@ -489,9 +535,11 @@ const communityQtyLabel = (item, nodes) => {
 };
 
 const communityBuyButtonLabel = (item, nodes) => {
+  const qty = communityQtyLabel(item, nodes);
   const line = communityLineCost(item, nodes);
-  if (item.pack_price_usd == null && line <= 0) return null;
-  return `Buy ${money(line)}`;
+  if (qty === dash || (item.pack_price_usd == null && line <= 0)) return null;
+  const qtyTitle = String(qty).replace(/\b[a-z]/g, (c) => c.toUpperCase());
+  return `Buy ${qtyTitle} - ${money(line)}`;
 };
 
 const buyCellCommunity = (item, nodes) => {
@@ -509,22 +557,10 @@ const bomTableRowBulk = (item, role, name, nodes) => {
   const rowClass = videoHtml
     ? "bom-row bom-row--bulk bom-row--video"
     : "bom-row bom-row--bulk";
-  const line = communityLineCost(item, nodes);
-  const qtyLabel = communityQtyLabel(item, nodes);
-  const qtyCell =
-    qtyLabel === dash
-      ? labeledTd("Qty", qtyLabel, "col-qty num")
-      : labeledTd(
-          "Qty",
-          `<span class="num">${escapeHtml(String(qtyLabel))}</span>`,
-          "col-qty num",
-        );
   return `<tr class="${rowClass}">
           ${bomThumbCell(item)}
           ${labeledTd("Role", escapeHtml(role), "col-role")}
           ${itemCell({ primary: escapeHtml(name), secondary: null })}
-          ${qtyCell}
-          ${labeledTd("Price", `<span class="num">${escapeHtml(money(line))}</span>`, "col-price num")}
           ${buyCellCommunity(item, nodes)}
         </tr>`;
 };
@@ -607,7 +643,12 @@ export function renderPage(catalog) {
     firstBuyCommunityTotal,
     communityBuildQty,
   } = computeBom(catalog);
-  const { passing, evaluation, failed: failedShells } = partitionShells(lights);
+  const {
+    passing,
+    evaluation,
+    discontinued: discontinuedShells,
+    failed: failedShells,
+  } = partitionShells(lights);
   const bomLabel = money(bomTotal);
   const firstBuyLabel = money(firstBuyTotal);
   const hasBulkNote =
@@ -653,8 +694,6 @@ export function renderPage(catalog) {
                 <th></th>
                 <th>Role</th>
                 <th>Item</th>
-                <th class="num col-qty">Qty</th>
-                <th class="num col-price">Price</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
@@ -700,6 +739,7 @@ export function renderPage(catalog) {
       evaluation,
       "evaluation",
     ),
+    shell_discontinued_section: renderDiscontinuedShellSection(discontinuedShells),
     shell_failed_section: renderFailedShellSection(failedShells),
     board_rows: sortKingFirst(boards)
       .map((g) => gearRow(g))
@@ -747,6 +787,7 @@ export function applyTemplate(template, parts) {
     .replace("{{bom_bulk_block_html}}", parts.bom_bulk_block_html ?? "")
     .replace("{{shell_passing_section}}", parts.shell_passing_section)
     .replace("{{shell_evaluation_section}}", parts.shell_evaluation_section)
+    .replace("{{shell_discontinued_section}}", parts.shell_discontinued_section)
     .replace("{{shell_failed_section}}", parts.shell_failed_section)
     .replace("{{board_rows}}", parts.board_rows)
     .replace("{{antenna_rows}}", parts.antenna_rows)

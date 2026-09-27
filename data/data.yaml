@@ -423,7 +423,7 @@ boards:
     unit_label: kit
     vendor: Rokland
     buy_url: https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit
-    note: 30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.
+    note: 30×60 mm base with IO slot. Room for SD storage and extra WisBlock modules.
 
 antennas:
   - asin: B0FSTD4BYM

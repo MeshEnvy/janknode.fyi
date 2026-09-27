@@ -423,41 +423,13 @@
           row-gap: 0.4rem;
           padding: 0.7rem 0.75rem 0.7rem;
         }
-        #bom .catalog-table tr.bom-row--video {
-          grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+        .catalog-table td.col-notes {
+          display: block;
+          text-align: left;
         }
-        #bom .bom-row--video td.col-thumb--video .shell-video-thumb {
-          width: 100%;
-          max-width: 9.5rem;
-        }
-        #bom .catalog-table td.col-thumb {
-          position: static;
-        }
-        #bom .card-winner-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.2rem;
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 3;
-          padding: 0.28rem 0.55rem 0.22rem 0.48rem;
-          font-family: "IBM Plex Sans", system-ui, sans-serif;
-          font-size: 0.62rem;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          color: var(--pop-dark);
-          background: #fff;
-          border: 1px solid var(--card-border);
-          border-top: none;
-          border-right: none;
-          border-radius: 0 11px 0 0.55rem;
-          pointer-events: none;
-        }
-        #bom .card-winner-badge__icon {
-          font-size: 0.72rem;
-          line-height: 1;
+        .catalog-table td.col-notes::before {
+          display: block;
+          margin-bottom: 0.25rem;
         }
         .catalog-table tr.pair-row {
           background: #fff8e6;
@@ -631,8 +603,6 @@
         #bom .bom-row td.col-item {
           grid-area: title;
           display: block;
-          grid-column: unset;
-          grid-row: unset;
           padding: 0;
         }
         #bom .bom-row td.col-item .item-title {
@@ -664,19 +634,78 @@
         #bom .bom-row td.col-buy::before {
           display: none;
         }
-        #bom-bulk .bom-row--bulk {
+        #bom .catalog-table tr.bom-row.bom-row--video:not(.bom-row--bulk) {
+          grid-template-columns: minmax(0, 1fr) auto;
           grid-template-areas:
-            "thumb title price"
-            "qty qty qty"
-            "buy buy buy";
+            "thumb thumb"
+            "title price"
+            "buy buy";
+          padding: 0 0.75rem 0.7rem;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--bulk {
+          grid-template-columns: 5.25rem minmax(0, 1fr);
+          grid-template-areas:
+            "thumb title"
+            "buy buy";
+          column-gap: 0.65rem;
+          row-gap: 0.35rem;
+          overflow: visible;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--bulk.bom-row--video {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-areas:
+            "thumb"
+            "title"
+            "buy";
+          padding: 0 0.75rem 0.7rem;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-thumb {
+          grid-area: thumb;
+          margin: 0 -0.75rem 0.15rem;
+          width: calc(100% + 1.5rem);
+          max-width: none;
+          padding: 0;
+          background: #111;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-thumb .shell-video-thumb {
+          width: 100%;
+          max-width: none;
+          height: auto;
+          border-radius: 11px 11px 0 0;
+          aspect-ratio: 16 / 9;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-item {
+          padding-top: 0.35rem;
+        }
+        #bom-bulk .bom-row--bulk td.col-thumb,
+        #bom-bulk .bom-row--bulk td.col-item,
+        #bom-bulk .bom-row--bulk td.col-qty,
+        #bom-bulk .bom-row--bulk td.col-price,
+        #bom-bulk .bom-row--bulk td.col-buy {
+          display: block;
+          min-width: 0;
+          max-width: none;
+        }
+        #bom-bulk .bom-row--bulk td.col-thumb {
+          grid-area: thumb;
+          padding: 0;
+          background: transparent;
+        }
+        #bom-bulk .bom-row--bulk td.col-item {
+          grid-area: title;
+          padding: 0;
+        }
+        #bom-bulk .bom-row--bulk td.col-item .item-title {
+          font-size: 0.95rem;
+          line-height: 1.3;
         }
         #bom-bulk .bom-row--bulk td.col-qty {
           grid-area: qty;
-          display: block;
-          padding: 0;
+          padding: 0.15rem 0 0;
           font-family: "IBM Plex Mono", ui-monospace, monospace;
           font-size: 0.82rem;
           color: var(--ink);
+          text-align: left;
         }
         #bom-bulk .bom-row--bulk td.col-qty::before {
           content: "Qty";
@@ -689,15 +718,32 @@
           text-transform: uppercase;
           color: var(--muted);
         }
+        #bom-bulk .bom-row--bulk td.col-qty[data-label] > * {
+          display: inline;
+          grid-column: unset;
+          justify-self: unset;
+          text-align: left;
+        }
         #bom-bulk .bom-row--bulk td.col-price {
           grid-area: price;
-          display: block;
-          padding: 0;
+          padding: 0.15rem 0 0;
           text-align: right;
           font-weight: 600;
+          white-space: nowrap;
+          align-self: start;
         }
         #bom-bulk .bom-row--bulk td.col-price::before {
           display: none;
+        }
+        #bom-bulk .bom-row--bulk td.col-price[data-label] > * {
+          display: inline;
+          grid-column: unset;
+          justify-self: unset;
+          text-align: right;
+        }
+        #bom-bulk .bom-row--bulk td.col-buy {
+          grid-area: buy;
+          padding: 0.35rem 0 0;
         }
         #bom .bom-row .thumb {
           width: 5.25rem;
@@ -793,6 +839,20 @@
       .item-title {
         font-weight: 600;
         line-height: 1.3;
+      }
+      .item-headline {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+      .item-headline .item-title {
+        min-width: 0;
+      }
+      .item-headline .item-sub {
+        margin-top: 0;
+        text-align: right;
+        flex-shrink: 0;
       }
       .item-sub {
         color: var(--muted);
@@ -1111,12 +1171,14 @@
         font-size: 0.92rem;
         padding: 1.25rem 0.85rem;
       }
+      .shell-discontinued,
       .shell-failed {
         margin-top: 1.25rem;
         border: 1px solid var(--line);
         border-radius: 0.5rem;
         background: #fafafa;
       }
+      .shell-discontinued__summary,
       .shell-failed__summary {
         cursor: pointer;
         padding: 0.75rem 1rem;
@@ -1125,24 +1187,29 @@
         color: var(--muted);
         list-style: none;
       }
+      .shell-discontinued__summary::-webkit-details-marker,
       .shell-failed__summary::-webkit-details-marker {
         display: none;
       }
+      .shell-discontinued__summary::before,
       .shell-failed__summary::before {
         content: "▸ ";
         display: inline-block;
         width: 1rem;
         transition: transform 0.15s ease;
       }
+      .shell-discontinued[open] .shell-discontinued__summary::before,
       .shell-failed[open] .shell-failed__summary::before {
         transform: rotate(90deg);
       }
+      .shell-discontinued__summary:hover,
       .shell-failed__summary:hover {
         color: var(--text);
       }
       .shell-failed__hint {
         margin: 0 1rem 0.75rem;
       }
+      .shell-discontinued .catalog-scroll,
       .shell-failed .catalog-scroll {
         margin: 0 0.5rem 0.5rem;
       }
@@ -1415,59 +1482,59 @@
             </thead>
             <tbody id="bom-rows">
               <tr class="bom-row bom-row--video">
-          <td class="col-thumb col-thumb--video" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch DAYBETTER review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
+          <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch DAYBETTER review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-role" data-label="Role">Shell</td>
           <td class="col-item" data-label="">
             <div class="item-title">Outdoor solar spotlights, 3 modes, warm white (8 lights)</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$5.62</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661" target="_blank" rel="noopener noreferrer" title="Buy on Walmart"><span class="buy-btn__icon"><svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg></span><span class="buy-btn__label">Buy 8-pack $44.99</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661" target="_blank" rel="noopener noreferrer" title="Buy on Walmart"><span class="buy-btn__icon"><svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg></span><span class="buy-btn__label">Buy $44.99</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
           <td class="col-role" data-label="Role">Board</td>
           <td class="col-item" data-label="">
             <div class="item-title">Mini starter kit (RAK19003 + RAK4631)</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$31.97</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy kit $31.97</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy $31.97</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
           <td class="col-role" data-label="Role">Antenna</td>
           <td class="col-item" data-label="">
             <div class="item-title">915 MHz whip antenna, 17 cm (4 antennas)</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$9.98</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 4-pack $39.90</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $39.90</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
           <td class="col-role" data-label="Role">Glue</td>
           <td class="col-item" data-label="">
             <div class="item-title">E6000+ adhesive 0.9 oz</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.40</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy tube $8.29</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.29</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
           <td class="col-role" data-label="Role">JST PH</td>
           <td class="col-item" data-label="">
             <div class="item-title">JST PH 2.0 mm 2-pin pigtails (100 pigtails)</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.17</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 100-pack $16.99</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $16.99</span></a></td>
         </tr><tr class="bom-row">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
           <td class="col-role" data-label="Role">Solder</td>
           <td class="col-item" data-label="">
             <div class="item-title">Sn63/Pb37 rosin-core solder 0.8 mm</div>
             
           </td>
           <td class="col-cost num" data-label="$/node"><span class="num">$0.15</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy spool $8.99</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy on Amazon"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.99</span></a></td>
         </tr><tr class="bom-total-row">
           <td colspan="3" class="bom-total-label" data-label="">Total</td>
           <td class="col-cost num" data-label="$/node"><span class="num">$48.29</span></td>
@@ -1485,72 +1552,58 @@
                 <th></th>
                 <th>Role</th>
                 <th>Item</th>
-                <th class="num col-qty">Qty</th>
-                <th class="num col-price">Price</th>
                 <th class="col-buy">Buy</th>
               </tr>
             </thead>
             <tbody id="bom-bulk-rows">
               <tr class="bom-row bom-row--bulk bom-row--video">
-          <td class="col-thumb col-thumb--video" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch DAYBETTER review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
+          <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch DAYBETTER review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-role" data-label="Role">Shell</td>
           <td class="col-item" data-label="">
             <div class="item-title">Outdoor solar spotlights, 3 modes, warm white (8 lights)</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">4 packs</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$179.96</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661" target="_blank" rel="noopener noreferrer" title="Buy $179.96"><span class="buy-btn__icon"><svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg></span><span class="buy-btn__label">Buy $179.96</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.walmart.com/ip/DAYBETTER-Outdoor-Solar-Lights-3-Modes-Ground-Spotlights-for-Garden-Yard-Landscape-Path-Lighting-Warm-White/18433905661" target="_blank" rel="noopener noreferrer" title="Buy 4 Packs - $179.96"><span class="buy-btn__icon"><svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg></span><span class="buy-btn__label">Buy 4 Packs - $179.96</span></a></td>
         </tr><tr class="bom-row bom-row--bulk">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="kits/115093/profile.jpg" alt="RAKwireless" /></td>
           <td class="col-role" data-label="Role">Board</td>
           <td class="col-item" data-label="">
             <div class="item-title">Mini starter kit (RAK19003 + RAK4631)</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">32 kits</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$828.80</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy $828.80"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy $828.80</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rakwireless-mini-meshtastic-starter-kit-us915-rak19003-4631-sku-115093" target="_blank" rel="noopener noreferrer" title="Buy 32 Kits - $828.80"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy 32 Kits - $828.80</span></a></td>
         </tr><tr class="bom-row bom-row--bulk">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B0FSTD4BYM/profile.jpg" alt="muzi WORKS" /></td>
           <td class="col-role" data-label="Role">Antenna</td>
           <td class="col-item" data-label="">
             <div class="item-title">915 MHz whip antenna, 17 cm (4 antennas)</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">8 packs</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$319.20</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy $319.20"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $319.20</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B0FSTD4BYM" target="_blank" rel="noopener noreferrer" title="Buy 8 Packs - $319.20"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 8 Packs - $319.20</span></a></td>
         </tr><tr class="bom-row bom-row--bulk">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B07QJDJYC6/profile.jpg" alt="E6000" /></td>
           <td class="col-role" data-label="Role">Glue</td>
           <td class="col-item" data-label="">
             <div class="item-title">E6000+ adhesive 0.9 oz</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">2 tubes</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$16.58</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy $16.58"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $16.58</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B07QJDJYC6" target="_blank" rel="noopener noreferrer" title="Buy 2 Tubes - $16.58"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 2 Tubes - $16.58</span></a></td>
         </tr><tr class="bom-row bom-row--bulk">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B09JZC28DP/profile.jpg" alt="FainWan" /></td>
           <td class="col-role" data-label="Role">JST PH</td>
           <td class="col-item" data-label="">
             <div class="item-title">JST PH 2.0 mm 2-pin pigtails (100 pigtails)</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">1 pack</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$16.99</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy $16.99"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $16.99</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B09JZC28DP" target="_blank" rel="noopener noreferrer" title="Buy 1 Pack - $16.99"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 1 Pack - $16.99</span></a></td>
         </tr><tr class="bom-row bom-row--bulk">
-          <td class="col-thumb" data-label=""><span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
+          <td class="col-thumb" data-label=""><img class="thumb" src="gear/B075WB98FJ/profile.jpg" alt="MAIYUM" /></td>
           <td class="col-role" data-label="Role">Solder</td>
           <td class="col-item" data-label="">
             <div class="item-title">Sn63/Pb37 rosin-core solder 0.8 mm</div>
             
           </td>
-          <td class="col-qty num" data-label="Qty"><span class="num">1 spool</span></td>
-          <td class="col-price num" data-label="Price"><span class="num">$8.99</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy $8.99"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy $8.99</span></a></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.amazon.com/dp/B075WB98FJ" target="_blank" rel="noopener noreferrer" title="Buy 1 Spool - $8.99"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Buy 1 Spool - $8.99</span></a></td>
         </tr>
             </tbody>
           </table>
@@ -1587,12 +1640,14 @@
               <tbody><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch DAYBETTER review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">DAYBETTER</div>
-            <div class="item-sub">spotlight</div>
+            <div class="item-headline">
+              <div class="item-title">DAYBETTER</div>
+              <div class="item-sub">spotlight</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.62</span></td>
@@ -1600,12 +1655,14 @@
         </tr><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=u3XQ3FCROro" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch CLAONER review"><img class="shell-video-thumb__img" src="lights/B0C7B2Z39G/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">CLAONER</div>
-            <div class="item-sub">PIR wall</div>
+            <div class="item-headline">
+              <div class="item-title">CLAONER</div>
+              <div class="item-sub">PIR wall</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.17</span></td>
@@ -1613,12 +1670,14 @@
         </tr><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=a_cK9JtqHUw" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch JOFIOS review"><img class="shell-video-thumb__img" src="lights/B0FGCM9TBN/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">JOFIOS</div>
-            <div class="item-sub">fence step</div>
+            <div class="item-headline">
+              <div class="item-title">JOFIOS</div>
+              <div class="item-sub">fence step</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
@@ -1626,55 +1685,18 @@
         </tr><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=I7VdbrMlzRo" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch CHARKEE review"><img class="shell-video-thumb__img" src="lights/18433905661/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">CHARKEE</div>
-            <div class="item-sub">spotlight</div>
+            <div class="item-headline">
+              <div class="item-title">CHARKEE</div>
+              <div class="item-sub">spotlight</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.62</span></td>
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://www.walmart.com/ip/CHARKEE-Solar-Spot-Lights-Outdoor-150-Adjustable-Panel-IP65-Waterproof-Powered-LED-Landscape-Path-Light-Outside-Yard-Garden-Garage-Patio-8-Pack/6918255256" target="_blank" rel="noopener noreferrer" title="Buy on Walmart"><span class="buy-btn__icon"><svg class="buy-store-icon" viewBox="0 0 16 16" aria-hidden="true"><g fill="#ffc220"><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(60 8 8)"/><rect x="7.15" y="0.8" width="1.7" height="14.4" rx="0.85" transform="rotate(120 8 8)"/></g></svg></span><span class="buy-btn__label">Buy 8-pack $44.99</span></a></td>
-        </tr><tr>
-          <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=ZIx43smeGGE" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch VOLISUN review"><img class="shell-video-thumb__img" src="lights/B0D78HJYJ1/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
-          <td class="col-item" data-label="">
-            <div class="item-title">VOLISUN</div>
-            <div class="item-sub">spotlight</div>
-          </td>
-          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
-          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
-          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
-        </tr><tr>
-          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78KYJDC/profile.jpg" alt="VOLISUN" /></td>
-          <td class="col-item" data-label="">
-            <div class="item-title">VOLISUN</div>
-            <div class="item-sub">spotlight</div>
-          </td>
-          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
-          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
-          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
-        </tr><tr>
-          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D99X4M48/profile.jpg" alt="NACINIC" /></td>
-          <td class="col-item" data-label="">
-            <div class="item-title">NACINIC</div>
-            <div class="item-sub">spotlight</div>
-          </td>
-          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
-          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
-          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
-          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
-          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D99X4M48" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
         </tr></tbody>
             </table>
           </div>
@@ -1701,6 +1723,72 @@
             </table>
           </div>
         </div>
+        <details class="shell-discontinued">
+          <summary class="shell-discontinued__summary">3 discontinued shells</summary>
+          <div class="scroll catalog-scroll">
+            <table class="catalog-table">
+              <thead>
+              <tr>
+                <th></th>
+                <th>Shell</th>
+                <th>Works?</th>
+                <th>Cell</th>
+                <th>Chemistry</th>
+                <th class="num">V</th>
+                <th class="num">mAh</th>
+                <th class="num">$/unit</th>
+                <th class="col-buy">Buy</th>
+              </tr>
+            </thead>
+              <tbody><tr>
+          <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=ZIx43smeGGE" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch VOLISUN review"><img class="shell-video-thumb__img" src="lights/B0D78HJYJ1/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
+          <td class="col-item" data-label="">
+            <div class="item-headline">
+              <div class="item-title">VOLISUN</div>
+              <div class="item-sub">spotlight</div>
+            </div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
+          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78HJYJ1" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
+        </tr><tr>
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D78KYJDC/profile.jpg" alt="VOLISUN" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-headline">
+              <div class="item-title">VOLISUN</div>
+              <div class="item-sub">spotlight</div>
+            </div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
+          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D78KYJDC" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
+        </tr><tr>
+          <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0D99X4M48/profile.jpg" alt="NACINIC" /></td>
+          <td class="col-item" data-label="">
+            <div class="item-headline">
+              <div class="item-title">NACINIC</div>
+              <div class="item-sub">spotlight</div>
+            </div>
+          </td>
+          <td class="col-works" data-label="Works?"><span class="badge pass">pass</span></td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
+          <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
+          <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
+          <td class="col-unit num" data-label="$/unit"><span class="empty">—</span></td>
+          <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-outline-secondary" href="https://www.amazon.com/dp/B0D99X4M48" target="_blank" rel="noopener noreferrer" title="View on Amazon (not available)"><span class="buy-btn__icon"><i class="fa-brands fa-amazon fa-fw" aria-hidden="true"></i></span><span class="buy-btn__label">Not available</span></a></td>
+        </tr></tbody>
+            </table>
+          </div>
+        </details>
         <details class="shell-failed">
           <summary class="shell-failed__summary">15 failed shells</summary>
           <div class="scroll catalog-scroll">
@@ -1721,12 +1809,14 @@
               <tbody><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B08H81Z1RW/profile.jpg" alt="SOLPEX" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">SOLPEX</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">SOLPEX</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">NiMH</span></td>
-          <td class="col-cell" data-label="Cell">AAA</td>
-          <td class="col-chemistry" data-label="Chemistry">NiMH</td>
+          <td class="col-cell" data-label="Cell"><span class="num">AAA</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">NiMH</span></td>
           <td class="col-v num" data-label="V"><span class="num">1.2</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">700</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.50</span></td>
@@ -1734,12 +1824,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0GH63TL8H/profile.jpg" alt="AUDERWIN" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">AUDERWIN</div>
-            <div class="item-sub">fence step</div>
+            <div class="item-headline">
+              <div class="item-title">AUDERWIN</div>
+              <div class="item-sub">fence step</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">no space</span></td>
-          <td class="col-cell" data-label="Cell">14500</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">14500</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">4.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">520</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$2.75</span></td>
@@ -1747,8 +1839,10 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0H36282BG/profile.jpg" alt="AUDERWIN" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">AUDERWIN</div>
-            <div class="item-sub">fence step</div>
+            <div class="item-headline">
+              <div class="item-title">AUDERWIN</div>
+              <div class="item-sub">fence step</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
@@ -1760,8 +1854,10 @@
         </tr><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=XFf3J_HDd1k" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch TECKNET review"><img class="shell-video-thumb__img" src="lights/B0DRNRZV32/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">TECKNET</div>
-            <div class="item-sub">fence cap</div>
+            <div class="item-headline">
+              <div class="item-title">TECKNET</div>
+              <div class="item-sub">fence cap</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">no space</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
@@ -1773,12 +1869,14 @@
         </tr><tr>
           <td class="col-thumb col-thumb--video" data-label=""><a class="shell-video-thumb" href="https://www.youtube.com/watch?v=FCZbJHRHioc" target="_blank" rel="noopener noreferrer" title="Watch review" aria-label="Watch HMCITY review"><img class="shell-video-thumb__img" src="lights/B0DT95J4QC/youtube-thumb.jpg" alt="" loading="lazy" onerror="this.closest('.shell-video-thumb').classList.add('shell-video-thumb--no-img')" /><span class="shell-video-thumb__play" aria-hidden="true">▶</span></a></td>
           <td class="col-item" data-label="">
-            <div class="item-title">HMCITY</div>
-            <div class="item-sub">wall wedge</div>
+            <div class="item-headline">
+              <div class="item-title">HMCITY</div>
+              <div class="item-sub">wall wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$3.33</span></td>
@@ -1786,8 +1884,10 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0G2BKN15W/profile.jpg" alt="NIORSUN" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">NIORSUN</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">NIORSUN</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
@@ -1799,12 +1899,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0GDWFY3MJ/profile.jpg" alt="NIORSUN" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">NIORSUN</div>
-            <div class="item-sub">fence step</div>
+            <div class="item-headline">
+              <div class="item-title">NIORSUN</div>
+              <div class="item-sub">fence step</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.50</span></td>
@@ -1812,12 +1914,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B07WPHTWBP/profile.jpg" alt="ROSHWEY" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">ROSHWEY</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">ROSHWEY</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">NiMH</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
-          <td class="col-chemistry" data-label="Chemistry">NiMH</td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">NiMH</span></td>
           <td class="col-v num" data-label="V"><span class="num">1.2</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$4.67</span></td>
@@ -1825,12 +1929,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0H3LWZHHW/profile.jpg" alt="Toeuitie" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">Toeuitie</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">Toeuitie</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">no space</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
@@ -1838,12 +1944,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C813SJXP/profile.jpg" alt="FLITI" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">FLITI</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">FLITI</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">no space</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.00</span></td>
@@ -1851,12 +1959,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0C5J9Z4ZY/profile.jpg" alt="Tadyreal" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">Tadyreal</div>
-            <div class="item-sub">spotlight</div>
+            <div class="item-headline">
+              <div class="item-title">Tadyreal</div>
+              <div class="item-sub">spotlight</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="empty">—</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.70</span></td>
@@ -1864,12 +1974,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0DMNH8QDN/profile.jpg" alt="WENATY" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">WENATY</div>
-            <div class="item-sub">spotlight</div>
+            <div class="item-headline">
+              <div class="item-title">WENATY</div>
+              <div class="item-sub">spotlight</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="empty">—</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$5.42</span></td>
@@ -1877,12 +1989,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B0FHQH9LPQ/profile.jpg" alt="NACINIC" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">NACINIC</div>
-            <div class="item-sub">spotlight</div>
+            <div class="item-headline">
+              <div class="item-title">NACINIC</div>
+              <div class="item-sub">spotlight</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">sealed</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,200</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$6.25</span></td>
@@ -1890,12 +2004,14 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B09XM9GZ5F/profile.jpg" alt="Bridika" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">Bridika</div>
-            <div class="item-sub">fence wedge</div>
+            <div class="item-headline">
+              <div class="item-title">Bridika</div>
+              <div class="item-sub">fence wedge</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">no space</span></td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.7</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">1,500</span></td>
           <td class="col-unit num" data-label="$/unit"><span class="num">$6.67</span></td>
@@ -1903,8 +2019,10 @@
         </tr><tr>
           <td class="col-thumb" data-label=""><img class="thumb" src="lights/B085242PLC/profile.jpg" alt="LECLESTAR" /></td>
           <td class="col-item" data-label="">
-            <div class="item-title">LECLESTAR</div>
-            <div class="item-sub">flood</div>
+            <div class="item-headline">
+              <div class="item-title">LECLESTAR</div>
+              <div class="item-sub">flood</div>
+            </div>
           </td>
           <td class="col-works" data-label="Works?"><span class="badge fail">too big</span></td>
           <td class="col-cell" data-label="Cell"><span class="empty">—</span></td>
@@ -1953,7 +2071,7 @@
             <div class="item-sub">RAKwireless</div>
           </td>
           
-          <td class="col-notes" data-label="Notes">30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.</td>
+          <td class="col-notes" data-label="Notes">30×60 mm base with IO slot. Room for SD storage and extra WisBlock modules.</td>
           
           <td class="col-buy" data-label="Buy"><a class="btn btn-sm buy-btn w-100 btn-dark" href="https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit" target="_blank" rel="noopener noreferrer" title="Buy on Rokland"><span class="buy-btn__icon"><img class="buy-store-icon" src="assets/rokland-favicon.png" alt="" aria-hidden="true" /></span><span class="buy-btn__label">Buy kit $34.97</span></a></td>
         </tr>
@@ -2073,8 +2191,8 @@
             <div class="item-title">INR18650-25R (25R)<span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span></div>
             <div class="item-sub">Samsung SDI</div>
           </td>
-          <td class="col-cell" data-label="Cell">18650</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">18650</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.6</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">2,500</span></td>
           <td class="col-top" data-label="Top">flat</td>
@@ -2088,8 +2206,8 @@
             <div class="item-title">INR21700-58E (58E)<span class="card-winner-badge"><span class="card-winner-badge__icon" aria-hidden="true">👑</span> Winner</span></div>
             <div class="item-sub">Samsung SDI</div>
           </td>
-          <td class="col-cell" data-label="Cell">21700</td>
-          <td class="col-chemistry" data-label="Chemistry">Li-ion</td>
+          <td class="col-cell" data-label="Cell"><span class="num">21700</span></td>
+          <td class="col-chemistry" data-label="Chemistry"><span class="num">Li-ion</span></td>
           <td class="col-v num" data-label="V"><span class="num">3.6</span></td>
           <td class="col-mah num" data-label="mAh"><span class="num">5,330</span></td>
           <td class="col-top" data-label="Top">flat</td>

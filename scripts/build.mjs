@@ -95,16 +95,23 @@ writeFileSync(join(root, 'index.html'), html)
 
 const shellCounts = catalog.lights.reduce(
   (acc, l) => {
-    if (l.works === 'fail') acc.failed += 1
+    if (l.in_stock === false) acc.discontinued += 1
+    else if (l.works === 'fail') acc.failed += 1
     else if (l.works === 'pass' || l.works === 'likely') acc.passing += 1
     else acc.evaluation += 1
     return acc
   },
-  { passing: 0, evaluation: 0, failed: 0 },
+  { passing: 0, evaluation: 0, discontinued: 0, failed: 0 },
 )
-const failedNote =
-  shellCounts.failed > 0 ? ` (+ ${shellCounts.failed} failed hidden)` : ''
+const hiddenNotes = []
+if (shellCounts.discontinued > 0) {
+  hiddenNotes.push(`${shellCounts.discontinued} discontinued hidden`)
+}
+if (shellCounts.failed > 0) {
+  hiddenNotes.push(`${shellCounts.failed} failed hidden`)
+}
+const hiddenNote = hiddenNotes.length ? ` (+ ${hiddenNotes.join(', ')})` : ''
 
 console.log(
-  `index.html: ${shellCounts.passing} passing, ${shellCounts.evaluation} under eval${failedNote}, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
+  `index.html: ${shellCounts.passing} passing, ${shellCounts.evaluation} under eval${hiddenNote}, ${catalog.boards.length} boards, ${catalog.antennas.length} antennas, ${catalog.batteries.length} batteries, ${catalog.consumables.length} consumables, ${catalog.tools.length} tools, BOM ${parts.title.match(/\$[\d,.]+/)?.[0] || ''}`,
 )

@@ -1,41 +1,44 @@
 ---
-asin: B0EXAMPLE
+asin: B0953NGKXR
 brand:
-  value:
+  value: Outus
   source: listing
 title:
-  value:
+  value: No-clean rosin flux pens (3×)
   source: listing
 kind:
-  value: consumable # consumable | tool
+  value: consumable
   source: agent
 group:
-  value: # solder | measure | hand | null
+  value: solder
   source: agent
 pack_qty:
-  value:
+  value: 3
   source: listing
 pack_price_usd:
-  value:
+  value: 9.99
   source: listing
 unit_price_usd:
-  value:
+  value: 3.33
   source: listing
 unit_label:
-  value:
+  value: pen
   source: agent
-amazon: https://www.amazon.com/dp/B0EXAMPLE
+amazon: https://www.amazon.com/dp/B0953NGKXR
+profile_source: shots/2026-03-26-flux-pens.png
+profile_extract: |
+  Three-pack of white YOSKER no-clean rosin flux pens as sold on the listing main photo: three identical pens standing upright side by side, one cap removed showing the tan felt chisel tip, plus one loose white cap beside them. Keep vertical YOSKER labels with red lightning-bolt logo, blue lower label band, and NO-CLEAN text. Do not substitute generic unlabeled white markers.
 pairs_with:
-  value:
+  value: B075WB98FJ
   source: agent
 optional:
-  value: false
+  value: true
   source: agent
-last_verified: YYYY-MM-DD
+last_verified: 2026-03-26
 notes: |
-  One line for the table Notes column.
+  Optional. Rosin flux pen for stubborn joints. Pairs with solder wire below.
 ---
 
-# B0EXAMPLE
+# B0953NGKXR
 
-Paste PDP into `shots/`. Crop `profile.jpg`.
+Outus listing (3× no-clean flux pens). Main product photo shows YOSKER-branded pens.

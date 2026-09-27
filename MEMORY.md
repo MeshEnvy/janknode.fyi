@@ -16,7 +16,7 @@ Static review guide for janknode builds: **shells**, **boards**, **antennas**, *
 
 ## Catalog (19 shells)
 
-Sorted by $/shell within each block in `index.html`. Three tiers: **Passing** (`pass`, `likely`), **Under evaluation** (`maybe`, `unknown`), collapsed **failed** (`fail` + `fail_reason`). Spotlight stake units are filed for comparison but are unlikely repeater shells.
+Sorted by $/shell within each block in `index.html`. **Passing** (`pass`, `likely`), **Under evaluation** (`maybe`, `unknown`), then collapsed **discontinued** (`in_stock: false`), then collapsed **failed** (`fail` + `fail_reason`). Spotlight stake units are filed for comparison but are unlikely repeater shells.
 
 | ASIN | Brand | Class | $/shell | Works? |
 |---|---|---|---|---|

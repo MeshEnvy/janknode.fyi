@@ -423,41 +423,13 @@
           row-gap: 0.4rem;
           padding: 0.7rem 0.75rem 0.7rem;
         }
-        #bom .catalog-table tr.bom-row--video {
-          grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+        .catalog-table td.col-notes {
+          display: block;
+          text-align: left;
         }
-        #bom .bom-row--video td.col-thumb--video .shell-video-thumb {
-          width: 100%;
-          max-width: 9.5rem;
-        }
-        #bom .catalog-table td.col-thumb {
-          position: static;
-        }
-        #bom .card-winner-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.2rem;
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 3;
-          padding: 0.28rem 0.55rem 0.22rem 0.48rem;
-          font-family: "IBM Plex Sans", system-ui, sans-serif;
-          font-size: 0.62rem;
-          font-weight: 600;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          color: var(--pop-dark);
-          background: #fff;
-          border: 1px solid var(--card-border);
-          border-top: none;
-          border-right: none;
-          border-radius: 0 11px 0 0.55rem;
-          pointer-events: none;
-        }
-        #bom .card-winner-badge__icon {
-          font-size: 0.72rem;
-          line-height: 1;
+        .catalog-table td.col-notes::before {
+          display: block;
+          margin-bottom: 0.25rem;
         }
         .catalog-table tr.pair-row {
           background: #fff8e6;
@@ -631,8 +603,6 @@
         #bom .bom-row td.col-item {
           grid-area: title;
           display: block;
-          grid-column: unset;
-          grid-row: unset;
           padding: 0;
         }
         #bom .bom-row td.col-item .item-title {
@@ -664,19 +634,78 @@
         #bom .bom-row td.col-buy::before {
           display: none;
         }
-        #bom-bulk .bom-row--bulk {
+        #bom .catalog-table tr.bom-row.bom-row--video:not(.bom-row--bulk) {
+          grid-template-columns: minmax(0, 1fr) auto;
           grid-template-areas:
-            "thumb title price"
-            "qty qty qty"
-            "buy buy buy";
+            "thumb thumb"
+            "title price"
+            "buy buy";
+          padding: 0 0.75rem 0.7rem;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--bulk {
+          grid-template-columns: 5.25rem minmax(0, 1fr);
+          grid-template-areas:
+            "thumb title"
+            "buy buy";
+          column-gap: 0.65rem;
+          row-gap: 0.35rem;
+          overflow: visible;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--bulk.bom-row--video {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-areas:
+            "thumb"
+            "title"
+            "buy";
+          padding: 0 0.75rem 0.7rem;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-thumb {
+          grid-area: thumb;
+          margin: 0 -0.75rem 0.15rem;
+          width: calc(100% + 1.5rem);
+          max-width: none;
+          padding: 0;
+          background: #111;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-thumb .shell-video-thumb {
+          width: 100%;
+          max-width: none;
+          height: auto;
+          border-radius: 11px 11px 0 0;
+          aspect-ratio: 16 / 9;
+        }
+        #bom .catalog-table tr.bom-row.bom-row--video td.col-item {
+          padding-top: 0.35rem;
+        }
+        #bom-bulk .bom-row--bulk td.col-thumb,
+        #bom-bulk .bom-row--bulk td.col-item,
+        #bom-bulk .bom-row--bulk td.col-qty,
+        #bom-bulk .bom-row--bulk td.col-price,
+        #bom-bulk .bom-row--bulk td.col-buy {
+          display: block;
+          min-width: 0;
+          max-width: none;
+        }
+        #bom-bulk .bom-row--bulk td.col-thumb {
+          grid-area: thumb;
+          padding: 0;
+          background: transparent;
+        }
+        #bom-bulk .bom-row--bulk td.col-item {
+          grid-area: title;
+          padding: 0;
+        }
+        #bom-bulk .bom-row--bulk td.col-item .item-title {
+          font-size: 0.95rem;
+          line-height: 1.3;
         }
         #bom-bulk .bom-row--bulk td.col-qty {
           grid-area: qty;
-          display: block;
-          padding: 0;
+          padding: 0.15rem 0 0;
           font-family: "IBM Plex Mono", ui-monospace, monospace;
           font-size: 0.82rem;
           color: var(--ink);
+          text-align: left;
         }
         #bom-bulk .bom-row--bulk td.col-qty::before {
           content: "Qty";
@@ -689,15 +718,32 @@
           text-transform: uppercase;
           color: var(--muted);
         }
+        #bom-bulk .bom-row--bulk td.col-qty[data-label] > * {
+          display: inline;
+          grid-column: unset;
+          justify-self: unset;
+          text-align: left;
+        }
         #bom-bulk .bom-row--bulk td.col-price {
           grid-area: price;
-          display: block;
-          padding: 0;
+          padding: 0.15rem 0 0;
           text-align: right;
           font-weight: 600;
+          white-space: nowrap;
+          align-self: start;
         }
         #bom-bulk .bom-row--bulk td.col-price::before {
           display: none;
+        }
+        #bom-bulk .bom-row--bulk td.col-price[data-label] > * {
+          display: inline;
+          grid-column: unset;
+          justify-self: unset;
+          text-align: right;
+        }
+        #bom-bulk .bom-row--bulk td.col-buy {
+          grid-area: buy;
+          padding: 0.35rem 0 0;
         }
         #bom .bom-row .thumb {
           width: 5.25rem;
@@ -793,6 +839,20 @@
       .item-title {
         font-weight: 600;
         line-height: 1.3;
+      }
+      .item-headline {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+      .item-headline .item-title {
+        min-width: 0;
+      }
+      .item-headline .item-sub {
+        margin-top: 0;
+        text-align: right;
+        flex-shrink: 0;
       }
       .item-sub {
         color: var(--muted);
@@ -1111,12 +1171,14 @@
         font-size: 0.92rem;
         padding: 1.25rem 0.85rem;
       }
+      .shell-discontinued,
       .shell-failed {
         margin-top: 1.25rem;
         border: 1px solid var(--line);
         border-radius: 0.5rem;
         background: #fafafa;
       }
+      .shell-discontinued__summary,
       .shell-failed__summary {
         cursor: pointer;
         padding: 0.75rem 1rem;
@@ -1125,24 +1187,29 @@
         color: var(--muted);
         list-style: none;
       }
+      .shell-discontinued__summary::-webkit-details-marker,
       .shell-failed__summary::-webkit-details-marker {
         display: none;
       }
+      .shell-discontinued__summary::before,
       .shell-failed__summary::before {
         content: "▸ ";
         display: inline-block;
         width: 1rem;
         transition: transform 0.15s ease;
       }
+      .shell-discontinued[open] .shell-discontinued__summary::before,
       .shell-failed[open] .shell-failed__summary::before {
         transform: rotate(90deg);
       }
+      .shell-discontinued__summary:hover,
       .shell-failed__summary:hover {
         color: var(--text);
       }
       .shell-failed__hint {
         margin: 0 1rem 0.75rem;
       }
+      .shell-discontinued .catalog-scroll,
       .shell-failed .catalog-scroll {
         margin: 0 0.5rem 0.5rem;
       }
@@ -1431,6 +1498,7 @@
         <h2 class="gear-title" id="shells-heading">Shells</h2>
         {{shell_passing_section}}
         {{shell_evaluation_section}}
+        {{shell_discontinued_section}}
         {{shell_failed_section}}
       </section>
 

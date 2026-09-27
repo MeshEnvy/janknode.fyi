@@ -28,7 +28,7 @@ optional:
   source: agent
 last_verified: 2026-09-21
 notes: |
-  30×60 mm base with IO slot. Official 1.0 pick for SD storage and extra WisBlock modules.
+  30×60 mm base with IO slot. Room for SD storage and extra WisBlock modules.
 ---
 
 # 116016
