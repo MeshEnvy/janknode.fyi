@@ -5,7 +5,7 @@
 #   youtube_assembly: https://www.youtube.com/watch?v=…
 #   profile_video: true  # thumb column links to video (needs youtube_thumb or live ytimg)
 #   youtube_thumb: lights/<ASIN>/youtube-thumb.jpg
-#   youtube_thumb_tagline: short quote for branded thumb (see assets/operator-face.jpg)
+#   youtube_thumb_tagline: short quote for branded thumb (face: enterprise/assets/operator-face.jpg)
 last_verified: 2026-09-26
 king: "18433905661"
 

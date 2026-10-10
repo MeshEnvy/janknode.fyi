@@ -60,7 +60,7 @@ youtube_thumb_tagline:
   source: listing
 youtube_thumb_extract:
   value: |
-    Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
+    Branded 16:9 YouTube thumb. Cut out person from enterprise/assets/operator-face.jpg
     (background removed). Triumphant review pose, presenting the CLAONER PIR wall
     light from profile.jpg as the hero subject on the right. Crown or royal gold
     accent optional; bright high contrast. Tagline from youtube_thumb_tagline,

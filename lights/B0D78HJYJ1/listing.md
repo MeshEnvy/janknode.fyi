@@ -57,7 +57,7 @@ youtube_thumb_tagline:
   source: listing
 youtube_thumb_extract:
   value: |
-    Branded 16:9 YouTube thumb. Cut out the person from assets/operator-face.jpg
+    Branded 16:9 YouTube thumb. Cut out the person from enterprise/assets/operator-face.jpg
     (background removed, not the original sky/desert). Person looks at the product
     from profile.jpg as the hero subject. Bold tagline from youtube_thumb_tagline.
     Bright, full contrast. No YouTube UI or baked play button.

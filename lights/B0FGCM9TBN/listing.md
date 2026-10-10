@@ -57,7 +57,7 @@ youtube_thumb_tagline:
   source: listing
 youtube_thumb_extract:
   value: |
-    Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
+    Branded 16:9 YouTube thumb. Cut out person from enterprise/assets/operator-face.jpg
     (background removed). Review pose, looking at the white JOFIOS fence-step
     light from profile.jpg as the hero subject on the right. Black background.
     Stack the tagline on two lines, same words, same order:

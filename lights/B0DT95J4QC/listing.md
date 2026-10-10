@@ -60,7 +60,7 @@ youtube_thumb_tagline:
   source: listing
 youtube_thumb_extract:
   value: |
-    Branded 16:9 YouTube thumb. Cut out person from assets/operator-face.jpg
+    Branded 16:9 YouTube thumb. Cut out person from enterprise/assets/operator-face.jpg
     (background removed). Skeptical review pose, looking at sealed HMCITY wall
     wedge from profile.jpg. Tagline from youtube_thumb_tagline.
   source: listing
