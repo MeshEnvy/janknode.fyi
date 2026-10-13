@@ -1,6 +1,6 @@
 ---
 description: Catalog profile.jpg — GenerateImage only; no source photo manipulation
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Profile extract — agentic only
